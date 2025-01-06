@@ -25,20 +25,19 @@
     "noUncheckedSideEffectImports": true,
 
     /* Path */
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
-      "@apis/*": ["./src/apis/*"],
-      "@assets/*": ["./src/assets/*"],
-      "@components/*": ["./src/components/common/*"],
-      "@constants": ["./src/constants"],
-      "@hooks/*": ["./src/hooks/*"],
-      "@pages/*": ["./src/pages/*"],
-      "@routes/*": ["./src/routes/*"],
-      "@styles/*": ["./src/styles/*"],
-      "@svg": ["./src/assets/svg"],
-      "@types/*": ["./src/types/*"],
-      "@utils/*": ["./src/utils/*"],
-      "@/*": ["./src/*"]
+      "@apis/*": ["src/apis/*"],
+      "@svgs": ["src/assets/svg"],
+      "@image/*": ["/image/*"],
+      "@components": ["src/components/common"],
+      "@constants": ["src/constants"],
+      "@hooks": ["src/hooks"],
+      "@pages/*": ["src/pages/*"],
+      "@routes": ["src/routes"],
+      "@styles/*": ["src/styles/*"],
+      "@types": ["src/types"],
+      "@utils": ["src/utils"]
     }
   },
   "include": ["src", "custom.d.ts", "public/image"]
