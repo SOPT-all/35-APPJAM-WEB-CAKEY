@@ -2,7 +2,6 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import { MyPage } from '@pages/myPage/page';
 import {
   authRoutes,
   designListRoutes,
@@ -34,7 +33,6 @@ const App = () => {
       <div style={{ fontSize: '16px' }}>
         <ReactQueryDevtools />
       </div>
-      <MyPage />
     </QueryClientProvider>
   );
 };
