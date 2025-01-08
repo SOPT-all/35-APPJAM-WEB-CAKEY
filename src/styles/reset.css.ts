@@ -66,6 +66,14 @@ globalStyle('table', {
   },
 });
 
+globalStyle('input, button', {
+  '@layer': {
+    [reset]: {
+      border: 'none',
+      outline: 'none',
+    },
+  },
+});
 
 globalStyle(
   '*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *))',

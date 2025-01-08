@@ -36,6 +36,7 @@ globalStyle('a', {
   '@layer': {
     [base]: {
       textDecoration: 'none',
+      color: 'inherit'
     },
   },
 });
