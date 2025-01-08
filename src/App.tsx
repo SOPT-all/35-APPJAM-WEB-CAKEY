@@ -7,6 +7,11 @@ import {
   viewRoutes,
 } from '@routes';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import queryClient from './queryClient';
+import '@styles/global.css';
+
 
 const allRoutes = [
   ...authRoutes,
@@ -21,10 +26,12 @@ const router = createBrowserRouter(allRoutes);
 
 const App = () => {
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
-      <p>cakey web 화이팅!!!!</p>
-    </>
+      <div style={{ fontSize: '16px' }}>
+        <ReactQueryDevtools />
+      </div>
+    </QueryClientProvider>
   );
 };
 
