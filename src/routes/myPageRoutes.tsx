@@ -1,6 +1,6 @@
-import MyPage from '@pages/myPage/page';
+import { MyPage } from '@pages/myPage/page';
+import { RouteType } from '@types';
 import routePath from 'src/constants/routePath';
-import { RouteType } from 'src/types/routeType';
 
 const myPageRoutes: RouteType[] = [
   {

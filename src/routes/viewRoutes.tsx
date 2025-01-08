@@ -1,6 +1,6 @@
-import ViewPage from '@pages/view/page';
+import { ViewPage } from '@pages/view/page';
+import { RouteType } from '@types';
 import routePath from 'src/constants/routePath';
-import { RouteType } from 'src/types/routeType';
 
 const veiwRoutes: RouteType[] = [
   {
