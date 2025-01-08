@@ -1,6 +1,6 @@
 import { StorePage } from '@pages/store/page';
 import { RouteType } from '@types';
-import routePath from 'src/routes/routePath';
+import routePath from './routePath';
 
 const storeRoutes: RouteType[] = [
   {

@@ -1,6 +1,6 @@
 import { LoginPage } from '@pages/auth/page';
 import { RouteType } from '@types';
-import routePath from 'src/routes/routePath';
+import routePath from './routePath';
 
 const authRoutes: RouteType[] = [
   {
