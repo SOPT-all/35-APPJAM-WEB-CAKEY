@@ -1,3 +1,7 @@
+import { QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
 import {
   authRoutes,
   designListRoutes,
@@ -6,12 +10,10 @@ import {
   storeRoutes,
   viewRoutes,
 } from '@routes';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import queryClient from './queryClient';
-import '@styles/global.css';
 
+import queryClient from './queryClient';
+
+import '@styles/global.css';
 
 const allRoutes = [
   ...authRoutes,
