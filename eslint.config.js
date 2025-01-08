@@ -10,10 +10,7 @@ export default tseslint.config(
   { ignores: ['dist', 'custom.d.ts', 'vite.config.ts'] },
   {
     files: ['**/*.{ts,tsx}'],
-    extends: [
-      js.configs.recommended,
-      ...tseslint.configs.recommended,
-    ],
+    extends: [js.configs.recommended, ...tseslint.configs.recommended],
     languageOptions: {
       parser: tseslint.parser,
       ecmaVersion: 2020,
@@ -68,6 +65,16 @@ export default tseslint.config(
               position: 'before',
             },
             {
+              pattern: '{@svgs, @image/*, @styles/*}',
+              group: 'internal',
+              position: 'after',
+            },
+            {
+              pattern: '{@pages/*, @components, @hooks, @routes, @constants}',
+              group: 'internal',
+              position: 'after',
+            },
+            {
               pattern: '@types', // type 관련은 type 그룹 위로
               group: 'type',
               position: 'before',
@@ -77,6 +84,15 @@ export default tseslint.config(
           'newlines-between': 'always',
         },
       ],
+    },
+    settings: {
+      // typeScript 가 파일을 잘 읽지 못해서 생기는 문제를 해결해주는 부분
+      'import/resolver': {
+        typescript: {
+          alwaysTryTypes: true,
+          project: './tsconfig.app.json',
+        },
+      },
     },
   }
 );

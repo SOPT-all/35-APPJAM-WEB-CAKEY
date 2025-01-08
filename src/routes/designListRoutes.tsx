@@ -1,6 +1,8 @@
 import { DesignListPage } from '@pages/designList/page';
-import { RouteType } from '@types';
+
 import routePath from './routePath';
+
+import { RouteType } from '@types';
 
 const designListRoutes: RouteType[] = [
   {
