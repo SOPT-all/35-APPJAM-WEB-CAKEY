@@ -66,6 +66,7 @@ globalStyle('table', {
   },
 });
 
+
 globalStyle(
   '*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *))',
   {
@@ -137,6 +138,57 @@ globalStyle('img', {
     [reset]: {
       maxInlineSize: '100%',
       maxBlockSize: '100%',
+    },
+  },
+});
+
+/**
+ * 사파리 브라우저에서 textarea 요소의 white-space 속성을 기본값으로 되돌리기 위해 사용됩니다.
+ * Revert the 'white-space' property for textarea elements on Safari
+ */
+globalStyle('textarea', {
+  '@layer': {
+    [reset]: {
+      whiteSpace: 'revert',
+    },
+  },
+});
+
+/**
+ * hidden 속성을 가진 요소의 display none을 적용
+ * Fix the feature of 'hidden' attribute. display:revert; revert to element
+ * instead of attribute
+ */
+globalStyle(':where([hidden])', {
+  '@layer': {
+    [reset]: {
+      display: 'none',
+    },
+  },
+});
+
+/**
+ * draggable 속성이 있는 요소에서 드래그 기능이 제대로 작동하도록 설정
+ * Apply back the draggable feature - exist only in Chromium and Safari
+ */
+globalStyle(':where([draggable="true"])', {
+  '@layer': {
+    [reset]: {
+      // @ts-expect-error: -webkit-user-drag is a non-standard property
+      WebkitUserDrag: 'element',
+    },
+  },
+});
+
+/**
+ * modal의 기본 동작 복원
+ * Revert Modal native behavior
+ */
+globalStyle(':where(dialog:modal)', {
+  '@layer': {
+    [reset]: {
+      all: 'revert',
+      boxSizing: 'border-box',
     },
   },
 });
