@@ -1,5 +1,9 @@
 import React, { ButtonHTMLAttributes } from 'react';
-import { flexButtonStyle, iconStyle } from './SocialLoginButton.css';
+import {
+  flexButtonStyle,
+  iconStyle,
+  platformStyle,
+} from './SocialLoginButton.css';
 
 export interface SocialLoginButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -13,7 +17,7 @@ const SocialLoginButton = ({
   children,
 }: SocialLoginButtonProps) => {
   return (
-    <button className={flexButtonStyle}>
+    <button className={`${flexButtonStyle} ${platformStyle[platform]}`}>
       <span className={iconStyle}>{icon}</span>
       {children}
     </button>
