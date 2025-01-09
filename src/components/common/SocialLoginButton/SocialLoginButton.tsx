@@ -1,24 +1,25 @@
 import { ButtonHTMLAttributes } from 'react';
-import {
-  flexButtonStyle,
-  iconStyle,
-  platformStyle,
-} from './SocialLoginButton.css';
+
 import { IcKakao } from '@svgs';
+
+import { buttonStyle, iconStyle } from './SocialLoginButton.css';
 
 export interface SocialLoginButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
   platform: 'kakao';
 }
 
-// 플랫폼별 아이콘 매핑
-const platformIcon: Record<string, JSX.Element> = {
+const platformIcon = {
   kakao: <IcKakao />,
 };
 
 const SocialLoginButton = ({ platform, children }: SocialLoginButtonProps) => {
   return (
-    <button className={`${flexButtonStyle} ${platformStyle[platform]}`}>
+    <button
+      className={buttonStyle({
+        platform,
+      })}
+    >
       <span className={iconStyle}>{platformIcon[platform]}</span>
       {children}
     </button>

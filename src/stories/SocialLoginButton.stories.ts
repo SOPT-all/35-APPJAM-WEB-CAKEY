@@ -1,8 +1,8 @@
 import { fn } from '@storybook/test';
 
-import type { Meta, StoryObj } from '@storybook/react';
 import { SocialLoginButton } from '@components';
-import { IcKakao } from '@svgs';
+
+import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
   title: 'Components/SocialLoginButton',
