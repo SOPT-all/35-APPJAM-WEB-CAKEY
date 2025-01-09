@@ -1,8 +1,5 @@
-import { createGlobalTheme, fontFace } from '@vanilla-extract/css';
+import { createGlobalTheme } from '@vanilla-extract/css';
 
-const pretendard = fontFace({
-  src: "url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css')",
-});
 
 export const vars = createGlobalTheme(':root', {
   colors: {
@@ -32,63 +29,54 @@ export const vars = createGlobalTheme(':root', {
   fonts: {
     // headline
     head01_b_24: {
-      fontFamily: pretendard,
       fontWeight: 'bold',
       fontSize: '2.4rem',
       lineHeight: 'auto',
       letterSpacing: '-0.6px',
     },
     head02_b_20: {
-      fontFamily: pretendard,
       fontWeight: 'bold',
       fontSize: '2rem',
       lineHeight: 'auto',
       letterSpacing: '-0.6px',
     },
     head03_b_18: {
-      fontFamily: pretendard,
       fontWeight: 'bold',
       fontSize: '1.8rem',
       lineHeight: 'auto',
       letterSpacing: '-0.6px',
     },
     head04_b_16: {
-      fontFamily: pretendard,
       fontWeight: 'bold',
       fontSize: '1.6rem',
       lineHeight: 'auto',
       letterSpacing: '-0.6px',
     },
     head05_sb_20: {
-      fontFamily: pretendard,
       fontWeight: 'semi-bold',
       fontSize: '2rem',
       lineHeight: 'auto',
       letterSpacing: '-0.6px',
     },
     head06_sb_16: {
-      fontFamily: pretendard,
       fontWeight: 'semi-bold',
       fontSize: '1.6rem',
       lineHeight: 'auto',
       letterSpacing: '-0.6px',
     },
     head07_m_20: {
-      fontFamily: pretendard,
       fontWeight: 'medium',
       fontSize: '2rem',
       lineHeight: 'auto',
       letterSpacing: '-0.6px',
     },
     head08_m_18: {
-      fontFamily: pretendard,
       fontWeight: 'medium',
       fontSize: '1.8rem',
       lineHeight: 'auto',
       letterSpacing: '-0.6px',
     },
     head09_r_18: {
-      fontFamily: pretendard,
       fontWeight: 'regular',
       fontSize: '2rem',
       lineHeight: 'auto',
@@ -97,56 +85,48 @@ export const vars = createGlobalTheme(':root', {
 
     // body
     body01_b_14: {
-      fontFamily: pretendard,
       fontWeight: 'bold',
       fontSize: '1.4rem',
       lineHeight: 'auto',
       letterSpacing: '-0.6px',
     },
     body02_sb_14: {
-      fontFamily: pretendard,
       fontWeight: 'semi-bold',
       fontSize: '1.4rem',
       lineHeight: 'auto',
       letterSpacing: '-0.6px',
     },
     body03_sb_12: {
-      fontFamily: pretendard,
       fontWeight: 'semi-bold',
       fontSize: '1.2rem',
       lineHeight: 'auto',
       letterSpacing: '-0.6px',
     },
     body04_m_16: {
-      fontFamily: pretendard,
       fontWeight: 'medium',
       fontSize: '1.6rem',
       lineHeight: 'auto',
       letterSpacing: '-0.6px',
     },
     body05_m_14: {
-      fontFamily: pretendard,
       fontWeight: 'medium',
       fontSize: '1.4rem',
       lineHeight: 'auto',
       letterSpacing: '-0.6px',
     },
     body06_r_16: {
-      fontFamily: pretendard,
       fontWeight: 'regular',
       fontSize: '1.6rem',
       lineHeight: 'auto',
       letterSpacing: '-0.6px',
     },
     body07_r_14: {
-      fontFamily: pretendard,
       fontWeight: 'regular',
       fontSize: '1.4rem',
       lineHeight: 'auto',
       letterSpacing: '-0.6px',
     },
     body08_r_12: {
-      fontFamily: pretendard,
       fontWeight: 'regular',
       fontSize: '1.2rem',
       lineHeight: 'auto',
@@ -159,7 +139,6 @@ export const vars = createGlobalTheme(':root', {
       letterSpacing: '-0.6px',
     },
     body10_l_12: {
-      fontFamily: pretendard,
       fontWeight: 'light',
       fontSize: '1.2rem',
       lineHeight: 'auto',
