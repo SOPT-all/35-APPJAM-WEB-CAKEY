@@ -42,12 +42,28 @@ export const buttonStyle = recipe({
     },
 
     color: {
-      blue: createButtonColorStyles(vars.colors.mainBlue, vars.colors.white),
-      gray: createButtonColorStyles(vars.colors.gray7, vars.colors.gray3),
+      blue: createButtonColorStyles(
+        vars.colors.mainBlue,
+        vars.colors.white,
+        'none'
+      ),
+      gray: createButtonColorStyles(
+        vars.colors.gray7,
+        vars.colors.gray3,
+        'none'
+      ),
       stroke: createButtonColorStyles(
         vars.colors.white,
         vars.colors.mainBlue,
         `1px solid ${vars.colors.mainBlue}`
+      ),
+    },
+
+    isDisabled: {
+      true: createButtonColorStyles(
+        vars.colors.gray7,
+        vars.colors.gray3,
+        'none'
       ),
     },
   },
