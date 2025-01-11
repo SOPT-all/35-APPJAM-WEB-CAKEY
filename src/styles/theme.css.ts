@@ -27,6 +27,8 @@ export const vars = createGlobalTheme(':root', {
     gray5: '#C2C4C8',
     gray6: '#DBDCDF',
     gray7: '#F7F7F8',
+
+    kakaoYello: '#FAE100',
   },
 
   fonts: {
