@@ -2,7 +2,7 @@ import { style } from '@vanilla-extract/css';
 
 import { vars } from '@styles/theme.css';
 
-export const mainTab = style({
+export const viewMyPageTab = style({
   display: 'flex',
   width: '100%',
 });

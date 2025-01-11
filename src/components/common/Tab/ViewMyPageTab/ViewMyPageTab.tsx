@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
-import * as styles from './MainTab.css';
+import * as styles from './ViewMyPageTab.css';
 
 const tabs = ['스토어', '디자인'];
 
-export const MainTab = () => {
+export const ViewMyPageTab = () => {
   const [activeTab, setActiveTab] = useState(0);
   return (
-    <div className={styles.mainTab}>
+    <div className={styles.viewMyPageTab}>
       {tabs.map((tab, index) => (
         <button
           key={index}
@@ -23,4 +23,4 @@ export const MainTab = () => {
   );
 };
 
-export default MainTab;
+export default ViewMyPageTab;
