@@ -11,7 +11,6 @@ import {
   viewRoutes,
 } from '@routes';
 
-import StoreTab from './components/common/Tab/StoreTab/StoreTab';
 import queryClient from './queryClient';
 
 import '@styles/global.css';
@@ -33,7 +32,6 @@ const App = () => {
       <RouterProvider router={router} />
       <div style={{ fontSize: '16px' }}>
         <ReactQueryDevtools />
-        <StoreTab />
       </div>
     </QueryClientProvider>
   );
