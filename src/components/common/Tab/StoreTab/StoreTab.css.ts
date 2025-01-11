@@ -11,16 +11,17 @@ export const tabButton = style({
   color: '#D2D2D2',
   borderBottom: `0.2rem solid #D2D2D2`,
   width: '100%',
-  padding: '1.4rem 0',
+  padding: '1rem 0',
   textAlign: 'center',
-  fontFamily: vars.fonts.head03_b_18.fontFamily,
-  fontWeight: vars.fonts.head03_b_18.fontWeight,
-  fontSize: vars.fonts.head03_b_18.fontSize,
-  lineHeight: vars.fonts.head03_b_18.lineHeight,
-  letterSpacing: vars.fonts.head03_b_18.letterSpacing,
+  fontFamily: vars.fonts.body04_m_16.fontFamily,
+  fontWeight: vars.fonts.body04_m_16.fontWeight,
+  fontSize: vars.fonts.body04_m_16.fontSize,
+  lineHeight: vars.fonts.body04_m_16.lineHeight,
+  letterSpacing: vars.fonts.body04_m_16.letterSpacing,
 });
 
 export const activeTab = style({
-  color: '#F24D4D',
-  borderBottom: `0.2rem solid #F24D4D`,
+  color: '#313131',
+  borderBottom: `0.2rem solid #313131`,
+  fontWeight: vars.fonts.head06_sb_16.fontWeight,
 });
