@@ -1,31 +1,42 @@
 import { createGlobalTheme } from '@vanilla-extract/css';
 
-
 export const vars = createGlobalTheme(':root', {
   colors: {
-    //main-color
-    mainBlue: '#4863FF',
-    blue2: '#647BFF',
-    blue3: '#97A6FF',
-    blue4: '#D2D9FF',
-    blue5: '#EDF0FF',
-    subYellow: '#FFE374',
-    yellow2: '#FFEDA7',
-    yellow3: '#FFF6D4',
-    yellow4: '#FFFBEC',
+    // Main colors
+    red1: '#F24D4D',
+    red2: '#FF7878',
+    red3: '#FFF4F4',
+    yellow1: '#FFF7BE',
+    yellow2: '#FFFCE0',
+    yellow3: '#FFFDEF',
 
-    //gray-scale
-    black: '#171719',
+    // Blue colors
+    blue1: '#6A88FF',
+    blue2: 'rgba(65, 103, 255, 0.8)', // 80% opacity
+
+    // Opacity (gray with different transparencies)
+    number: 'rgba(43, 43, 43, 0.7)', // 70% opacity
+    dimmed: 'rgba(0, 0, 0, 0.5)',   // 50% opacity
+    like_off: 'rgba(196, 196, 196, 0.65)', // 65% opacity
+
+    // Gray scale
+    gray900: '#1D1D1D',
+    gray800: '#313131',
+    gray700: '#454545',
+    gray600: '#6A6A6A',
+    gray500: '#828282',
+    gray400: '#A9A9A9',
+    gray300: '#D2D2D2',
+    gray200: '#ECECEC',
+    gray100: '#F8F8F8',
+
+    // Common colors
+    black: '#171717',
     white: '#FFFFFF',
-    gray1: '#46474C',
-    gray2: '#5A5C63',
-    gray3: '#878A93',
-    gray4: '#AEB0B6',
-    gray5: '#C2C4C8',
-    gray6: '#DBDCDF',
-    gray7: '#F7F7F8',
 
-    kakaoYello: '#FAE100',
+    // Kakao colors
+    kakao_brown: '#000000',
+    kakao_yellow: '#FAE100',
   },
 
   fonts: {
