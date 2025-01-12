@@ -20,6 +20,6 @@ export const container = recipe({
     },
   },
   defaultVariants: {
-    bgColor: 'yellow',
+    bgColor: 'white',
   },
 });
