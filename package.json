@@ -61,5 +61,12 @@
     "extends": [
       "plugin:storybook/recommended"
     ]
+  },
+  "peerDependencies": {
+    "@storybook/addon-actions": "^8.4.7",
+    "@storybook/addon-backgrounds": "^8.4.7",
+    "filesize": "^10.1.6",
+    "react-confetti": "^6.2.2",
+    "strip-ansi": "^7.1.0"
   }
 }
