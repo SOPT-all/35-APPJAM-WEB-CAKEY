@@ -1,6 +1,7 @@
 import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { ToastProvider } from './hooks/useToast';
 
 import {
   authRoutes,
@@ -29,7 +30,9 @@ const router = createBrowserRouter(allRoutes);
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
+      <ToastProvider>
+        <RouterProvider router={router} />
+      </ToastProvider>
       <div style={{ fontSize: '16px' }}>
         <ReactQueryDevtools />
       </div>
