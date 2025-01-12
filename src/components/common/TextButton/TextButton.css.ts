@@ -1,5 +1,6 @@
 import { recipe } from '@vanilla-extract/recipes';
 
+import { flexGenerator } from '@styles/generator.css';
 import { vars } from '@styles/theme.css';
 
 const createButtonSizeStyles = (
@@ -19,13 +20,13 @@ const createButtonColorStyles = (
 });
 
 export const buttonStyle = recipe({
-  base: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    borderRadius: '10px',
-  },
+  base: [
+    flexGenerator(),
+    {
+      width: '100%',
+      borderRadius: '10px',
+    },
+  ],
   variants: {
     size: {
       small: createButtonSizeStyles(
