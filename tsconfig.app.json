@@ -28,7 +28,7 @@
     "baseUrl": "./",
     "paths": {
       "@apis/*": ["src/apis/*"],
-      "@svgs": ["src/assets/svg"],
+      "@svgs": ["src/assets/svgs"],
       "@image/*": ["/image/*"],
       "@components": ["src/components/common"],
       "@constants": ["src/constants"],

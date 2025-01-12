@@ -1,7 +1,9 @@
+import { SocialLoginButton } from '@components';
+
 const LoginPage = () => {
   return (
-    <div>LoginPage</div>
-  )
-}
+    <SocialLoginButton platform="kakao">카카오로 시작하기</SocialLoginButton>
+  );
+};
 
-export default LoginPage
+export default LoginPage;
