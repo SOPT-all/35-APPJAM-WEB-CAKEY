@@ -1,13 +1,11 @@
-// import {
-//   IcBookmarkFill,
-//   IcBookmarkStroke,
-//   IcHeartFill,
-//   IcHeartStroke,
-// } from '@svgs';
-
-import { IcBookmark } from '@svgs';
-import { ButtonHTMLAttributes, useState } from 'react';
+import { ButtonHTMLAttributes } from 'react';
 import { buttonStyle, countStyle, iconStyle } from './IconButton.css';
+import {
+  IcLineLikeOff20,
+  IcLineLikeOn20,
+  IcSavedOff24,
+  IcSavedOn24,
+} from '@svgs';
 
 export interface IconButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -17,24 +15,14 @@ export interface IconButtonProps
   onMap: boolean;
 }
 
-// const buttonIcon = {
-//   save: {
-//     active: <IcBookmarkFill />,
-//     inactive: <IcBookmarkStroke />,
-//   },
-//   like: {
-//     active: <IcHeartFill />,
-//     inactive: <IcHeartStroke />,
-//   },
-// };
 const buttonIcon = {
   save: {
-    active: <IcBookmark />,
-    inactive: <IcBookmark />,
+    active: <IcSavedOn24 />,
+    inactive: <IcSavedOff24 />,
   },
   like: {
-    active: <IcBookmark />,
-    inactive: <IcBookmark />,
+    active: <IcLineLikeOn20 />,
+    inactive: <IcLineLikeOff20 />,
   },
 };
 
@@ -43,16 +31,12 @@ const IconButton = ({
   isActive,
   count,
   onMap,
+  onClick,
 }: IconButtonProps) => {
-  const [active, setActive] = useState(isActive);
-
-  const handleButtonClick = () => {
-    setActive((prev) => !prev);
-  };
   return (
-    <button className={buttonStyle({ onMap })} onClick={handleButtonClick}>
+    <button className={buttonStyle({ onMap })} onClick={onClick}>
       <span className={iconStyle}>
-        {active
+        {isActive
           ? buttonIcon[buttonType].active
           : buttonIcon[buttonType].inactive}
       </span>

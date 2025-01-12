@@ -1,7 +1,12 @@
+import { IconButton } from '@components';
+
 const HomePage = () => {
   return (
-    <div>HomePage</div>
-  )
-}
+    <div style={{ backgroundColor: 'black' }}>
+      <IconButton buttonType="save" onMap={true} isActive={false} />
+      <IconButton buttonType="like" onMap={false} />
+    </div>
+  );
+};
 
-export default HomePage
+export default HomePage;

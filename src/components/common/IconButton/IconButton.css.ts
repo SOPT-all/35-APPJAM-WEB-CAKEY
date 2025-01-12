@@ -19,7 +19,7 @@ export const buttonStyle = recipe({
         width: '4rem',
         height: '4rem',
         borderRadius: '50%',
-        backgroundColor: vars.colors.black,
+        backgroundColor: vars.colors.white,
       },
       false: {},
     },
