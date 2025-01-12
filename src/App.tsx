@@ -14,6 +14,7 @@ import {
 import queryClient from './queryClient';
 
 import '@styles/global.css';
+import TextButton from 'src/components/common/TextButton/TextButton';
 
 const allRoutes = [
   ...authRoutes,
@@ -30,6 +31,7 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
+      <TextButton size='medium'>유태승</TextButton>
       <div style={{ fontSize: '16px' }}>
         <ReactQueryDevtools />
       </div>

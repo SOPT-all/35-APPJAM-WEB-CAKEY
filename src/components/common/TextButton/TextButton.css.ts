@@ -46,12 +46,10 @@ export const buttonStyle = recipe({
       blue: createButtonColorStyles(
         vars.colors.mainBlue,
         vars.colors.white,
-        'none'
       ),
       gray: createButtonColorStyles(
         vars.colors.gray7,
         vars.colors.gray3,
-        'none'
       ),
       stroke: createButtonColorStyles(
         vars.colors.white,
@@ -64,7 +62,6 @@ export const buttonStyle = recipe({
       true: createButtonColorStyles(
         vars.colors.gray7,
         vars.colors.gray3,
-        'none'
       ),
     },
   },
