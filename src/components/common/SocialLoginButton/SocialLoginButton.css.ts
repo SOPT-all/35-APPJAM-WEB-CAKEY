@@ -1,8 +1,8 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import { vars } from '@styles/theme.css';
 import { flexGenerator } from '@styles/generator.css';
+import { vars } from '@styles/theme.css';
 
 const createButtonPlatformStyles = (
   backgroundColor: string,
@@ -26,8 +26,8 @@ export const buttonStyle = recipe({
   variants: {
     platform: {
       kakao: createButtonPlatformStyles(
-        vars.colors.kakaoYello,
-        vars.colors.gray1
+        vars.colors.kakao_yellow,
+        vars.colors.kakao_brown
       ),
     },
   },
