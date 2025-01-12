@@ -43,26 +43,26 @@ export const buttonStyle = recipe({
     },
 
     color: {
-      blue: createButtonColorStyles(
-        vars.colors.mainBlue,
+      red: createButtonColorStyles(
+        vars.colors.red1,
         vars.colors.white,
       ),
       gray: createButtonColorStyles(
-        vars.colors.gray7,
-        vars.colors.gray3,
+        vars.colors.gray200,
+        vars.colors.gray500,
       ),
       stroke: createButtonColorStyles(
         vars.colors.white,
-        vars.colors.mainBlue,
-        `1px solid ${vars.colors.mainBlue}`
+        vars.colors.red1,
+        `1px solid ${vars.colors.red1}`
       ),
     },
 
-    isDisabled: {
-      true: createButtonColorStyles(
-        vars.colors.gray7,
-        vars.colors.gray3,
-      ),
-    },
+    // isDisabled: {
+    //   true: createButtonColorStyles(
+    //     vars.colors.gray7,
+    //     vars.colors.gray3,
+    //   ),
+    // },
   },
 });

@@ -5,14 +5,14 @@ import { buttonStyle } from 'src/components/common/TextButton/TextButton.css';
 export interface TextButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
   size: 'small' | 'medium' | 'large';
-  color?: 'blue' | 'gray' | 'stroke';
-  isDisabled?: boolean;
+  color?: 'red' | 'gray' | 'stroke';
+  // isDisabled?: boolean;
 }
 
 const TextButton = ({
   size,
-  color = 'blue',
-  isDisabled = false,
+  color = 'red',
+  // isDisabled = false,
   onClick,
   children,
 }: TextButtonProps) => {
@@ -22,10 +22,10 @@ const TextButton = ({
         className={buttonStyle({
           size,
           color,
-          isDisabled,
+          // isDisabled,
         })}
         onClick={onClick}
-        disabled={isDisabled}
+        // disabled={isDisabled}
       >
         {children}
       </button>
