@@ -1,14 +1,14 @@
+import { container } from './Header.css';
 import { IcMy, ImgLogo } from '@svgs';
-import * as styles from './Header.css';
 
 interface HeaderProps {
-  bgColor?: 'white' | 'mainBlue';
+  bgColor?: 'white' | 'yellow';
 }
 
 const Header = ({ bgColor }: HeaderProps) => {
   return (
-    <header className={styles.container({ bgColor })}>
-      <ImgLogo width={90} height={22} />
+    <header className={container({ bgColor })}>
+      <ImgLogo width={94} height={26} />
       <IcMy width={32} height={32} />
     </header>
   );

@@ -2,13 +2,12 @@ import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
 import { vars } from '@styles/theme.css';
-import { flexGenerator } from '@styles/generator.css';
-import { fixedGenerator } from '@styles/fixedGenerator.css';
+import { flexGenerator, fixedGenerator } from '@styles/generator.css';
 
 export const container = recipe({
   base: style([
     flexGenerator('row', 'space-between', 'center'),
-    fixedGenerator('top'),
+    fixedGenerator({ top: 0 }, 1),
     {
       height: '6rem',
       padding: '1.6rem 2rem 1.2rem',
@@ -17,10 +16,10 @@ export const container = recipe({
   variants: {
     bgColor: {
       white: { backgroundColor: vars.colors.white },
-      mainBlue: { backgroundColor: vars.colors.mainBlue },
+      yellow: { backgroundColor: vars.colors.yellow2 },
     },
   },
   defaultVariants: {
-    bgColor: 'white',
+    bgColor: 'yellow',
   },
 });

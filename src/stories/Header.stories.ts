@@ -10,7 +10,7 @@ const meta: Meta<typeof Header> = {
   argTypes: {
     bgColor: {
       control: { type: 'radio' },
-      options: ['white', 'mainBlue'],
+      options: ['white', 'yellow'],
     },
   },
 };
@@ -24,8 +24,8 @@ export const Default: Story = {
   },
 };
 
-export const MainBlue: Story = {
+export const Yellow: Story = {
   args: {
-    bgColor: 'mainBlue',
+    bgColor: 'yellow',
   },
 };
