@@ -8,10 +8,17 @@ import {
 
 const potalElement = document.getElementById('modal') as HTMLElement;
 
-const CenterModal = ({ children }: PropsWithChildren) => {
+export interface CenterModalProps {
+  backdropClick?: () => void;
+}
+
+const CenterModal = ({
+  children,
+  backdropClick,
+}: PropsWithChildren<CenterModalProps>) => {
   return createPortal(
     <>
-      <div className={backdropStyle} />
+      <div className={backdropStyle} onClick={backdropClick} />
       <div className={modalStyle}>{children}</div>
     </>,
     potalElement
