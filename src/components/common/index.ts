@@ -7,7 +7,6 @@ import CenterModal from './CenterModal/CenterModal';
 import BottomModal from './BottomModal/BottomModal';
 import FilteringButton from './FilteringButton/FilteringButton';
 import IconButton from './IconButton/IconButton';
-import KakaoMap from './KakaoMap/KakaoMap';
 
 export {
   Label,
@@ -19,5 +18,4 @@ export {
   BottomModal,
   FilteringButton,
   IconButton,
-  KakaoMap,
 };

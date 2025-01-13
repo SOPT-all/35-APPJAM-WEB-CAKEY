@@ -1,7 +1,12 @@
+import { KakaoMap } from '@pages/view/components';
+
 const ViewPage = () => {
   return (
-    <div>ViewPage</div>
-  )
-}
+    <div>
+      <KakaoMap />
+      <div>hi</div>
+    </div>
+  );
+};
 
-export default ViewPage
+export default ViewPage;

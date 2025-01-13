@@ -1,8 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Map } from 'react-kakao-maps-sdk';
 import { mapContainer } from './kakaoMap.css';
+import useMapLoader from '@pages/view/hooks/useMapLoader';
 
 const KakaoMap = () => {
+  useMapLoader();
+
   const defaultCenter = { lat: 37.556621, lng: 126.923877 };
 
   // 현재 사용자의 위치
@@ -17,9 +20,17 @@ const KakaoMap = () => {
     lng: number;
   }>(defaultCenter);
 
+  // useEffect(() => {
+
+  // }, [])
+  console.log(import.meta.env.VITE_JAVASCRIPT_KEY);
   return (
     <div className={mapContainer}>
-      <Map center={center} level={2}></Map>
+      <Map
+        center={defaultCenter}
+        level={2}
+        style={{ width: '100%', height: '100%' }}
+      ></Map>
     </div>
   );
 };
