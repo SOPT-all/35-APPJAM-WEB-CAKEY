@@ -2,8 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import {
   buttonTextStyle,
   filteringButtonStyle,
-  firstLiStyle,
-  iconStyle,
+  lastLiStyle,
   liStyle,
   selectedLiStyle,
   ulStyle,
@@ -18,6 +17,8 @@ const FilteringButton = ({ onOptionSelect }: FilteringButtonProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('최신순');
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const options = ['최신순', '인기순'];
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -51,34 +52,34 @@ const FilteringButton = ({ onOptionSelect }: FilteringButtonProps) => {
   }, [isOpen]);
 
   return (
-    <>
-      <div
-        className={filteringButtonStyle}
-        onClick={toggleDropdown}
-        ref={dropdownRef}
-      >
-        <button className={buttonTextStyle}>{selectedOption}</button>
-        <span className={iconStyle}>
-          {isOpen ? <IcArrowUp20 /> : <IcArrowDown20 />}
-        </span>
-        {isOpen && (
-          <ul className={ulStyle}>
+    <div
+      className={filteringButtonStyle}
+      onClick={toggleDropdown}
+      ref={dropdownRef}
+    >
+      <button className={buttonTextStyle}>{selectedOption}</button>
+
+      {isOpen ? (
+        <IcArrowUp20 width={24} height={24} />
+      ) : (
+        <IcArrowDown20 width={24} height={24} />
+      )}
+      {isOpen && (
+        <ul className={ulStyle}>
+          {options.map((option, index) => (
             <li
-              className={`${liStyle} ${firstLiStyle} ${selectedOption === '최신순' && selectedLiStyle}`}
-              onClick={() => handleOptionClick('최신순')}
+              key={index}
+              className={`${liStyle} ${index === options.length - 1 && lastLiStyle} ${
+                selectedOption === option && selectedLiStyle
+              }`}
+              onClick={() => handleOptionClick(option)}
             >
-              최신순
+              {option}
             </li>
-            <li
-              className={`${liStyle} ${selectedOption === '인기순' && selectedLiStyle}`}
-              onClick={() => handleOptionClick('인기순')}
-            >
-              인기순
-            </li>
-          </ul>
-        )}
-      </div>
-    </>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 };
 

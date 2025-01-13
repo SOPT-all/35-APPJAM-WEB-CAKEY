@@ -3,7 +3,7 @@ import { vars } from '@styles/theme.css';
 import { style } from '@vanilla-extract/css';
 
 export const filteringButtonStyle = style([
-  flexGenerator('row', 'space-between', 'center'),
+  flexGenerator(),
   {
     gap: '0.4rem',
     position: 'relative',
@@ -44,11 +44,12 @@ export const liStyle = style([
     padding: '0.8rem 4.4rem 0.8rem 1rem',
     color: vars.colors.gray400,
     cursor: 'pointer',
+    borderBottom: `1px solid ${vars.colors.gray200}`,
   },
 ]);
 
-export const firstLiStyle = style({
-  borderBottom: `1px solid ${vars.colors.gray200}`,
+export const lastLiStyle = style({
+  borderBottom: 'none',
 });
 
 export const selectedLiStyle = style({
