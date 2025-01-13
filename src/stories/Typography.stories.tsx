@@ -6,138 +6,119 @@ export default {
 
 const fonts = {
   head01_b_24: {
-    fontFamily: 'Pretendard',
-    fontWeight: 'bold',
+    fontWeight: '700',
     fontSize: '2.4rem',
-    lineHeight: 'auto',
+    lineHeight: 'normal',
     letterSpacing: '-0.6px',
   },
   head02_b_20: {
-    fontFamily: 'Pretendard',
-    fontWeight: 'bold',
+    fontWeight: '700',
     fontSize: '2rem',
-    lineHeight: 'auto',
+    lineHeight: 'normal',
     letterSpacing: '-0.6px',
   },
   head03_b_18: {
-    fontFamily: 'Pretendard',
-    fontWeight: 'bold',
+    fontWeight: '700',
     fontSize: '1.8rem',
-    lineHeight: 'auto',
+    lineHeight: 'normal',
     letterSpacing: '-0.6px',
   },
   head04_b_16: {
-    fontFamily: 'Pretendard',
-    fontWeight: 'bold',
+    fontWeight: '700',
     fontSize: '1.6rem',
-    lineHeight: 'auto',
+    lineHeight: 'normal',
     letterSpacing: '-0.6px',
   },
   head05_sb_20: {
-    fontFamily: 'Pretendard',
-    fontWeight: 'semi-bold',
+    fontWeight: '600',
     fontSize: '2rem',
-    lineHeight: 'auto',
+    lineHeight: 'normal',
     letterSpacing: '-0.6px',
   },
   head06_sb_16: {
-    fontFamily: 'Pretendard',
-    fontWeight: 'semi-bold',
+    fontWeight: '600',
     fontSize: '1.6rem',
-    lineHeight: 'auto',
+    lineHeight: 'normal',
     letterSpacing: '-0.6px',
   },
   head07_m_20: {
-    fontFamily: 'Pretendard',
-    fontWeight: 'medium',
+    fontWeight: '500',
     fontSize: '2rem',
-    lineHeight: 'auto',
+    lineHeight: 'normal',
     letterSpacing: '-0.6px',
   },
   head08_m_18: {
-    fontFamily: 'Pretendard',
-    fontWeight: 'medium',
+    fontWeight: '500',
     fontSize: '1.8rem',
-    lineHeight: 'auto',
+    lineHeight: 'normal',
     letterSpacing: '-0.6px',
   },
   head09_r_18: {
-    fontFamily: 'Pretendard',
-    fontWeight: 'regular',
+    fontWeight: '400',
     fontSize: '2rem',
-    lineHeight: 'auto',
+    lineHeight: 'normal',
     letterSpacing: '-0.6px',
   },
 
   // body
   body01_b_14: {
-    fontFamily: 'Pretendard',
-    fontWeight: 'bold',
+    fontWeight: '700',
     fontSize: '1.4rem',
-    lineHeight: 'auto',
+    lineHeight: 'normal',
     letterSpacing: '-0.6px',
   },
   body02_sb_14: {
-    fontFamily: 'Pretendard',
-    fontWeight: 'semi-bold',
+    fontWeight: '600',
     fontSize: '1.4rem',
-    lineHeight: 'auto',
+    lineHeight: 'normal',
     letterSpacing: '-0.6px',
   },
   body03_sb_12: {
-    fontFamily: 'Pretendard',
-    fontWeight: 'semi-bold',
+    fontWeight: '600',
     fontSize: '1.2rem',
-    lineHeight: 'auto',
+    lineHeight: 'normal',
     letterSpacing: '-0.6px',
   },
   body04_m_16: {
-    fontFamily: 'Pretendard',
-    fontWeight: 'medium',
+    fontWeight: '500',
     fontSize: '1.6rem',
-    lineHeight: 'auto',
+    lineHeight: 'normal',
     letterSpacing: '-0.6px',
   },
   body05_m_14: {
-    fontFamily: 'Pretendard',
-    fontWeight: 'medium',
+    fontWeight: '500',
     fontSize: '1.4rem',
-    lineHeight: 'auto',
+    lineHeight: 'normal',
     letterSpacing: '-0.6px',
   },
   body06_r_16: {
-    fontFamily: 'Pretendard',
-    fontWeight: 'regular',
+    fontWeight: '400',
     fontSize: '1.6rem',
-    lineHeight: 'auto',
+    lineHeight: 'normal',
     letterSpacing: '-0.6px',
   },
   body07_r_14: {
-    fontFamily: 'Pretendard',
-    fontWeight: 'regular',
+    fontWeight: '400',
     fontSize: '1.4rem',
-    lineHeight: 'auto',
+    lineHeight: 'normal',
     letterSpacing: '-0.6px',
   },
   body08_r_12: {
-    fontFamily: 'Pretendard',
-    fontWeight: 'regular',
+    fontWeight: '400',
     fontSize: '1.2rem',
-    lineHeight: 'auto',
+    lineHeight: 'normal',
     letterSpacing: '-0.6px',
   },
   body09_r_10: {
-    fontFamily: 'Pretendard',
-    fontWeight: 'regular',
+    fontWeight: '400',
     fontSize: '1rem',
-    lineHeight: 'auto',
+    lineHeight: 'normal',
     letterSpacing: '-0.6px',
   },
   body10_l_12: {
-    fontFamily: 'Pretendard',
-    fontWeight: 'light',
+    fontWeight: '300',
     fontSize: '1.2rem',
-    lineHeight: 'auto',
+    lineHeight: 'normal',
     letterSpacing: '-0.6px',
   },
 };
@@ -154,7 +135,7 @@ const useInput = (defaultValue: string) => {
 
 export const Typography = () => {
   const [text, handleTextChange] = useInput(
-    '울고 싶어 질 때도 미소짓게 만드는 마법'
+    '💛 🍰 맛있는 것을 만드는 것은 생각만 해도 재밌잖아요 🍰 💛'
   );
 
   return (
@@ -202,7 +183,15 @@ export const Typography = () => {
             >
               {fontName}
             </p>
-            <div>
+            <p style={{ margin: '16px 0', ...fontObject }}>{text}</p>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '8px',
+                fontSize: '16px',
+              }}
+            >
               <p>
                 <span style={{ color: '#FFFBEC' }}>fontWeight : </span>
                 {fontObject.fontWeight}
@@ -220,7 +209,6 @@ export const Typography = () => {
                 {fontObject.letterSpacing}
               </p>
             </div>
-            <p style={{ ...fontObject }}>{text}</p>
           </div>
         );
       })}
