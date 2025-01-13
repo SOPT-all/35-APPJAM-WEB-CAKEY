@@ -1,8 +1,6 @@
-import { Button } from 'src/components/common/Button/Button';
-
+import SocialLoginButton from "./SocialLoginButton/SocialLoginButton";
+import TextButton from "./TextButton/TextButton";
 import Label from './Label/Label';
-import SocialLoginButton from './SocialLoginButton/SocialLoginButton';
 import Tab from './Tab/Tab';
 
-
-export { Button, Label, SocialLoginButton, Tab };
+export { Label, SocialLoginButton, Tab, TextButton };
