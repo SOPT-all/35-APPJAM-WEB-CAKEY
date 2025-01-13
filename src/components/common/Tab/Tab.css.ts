@@ -10,7 +10,7 @@ export const tabStyle = style({
 
 export const tabButton = recipe({
   base: {
-    borderBottom: `0.2rem solid ${vars.colors.gray300}`,
+    borderBottom: `2px solid ${vars.colors.gray300}`,
     width: '100%',
     textAlign: 'center',
   },
@@ -40,14 +40,14 @@ export const clickTab = recipe({
         vars.fonts.head03_b_18,
         {
           color: vars.colors.red1,
-          borderBottom: `0.2rem solid ${vars.colors.red1}`,
+          borderBottom: `2px solid ${vars.colors.red1}`,
         },
       ],
       store: [
         vars.fonts.head06_sb_16,
         {
           color: vars.colors.gray900,
-          borderBottom: `0.2rem solid ${vars.colors.gray900}`,
+          borderBottom: `2px solid ${vars.colors.gray900}`,
         },
       ],
     },
