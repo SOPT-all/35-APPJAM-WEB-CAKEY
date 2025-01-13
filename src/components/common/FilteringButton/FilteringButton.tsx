@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   buttonTextStyle,
   filteringButtonStyle,
@@ -17,6 +17,7 @@ interface FilteringButtonProps {
 const FilteringButton = ({ onOptionSelect }: FilteringButtonProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('최신순');
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -27,9 +28,35 @@ const FilteringButton = ({ onOptionSelect }: FilteringButtonProps) => {
     onOptionSelect(option);
     setIsOpen(false);
   };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(event.target as Node)
+    ) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+
   return (
     <>
-      <div className={filteringButtonStyle} onClick={toggleDropdown}>
+      <div
+        className={filteringButtonStyle}
+        onClick={toggleDropdown}
+        ref={dropdownRef}
+      >
         <button className={buttonTextStyle}>{selectedOption}</button>
         <span className={iconStyle}>
           {isOpen ? <IcArrowUp20 /> : <IcArrowDown20 />}
