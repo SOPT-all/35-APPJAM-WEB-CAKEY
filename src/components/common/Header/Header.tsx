@@ -5,7 +5,7 @@ interface HeaderProps {
   bgColor?: 'white' | 'yellow';
 }
 
-const Header = ({ bgColor }: HeaderProps) => {
+const Header = ({ bgColor = 'white' }: HeaderProps) => {
   return (
     <header className={container({ bgColor })}>
       <ImgLogo width={94} height={26} />
