@@ -3,7 +3,7 @@ import { globalStyle } from '@vanilla-extract/css';
 import { base } from '@styles/layers.css';
 import './reset.css';
 
-// :root 변수 정의 
+// :root 변수 정의
 globalStyle(':root', {
   '@layer': {
     [base]: {
@@ -15,7 +15,7 @@ globalStyle(':root', {
   },
 });
 
-// HTML, Body 스타일 
+// HTML, Body 스타일
 globalStyle('html, body', {
   '@layer': {
     [base]: {
@@ -32,17 +32,22 @@ globalStyle('html, body', {
   },
 });
 
-// A 태그 스타일 
+// 폰트 설정
+globalStyle('body', {
+  fontFamily: `'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif`,
+});
+
+// A 태그 스타일
 globalStyle('a', {
   '@layer': {
     [base]: {
       textDecoration: 'none',
-      color: 'inherit'
+      color: 'inherit',
     },
   },
 });
 
-// Select 태그 스타일 
+// Select 태그 스타일
 globalStyle('select', {
   '@layer': {
     [base]: {
@@ -51,7 +56,7 @@ globalStyle('select', {
   },
 });
 
-// #root 스타일 
+// #root 스타일
 globalStyle('#root', {
   '@layer': {
     [base]: {
