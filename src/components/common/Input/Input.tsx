@@ -1,4 +1,4 @@
-import * as styles from './Input.css';
+import { input, inputTitle, inputWrapper } from './Input.css';
 
 type InputProps = {
   inputLabel: string;
@@ -14,14 +14,14 @@ export const Input: React.FC<InputProps> = ({
   placeholder,
 }) => {
   return (
-    <div className={styles.inputWrapper}>
-      <p className={styles.inputLabel}>· {inputLabel} :</p>
+    <div className={inputWrapper}>
+      <p className={inputTitle}>· {inputLabel} :</p>
       <input
         type="text"
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className={styles.input}
+        className={input}
       />
     </div>
   );

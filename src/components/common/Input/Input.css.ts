@@ -6,7 +6,7 @@ export const inputWrapper = style({
   gap: '0.384rem',
 });
 
-export const inputLabel = style({
+export const inputTitle = style({
   color: '#646464',
   fontFamily: 'Pretendeard',
   fontSize: '1.1782rem',
