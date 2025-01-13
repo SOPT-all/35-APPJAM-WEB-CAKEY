@@ -41,8 +41,20 @@ jobs:
           onlyChanged: true
           autoAcceptChanges: true
 
+      - name: Check for Storybook file changes
+        id: check_changes
+        run: |
+          echo "기준(base) 커밋: ${{ github.event.pull_request.base.sha }}"
+          echo "현재(head) 커밋: ${{ github.event.pull_request.head.sha }}"
+          # base와 head 커밋 사이의 변경된 파일 목록에서 원하는 디렉토리의 파일이 있는지 확인
+          if git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} | grep -E '(^\.storybook/|^src/stories/)'; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: Comment PR
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && steps.check_changes.outputs.changed == 'true'
         uses: thollander/actions-comment-pull-request@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

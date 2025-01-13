@@ -14,7 +14,6 @@ import {
 import queryClient from './queryClient';
 
 import '@styles/global.css';
-
 const allRoutes = [
   ...authRoutes,
   ...designListRoutes,
