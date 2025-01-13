@@ -24,24 +24,24 @@ const meta = {
     },
     color: {
       control: { type: 'radio' },
-      options: ['blue', 'gray', 'stroke'],
+      options: ['red', 'gray', 'stroke'],
     },
     // text 입력
     children: {
       control: { type: 'text' },
     },
     // true / false 선택
-    isDisabled: {
-      control: { type: 'boolean' },
-    },
+    // disabled: {
+    //   control: { type: 'boolean' },
+    // },
   },
 
   // 공통으로 쓰이는 props값 지정 || 기본값 지정
   args: {
     size: 'small',
-    color: 'blue',
+    color: 'red',
     children: 'Button',
-    isDisabled: false,
+    // disabled: false,
   },
 } satisfies Meta<typeof TextButton>;
 
@@ -53,7 +53,7 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     size: 'small',
-    color: 'blue',
-    isDisabled: false,
+    color: 'red',
+    // disabled: false,
   },
 };
