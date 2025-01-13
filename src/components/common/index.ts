@@ -1,4 +1,4 @@
-import SocialLoginButton from 'src/components/common/SocialLoginButton/SocialLoginButton';
-import TextButton from 'src/components/common/TextButton/TextButton';
+import SocialLoginButton from "./SocialLoginButton/SocialLoginButton";
+import TextButton from "./TextButton/TextButton";
 
 export { SocialLoginButton, TextButton };
