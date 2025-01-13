@@ -38,7 +38,7 @@ const BottomSheet = ({ children }: BottomSheetProps) => {
     }
   }, [isAtTop]);
 
-  // 드래그 함수
+  // 드래그 방향에 따라 바텀 시트 상태 관리
   const handleDragEnd = (_event: PointerEvent, info: PanInfo) => {
     if (state === 'opened' && info.offset.y < 0) return;
 
