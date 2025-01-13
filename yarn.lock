@@ -1515,6 +1515,11 @@
   resolved "https://registry.yarnpkg.com/@vanilla-extract/private/-/private-1.0.6.tgz#f10bbf3189f7b827d0bd7f804a6219dd03ddbdd4"
   integrity sha512-ytsG/JLweEjw7DBuZ/0JCN4WAQgM9erfSTdS1NQY778hFQSZ6cfCDEZZ0sgVm4k54uNz6ImKB33AYvSR//fjxw==
 
+"@vanilla-extract/recipes@^0.5.5":
+  version "0.5.5"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/recipes/-/recipes-0.5.5.tgz#da34e247be2c3d70e01ecfeb53310daadc608b74"
+  integrity sha512-VadU7+IFUwLNLMgks29AHav/K5h7DOEfTU91RItn5vwdPfzduodNg317YbgWCcpm7FSXkuR3B3X8ZOi95UOozA==
+
 "@vanilla-extract/vite-plugin@^4.0.19":
   version "4.0.19"
   resolved "https://registry.yarnpkg.com/@vanilla-extract/vite-plugin/-/vite-plugin-4.0.19.tgz#adcf8e2545231166ea7182472a06b7a1b4a088a0"
