@@ -11,6 +11,6 @@ export const label = style([
     backgroundColor: vars.colors.red3,
     padding: '0.3rem 0.8rem',
     width: 'fit-content',
-    borderRadius: '5rem',
+    borderRadius: '50px',
   },
 ]);
