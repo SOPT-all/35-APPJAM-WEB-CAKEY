@@ -19,7 +19,4 @@ export const container = recipe({
       yellow: { backgroundColor: vars.colors.yellow2 },
     },
   },
-  defaultVariants: {
-    bgColor: 'white',
-  },
 });
