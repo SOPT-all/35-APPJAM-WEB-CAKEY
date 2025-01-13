@@ -16,7 +16,7 @@ export const vars = createGlobalTheme(':root', {
 
     // Opacity (gray with different transparencies)
     number: 'rgba(43, 43, 43, 0.7)', // 70% opacity
-    dimmed: 'rgba(0, 0, 0, 0.5)', // 50% opacity
+    dimmed: 'rgba(0, 0, 0, 0.5)',   // 50% opacity
     like_off: 'rgba(196, 196, 196, 0.65)', // 65% opacity
 
     // Gray scale
