@@ -5,12 +5,12 @@ import { vars } from '@styles/theme.css';
 
 export const tabStyle = style({
   display: 'flex',
-  color: '#D2D2D2',
+  color: vars.colors.gray300,
 });
 
 export const tabButton = recipe({
   base: {
-    borderBottom: `0.2rem solid #D2D2D2`,
+    borderBottom: `0.2rem solid ${vars.colors.gray300}`,
     width: '100%',
     textAlign: 'center',
   },
@@ -39,15 +39,15 @@ export const clickTab = recipe({
       viewMyPage: [
         vars.fonts.head03_b_18,
         {
-          color: '#F24D4D',
-          borderBottom: `0.2rem solid #F24D4D`,
+          color: vars.colors.red1,
+          borderBottom: `0.2rem solid ${vars.colors.red1}`,
         },
       ],
       store: [
         vars.fonts.head06_sb_16,
         {
-          color: 'black',
-          borderBottom: `0.2rem solid rgb(17, 3, 3)`,
+          color: vars.colors.gray900,
+          borderBottom: `0.2rem solid ${vars.colors.gray900}`,
         },
       ],
     },
