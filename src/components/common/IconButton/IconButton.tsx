@@ -9,7 +9,7 @@ import {
   IcSavedOn24,
 } from '@svgs';
 
-import { buttonStyle, countStyle, iconStyle } from './IconButton.css';
+import { buttonStyle, countStyle } from './IconButton.css';
 
 export interface IconButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -21,12 +21,12 @@ export interface IconButtonProps
 
 const buttonIcon = {
   save: {
-    active: <IcSavedOn24 />,
-    inactive: <IcSavedOff24 />,
+    active: <IcSavedOn24 width={24} height={24} />,
+    inactive: <IcSavedOff24 width={24} height={24} />,
   },
   like: {
-    active: <IcLineLikeOn20 />,
-    inactive: <IcLineLikeOff20 />,
+    active: <IcLineLikeOn20 width={20} height={20} />,
+    inactive: <IcLineLikeOff20 width={20} height={20} />,
   },
 };
 
@@ -48,19 +48,17 @@ const IconButton = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <span className={iconStyle({ buttonType })}>
-        {buttonType === 'gps' ? (
-          isHovered ? (
-            <IcGpsmarkerOn />
-          ) : (
-            <IcGpsmarkerOff />
-          )
-        ) : isActive ? (
-          buttonIcon[buttonType]?.active
+      {buttonType === 'gps' ? (
+        isHovered ? (
+          <IcGpsmarkerOn width={24} height={24} />
         ) : (
-          buttonIcon[buttonType]?.inactive
-        )}
-      </span>
+          <IcGpsmarkerOff width={24} height={24} />
+        )
+      ) : isActive ? (
+        buttonIcon[buttonType]?.active
+      ) : (
+        buttonIcon[buttonType]?.inactive
+      )}
       {count !== undefined && buttonType !== 'gps' && (
         <span className={countStyle}>{count}</span>
       )}
