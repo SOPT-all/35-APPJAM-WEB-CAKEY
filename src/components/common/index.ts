@@ -6,6 +6,7 @@ import Header from './Header/Header';
 import CenterModal from './CenterModal/CenterModal';
 import BottomModal from './BottomModal/BottomModal';
 import FilteringButton from './FilteringButton/FilteringButton';
+import IconButton from './IconButton/IconButton';
 
 export {
   Label,
@@ -16,4 +17,5 @@ export {
   CenterModal,
   BottomModal,
   FilteringButton,
+  IconButton,
 };

@@ -1,8 +1,6 @@
-import { ButtonHTMLAttributes, useState } from 'react';
+import { ButtonHTMLAttributes } from 'react';
 
 import {
-  IcGpsmarkerOff,
-  IcGpsmarkerOn,
   IcLineLikeOff20,
   IcLineLikeOn20,
   IcSavedOff24,
@@ -13,7 +11,7 @@ import { buttonStyle, countStyle } from './IconButton.css';
 
 export interface IconButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
-  buttonType: 'save' | 'like' | 'gps';
+  buttonType: 'save' | 'like';
   isActive?: boolean;
   count?: number;
   onMap: boolean;
@@ -37,31 +35,12 @@ const IconButton = ({
   onMap,
   onClick,
 }: IconButtonProps) => {
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseEnter = () => setIsHovered(true);
-  const handleMouseLeave = () => setIsHovered(false);
   return (
-    <button
-      className={buttonStyle({ buttonType, onMap })}
-      onClick={onClick}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      {buttonType === 'gps' ? (
-        isHovered ? (
-          <IcGpsmarkerOn width={24} height={24} />
-        ) : (
-          <IcGpsmarkerOff width={24} height={24} />
-        )
-      ) : isActive ? (
-        buttonIcon[buttonType]?.active
-      ) : (
-        buttonIcon[buttonType]?.inactive
-      )}
-      {count !== undefined && buttonType !== 'gps' && (
-        <span className={countStyle}>{count}</span>
-      )}
+    <button className={buttonStyle({ buttonType, onMap })} onClick={onClick}>
+      {isActive
+        ? buttonIcon[buttonType]?.active
+        : buttonIcon[buttonType]?.inactive}
+      {count !== undefined && <span className={countStyle}>{count}</span>}
     </button>
   );
 };
