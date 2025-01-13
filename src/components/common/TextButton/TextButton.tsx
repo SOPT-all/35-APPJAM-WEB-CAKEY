@@ -17,7 +17,6 @@ const TextButton = ({
   children,
 }: TextButtonProps) => {
   return (
-    <div>
       <button
         className={buttonStyle({
           size,
@@ -29,7 +28,6 @@ const TextButton = ({
       >
         {children}
       </button>
-    </div>
   );
 };
 
