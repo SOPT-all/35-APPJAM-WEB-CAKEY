@@ -1,14 +1,11 @@
 import { PropsWithChildren } from 'react';
 import { createPortal } from 'react-dom';
 
-import {
-  backdropStyle,
-  modalStyle,
-} from 'src/components/common/CenterModal/CenterModal.css';
+import { backdropStyle, modalStyle } from './CenterModal.css';
 
 const potalElement = document.getElementById('modal') as HTMLElement;
 
-export interface CenterModalProps {
+interface CenterModalProps {
   backdropClick?: () => void;
 }
 
