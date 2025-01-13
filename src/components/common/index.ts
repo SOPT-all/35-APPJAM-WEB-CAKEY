@@ -4,5 +4,6 @@ import Label from './Label/Label';
 import Tab from './Tab/Tab';
 import Header from './Header/Header';
 import CenterModal from './CenterModal/CenterModal';
+import BottomModal from './BottomModal/BottomModal';
 
-export { Label, SocialLoginButton, Tab, TextButton, Header, CenterModal };
+export { Label, SocialLoginButton, Tab, TextButton, Header, CenterModal, BottomModal };
