@@ -2,6 +2,7 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
+import { Input } from '@components';
 import {
   authRoutes,
   designListRoutes,
@@ -32,6 +33,13 @@ const App = () => {
       <RouterProvider router={router} />
       <div style={{ fontSize: '16px' }}>
         <ReactQueryDevtools />
+        <Input
+          inputLabel={'안녕'}
+          value={''}
+          onChange={function (): void {
+            throw new Error('Function not implemented.');
+          }}
+        />
       </div>
     </QueryClientProvider>
   );
