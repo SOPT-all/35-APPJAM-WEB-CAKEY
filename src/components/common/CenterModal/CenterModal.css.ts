@@ -9,7 +9,7 @@ export const backdropStyle = style({
   width: '100%',
   height: '100%',
   background: vars.colors.dimmed,
-  zIndex: '4',
+  zIndex: '2',
 });
 
 export const modalStyle = style({
@@ -23,5 +23,5 @@ export const modalStyle = style({
   padding: '2rem',
   borderRadius: '10px',
   backgroundColor: vars.colors.white,
-  zIndex: '5',
+  zIndex: '3',
 });
