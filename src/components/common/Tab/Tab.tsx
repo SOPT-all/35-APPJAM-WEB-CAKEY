@@ -1,26 +1,24 @@
 import { useState } from 'react';
 
-import * as styles from './Tab.css';
+import { tabButton, tabStyle, clickTab } from './Tab.css';
 
 interface TabProps {
-  variant: 'viewMyPage' | 'store';
+  tabType: 'viewMyPage' | 'store';
 }
 const tabs = {
   viewMyPage: ['스토어', '디자인'],
   store: ['디자인', '사이즈/맛', '상세정보'],
 };
 
-export const Tab = ({ variant }: TabProps) => {
+export const Tab = ({ tabType }: TabProps) => {
   const [activeTab, setActiveTab] = useState(0);
-  const tabList = variant === 'viewMyPage' ? tabs.viewMyPage : tabs.store;
+  const tabList = tabType === 'viewMyPage' ? tabs.viewMyPage : tabs.store;
   return (
-    <div className={styles.tabStyle}>
+    <div className={tabStyle}>
       {tabList.map((tab, index) => (
         <button
           key={index}
-          className={`${styles.tabButton} ${
-            activeTab === index ? styles.activeTab : ''
-          }`}
+          className={`${tabButton({ tabType })} ${activeTab === index ? clickTab({ tabType }) : ''}`}
           onClick={() => setActiveTab(index)}
         >
           {tab}

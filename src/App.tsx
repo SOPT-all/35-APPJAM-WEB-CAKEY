@@ -11,10 +11,10 @@ import {
   viewRoutes,
 } from '@routes';
 
+import Tab from './components/common/Tab/Tab';
 import queryClient from './queryClient';
 
 import '@styles/global.css';
-
 const allRoutes = [
   ...authRoutes,
   ...designListRoutes,
@@ -32,6 +32,8 @@ const App = () => {
       <RouterProvider router={router} />
       <div style={{ fontSize: '16px' }}>
         <ReactQueryDevtools />
+        <Tab tabType={'viewMyPage'} />
+        <Tab tabType={'store'} />
       </div>
     </QueryClientProvider>
   );
