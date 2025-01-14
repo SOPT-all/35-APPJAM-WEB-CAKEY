@@ -1,11 +1,12 @@
 import { useState, useCallback, useRef, ReactNode } from 'react';
 import { createContext, useContext } from 'react';
 import { Toast } from '@components';
+import { ToastState, ToastType } from '@types';
 
 const TOAST_REMOVE_DELAY = 3000;
 
 interface ToastContextType {
-  showToast: (message: string) => void;
+  showToast: (icon: ToastType, message: string, isButton?: boolean) => void;
 }
 
 const ToastContext = createContext<ToastContextType | undefined>(undefined);
@@ -15,25 +16,34 @@ interface ToastProviderProps {
 }
 
 export const ToastProvider = ({ children }: ToastProviderProps) => {
-  const [message, setMessage] = useState<string | null>(null);
+  const [toast, setToast] = useState<ToastState | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const showToast = useCallback((msg: string) => {
-    setMessage(msg);
+  const showToast = useCallback(
+    (icon: ToastType, message: string, isButton?: boolean) => {
+      setToast({ icon, message, isButton });
 
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
 
-    timeoutRef.current = setTimeout(() => {
-      setMessage(null);
-    }, TOAST_REMOVE_DELAY);
-  }, []);
+      timeoutRef.current = setTimeout(() => {
+        setToast(null);
+      }, TOAST_REMOVE_DELAY);
+    },
+    []
+  );
 
   return (
     <ToastContext.Provider value={{ showToast }}>
       {children}
-      {message && <Toast message={message} />}
+      {toast && (
+        <Toast
+          icon={toast.icon}
+          message={toast.message}
+          isButton={toast.isButton}
+        />
+      )}
     </ToastContext.Provider>
   );
 };
