@@ -21,24 +21,24 @@ interface CarouselProps {
 
 const Carousel = ({ designs }: CarouselProps) => {
   return (
-    <div className={container}>
+    <ul className={container}>
       {designs.map((design) => {
         return (
-          <div key={design.cakeId} className={imageStyle}>
+          <li key={design.cakeId} className={imageStyle}>
             <Image
               src={design.cakeImageUrl}
               hasIcon
               variant="rounded"
               isActive={design.isLiked}
             />
-          </div>
+          </li>
         );
       })}
-      <div className={moreButtonStyle}>
+      <li className={moreButtonStyle}>
         <IcCircleArrowRight42 width="3.5rem" height="3.5rem" />
         <span className={moreTextStyle}>더보기</span>
-      </div>
-    </div>
+      </li>
+    </ul>
   );
 };
 
