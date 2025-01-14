@@ -1,17 +1,39 @@
+import { HTMLAttributes } from 'react';
+
+import {
+  container,
+  infoContainer,
+  infoWrapper,
+  infoTitleStyle,
+} from './DesignCard.css';
 import IconButton from '../IconButton/IconButton';
 import Image from '../Image/Image';
 import Label from '../Label/Label';
 
-const DesignCard = () => {
-  return (
-    <div>
-      <Image src="../public/example-img.png" width="100%" />
-      <div>
-        <h1>햄니케이크</h1>
-        <Label text="종로5가역" />
-      </div>
+interface DesignItemType {
+  imageUrl: string;
+  storeName: string;
+  station: string;
+  likeCount: number;
+  isLiked: boolean;
+}
+interface DesignCardProps extends HTMLAttributes<HTMLDivElement> {
+  designItem: DesignItemType;
+}
 
-      <IconButton buttonType="like20" onMap={false} />
+const DesignCard = ({ designItem, onClick }: DesignCardProps) => {
+  const { imageUrl, storeName, station, likeCount, isLiked } = designItem;
+
+  return (
+    <div className={container} onClick={onClick}>
+      <Image src={imageUrl} variant="rounded" />
+      <div className={infoContainer}>
+        <div className={infoWrapper}>
+          <h1 className={infoTitleStyle}>{storeName}</h1>
+          <Label text={station} />
+        </div>
+        <IconButton buttonType="like20" count={likeCount} isActive={isLiked} />
+      </div>
     </div>
   );
 };
