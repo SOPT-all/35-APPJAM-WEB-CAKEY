@@ -30,7 +30,7 @@ export const modalStyle = recipe({
       bottom: {
         bottom: '0',
         width: '100%',
-        borderRadius: '10jpx 10px 0px 0px',
+        borderRadius: '10px 10px 0px 0px',
       },
     },
   },
