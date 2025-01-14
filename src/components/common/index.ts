@@ -1,12 +1,13 @@
-import SocialLoginButton from './SocialLoginButton/SocialLoginButton';
-import TextButton from './TextButton/TextButton';
-import Label from './Label/Label';
-import Tab from './Tab/Tab';
-import Header from './Header/Header';
-import CenterModal from './CenterModal/CenterModal';
 import BottomModal from './BottomModal/BottomModal';
+import CenterModal from './CenterModal/CenterModal';
 import FilteringButton from './FilteringButton/FilteringButton';
+import Header from './Header/Header';
 import IconButton from './IconButton/IconButton';
+import Image from './Image/Image';
+import Label from './Label/Label';
+import SocialLoginButton from './SocialLoginButton/SocialLoginButton';
+import Tab from './Tab/Tab';
+import TextButton from './TextButton/TextButton';
 
 export {
   Label,
@@ -18,4 +19,5 @@ export {
   BottomModal,
   FilteringButton,
   IconButton,
+  Image,
 };
