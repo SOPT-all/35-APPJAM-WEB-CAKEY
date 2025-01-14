@@ -1,3 +1,4 @@
+export { default as IcCircleArrowRight42 } from './IcCircleArrowRight42';
 export { default as IcArrowDown20 } from './IcArrowDown20';
 export { default as IcArrowRight24 } from './IcArrowRight24';
 export { default as IcArrowUp20 } from './IcArrowUp20';
