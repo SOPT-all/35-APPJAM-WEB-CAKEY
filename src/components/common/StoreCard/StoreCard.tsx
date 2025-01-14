@@ -39,7 +39,7 @@ const StoreCard = ({ storeItem, onClick }: StoreCardProps) => {
       : storeName;
 
   return (
-    <article className={storeCardContainer}>
+    <article className={storeCardContainer} onClick={onClick}>
       <div className={storeCardWrapper}>
         <div className={storeCardInformation}>
           <div className={storeNameLabel}>
@@ -52,7 +52,6 @@ const StoreCard = ({ storeItem, onClick }: StoreCardProps) => {
           buttonType={'save'}
           isActive={isLiked}
           count={storeLikesCount}
-          onClick={onClick}
         />
       </div>
       <div className={storeCardImageList}>

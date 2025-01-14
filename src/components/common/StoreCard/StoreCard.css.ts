@@ -23,7 +23,7 @@ export const storeCardInformation = style([
   flexGenerator('column', 'center', 'flex-start'),
   {
     gap: '0.6rem',
-    maxWidth: 'calc(100% - 1.2rem)',
+    width: '100%',
     overflow: 'hidden',
   },
 ]);
@@ -52,7 +52,7 @@ export const storeAddressStyle = style([
   },
 ]);
 
-export const storeCardImageList = style([flexGenerator(), { gap: '0.3rem'}]);
+export const storeCardImageList = style([flexGenerator(), { gap: '0.3rem' }]);
 
 export const roundedLeftImage = style({
   borderTopLeftRadius: '8px',
