@@ -11,6 +11,7 @@ import {
   viewRoutes,
 } from '@routes';
 
+import DesignCard from './components/common/DesignCard/DesignCard';
 import queryClient from './queryClient';
 
 import '@styles/global.css';
@@ -29,6 +30,7 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
+      <DesignCard />
       <div style={{ fontSize: '16px' }}>
         <ReactQueryDevtools />
       </div>
