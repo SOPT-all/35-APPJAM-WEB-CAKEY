@@ -17,9 +17,14 @@ interface DesignCardDetailType {
 
 interface CarouselProps {
   designs: DesignCardDetailType[];
+  storeId: number;
 }
 
-const Carousel = ({ designs }: CarouselProps) => {
+const Carousel = ({ designs, storeId }: CarouselProps) => {
+  const handleButtonClick = () => {
+    console.log(storeId);
+  };
+
   return (
     <ul className={container}>
       {designs.map((design) => {
@@ -34,8 +39,8 @@ const Carousel = ({ designs }: CarouselProps) => {
           </li>
         );
       })}
-      <li className={moreButtonStyle}>
-        <IcCircleArrowRight42 width="3.5rem" height="3.5rem" />
+      <li className={moreButtonStyle} onClick={handleButtonClick}>
+        <IcCircleArrowRight42 width={35} height={35} />
         <span className={moreTextStyle}>더보기</span>
       </li>
     </ul>
