@@ -7,6 +7,7 @@ import { recipe } from '@vanilla-extract/recipes';
 export const divStyle = style({
   position: 'relative',
   width: '100%',
+  aspectRatio: '1 / 1',
 });
 
 export const numberLabelStyle = style([
