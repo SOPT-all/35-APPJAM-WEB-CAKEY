@@ -3,7 +3,7 @@ import { style } from '@vanilla-extract/css';
 import { flexGenerator } from '@styles/generator.css';
 import { vars } from '@styles/theme.css';
 
-export const storeCardWrapper = style([
+export const storeCardContainer = style([
   flexGenerator('column'),
   {
     gap: '1rem',
@@ -14,7 +14,7 @@ export const storeCardWrapper = style([
   },
 ]);
 
-export const storeCardLayout = style([
+export const storeCardWrapper = style([
   flexGenerator('row', 'space-between', 'flex-start'),
   { width: '100%', gap: '1.2rem' },
 ]);
@@ -52,7 +52,7 @@ export const storeAddressStyle = style([
   },
 ]);
 
-export const storeCardImageList = style([flexGenerator(), { gap: '0.3rem' }]);
+export const storeCardImageList = style([flexGenerator(), { gap: '0.3rem'}]);
 
 export const roundedLeftImage = style({
   borderTopLeftRadius: '8px',

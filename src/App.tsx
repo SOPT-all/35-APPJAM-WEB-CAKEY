@@ -2,7 +2,6 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import { StoreCard } from '@components';
 import {
   authRoutes,
   designListRoutes,
@@ -32,7 +31,6 @@ const App = () => {
       <RouterProvider router={router} />
       <div style={{ fontSize: '16px' }}>
         <ReactQueryDevtools />
-        <StoreCard />
       </div>
     </QueryClientProvider>
   );

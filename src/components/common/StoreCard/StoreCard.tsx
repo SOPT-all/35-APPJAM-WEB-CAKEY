@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import { HTMLAttributes } from 'react';
 
 import {
   roundedLeftImage,
   roundedRightImage,
   storeAddressStyle,
+  storeCardContainer,
   storeCardImageList,
   storeCardInformation,
-  storeCardLayout,
   storeCardWrapper,
   storeNameLabel,
   storeNameStyle,
@@ -17,62 +17,73 @@ import Label from '../Label/Label';
 
 const maxStoreNameLength = 7;
 
-const StoreCard = ({
-  storeName = '스토어 이름',
-  storeAddress = '스토어 주소',
-}) => {
-  const [isSaved, setIsSaved] = useState(false);
-  const [saveCount, setSaveCount] = useState(0);
+interface StoreImagesType {
+  imageId: number;
+  imageUrl: string;
+}
 
-  const handleSaveClick = () => {
-    setIsSaved((prev) => !prev);
-    setSaveCount((prev) => (isSaved ? prev - 1 : prev + 1));
-  };
+interface StoreType {
+  storeId: number;
+  storeName: string;
+  station: string;
+  address: string;
+  isLiked: boolean;
+  storeLikesCount: number;
+  images: StoreImagesType[];
+}
+
+interface StoreCardProps extends HTMLAttributes<HTMLButtonElement> {
+  storeItem: StoreType;
+}
+
+const StoreCard = ({ storeItem, onClick }: StoreCardProps) => {
+  const {
+    storeId,
+    storeName,
+    station,
+    address,
+    isLiked,
+    storeLikesCount,
+    images,
+  } = storeItem;
 
   const storeNameMax =
     storeName.length > maxStoreNameLength
-      ? `${storeName.slice(0, maxStoreNameLength)}...`
+      ? `${storeName.slice(0, maxStoreNameLength)}..`
       : storeName;
-
-  const imageList = [
-    { src: 'example-img.png' },
-    { src: 'example-img.png' },
-    { src: 'example-img.png' },
-    { src: 'example-img.png' },
-  ];
 
   return (
     <>
-      <div className={storeCardWrapper}>
-        <div className={storeCardLayout}>
+      <div className={storeCardContainer}>
+        <div className={storeCardWrapper}>
           <div className={storeCardInformation}>
             <div className={storeNameLabel}>
               <h1 className={storeNameStyle}>{storeNameMax}</h1>
-              <Label />
+              <Label text={station} />
             </div>
-            <p className={storeAddressStyle}>{storeAddress}</p>
+            <p className={storeAddressStyle}>{address}</p>
           </div>
           <IconButton
             buttonType={'save'}
-            isActive={isSaved}
-            count={saveCount}
+            isActive={isLiked}
+            count={storeLikesCount}
             onMap={false}
-            onClick={handleSaveClick}
+            onClick={onClick}
           />
         </div>
         <div className={storeCardImageList}>
-          {imageList.map((image, index) => (
+          {images.map((image, index) => (
             <div
               key={index}
               className={
                 index === 0
                   ? roundedLeftImage
-                  : index === imageList.length - 1
+                  : index === images.length - 1
                     ? roundedRightImage
                     : ''
               }
             >
-              <Image key={index} src={image.src} />
+              <Image key={storeId} src={image.imageUrl} />
             </div>
           ))}
         </div>
