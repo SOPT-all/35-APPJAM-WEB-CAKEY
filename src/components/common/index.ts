@@ -5,6 +5,7 @@ import Image from './Image/Image';
 import Label from './Label/Label';
 import Modal from './Modal/Modal';
 import SocialLoginButton from './SocialLoginButton/SocialLoginButton';
+import StoreCard from './StoreCard/StoreCard';
 import Tab from './Tab/Tab';
 import TextButton from './TextButton/TextButton';
 
@@ -17,5 +18,6 @@ export {
   Modal,
   FilteringButton,
   IconButton,
+  StoreCard,
   Image,
 };
