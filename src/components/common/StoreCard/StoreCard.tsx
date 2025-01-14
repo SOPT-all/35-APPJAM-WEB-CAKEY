@@ -1,7 +1,16 @@
 import { useState } from 'react';
 
-import { storeCardAddress, storeCardName } from './StoreCard.css';
+import {
+  storeAddressStyle,
+  storeCardimageList,
+  storeCardInformation,
+  storeCardLayout,
+  storeCardWrapper,
+  storeNameLabel,
+  storeNameStyle,
+} from './StoreCard.css';
 import IconButton from '../IconButton/IconButton';
+import Image from '../Image/Image';
 import Label from '../Label/Label';
 
 const StoreCard = ({
@@ -16,22 +25,38 @@ const StoreCard = ({
     setSaveCount((prev) => (isSaved ? prev - 1 : prev + 1));
   };
 
+  const imageList = [
+    { src: 'example-img.png' },
+    { src: 'example-img.png' },
+    { src: 'example-img.png' },
+    { src: 'example-img.png' },
+  ];
+
   return (
     <>
-      <div>
-        <div>
-          <p className={storeCardName}>{storeName}</p>
-          <Label />
+      <div className={storeCardWrapper}>
+        <div className={storeCardLayout}>
+          <div className={storeCardInformation}>
+            <div className={storeNameLabel}>
+              <p className={storeNameStyle}>{storeName}</p>
+              <Label />
+            </div>
+            <p className={storeAddressStyle}>{storeAddress}</p>
+          </div>
+          <IconButton
+            buttonType={'save'}
+            isActive={isSaved}
+            count={saveCount}
+            onMap={false}
+            onClick={handleSaveClick}
+          />
         </div>
-        <p className={storeCardAddress}>{storeAddress}</p>
+        <div className={storeCardimageList}>
+          {imageList.map((image, index) => (
+            <Image key={index} src={image.src} width={'100%'} />
+          ))}
+        </div>
       </div>
-      <IconButton
-        buttonType={'save'}
-        isActive={isSaved}
-        count={saveCount}
-        onMap={false}
-        onClick={handleSaveClick}
-      />
     </>
   );
 };
