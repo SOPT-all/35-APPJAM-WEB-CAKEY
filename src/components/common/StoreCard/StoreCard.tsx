@@ -1,8 +1,10 @@
 import { useState } from 'react';
 
 import {
+  roundedLeftImage,
+  roundedRightImage,
   storeAddressStyle,
-  storeCardimageList,
+  storeCardImageList,
   storeCardInformation,
   storeCardLayout,
   storeCardWrapper,
@@ -12,6 +14,8 @@ import {
 import IconButton from '../IconButton/IconButton';
 import Image from '../Image/Image';
 import Label from '../Label/Label';
+
+const maxStoreNameLength = 7;
 
 const StoreCard = ({
   storeName = '스토어 이름',
@@ -24,6 +28,11 @@ const StoreCard = ({
     setIsSaved((prev) => !prev);
     setSaveCount((prev) => (isSaved ? prev - 1 : prev + 1));
   };
+
+  const storeNameMax =
+    storeName.length > maxStoreNameLength
+      ? `${storeName.slice(0, maxStoreNameLength)}...`
+      : storeName;
 
   const imageList = [
     { src: 'example-img.png' },
@@ -38,7 +47,7 @@ const StoreCard = ({
         <div className={storeCardLayout}>
           <div className={storeCardInformation}>
             <div className={storeNameLabel}>
-              <p className={storeNameStyle}>{storeName}</p>
+              <h1 className={storeNameStyle}>{storeNameMax}</h1>
               <Label />
             </div>
             <p className={storeAddressStyle}>{storeAddress}</p>
@@ -51,9 +60,20 @@ const StoreCard = ({
             onClick={handleSaveClick}
           />
         </div>
-        <div className={storeCardimageList}>
+        <div className={storeCardImageList}>
           {imageList.map((image, index) => (
-            <Image key={index} src={image.src} width={'100%'} />
+            <div
+              key={index}
+              className={
+                index === 0
+                  ? roundedLeftImage
+                  : index === imageList.length - 1
+                    ? roundedRightImage
+                    : ''
+              }
+            >
+              <Image key={index} src={image.src} />
+            </div>
           ))}
         </div>
       </div>

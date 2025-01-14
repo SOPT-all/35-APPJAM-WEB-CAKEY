@@ -16,12 +16,16 @@ export const storeCardWrapper = style([
 
 export const storeCardLayout = style([
   flexGenerator('row', 'space-between', 'flex-start'),
-  { gap: '1.2rem' },
+  { width: '100%', gap: '1.2rem' },
 ]);
 
 export const storeCardInformation = style([
   flexGenerator('column', 'center', 'flex-start'),
-  { gap: '0.6rem' },
+  {
+    gap: '0.6rem',
+    maxWidth: 'calc(100% - 1.2rem)',
+    overflow: 'hidden',
+  },
 ]);
 
 export const storeNameLabel = style([
@@ -29,8 +33,35 @@ export const storeNameLabel = style([
   { gap: '0.6rem' },
 ]);
 
-export const storeNameStyle = style({});
+export const storeNameStyle = style([
+  vars.fonts.head05_sb_20,
+  {
+    color: vars.colors.black,
+  },
+]);
 
-export const storeAddressStyle = style({});
+export const storeAddressStyle = style([
+  vars.fonts.body07_r_14,
+  {
+    color: vars.colors.gray600,
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    display: 'block',
+    width: '100%',
+  },
+]);
 
-export const storeCardimageList = style({});
+export const storeCardImageList = style([flexGenerator(), { gap: '0.3rem' }]);
+
+export const roundedLeftImage = style({
+  borderTopLeftRadius: '8px',
+  borderBottomLeftRadius: '8px',
+  overflow: 'hidden',
+});
+
+export const roundedRightImage = style({
+  borderTopRightRadius: '8px',
+  borderBottomRightRadius: '8px',
+  overflow: 'hidden',
+});
