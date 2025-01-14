@@ -17,9 +17,7 @@ const LocationSelectButton = ({
 
   return (
     <button className={buttonStyle({ isSelected })} onClick={onClick}>
-      <span className={buttonTextStyle[isSelected ? 'true' : 'false']}>
-        {location}
-      </span>
+      <span className={buttonTextStyle[`${isSelected}`]}>{location}</span>
       {isSelected && <IcCheck width={28} height={28} />}
     </button>
   );
