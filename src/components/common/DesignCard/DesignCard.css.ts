@@ -12,17 +12,15 @@ export const container = style([
 ]);
 
 export const infoContainer = style([
-  flexGenerator(),
+  flexGenerator('row', 'space-between'),
   {
     width: '100%',
-    justifyContent: 'space-between',
-    alignItems: 'center',
   },
 ]);
 
 export const infoWrapper = style([
-  flexGenerator('column'),
-  { gap: '0.6rem', alignItems: 'flex-start' },
+  flexGenerator('column', 'center', 'flex-start'),
+  { gap: '0.6rem' },
 ]);
 
 export const infoTitleStyle = style(vars.fonts.head08_m_18);

@@ -1,22 +1,15 @@
 import { HTMLAttributes } from 'react';
 
+import { IconButton, Image, Label } from '@components';
+
 import {
   container,
   infoContainer,
   infoWrapper,
   infoTitleStyle,
 } from './DesignCard.css';
-import IconButton from '../IconButton/IconButton';
-import Image from '../Image/Image';
-import Label from '../Label/Label';
 
-interface DesignItemType {
-  imageUrl: string;
-  storeName: string;
-  station: string;
-  likeCount: number;
-  isLiked: boolean;
-}
+import { DesignItemType } from '@types';
 interface DesignCardProps extends HTMLAttributes<HTMLDivElement> {
   designItem: DesignItemType;
 }
