@@ -16,7 +16,7 @@ export interface IconButtonProps
   buttonType: 'save' | 'like20' | 'like36';
   isActive?: boolean;
   count?: number;
-  onMap: boolean;
+  onMap?: boolean;
 }
 
 const buttonIcon = {
@@ -38,7 +38,7 @@ const IconButton = ({
   buttonType,
   isActive,
   count,
-  onMap,
+  onMap = false,
   onClick,
 }: IconButtonProps) => {
   return (
