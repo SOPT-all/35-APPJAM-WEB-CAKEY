@@ -1,10 +1,13 @@
-import { style, styleVariants } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css';
+import { recipe } from '@vanilla-extract/recipes';
 
 import { flexGenerator } from '@styles/generator.css';
 import { vars } from '@styles/theme.css';
 
 export const divStyle = style({
   position: 'relative',
+  width: '100%',
+  aspectRatio: '1 / 1',
 });
 
 export const numberLabelStyle = style([
@@ -20,9 +23,17 @@ export const numberLabelStyle = style([
   },
 ]);
 
-export const imageStyle = styleVariants({
-  square: { borderRadius: '0px' },
-  rounded: { borderRadius: '4px' },
+export const imageStyle = recipe({
+  base: {
+    width: '100%',
+    height: '100%',
+  },
+  variants: {
+    variant: {
+      square: { borderRadius: '0px' },
+      rounded: { borderRadius: '4px' },
+    },
+  },
 });
 
 export const iconButtonStyle = style({
