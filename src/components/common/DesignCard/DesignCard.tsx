@@ -18,7 +18,7 @@ const DesignCard = ({ designItem, onClick }: DesignCardProps) => {
   const { imageUrl, storeName, station, likeCount, isLiked } = designItem;
 
   return (
-    <div className={container} onClick={onClick}>
+    <article className={container} onClick={onClick}>
       <Image src={imageUrl} variant="rounded" />
       <div className={infoContainer}>
         <div className={infoWrapper}>
@@ -27,7 +27,7 @@ const DesignCard = ({ designItem, onClick }: DesignCardProps) => {
         </div>
         <IconButton buttonType="like20" count={likeCount} isActive={isLiked} />
       </div>
-    </div>
+    </article>
   );
 };
 
