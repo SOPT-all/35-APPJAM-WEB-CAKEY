@@ -25,7 +25,7 @@ export const tabButton = recipe({
       store: [
         vars.fonts.body04_m_16,
         {
-          padding: '1rem 0',
+          padding: '1.6rem 0',
         },
       ],
     },
