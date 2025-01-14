@@ -1,5 +1,7 @@
 import { HTMLAttributes } from 'react';
 
+import { IconButton, Image, Label } from '@components';
+
 import {
   roundedLeftImage,
   roundedRightImage,
@@ -11,26 +13,10 @@ import {
   storeNameLabel,
   storeNameStyle,
 } from './StoreCard.css';
-import IconButton from '../IconButton/IconButton';
-import Image from '../Image/Image';
-import Label from '../Label/Label';
 
-const maxStoreNameLength = 7;
+import { StoreType } from '@types';
 
-interface StoreImagesType {
-  imageId: number;
-  imageUrl: string;
-}
-
-interface StoreType {
-  storeId: number;
-  storeName: string;
-  station: string;
-  address: string;
-  isLiked: boolean;
-  storeLikesCount: number;
-  images: StoreImagesType[];
-}
+const MAX_STORE_NAME_LENGTH = 7;
 
 interface StoreCardProps extends HTMLAttributes<HTMLButtonElement> {
   storeItem: StoreType;
@@ -48,47 +34,44 @@ const StoreCard = ({ storeItem, onClick }: StoreCardProps) => {
   } = storeItem;
 
   const storeNameMax =
-    storeName.length > maxStoreNameLength
-      ? `${storeName.slice(0, maxStoreNameLength)}..`
+    storeName.length > MAX_STORE_NAME_LENGTH
+      ? `${storeName.slice(0, MAX_STORE_NAME_LENGTH)}..`
       : storeName;
 
   return (
-    <>
-      <div className={storeCardContainer}>
-        <div className={storeCardWrapper}>
-          <div className={storeCardInformation}>
-            <div className={storeNameLabel}>
-              <h1 className={storeNameStyle}>{storeNameMax}</h1>
-              <Label text={station} />
-            </div>
-            <p className={storeAddressStyle}>{address}</p>
+    <article className={storeCardContainer}>
+      <div className={storeCardWrapper}>
+        <div className={storeCardInformation}>
+          <div className={storeNameLabel}>
+            <h1 className={storeNameStyle}>{storeNameMax}</h1>
+            <Label text={station} />
           </div>
-          <IconButton
-            buttonType={'save'}
-            isActive={isLiked}
-            count={storeLikesCount}
-            onMap={false}
-            onClick={onClick}
-          />
+          <p className={storeAddressStyle}>{address}</p>
         </div>
-        <div className={storeCardImageList}>
-          {images.map((image, index) => (
-            <div
-              key={index}
-              className={
-                index === 0
-                  ? roundedLeftImage
-                  : index === images.length - 1
-                    ? roundedRightImage
-                    : ''
-              }
-            >
-              <Image key={storeId} src={image.imageUrl} />
-            </div>
-          ))}
-        </div>
+        <IconButton
+          buttonType={'save'}
+          isActive={isLiked}
+          count={storeLikesCount}
+          onClick={onClick}
+        />
       </div>
-    </>
+      <div className={storeCardImageList}>
+        {images.map((image, index) => (
+          <div
+            key={index}
+            className={
+              index === 0
+                ? roundedLeftImage
+                : index === images.length - 1
+                  ? roundedRightImage
+                  : ''
+            }
+          >
+            <Image key={storeId} src={image.imageUrl} />
+          </div>
+        ))}
+      </div>
+    </article>
   );
 };
 
