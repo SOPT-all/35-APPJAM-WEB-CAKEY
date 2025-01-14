@@ -19,8 +19,11 @@ export const buttonStyle = recipe({
         width: '2.4rem',
         gap: 0,
       },
-      like: {
+      like20: {
         gap: '0.6rem',
+      },
+      like36: {
+        width: '3.6rem',
       },
     },
     onMap: {
