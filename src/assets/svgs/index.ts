@@ -1,5 +1,6 @@
 export { default as IcArrowDown20 } from './IcArrowDown20';
 export { default as IcArrowUp20 } from './IcArrowUp20';
+export { default as IcCheck } from './IcCheck';
 export { default as IcFillLikeOff36 } from './IcFillLikeOff36';
 export { default as IcFillLikeOn36 } from './IcFillLikeOn36';
 export { default as IcGpsmarkerOff } from './IcGpsmarkerOff';
