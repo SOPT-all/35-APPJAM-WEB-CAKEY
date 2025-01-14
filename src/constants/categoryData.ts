@@ -1,4 +1,4 @@
-export const SUB_CATEGORY = [
+export const SUB_CATEGORY = Object.freeze([
   '전체',
   '테마',
   '귀여움',
@@ -8,4 +8,4 @@ export const SUB_CATEGORY = [
   '유머',
   '판타지',
   '기타',
-];
+]);
