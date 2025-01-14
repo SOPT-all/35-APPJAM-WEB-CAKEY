@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import {
   activeCategoryStyle,
   container,
@@ -8,31 +6,29 @@ import {
 
 interface SubCategoryProps {
   categories: string[];
+  selectedSubCategory: string;
+  onSubCategoryChange: (category: string) => void;
 }
 
-const SubCategoryBar = ({ categories }: SubCategoryProps) => {
-  const [activeCategory, setIsCategory] = useState(categories[0]);
-
-  const handleClickCategory = (category: string) => {
-    setIsCategory(category);
-  };
-
+const SubCategoryBar = ({
+  categories,
+  selectedSubCategory,
+  onSubCategoryChange,
+}: SubCategoryProps) => {
   return (
     <ul className={container}>
-      {categories.map((category) => {
-        return (
-          <li
-            className={
-              category === activeCategory
-                ? activeCategoryStyle
-                : defaultCategoryStyle
-            }
-            onClick={() => handleClickCategory(category)}
-          >
-            {category}
-          </li>
-        );
-      })}
+      {categories.map((category) => (
+        <li
+          className={
+            category === selectedSubCategory
+              ? activeCategoryStyle
+              : defaultCategoryStyle
+          }
+          onClick={() => onSubCategoryChange(category)}
+        >
+          {category}
+        </li>
+      ))}
     </ul>
   );
 };
