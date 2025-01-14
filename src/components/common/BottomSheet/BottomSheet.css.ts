@@ -2,14 +2,14 @@ import { style } from '@vanilla-extract/css';
 import { vars } from '@styles/theme.css';
 import { fixedGenerator } from '@styles/generator.css';
 
-export const overlay = style([
+export const overlayStyle = style([
   fixedGenerator({ top: 0 }, 1),
   {
     height: 'calc(100dvh - 11.2rem)',
   },
 ]);
 
-export const container = style([
+export const bottomSheetStyle = style([
   fixedGenerator({ bottom: 0 }, 2),
   {
     height: '80vh',

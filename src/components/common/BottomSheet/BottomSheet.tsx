@@ -1,6 +1,11 @@
 import { useState, useRef, useCallback, ReactNode } from 'react';
 import { motion, PanInfo } from 'framer-motion';
-import { container, content, handler, overlay } from './BottomSheet.css';
+import {
+  bottomSheetStyle,
+  content,
+  handler,
+  overlayStyle,
+} from './BottomSheet.css';
 
 type BottomSheetState = 'closed' | 'default' | 'opened';
 
@@ -24,7 +29,7 @@ interface BottomSheetProps {
 }
 
 const BottomSheet = ({ children }: BottomSheetProps) => {
-  const [state, setState] = useState<BottomSheetState>('default');
+  const [animateState, setAnimateState] = useState<BottomSheetState>('default');
   const contentRef = useRef<HTMLDivElement>(null);
   const [isAtTop, setIsAtTop] = useState(true);
 
@@ -40,7 +45,7 @@ const BottomSheet = ({ children }: BottomSheetProps) => {
 
   // 드래그 방향에 따라 바텀 시트 상태 관리
   const handleDragEnd = (_event: PointerEvent, info: PanInfo) => {
-    if (state === 'opened' && info.offset.y < 0) return;
+    if (animateState === 'opened' && info.offset.y < 0) return;
 
     const { offset, delta } = info;
     const isOverOffset = Math.abs(offset.y) > OFFSET_THRESHOLD;
@@ -49,33 +54,35 @@ const BottomSheet = ({ children }: BottomSheetProps) => {
 
     if (offset.y > 0) {
       // 아래쪽으로 드래그한 경우
-      if (state === 'opened' && isAtTop) {
-        setState('default');
+      if (animateState === 'opened' && isAtTop) {
+        setAnimateState('default');
       } else {
-        setState(state === 'opened' ? 'default' : 'closed');
+        setAnimateState(animateState === 'opened' ? 'default' : 'closed');
       }
     } else {
       // 위쪽으로 드래그한 경우
-      setState(state === 'closed' ? 'default' : 'opened');
+      setAnimateState(animateState === 'closed' ? 'default' : 'opened');
     }
   };
 
   // 오버레이 클릭 시 바텀 시트 상태 변경
   const handleOverlayTap = () => {
-    if (state === 'opened') setState('default');
-    else if (state === 'default') setState('closed');
+    if (animateState === 'opened') setAnimateState('default');
+    else if (animateState === 'default') setAnimateState('closed');
   };
 
   return (
     <>
       <motion.div
-        className={container}
+        className={bottomSheetStyle}
         initial="default"
-        animate={state}
+        animate={animateState}
         variants={variants}
         transition={{ type: 'spring', bounce: 0, duration: 0.5 }}
         drag={
-          state !== 'opened' || (state === 'opened' && isAtTop) ? 'y' : false
+          animateState !== 'opened' || (animateState === 'opened' && isAtTop)
+            ? 'y'
+            : false
         }
         dragConstraints={{ top: 0, bottom: 0 }}
         dragElastic={0}
@@ -86,15 +93,15 @@ const BottomSheet = ({ children }: BottomSheetProps) => {
           className={content}
           ref={contentRef}
           onScroll={handleContentScroll}
-          style={{ overflowY: state === 'opened' ? 'auto' : 'hidden' }}
+          style={{ overflowY: animateState === 'opened' ? 'auto' : 'hidden' }}
         >
           {children}
         </div>
       </motion.div>
       <motion.div
-        className={overlay}
+        className={overlayStyle}
         initial={false}
-        animate={state}
+        animate={animateState}
         variants={overlayVariants}
         onTap={handleOverlayTap}
       />
