@@ -1,4 +1,5 @@
 export { default as IcArrowDown20 } from './IcArrowDown20';
+export { default as IcArrowRight24 } from './IcArrowRight24';
 export { default as IcArrowUp20 } from './IcArrowUp20';
 export { default as IcFillLikeOff36 } from './IcFillLikeOff36';
 export { default as IcFillLikeOn36 } from './IcFillLikeOn36';
