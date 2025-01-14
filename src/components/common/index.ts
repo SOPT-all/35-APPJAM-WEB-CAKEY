@@ -1,10 +1,9 @@
-import BottomModal from './BottomModal/BottomModal';
-import CenterModal from './CenterModal/CenterModal';
 import FilteringButton from './FilteringButton/FilteringButton';
 import Header from './Header/Header';
 import IconButton from './IconButton/IconButton';
 import Image from './Image/Image';
 import Label from './Label/Label';
+import Modal from './Modal/Modal';
 import SocialLoginButton from './SocialLoginButton/SocialLoginButton';
 import StoreCard from './StoreCard/StoreCard';
 import Tab from './Tab/Tab';
@@ -16,8 +15,7 @@ export {
   Tab,
   TextButton,
   Header,
-  CenterModal,
-  BottomModal,
+  Modal,
   FilteringButton,
   IconButton,
   StoreCard,
