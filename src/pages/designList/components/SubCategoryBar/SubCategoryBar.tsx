@@ -7,11 +7,11 @@ import {
 } from './SubCategoryBar.css';
 
 interface SubCategoryProps {
-  subCategory: string[];
+  categories: string[];
 }
 
-const SubCategoryBar = ({ subCategory }: SubCategoryProps) => {
-  const [activeCategory, setIsCategory] = useState(subCategory[0]);
+const SubCategoryBar = ({ categories }: SubCategoryProps) => {
+  const [activeCategory, setIsCategory] = useState(categories[0]);
 
   const handleClickCategory = (category: string) => {
     setIsCategory(category);
@@ -19,7 +19,7 @@ const SubCategoryBar = ({ subCategory }: SubCategoryProps) => {
 
   return (
     <ul className={container}>
-      {subCategory.map((category) => {
+      {categories.map((category) => {
         return (
           <li
             className={
