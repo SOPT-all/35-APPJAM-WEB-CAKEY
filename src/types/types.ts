@@ -14,9 +14,11 @@ export interface StoreType {
 }
 
 export interface DesignItemType {
-    imageUrl: string;
-    storeName: string;
-    station: string;
-    likeCount: number;
-    isLiked: boolean;
+  cakeId: number;
+  storeId: number;
+  storeName: string;
+  station: string;
+  isLiked: boolean;
+  imageUrl: string;
+  likeCount: number;
 }

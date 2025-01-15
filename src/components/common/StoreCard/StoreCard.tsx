@@ -3,6 +3,7 @@ import { HTMLAttributes } from 'react';
 import { IconButton, Image, Label } from '@components';
 
 import {
+  imageDiv,
   roundedLeftImage,
   roundedRightImage,
   storeAddressStyle,
@@ -22,7 +23,7 @@ interface StoreCardProps extends HTMLAttributes<HTMLButtonElement> {
   storeItem: StoreType;
 }
 
-const StoreCard = ({ storeItem, onClick }: StoreCardProps) => {
+const StoreCard = ({ storeItem }: StoreCardProps) => {
   const {
     storeId,
     storeName,
@@ -38,8 +39,12 @@ const StoreCard = ({ storeItem, onClick }: StoreCardProps) => {
       ? `${storeName.slice(0, MAX_STORE_NAME_LENGTH)}..`
       : storeName;
 
+  const handleCardClick = () => {
+    console.log('스토어카드 클릭', storeId);
+  };
+
   return (
-    <article className={storeCardContainer} onClick={onClick}>
+    <article className={storeCardContainer} onClick={handleCardClick}>
       <div className={storeCardWrapper}>
         <div className={storeCardInformation}>
           <div className={storeNameLabel}>
@@ -52,22 +57,23 @@ const StoreCard = ({ storeItem, onClick }: StoreCardProps) => {
           buttonType={'save'}
           isActive={isLiked}
           count={storeLikesCount}
+          itemId={storeId}
         />
       </div>
       <div className={storeCardImageList}>
         {images.map((image, index) => (
           <div
-            key={index}
-            className={
-              index === 0
-                ? roundedLeftImage
-                : index === images.length - 1
-                  ? roundedRightImage
-                  : ''
-            }
-          >
-            <Image key={storeId} src={image.imageUrl} />
-          </div>
+          key={index}
+          className={`${imageDiv} ${
+            index === 0
+              ? roundedLeftImage
+              : index === images.length - 1
+              ? roundedRightImage
+              : ''
+          }`}
+        >
+          <Image key={storeId} src={image.imageUrl} />
+        </div>
         ))}
       </div>
     </article>
