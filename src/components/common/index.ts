@@ -1,3 +1,5 @@
+import CardList from './CardList/CardList';
+import DesignCard from './DesignCard/DesignCard';
 import FilteringButton from './FilteringButton/FilteringButton';
 import Header from './Header/Header';
 import IconButton from './IconButton/IconButton';
@@ -20,4 +22,6 @@ export {
   IconButton,
   StoreCard,
   Image,
+  DesignCard,
+  CardList,
 };
