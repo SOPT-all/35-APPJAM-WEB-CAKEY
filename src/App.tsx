@@ -6,9 +6,9 @@ import { pageRoutes } from '@routes';
 
 import '@styles/global.css';
 
-const App = () => {
-  const router = createBrowserRouter(pageRoutes);
+const router = createBrowserRouter(pageRoutes);
 
+const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
