@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import SizeCard from '../SizeCard/SizeCard';
 import {
   containerStyle,
@@ -23,7 +23,7 @@ const SizeCardList = () => {
 
   // 스크롤 처리 상태
   const [isScrolling, setIsScrolling] = useState(false);
-  const [isLeftEdge, setIsLeftEdge] = useState(true);
+  const [isLeftEdge, setIsLeftEdge] = useState(false);
   const [isRightEdge, setIsRightEdge] = useState(false);
 
   const listRef = useRef<HTMLUListElement>(null);
@@ -58,6 +58,10 @@ const SizeCardList = () => {
       left: direction === 'left' ? 0 : scrollWidth - clientWidth,
     });
   };
+
+  useEffect(() => {
+    updateScrollState();
+  }, []);
 
   return (
     <div className={containerStyle}>

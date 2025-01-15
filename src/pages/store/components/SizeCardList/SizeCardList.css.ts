@@ -32,8 +32,8 @@ export const scrollButton = recipe({
   ]),
   variants: {
     position: {
-      left: { left: '0.8rem' },
-      right: { right: '0.8rem', transform: 'translateY(-50%) rotate(180deg)' },
+      left: { left: '0.8rem', transform: 'translateY(-50%) rotate(180deg)' },
+      right: { right: '0.8rem' },
     },
   },
 });
