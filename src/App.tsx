@@ -2,6 +2,7 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
+import { MyList } from '@pages/myPage/page';
 import {
   authRoutes,
   designListRoutes,
@@ -29,6 +30,7 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
+      <MyList />
       <div style={{ fontSize: '16px' }}>
         <ReactQueryDevtools />
       </div>

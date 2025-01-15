@@ -1,7 +1,27 @@
-const MyList = () => {
-  return (
-    <div>MyList</div>
-  )
-}
+import { useState } from 'react';
 
-export default MyList
+import { Tab } from '@components';
+
+import { MyListContainer } from './MyList.css';
+
+const MyList = () => {
+  const [activeTab, setActiveTab] = useState(0);
+
+  const handleTab = (index: number) => {
+    setActiveTab(index);
+  };
+
+  return (
+    <div className={MyListContainer}>
+      <h1>찜 목록</h1>
+      <Tab
+        tabType={'viewMyPage'}
+        activeTab={activeTab}
+        onTabChange={handleTab}
+      />
+      <div>{activeTab === 0 ? '스토어 찜 목록' : '디자인 찜 목록'}</div>
+    </div>
+  );
+};
+
+export default MyList;
