@@ -30,7 +30,7 @@ export const buttonStyle = recipe({
     size: {
       small: createButtonSizeStyles(
         vars.fonts.body02_sb_14,
-        '4,4rem',
+        '4.4rem',
       ),
       medium: createButtonSizeStyles(
         vars.fonts.head06_sb_16,
