@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import {
   cardListContainer,
   cardListTextWrapper,
@@ -28,7 +30,12 @@ interface CardListProps {
 }
 
 const CardList = ({ item, data }: CardListProps) => {
-  //   const [cardListContent, setCardListContent] = useState();
+  const [, setOption] = useState(''); //option은 나중에 데이터 불러올 때 사용될 예정
+
+  // filtering 버튼 관련한 로직 = onOptionSelect에 들어갈!
+  const handleOptionSelect = (option: string) => {
+    setOption(option);
+  };
 
   // 데이터를 조건에 따라 바로 분기 처리
   const isStoreItem = item === 'store' || item === 'likedStore';
@@ -49,8 +56,6 @@ const CardList = ({ item, data }: CardListProps) => {
     likedDesign: `찜한 스토어의 디자인 `,
   };
 
-  // filtering 버튼 관련한 로직 = onOptionSelect에 들어갈!
-
   return (
     <div className={cardListContainer}>
       <div className={cardListTextWrapper}>
@@ -66,7 +71,7 @@ const CardList = ({ item, data }: CardListProps) => {
           )}
         </div>
 
-        <FilteringButton onOptionSelect={() => {}} />
+        <FilteringButton onOptionSelect={handleOptionSelect} />
       </div>
       {isStoreItem ? (
         <div className={storeCardListWrapper}>
