@@ -19,3 +19,5 @@ export { default as IcSearchCategoryBdayUnactivate } from './IcSearchCategoryBda
 export { default as IcSearchCategoryCheerUnactivate } from './IcSearchCategoryCheerUnactivate';
 export { default as IcSearchCategorySeasonUnactivate } from './IcSearchCategorySeasonUnactivate';
 export { default as ImgLogo } from './ImgLogo';
+export { default as ImgMypageProfileLogin } from './ImgMypageProfileLogin';
+export { default as IcMypageArrowRight24 } from './IcMypageArrowRight24';

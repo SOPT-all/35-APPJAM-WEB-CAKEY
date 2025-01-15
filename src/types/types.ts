@@ -14,6 +14,8 @@ export interface StoreType {
 }
 
 export interface DesignItemType {
+  storeId: number;
+  cakeId: number;
   imageUrl: string;
   storeName: string;
   station: string;
@@ -32,3 +34,4 @@ export type SubCategoryType =
   | 'HUMOR'
   | 'FANTASY'
   | 'ELSE';
+
