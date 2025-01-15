@@ -5,7 +5,12 @@ import { vars } from '@styles/theme.css';
 
 export const letsGoContainer = style([
   flexGenerator('row', 'space-between', 'center'),
-  { padding: '1.8rem', cursor: 'pointer' },
+  {
+    padding: '1.8rem',
+    cursor: 'pointer',
+    borderRadius: '1rem',
+    backgroundColor: vars.colors.white,
+  },
 ]);
 
 export const whereToGo = style([
