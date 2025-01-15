@@ -27,4 +27,4 @@ export const profileSubText = style([
   },
 ]);
 
-export const zzim = style({ color: vars.colors.red1 });
+export const strongTextStyle = style({ color: vars.colors.red1 });

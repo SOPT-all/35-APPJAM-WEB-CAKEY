@@ -5,8 +5,8 @@ import {
   profileEmail,
   profileSubText,
   profileText,
+  strongTextStyle,
   userInfo,
-  zzim,
 } from './ProfileCard.css';
 
 interface ProfileProps {
@@ -27,7 +27,8 @@ const ProfileCard = ({ isLogin, userName, userEmail }: ProfileProps) => {
           <span className={profileEmail}>{userEmail}</span>
         ) : (
           <span className={profileSubText}>
-            로그인을 하면 <b className={zzim}>찜 기능</b>을 쓸 수 있어요!
+            로그인을 하면 <strong className={strongTextStyle}>찜 기능</strong>을
+            쓸 수 있어요!
           </span>
         )}
       </div>
