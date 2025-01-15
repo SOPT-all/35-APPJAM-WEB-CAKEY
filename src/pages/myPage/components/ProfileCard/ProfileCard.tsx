@@ -18,21 +18,21 @@ interface ProfileProps {
 
 const ProfileCard = ({ isLogin, userName, userEmail }: ProfileProps) => {
   return (
-    <div className={profileContainer}>
+    <section className={profileContainer}>
       <ImgMypageProfileLogin className={profileImg} />
       <div className={userInfo}>
-        <div className={profileText}>
+        <h1 className={profileText}>
           {isLogin ? userName : '로그인이 필요해요'}
-        </div>
+        </h1>
         {isLogin ? (
-          <div className={profileEmail}>{userEmail}</div>
+          <span className={profileEmail}>{userEmail}</span>
         ) : (
-          <div className={profileSubText}>
+          <span className={profileSubText}>
             로그인을 하면 <b className={zzim}>찜 기능</b>을 쓸 수 있어요!
-          </div>
+          </span>
         )}
       </div>
-    </div>
+    </section>
   );
 };
 

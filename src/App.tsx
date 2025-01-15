@@ -2,7 +2,6 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import { ProfileCard } from '@pages/myPage/components';
 import {
   authRoutes,
   designListRoutes,
@@ -30,12 +29,6 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
-      <ProfileCard isLogin={false} />
-      <br />
-      <br />
-      <br />
-      <br />
-      <ProfileCard isLogin />
       <div style={{ fontSize: '16px' }}>
         <ReactQueryDevtools />
       </div>
