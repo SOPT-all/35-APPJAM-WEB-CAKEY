@@ -1,13 +1,14 @@
 import { Outlet } from 'react-router-dom';
-import { layoutStyle } from './Layout.css';
+import { spacing } from './Layout.css';
 import { Header } from '@components';
 
 const Layout = () => {
   return (
-    <div className={layoutStyle}>
+    <>
       <Header />
+      <div className={spacing} />
       <Outlet />
-    </div>
+    </>
   );
 };
 
