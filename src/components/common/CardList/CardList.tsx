@@ -55,17 +55,15 @@ const CardList = ({ item, data }: CardListProps) => {
     <div className={cardListContainer}>
       <div className={cardListTextWrapper}>
         <div>
-          {item === 'store' ||
-            (item === 'design' && (
-              <span className={countNumberStyle}>{cardListCount}</span>
-            ))}
+          {(item === 'store' || item === 'design') && (
+            <span className={countNumberStyle}>{cardListCount}</span>
+          )}
 
           <span className={countTextStyle}>{cardListCountText[item]}</span>
 
-          {item === 'likedStore' ||
-            (item === 'likedDesign' && (
-              <span className={countNumberStyle}>{cardListCount}</span>
-            ))}
+          {(item === 'likedStore' || item === 'likedDesign') && (
+            <span className={countNumberStyle}>{cardListCount}</span>
+          )}
         </div>
 
         <FilteringButton onOptionSelect={() => {}} />
