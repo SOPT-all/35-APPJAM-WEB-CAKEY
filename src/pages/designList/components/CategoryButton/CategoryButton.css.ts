@@ -3,7 +3,7 @@ import { style } from '@vanilla-extract/css';
 import { flexGenerator } from '@styles/generator.css';
 import { vars } from '@styles/theme.css';
 
-export const CategoryButtonStyle = style([
+export const categoryButtonStyle = style([
   flexGenerator('column'),
   {
     gap: '0.8rem',

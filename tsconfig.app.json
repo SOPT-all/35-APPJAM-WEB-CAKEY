@@ -29,6 +29,7 @@
     "paths": {
       "@apis/*": ["src/apis/*"],
       "@svgs": ["src/assets/svgs"],
+      "@lotties": ["src/assets/lotties"],
       "@image/*": ["/image/*"],
       "@components": ["src/components/common"],
       "@constants": ["src/constants"],

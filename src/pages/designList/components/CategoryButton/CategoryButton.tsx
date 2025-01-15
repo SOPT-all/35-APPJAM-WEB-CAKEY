@@ -1,6 +1,6 @@
 import { CATEGORY_COMPONENT } from '@constants';
 
-import { activeTextStyle, CategoryButtonStyle, unActiveTextStyle } from './CategoryButton.css';
+import { activeTextStyle, categoryButtonStyle, unActiveTextStyle } from './CategoryButton.css';
 
 import { CategoryType } from '@types';
 
@@ -16,7 +16,7 @@ const CategoryButton = ({
   onCategoryChange,
 }: CategoryButtonProps) => {
   return (
-    <button className={CategoryButtonStyle} onClick={() => onCategoryChange(category)}>
+    <button className={categoryButtonStyle} onClick={() => onCategoryChange(category)}>
       {isActive
         ? CATEGORY_COMPONENT[category].active
         : CATEGORY_COMPONENT[category].unActive}
