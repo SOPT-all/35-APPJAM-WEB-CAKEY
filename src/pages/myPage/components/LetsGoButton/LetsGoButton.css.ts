@@ -8,7 +8,7 @@ export const letsGoContainer = style([
   {
     padding: '1.8rem',
     cursor: 'pointer',
-    borderRadius: '1rem',
+    borderRadius: '10px',
     backgroundColor: vars.colors.white,
   },
 ]);
