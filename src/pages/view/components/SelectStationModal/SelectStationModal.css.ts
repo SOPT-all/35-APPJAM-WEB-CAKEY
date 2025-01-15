@@ -8,7 +8,7 @@ export const modalLayoutStyle = style([
     maxWidth: 430,
     width: '100dvw',
     minHeight: '100dvh',
-    padding: '8rem 2rem 1.7rem',
+    padding: '8rem 0rem 1.7rem',
   },
 ]);
 
@@ -16,6 +16,7 @@ export const textSection = style([
   flexGenerator('column', 'flex-start', 'flex-start'),
   {
     gap: '0.8rem',
+    padding: '0 2rem',
   },
 ]);
 
@@ -30,6 +31,7 @@ export const spanBox = style([
   flexGenerator('column', 'flex-start', 'flex-start'),
   vars.fonts.body07_r_14,
   {
+    gap: '0.2rem',
     color: vars.colors.gray700,
   },
 ]);
@@ -38,6 +40,7 @@ export const scrollSection = style([
   flexGenerator('column', 'flex-start', 'flex-start'),
   {
     gap: '1rem',
+    paddingLeft: '2rem',
     width: '100%',
     maxHeight: 'calc(100dvh - 8rem - 7.3rem - 4rem - 6rem)',
     overflowY: 'auto',
@@ -45,12 +48,11 @@ export const scrollSection = style([
 
     '::-webkit-scrollbar': {
       display: 'block',
-      width: 4,
-      height: 143,
     },
     '::-webkit-scrollbar-thumb': {
       backgroundColor: vars.colors.gray300,
       borderRadius: 50,
+      border: '6px solid white',
     },
   },
 ]);
@@ -58,4 +60,5 @@ export const scrollSection = style([
 export const footerSection = style({
   width: '100%',
   marginTop: 'auto',
+  padding: '0 2rem',
 });
