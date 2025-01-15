@@ -4,7 +4,7 @@ import { buttonStyle } from 'src/components/common/TextButton/TextButton.css';
 
 export interface TextButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
-  size: 'small' | 'medium' | 'large';
+  size: 'small' | 'medium' | 'semiLarge' | 'large';
   color?: 'red' | 'gray' | 'stroke';
   // isDisabled?: boolean;
 }
@@ -17,17 +17,17 @@ const TextButton = ({
   children,
 }: TextButtonProps) => {
   return (
-      <button
-        className={buttonStyle({
-          size,
-          color,
-          // isDisabled,
-        })}
-        onClick={onClick}
-        // disabled={isDisabled}
-      >
-        {children}
-      </button>
+    <button
+      className={buttonStyle({
+        size,
+        color,
+        // isDisabled,
+      })}
+      onClick={onClick}
+      // disabled={isDisabled}
+    >
+      {children}
+    </button>
   );
 };
 
