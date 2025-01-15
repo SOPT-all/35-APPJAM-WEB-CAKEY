@@ -1,10 +1,17 @@
+import { ButtonHTMLAttributes } from 'react';
+
 import { IcMypageArrowRight24 } from '@svgs';
 
 import { letsGoContainer, whereToGo } from './LetsGoButton.css';
 
-const LetsGoButton = ({ text = '마이페이지 카테고리' }) => {
+export interface LetsGoButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
+  text: string;
+}
+
+const LetsGoButton = ({ text, onClick }: LetsGoButtonProps) => {
   return (
-    <button className={letsGoContainer}>
+    <button className={letsGoContainer} onClick={onClick}>
       <p className={whereToGo}>{text}</p>
       <IcMypageArrowRight24 width={24} height={24} />
     </button>
