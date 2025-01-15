@@ -22,3 +22,16 @@ export interface DesignItemType {
   imageUrl: string;
   likeCount: number;
 }
+
+export type CategoryType = 'BIRTH' | 'CHEER' | 'ANNIV' | 'SEASON';
+export type SubCategoryType =
+  | 'ALL'
+  | 'THEME'
+  | 'CUTE'
+  | 'MINIMAL'
+  | 'CHARAC'
+  | 'LUXURY'
+  | 'HUMOR'
+  | 'FANTASY'
+  | 'ELSE';
+
