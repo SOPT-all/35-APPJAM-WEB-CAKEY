@@ -1,6 +1,7 @@
 import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { ToastProvider } from '@contexts';
 
 import {
   authRoutes,
@@ -14,6 +15,7 @@ import {
 import queryClient from './queryClient';
 
 import '@styles/global.css';
+
 const allRoutes = [
   ...authRoutes,
   ...designListRoutes,
@@ -28,7 +30,9 @@ const router = createBrowserRouter(allRoutes);
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
+      <ToastProvider>
+        <RouterProvider router={router} />
+      </ToastProvider>
       <div style={{ fontSize: '16px' }}>
         <ReactQueryDevtools />
       </div>

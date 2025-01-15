@@ -8,7 +8,9 @@ import SocialLoginButton from './SocialLoginButton/SocialLoginButton';
 import StoreCard from './StoreCard/StoreCard';
 import Tab from './Tab/Tab';
 import TextButton from './TextButton/TextButton';
+import BottomSheet from './BottomSheet/BottomSheet';
 import DesignCard from './DesignCard/DesignCard';
+import Toast from './Toast/Toast';
 
 export {
   Label,
@@ -21,5 +23,7 @@ export {
   IconButton,
   StoreCard,
   Image,
+  BottomSheet,
   DesignCard,
+  Toast,
 };
