@@ -1,8 +1,8 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import { vars } from '@styles/theme.css';
 import { flexGenerator, fixedGenerator } from '@styles/generator.css';
+import { vars } from '@styles/theme.css';
 
 export const container = recipe({
   base: style([

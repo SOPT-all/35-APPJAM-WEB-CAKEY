@@ -1,7 +1,8 @@
-import { flexGenerator } from '@styles/generator.css';
-import { vars } from '@styles/theme.css';
 import { styleVariants } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
+
+import { flexGenerator } from '@styles/generator.css';
+import { vars } from '@styles/theme.css';
 
 export const buttonStyle = recipe({
   base: [
@@ -9,8 +10,7 @@ export const buttonStyle = recipe({
     {
       width: '100%',
       height: '5.6rem',
-      maxHeight: '5.6rem',
-      minHeight: '5.6rem',
+      flexShrink: 0,
       padding: '1.4rem 1rem 1.4rem 1.8rem',
       backgroundColor: vars.colors.white,
       borderRadius: 10,

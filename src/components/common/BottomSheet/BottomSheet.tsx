@@ -1,5 +1,6 @@
-import { useState, useRef, useCallback, ReactNode } from 'react';
 import { motion, PanInfo } from 'framer-motion';
+import { useState, useRef, useCallback, ReactNode } from 'react';
+
 import {
   bottomSheetStyle,
   content,

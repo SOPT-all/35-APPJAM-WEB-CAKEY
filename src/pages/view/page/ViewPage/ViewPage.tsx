@@ -1,7 +1,8 @@
+import { useState } from 'react';
+
 import { Modal } from '@components';
 import { useModal } from '@hooks';
 import { SelectStationModal } from '@pages/view/components';
-import { useState } from 'react';
 
 const ViewPage = () => {
   const { isModalOpen, openModal, closeModal } = useModal();
@@ -11,7 +12,6 @@ const ViewPage = () => {
     setCurrentLocation(location);
   };
 
-  console.log(currentLocation);
   return (
     <div>
       <button onClick={openModal}>모달열기</button>

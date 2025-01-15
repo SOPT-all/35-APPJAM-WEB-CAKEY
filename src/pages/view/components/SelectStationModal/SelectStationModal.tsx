@@ -1,5 +1,7 @@
+import { useState } from 'react';
+
 import { Header, TextButton } from '@components';
-import LocationSelectButton from '../LocationSelectButton/LocationSelectButton';
+
 import {
   footerSection,
   h1Style,
@@ -8,7 +10,7 @@ import {
   spanBox,
   textSection,
 } from './SelectStationModal.css';
-import { useState } from 'react';
+import LocationSelectButton from '../LocationSelectButton/LocationSelectButton';
 
 const stations = [
   '전체',
@@ -17,13 +19,6 @@ const stations = [
   '공덕역',
   '디지털미디어시티역',
   '상수역',
-  '건대입구역',
-  '숭실대입구역',
-  '공릉역',
-  '강남역',
-  '서초역',
-  '방배역',
-  '동대문역',
 ];
 
 interface SelectStationModalProps {

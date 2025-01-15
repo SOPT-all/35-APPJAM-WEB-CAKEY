@@ -1,11 +1,12 @@
+import { style } from '@vanilla-extract/css';
+
 import { flexGenerator } from '@styles/generator.css';
 import { vars } from '@styles/theme.css';
-import { style } from '@vanilla-extract/css';
 
 export const modalLayoutStyle = style([
   flexGenerator('column', 'flex-start', 'flex-start'),
   {
-    maxWidth: 430,
+    maxWidth: 'var(--max-width)',
     width: '100dvw',
     minHeight: '100dvh',
     padding: '8rem 0rem 1.7rem',
@@ -52,7 +53,7 @@ export const scrollSection = style([
     '::-webkit-scrollbar-thumb': {
       backgroundColor: vars.colors.gray300,
       borderRadius: 50,
-      border: '6px solid white',
+      border: `6px solid ${vars.colors.white}`,
     },
   },
 ]);
