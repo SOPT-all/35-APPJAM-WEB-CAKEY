@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 
 import {
   IcFillLikeOff36,
@@ -42,8 +42,9 @@ const IconButton = ({
   itemId,
   onMap = false,
 }: IconButtonProps) => {
-  const handleButtonClick = () => {
-    console.log('iconClick');
+  const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    console.log('iconClick', itemId);
   };
   return (
     <button
