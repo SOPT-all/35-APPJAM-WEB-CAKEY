@@ -1,23 +1,23 @@
-import SocialLoginButton from './SocialLoginButton/SocialLoginButton';
-import TextButton from './TextButton/TextButton';
-import Label from './Label/Label';
-import Tab from './Tab/Tab';
-import Header from './Header/Header';
-import CenterModal from './CenterModal/CenterModal';
-import BottomModal from './BottomModal/BottomModal';
 import FilteringButton from './FilteringButton/FilteringButton';
+import Header from './Header/Header';
 import IconButton from './IconButton/IconButton';
-import Toast from './Toast/Toast';
+import Image from './Image/Image';
+import Label from './Label/Label';
+import Modal from './Modal/Modal';
+import SocialLoginButton from './SocialLoginButton/SocialLoginButton';
+import StoreCard from './StoreCard/StoreCard';
+import Tab from './Tab/Tab';
+import TextButton from './TextButton/TextButton';
 
 export {
-  SocialLoginButton,
-  TextButton,
   Label,
+  SocialLoginButton,
   Tab,
+  TextButton,
   Header,
-  CenterModal,
-  BottomModal,
+  Modal,
   FilteringButton,
   IconButton,
-  Toast,
+  StoreCard,
+  Image,
 };
