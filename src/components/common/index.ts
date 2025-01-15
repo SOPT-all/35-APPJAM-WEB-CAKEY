@@ -1,5 +1,6 @@
 import AuthModal from './AuthModal/AuthModal';
 import BottomSheet from './BottomSheet/BottomSheet';
+import CardList from './CardList/CardList';
 import DesignCard from './DesignCard/DesignCard';
 import FilteringButton from './FilteringButton/FilteringButton';
 import Header from './Header/Header';
@@ -25,6 +26,7 @@ export {
   StoreCard,
   Image,
   AuthModal,
+  CardList,
   BottomSheet,
   DesignCard,
   Toast,

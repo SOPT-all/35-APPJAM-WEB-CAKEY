@@ -3,6 +3,7 @@ import { HTMLAttributes } from 'react';
 import { IconButton, Image, Label } from '@components';
 
 import {
+  imageDiv,
   roundedLeftImage,
   roundedRightImage,
   storeAddressStyle,
@@ -62,17 +63,17 @@ const StoreCard = ({ storeItem }: StoreCardProps) => {
       <div className={storeCardImageList}>
         {images.map((image, index) => (
           <div
-            key={index}
-            className={
-              index === 0
-                ? roundedLeftImage
-                : index === images.length - 1
-                  ? roundedRightImage
-                  : ''
-            }
-          >
-            <Image key={storeId} src={image.imageUrl} />
-          </div>
+          key={index}
+          className={`${imageDiv} ${
+            index === 0
+              ? roundedLeftImage
+              : index === images.length - 1
+              ? roundedRightImage
+              : ''
+          }`}
+        >
+          <Image key={storeId} src={image.imageUrl} />
+        </div>
         ))}
       </div>
     </article>

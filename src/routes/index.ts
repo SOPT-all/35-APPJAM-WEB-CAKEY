@@ -5,6 +5,7 @@ import myPageRoutes from './myPageRoutes';
 import routePath from './routePath';
 import storeRoutes from './storeRoutes';
 import viewRoutes from './viewRoutes';
+import pageRoutes from './pageRoutes';
 
 export {
   authRoutes,
@@ -14,4 +15,5 @@ export {
   storeRoutes,
   viewRoutes,
   routePath,
+  pageRoutes,
 };

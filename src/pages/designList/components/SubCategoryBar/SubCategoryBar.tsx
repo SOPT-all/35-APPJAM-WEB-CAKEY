@@ -1,13 +1,17 @@
+import { SUB_CATEGORY_TEXT } from '@constants';
+
 import {
   activeCategoryStyle,
   container,
   defaultCategoryStyle,
 } from './SubCategoryBar.css';
 
+import { SubCategoryType } from '@types';
+
 interface SubCategoryProps {
-  categories: string[];
-  selectedSubCategory: string;
-  onSubCategoryChange: (category: string) => void;
+  categories: SubCategoryType[];
+  selectedSubCategory: SubCategoryType;
+  onSubCategoryChange: (category: SubCategoryType) => void;
 }
 
 const SubCategoryBar = ({
@@ -17,8 +21,9 @@ const SubCategoryBar = ({
 }: SubCategoryProps) => {
   return (
     <ul className={container}>
-      {categories.map((category) => (
+      {categories.map((category, index) => (
         <li
+          key={index}
           className={
             category === selectedSubCategory
               ? activeCategoryStyle
@@ -26,7 +31,7 @@ const SubCategoryBar = ({
           }
           onClick={() => onSubCategoryChange(category)}
         >
-          {category}
+          {SUB_CATEGORY_TEXT[category]}
         </li>
       ))}
     </ul>
