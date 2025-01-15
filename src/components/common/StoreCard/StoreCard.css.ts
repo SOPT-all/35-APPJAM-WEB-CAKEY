@@ -54,14 +54,18 @@ export const storeAddressStyle = style([
 
 export const storeCardImageList = style([flexGenerator(), { gap: '0.3rem' }]);
 
+export const imageDiv = style({
+  width: '100%',
+  aspectRatio: '1/1',
+  overflow: 'hidden',
+});
+
 export const roundedLeftImage = style({
   borderTopLeftRadius: '8px',
   borderBottomLeftRadius: '8px',
-  overflow: 'hidden',
 });
 
 export const roundedRightImage = style({
   borderTopRightRadius: '8px',
   borderBottomRightRadius: '8px',
-  overflow: 'hidden',
 });

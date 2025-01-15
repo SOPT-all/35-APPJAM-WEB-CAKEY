@@ -41,7 +41,7 @@ export const storeCardListWrapper = style([
 ]);
 export const designCardListWrapper = style({
   width: '100%',
-  // display: 'grid',
-  // gridTemplateColumns: 'repeat(2, auto)',
-  // gap: '1.2rem 1.5rem',
+  display: 'grid',
+  gridTemplateColumns: 'repeat(2, 1fr)',
+  gap: '1.2rem 1.5rem',
 });
