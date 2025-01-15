@@ -39,7 +39,7 @@ const Toast = ({ icon, message, isButton = false }: ToastState) => {
       initial="hidden"
       animate="visible"
       exit="exit"
-      transition={{ duration: 0.25 }}
+      transition={{ duration: 0.15 }}
     >
       <div className={toastMessageStyle}>
         {toastIcon[icon]}
