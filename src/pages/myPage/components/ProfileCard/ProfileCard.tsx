@@ -3,7 +3,6 @@ import { ImgMypageProfileLogin } from '@svgs';
 import {
   profileContainer,
   profileEmail,
-  profileImg,
   profileSubText,
   profileText,
   userInfo,
@@ -19,7 +18,7 @@ interface ProfileProps {
 const ProfileCard = ({ isLogin, userName, userEmail }: ProfileProps) => {
   return (
     <section className={profileContainer}>
-      <ImgMypageProfileLogin className={profileImg} />
+      <ImgMypageProfileLogin width={80} height={80} />
       <div className={userInfo}>
         <h1 className={profileText}>
           {isLogin ? userName : '로그인이 필요해요'}
