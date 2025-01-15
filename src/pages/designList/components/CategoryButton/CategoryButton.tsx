@@ -7,16 +7,16 @@ import { CategoryType } from '@types';
 interface CategoryButtonProps {
   isActive: boolean;
   category: CategoryType;
-  onClick: (category: CategoryType) => void;
+  onCategoryChange: (category: CategoryType) => void;
 }
 
 const CategoryButton = ({
   isActive,
   category,
-  onClick,
+  onCategoryChange,
 }: CategoryButtonProps) => {
   return (
-    <button className={CategoryButtonStyle} onClick={() => onClick(category)}>
+    <button className={CategoryButtonStyle} onClick={() => onCategoryChange(category)}>
       {isActive
         ? CATEGORY_COMPONENT[category].active
         : CATEGORY_COMPONENT[category].unActive}

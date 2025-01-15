@@ -21,7 +21,7 @@ const CategoryBar = ({
           key={index}
           category={category}
           isActive={selectedCategory === category}
-          onClick={onCategoryChange}
+          onCategoryChange={onCategoryChange}
         />
       ))}
     </div>
