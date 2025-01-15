@@ -14,6 +14,7 @@ export interface ImageProps extends HTMLAttributes<HTMLDivElement> {
   numberLabel?: string;
   hasIcon?: boolean;
   isActive?: boolean;
+  itemId?: number;
   onIconClick?: () => void;
 }
 
@@ -23,6 +24,7 @@ const Image = ({
   numberLabel = '',
   hasIcon = false,
   isActive,
+  itemId, // storeId | cakeId를 받아서 IconButton으로 넘겨줍니다
   onIconClick,
 }: ImageProps) => {
   return (
@@ -37,7 +39,12 @@ const Image = ({
             if (onIconClick) onIconClick();
           }}
         >
-          <IconButton buttonType="like36" onMap={false} isActive={isActive} />
+          <IconButton
+            buttonType="like36"
+            onMap={false}
+            isActive={isActive}
+            itemId={itemId}
+          />
         </div>
       )}
     </div>

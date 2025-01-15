@@ -20,3 +20,5 @@ export { default as ImgStore13Cm } from './ImgStore13Cm';
 export { default as ImgStore16Cm } from './ImgStore16Cm';
 export { default as ImgStore19Cm } from './ImgStore19Cm';
 export { default as ImgStore22Cm } from './ImgStore22Cm';
+export { default as ImgMypageProfileLogin } from './ImgMypageProfileLogin';
+export { default as IcMypageArrowRight24 } from './IcMypageArrowRight24';
