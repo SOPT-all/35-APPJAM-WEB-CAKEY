@@ -1,3 +1,4 @@
+import AuthModal from './AuthModal/AuthModal';
 import FilteringButton from './FilteringButton/FilteringButton';
 import Header from './Header/Header';
 import IconButton from './IconButton/IconButton';
@@ -20,4 +21,5 @@ export {
   IconButton,
   StoreCard,
   Image,
+  AuthModal,
 };
