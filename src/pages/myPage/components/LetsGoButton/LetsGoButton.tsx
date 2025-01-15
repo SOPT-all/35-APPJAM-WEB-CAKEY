@@ -1,4 +1,4 @@
-import { IcArrowRight24 } from '@svgs';
+import IcMypageArrowRight24 from 'src/assets/svgs/IcMypageArrowRight24';
 
 import { letsGoContainer, whereToGo } from './LetsGoButton.css';
 
@@ -6,7 +6,7 @@ const LetsGoButton = ({ text = '어디로 Lets go?' }) => {
   return (
     <div className={letsGoContainer}>
       <p className={whereToGo}>{text}</p>
-      <IcArrowRight24 width={24} height={24} />
+      <IcMypageArrowRight24 width={24} height={24} />
     </div>
   );
 };
