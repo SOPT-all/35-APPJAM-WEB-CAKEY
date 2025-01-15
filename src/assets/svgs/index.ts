@@ -14,4 +14,8 @@ export { default as IcLocation } from './IcLocation';
 export { default as IcMy } from './IcMy';
 export { default as IcSavedOff24 } from './IcSavedOff24';
 export { default as IcSavedOn24 } from './IcSavedOn24';
+export { default as IcSearchCategoryAnivUnactivate } from './IcSearchCategoryAnivUnactivate';
+export { default as IcSearchCategoryBdayUnactivate } from './IcSearchCategoryBdayUnactivate';
+export { default as IcSearchCategoryCheerUnactivate } from './IcSearchCategoryCheerUnactivate';
+export { default as IcSearchCategorySeasonUnactivate } from './IcSearchCategorySeasonUnactivate';
 export { default as ImgLogo } from './ImgLogo';

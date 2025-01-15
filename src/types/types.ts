@@ -14,9 +14,11 @@ export interface StoreType {
 }
 
 export interface DesignItemType {
-    imageUrl: string;
-    storeName: string;
-    station: string;
-    likeCount: number;
-    isLiked: boolean;
+  imageUrl: string;
+  storeName: string;
+  station: string;
+  likeCount: number;
+  isLiked: boolean;
 }
+
+export type CategoryType = 'BIRTH' | 'CHEER' | 'ANNIV' | 'SEASON';

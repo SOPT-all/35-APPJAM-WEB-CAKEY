@@ -1,3 +1,7 @@
+import { CategoryType } from '@types';
+
+export const CATEGORY: CategoryType[] = ['BIRTH', 'CHEER', 'ANNIV', 'SEASON'];
+
 export const SUB_CATEGORY = Object.freeze([
   '전체',
   '테마',
