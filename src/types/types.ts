@@ -14,13 +14,13 @@ export interface StoreType {
 }
 
 export interface DesignItemType {
-  storeId: number;
   cakeId: number;
-  imageUrl: string;
+  storeId: number;
   storeName: string;
   station: string;
-  likeCount: number;
   isLiked: boolean;
+  imageUrl: string;
+  likeCount: number;
 }
 
 export type CategoryType = 'BIRTH' | 'CHEER' | 'ANNIV' | 'SEASON';
