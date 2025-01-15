@@ -1,9 +1,10 @@
+import { AnimatePresence } from 'framer-motion';
 import { useState, useCallback, useRef, ReactNode } from 'react';
 import { createContext, useContext } from 'react';
 import { Toast } from '@components';
 import { ToastState, ToastType } from '@types';
 
-const TOAST_REMOVE_DELAY = 3000;
+const TOAST_REMOVE_DELAY = 2000;
 
 interface ToastContextType {
   showToast: (icon: ToastType, message: string, isButton?: boolean) => void;
@@ -37,13 +38,15 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
   return (
     <ToastContext.Provider value={{ showToast }}>
       {children}
-      {toast && (
-        <Toast
-          icon={toast.icon}
-          message={toast.message}
-          isButton={toast.isButton}
-        />
-      )}
+      <AnimatePresence>
+        {toast && (
+          <Toast
+            icon={toast.icon}
+            message={toast.message}
+            isButton={toast.isButton}
+          />
+        )}
+      </AnimatePresence>
     </ToastContext.Provider>
   );
 };
