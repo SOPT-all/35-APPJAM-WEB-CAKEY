@@ -1,3 +1,4 @@
+import AuthModal from './AuthModal/AuthModal';
 import BottomSheet from './BottomSheet/BottomSheet';
 import CardList from './CardList/CardList';
 import DesignCard from './DesignCard/DesignCard';
@@ -24,6 +25,7 @@ export {
   IconButton,
   StoreCard,
   Image,
+  AuthModal,
   CardList,
   BottomSheet,
   DesignCard,
