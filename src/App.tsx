@@ -1,31 +1,13 @@
 import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { ToastProvider } from '@contexts';
-
-import {
-  authRoutes,
-  designListRoutes,
-  homeRoutes,
-  myPageRoutes,
-  storeRoutes,
-  viewRoutes,
-} from '@routes';
 
 import queryClient from './queryClient';
+import { pageRoutes } from '@routes';
 
 import '@styles/global.css';
 
-const allRoutes = [
-  ...authRoutes,
-  ...designListRoutes,
-  ...homeRoutes,
-  ...myPageRoutes,
-  ...storeRoutes,
-  ...viewRoutes,
-];
-
-const router = createBrowserRouter(allRoutes);
+const router = createBrowserRouter(pageRoutes);
 
 const App = () => {
   return (
