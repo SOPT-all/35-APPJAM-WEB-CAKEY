@@ -1,1 +1,2 @@
-export { sizeMapping } from './size';
+export * from './categoryData';
+export * from './size';

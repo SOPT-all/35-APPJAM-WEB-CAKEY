@@ -1,27 +1,29 @@
 import { PropsWithChildren } from 'react';
 import { createPortal } from 'react-dom';
 
-import { backdropStyle, modalStyle } from './BottomModal.css';
+import { backdropStyle, modalStyle } from './Modal.css';
 
-export interface BottomModalProps {
+export interface ModalProps {
+  variant: 'center' | 'bottom';
   hasBackdrop?: boolean;
   backdropClick?: () => void;
 }
 
 const potalElement = document.getElementById('modal') as HTMLElement;
 
-const BottomModal = ({
+const Modal = ({
+  variant,
   hasBackdrop = false,
   backdropClick,
   children,
-}: PropsWithChildren<BottomModalProps>) => {
+}: PropsWithChildren<ModalProps>) => {
   return createPortal(
     <>
       {hasBackdrop && <div className={backdropStyle} onClick={backdropClick} />}
-      <div className={modalStyle}>{children}</div>
+      <div className={modalStyle({ variant })}>{children}</div>
     </>,
     potalElement
   );
 };
 
-export default BottomModal;
+export default Modal;
