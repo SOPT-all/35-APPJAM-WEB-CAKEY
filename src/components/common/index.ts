@@ -8,6 +8,7 @@ import SocialLoginButton from './SocialLoginButton/SocialLoginButton';
 import StoreCard from './StoreCard/StoreCard';
 import Tab from './Tab/Tab';
 import TextButton from './TextButton/TextButton';
+import DesignCard from './DesignCard/DesignCard';
 
 export {
   Label,
@@ -20,4 +21,5 @@ export {
   IconButton,
   StoreCard,
   Image,
+  DesignCard,
 };
