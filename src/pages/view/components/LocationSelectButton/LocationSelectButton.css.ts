@@ -8,6 +8,9 @@ export const buttonStyle = recipe({
     flexGenerator('row', 'space-between'),
     {
       width: '100%',
+      height: '5.6rem',
+      maxHeight: '5.6rem',
+      minHeight: '5.6rem',
       padding: '1.4rem 1rem 1.4rem 1.8rem',
       backgroundColor: vars.colors.white,
       borderRadius: 10,
@@ -17,6 +20,9 @@ export const buttonStyle = recipe({
     isSelected: {
       true: {
         backgroundColor: vars.colors.yellow2,
+      },
+      false: {
+        backgroundColor: 'transparent',
       },
     },
   },
