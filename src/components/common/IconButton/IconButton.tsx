@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 
 import {
   IcFillLikeOff36,
@@ -16,6 +16,7 @@ export interface IconButtonProps
   buttonType: 'save' | 'like20' | 'like36';
   isActive?: boolean;
   count?: number;
+  itemId?: number; // storeId | cakeId를 받아서 api 요청에 사용합니다
   onMap?: boolean;
 }
 
@@ -38,11 +39,18 @@ const IconButton = ({
   buttonType,
   isActive,
   count,
+  itemId,
   onMap = false,
-  onClick,
 }: IconButtonProps) => {
+  const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    console.log('iconClick', itemId);
+  };
   return (
-    <button className={buttonStyle({ buttonType, onMap })} onClick={onClick}>
+    <button
+      className={buttonStyle({ buttonType, onMap })}
+      onClick={handleButtonClick}
+    >
       {isActive
         ? buttonIcon[buttonType]?.active
         : buttonIcon[buttonType]?.inactive}

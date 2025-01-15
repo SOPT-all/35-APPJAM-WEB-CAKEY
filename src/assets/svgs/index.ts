@@ -16,3 +16,4 @@ export { default as IcSavedOff24 } from './IcSavedOff24';
 export { default as IcSavedOn24 } from './IcSavedOn24';
 export { default as ImgLogo } from './ImgLogo';
 export { default as ImgMypageProfileLogin } from './ImgMypageProfileLogin';
+export { default as IcMypageArrowRight24 } from './IcMypageArrowRight24';
