@@ -18,7 +18,11 @@ const stations = [
   '합정역',
   '공덕역',
   '디지털미디어시티역',
-  '상수역',
+  '성수역',
+  '가좌역',
+  '부산역',
+  '영등포시장역',
+  '영등포구청역',
 ];
 
 interface SelectStationModalProps {
@@ -42,6 +46,7 @@ const SelectStationModal = ({
     onCurrentLocationChange(selectedLocation);
     onClose();
   };
+
   return (
     <>
       <Header />

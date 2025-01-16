@@ -41,11 +41,12 @@ export const scrollSection = style([
   flexGenerator('column', 'flex-start', 'flex-start'),
   {
     gap: '1rem',
-    paddingLeft: '2rem',
+    paddingLeft: '1.8rem',
     width: '100%',
     maxHeight: 'calc(100dvh - 8rem - 7.3rem - 4rem - 6rem)',
     overflowY: 'auto',
     margin: '1.7rem 0',
+    scrollbarGutter: 'stable',
 
     '::-webkit-scrollbar': {
       display: 'block',
