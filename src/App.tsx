@@ -1,14 +1,14 @@
-import { ToastProvider } from '@contexts';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
+import { ToastProvider } from '@contexts';
 import { MyPage } from '@pages/myPage/page';
-import { pageRoutes } from '@routes';
-
-import queryClient from './queryClient';
+// import { pageRoutes } from '@routes';
 
 import '@styles/global.css';
+import queryClient from './queryClient';
+import pageRoutes from './routes/pageRoutes';
 
 const router = createBrowserRouter(pageRoutes);
 

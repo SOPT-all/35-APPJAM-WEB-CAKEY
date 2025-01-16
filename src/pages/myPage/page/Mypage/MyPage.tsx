@@ -5,10 +5,11 @@ import { useModal } from '@hooks';
 import { LetsGoButton, ProfileCard } from '@pages/myPage/components';
 
 import { letsGoButtonStyle, loginButton, profileCardStyle } from './MyPage.css';
+
 const user = {
   userId: 1,
-  userName: 'wldb',
-  userEmail: '@@@',
+  userName: '쥬먐이',
+  userEmail: 'jiyoo0315@naver.com',
 };
 
 const MyPage = () => {
@@ -19,13 +20,17 @@ const MyPage = () => {
   return (
     <div>
       <div className={profileCardStyle[isLogin ? 'login' : 'logout']}>
-        <ProfileCard isLogin={isLogin} userName={user.userName} />
+        <ProfileCard
+          isLogin={isLogin}
+          userName={user.userName}
+          userEmail={user.userEmail}
+        />
       </div>
       <div>
         {isLogin ? (
           <div className={letsGoButtonStyle}>
             <LetsGoButton text={'찜 목록'} />
-            <LetsGoButton text={'케이키에 문의하기'} />
+            <LetsGoButton text={'휘피에 문의하기'} />
             <LetsGoButton text={'로그아웃'} onClick={openModal} />
           </div>
         ) : (
