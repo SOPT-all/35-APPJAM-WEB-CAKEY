@@ -1,14 +1,113 @@
 import { useState } from 'react';
 
-import { Tab } from '@components';
+import { CardList, Tab } from '@components';
 
-import { myListContainer, myListTitle } from './MyList.css';
+import { cardListStyle, myListContainer, myListTitle } from './MyList.css';
 
 const MyList = () => {
   const [activeTab, setActiveTab] = useState(0);
 
   const handleTab = (index: number) => {
     setActiveTab(index);
+  };
+
+  const likedStoreData = {
+    storeCount: 3,
+    stores: [
+      {
+        storeId: 1,
+        storeName: '버터뭉1',
+        station: '종로5가역',
+        address: '서울 중구 동호로 385-2',
+        storeLikesCount: 30,
+        isLiked: true,
+        images: [
+          { imageId: 1, imageUrl: '../public/example-img.png' },
+          { imageId: 2, imageUrl: '../public/example-img.png' },
+          { imageId: 3, imageUrl: '../public/example-img.png' },
+          { imageId: 4, imageUrl: '../public/example-img.png' },
+        ],
+      },
+      {
+        storeId: 2,
+        storeName: '버터뭉2',
+        station: '홍대입구역',
+        address: '서울 마포구 동호로 385-2',
+        storeLikesCount: 28,
+        isLiked: true,
+        images: [
+          { imageId: 1, imageUrl: '../public/example-img.png' },
+          { imageId: 2, imageUrl: '../public/example-img.png' },
+          { imageId: 3, imageUrl: '../public/example-img.png' },
+          { imageId: 4, imageUrl: '../public/example-img.png' },
+        ],
+      },
+      {
+        storeId: 3,
+        storeName: '버터뭉3',
+        station: '홍대입구역',
+        address: '서울 마포구 구호로 385-2',
+        storeLikesCount: 26,
+        isLiked: true,
+        images: [
+          { imageId: 1, imageUrl: '../public/example-img.png' },
+          { imageId: 2, imageUrl: '../public/example-img.png' },
+          { imageId: 3, imageUrl: '../public/example-img.png' },
+          { imageId: 4, imageUrl: '../public/example-img.png' },
+        ],
+      },
+    ],
+  };
+
+  const likedDesignData = {
+    cakeCount: 5,
+    cakes: [
+      {
+        cakeId: 1,
+        storeId: 1,
+        storeName: '버터뭉1',
+        station: '홍대입구역',
+        isLiked: true,
+        likeCount: 200,
+        imageUrl: '../public/example-img.png',
+      },
+      {
+        cakeId: 2,
+        storeId: 2,
+        storeName: '버터뭉2',
+        station: '서강대입구역',
+        isLiked: true,
+        likeCount: 30,
+        imageUrl: '../public/example-img.png',
+      },
+      {
+        cakeId: 3,
+        storeId: 1,
+        storeName: '버터뭉3',
+        station: '홍대입구역',
+        isLiked: true,
+        likeCount: 45,
+        imageUrl: '../public/example-img.png',
+      },
+      {
+        cakeId: 4,
+        storeId: 1,
+        storeName: '버터뭉4',
+        station: '홍대입구역',
+        isLiked: true,
+        likeCount: 33,
+        imageUrl: '../public/example-img.png',
+      },
+      {
+        cakeId: 5,
+        storeId: 1,
+        storeName: '버터뭉5',
+        station: '홍대입구역',
+        isLiked: true,
+        likeCount: 65,
+        imageUrl: '../public/example-img.png',
+      },
+    ],
   };
 
   return (
@@ -19,7 +118,17 @@ const MyList = () => {
         activeTab={activeTab}
         onTabChange={handleTab}
       />
-      <div>{activeTab === 0 ? '스토어 찜 목록' : '디자인 찜 목록'}</div>
+      <div>
+        {activeTab === 0 ? (
+          <div className={cardListStyle}>
+            <CardList item={'likedStore'} data={likedStoreData} />
+          </div>
+        ) : (
+          <div className={cardListStyle}>
+            <CardList item={'likedDesign'} data={likedDesignData} />
+          </div>
+        )}
+      </div>
     </div>
   );
 };
