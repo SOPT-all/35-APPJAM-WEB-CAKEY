@@ -9,8 +9,7 @@ import {
   viewRoutes,
 } from '@routes';
 
-import Layout from './layout/Layout';
-
+import Layout from './Layout/Layout';
 
 const allRoutes = [
   ...authRoutes,
