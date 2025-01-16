@@ -1,5 +1,6 @@
-import { anivButton, bdayButton, cheerButton, seasonButton } from '@lotties';
 import Lottie from 'lottie-react';
+
+import { anivButton, bdayButton, cheerButton, seasonButton } from '@lotties';
 
 import {
   IcSearchCategoryAnivUnactivate,

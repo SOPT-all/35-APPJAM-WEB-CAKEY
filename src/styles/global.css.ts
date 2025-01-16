@@ -66,6 +66,7 @@ globalStyle('#root', {
       minHeight: '100dvh',
       backgroundColor: '#fff',
       margin: '0 auto',
+      boxShadow: '0 0 2px rgba(0, 0, 0, 0.4)',
     },
   },
 });
