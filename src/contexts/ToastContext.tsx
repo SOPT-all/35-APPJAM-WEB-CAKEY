@@ -1,7 +1,9 @@
 import { AnimatePresence } from 'framer-motion';
 import { useState, useCallback, useRef, ReactNode } from 'react';
 import { createContext, useContext } from 'react';
+
 import { Toast } from '@components';
+
 import { ToastState, ToastType } from '@types';
 
 const TOAST_REMOVE_DELAY = 2000;

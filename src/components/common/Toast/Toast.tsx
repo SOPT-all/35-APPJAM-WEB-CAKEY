@@ -1,7 +1,11 @@
-import { createPortal } from 'react-dom';
 import { motion } from 'framer-motion';
-import { toastButtonStyle, toastMessageStyle, toastStyle } from './Toast.css';
+import { createPortal } from 'react-dom';
+
 import { IcLineLikeOn20, IcSavedOn24, IcToastCheck, IcToastError } from '@svgs';
+
+import { toastButtonStyle, toastMessageStyle, toastStyle } from './Toast.css';
+
+
 import { ToastState } from '@types';
 
 const toastVariants = {
