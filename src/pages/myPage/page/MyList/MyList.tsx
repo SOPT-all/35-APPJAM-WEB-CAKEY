@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { CardList, Tab } from '@components';
 
-import { cardListStyle, myListContainer, myListTitle } from './MyList.css';
+import { cardListStyle, myListContainer, myListTitle, tabSticky } from './MyList.css';
 
 const MyList = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -113,11 +113,13 @@ const MyList = () => {
   return (
     <div className={myListContainer}>
       <h1 className={myListTitle}>찜 목록</h1>
-      <Tab
-        tabType={'viewMyPage'}
-        activeTab={activeTab}
-        onTabChange={handleTab}
-      />
+      <div className={tabSticky}>
+        <Tab
+          tabType={'viewMyPage'}
+          activeTab={activeTab}
+          onTabChange={handleTab}
+        />
+      </div>
       <div>
         {activeTab === 0 ? (
           <div className={cardListStyle}>
