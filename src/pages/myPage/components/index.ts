@@ -1,4 +1,4 @@
-import ProfileCard from './ProfileCard/ProfileCard';
 import LetsGoButton from './LetsGoButton/LetsGoButton';
+import ProfileCard from './ProfileCard/ProfileCard';
 
 export { ProfileCard, LetsGoButton };
