@@ -13,6 +13,7 @@ import {
   listHour,
   toggleButton,
 } from './StoreInfo.css';
+import OrderGuideButton from '../OrderGuideButton/OrderGuideButton';
 
 const data = {
   monOpen: '09:00',
@@ -95,6 +96,7 @@ const StoreInfo = () => {
           </div>
         </li>
       ))}
+      <OrderGuideButton />
     </ul>
   );
 };
