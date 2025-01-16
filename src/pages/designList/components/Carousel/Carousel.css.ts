@@ -9,7 +9,7 @@ export const container = style([
     gap: '1.2rem',
     overflowX: 'scroll',
     paddingLeft: '2.8rem',
-    paddingRight: '2.8rem',
+    paddingRight: '3rem',
   },
 ]);
 
