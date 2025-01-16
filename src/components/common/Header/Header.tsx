@@ -1,5 +1,6 @@
-import { container } from './Header.css';
 import { IcMy, ImgLogo } from '@svgs';
+
+import { container } from './Header.css';
 
 interface HeaderProps {
   bgColor?: 'white' | 'yellow';

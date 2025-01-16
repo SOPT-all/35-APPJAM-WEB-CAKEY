@@ -1,5 +1,4 @@
 import { RouteObject } from 'react-router-dom';
-import Layout from './layout/Layout';
 
 import {
   authRoutes,
@@ -9,6 +8,8 @@ import {
   storeRoutes,
   viewRoutes,
 } from '@routes';
+
+import Layout from './Layout/Layout';
 
 const allRoutes = [
   ...authRoutes,
