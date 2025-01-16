@@ -7,18 +7,15 @@ import {
 } from './SizeCardList.css';
 import { IcCircleArrowRight42 } from '@svgs';
 
-const data = {
-  // 추후 삭제 예정
-  sizes: [
-    { sizeName: '도시락', price: 18000 },
-    { sizeName: '미니', price: 20000 },
-    { sizeName: '1호', price: 30000 },
-    { sizeName: '2호', price: 40000 },
-    { sizeName: '3호', price: 45000 },
-  ],
-};
+interface Size {
+  sizeName: string;
+  price: number;
+}
 
-const SizeCardList = () => {
+interface SizeCardListProps {
+  sizes: Size[];
+}
+const SizeCardList = ({ sizes }: SizeCardListProps) => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   // 스크롤 처리 상태
@@ -85,7 +82,7 @@ const SizeCardList = () => {
       )}
 
       <ul className={listContainer} ref={listRef} onScroll={handleScroll}>
-        {data.sizes.map((item, index) => (
+        {sizes.map((item, index) => (
           <SizeCard
             key={index}
             sizeName={item.sizeName}

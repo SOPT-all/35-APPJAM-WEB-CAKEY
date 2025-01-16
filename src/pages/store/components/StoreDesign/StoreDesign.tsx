@@ -2,15 +2,21 @@ import { Image } from '@components';
 import { sectionStyle } from './StoreDesign.css';
 
 const StoreDesign = () => {
-  const images = Array.from({ length: 16 }, (_, index) => ({
-    src: `/example-img.png`,
-    hasIcon: true,
-  }));
+  const designs = [
+    // 추후 삭제 예정
+    { cakeId: 1, cakeImageUrl: '/example-img.png', isLiked: true },
+    { cakeId: 2, cakeImageUrl: '/example-img.png', isLiked: false },
+  ];
 
   return (
     <section className={sectionStyle}>
-      {images.map((image, index) => (
-        <Image key={index} src={image.src} hasIcon={image.hasIcon} />
+      {designs.map((design) => (
+        <Image
+          key={design.cakeId}
+          src={design.cakeImageUrl}
+          hasIcon={true}
+          isActive={design.isLiked}
+        />
       ))}
     </section>
   );
