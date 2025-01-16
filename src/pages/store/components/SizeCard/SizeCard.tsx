@@ -1,3 +1,5 @@
+import { sizeMapping } from '@constants';
+
 import {
   cardStyle,
   sizeContainer,
@@ -5,7 +7,6 @@ import {
   textContainer,
 } from './SizeCard.css';
 import Chip from '../Chip/Chip';
-import { sizeMapping } from '@constants';
 
 interface SizeCardProps {
   sizeName: string;
