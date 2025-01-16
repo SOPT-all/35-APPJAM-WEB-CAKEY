@@ -13,7 +13,12 @@ import DesignCard from '../DesignCard/DesignCard';
 import FilteringButton from '../FilteringButton/FilteringButton';
 import StoreCard from '../StoreCard/StoreCard';
 
-import { DesignItemType, StoreType } from '@types';
+import {
+  CategoryType,
+  DesignItemType,
+  StoreType,
+  SubCategoryType,
+} from '@types';
 
 interface StoreCardListType {
   storeCount: number;
@@ -25,12 +30,24 @@ interface DesignCardListType {
   cakes: DesignItemType[];
 }
 
-interface CardListProps {
-  item: 'store' | 'design' | 'likedStore' | 'likedDesign';
-  data: StoreCardListType | DesignCardListType | null;
+interface SelectedCategoryDataType {
+  category: CategoryType;
+  subCategory: SubCategoryType;
 }
 
-const CardList = ({ item, data }: CardListProps) => {
+interface CardListProps {
+  item: 'store' | 'design' | 'likedStore' | 'likedDesign';
+  itemData: StoreCardListType | DesignCardListType | null;
+  hasModal?: boolean;
+  selectedData?: string | SelectedCategoryDataType;
+}
+
+const CardList = ({
+  item,
+  itemData,
+  hasModal = false,
+  selectedData,
+}: CardListProps) => {
   const [, setOption] = useState(''); //option은 나중에 데이터 불러올 때 사용될 예정
 
   // filtering 버튼 관련한 로직 = onOptionSelect에 들어갈!
@@ -41,16 +58,16 @@ const CardList = ({ item, data }: CardListProps) => {
   const isStoreItem = item === 'store' || item === 'likedStore';
 
   // 데이터가 없는 경우를 처리
-  const cardListData = data
+  const cardListData = itemData
     ? isStoreItem
-      ? (data as StoreCardListType).stores
-      : (data as DesignCardListType).cakes
+      ? (itemData as StoreCardListType).stores
+      : (itemData as DesignCardListType).cakes
     : []; // 데이터가 없으면 빈 배열로 처리
 
-  const cardListCount = data
+  const cardListCount = itemData
     ? isStoreItem
-      ? (data as StoreCardListType).storeCount
-      : (data as DesignCardListType).cakeCount
+      ? (itemData as StoreCardListType).storeCount
+      : (itemData as DesignCardListType).cakeCount
     : 0; // 데이터가 없으면 0으로 처리
 
   // 카드리스트 텍스트 상황에 따라 다르게
@@ -68,9 +85,12 @@ const CardList = ({ item, data }: CardListProps) => {
     likedDesign: `찜한 디자인이 아직 없어요`,
   };
 
+  // 지하철 역, 혹은 카테고리 정보 > 추후에 api 요청될 때 사용될 예정
+  console.log(selectedData);
+
   return (
     <div className={cardListContainer}>
-      {data ? (
+      {itemData ? (
         <>
           <div className={cardListTextWrapper}>
             <div>
@@ -97,7 +117,11 @@ const CardList = ({ item, data }: CardListProps) => {
           ) : (
             <div className={designCardListWrapper}>
               {(cardListData as DesignItemType[]).map((cake) => (
-                <DesignCard designItem={cake} />
+                <DesignCard
+                  designItem={cake}
+                  designId={cake.cakeId}
+                  hasModal={hasModal}
+                />
               ))}
             </div>
           )}

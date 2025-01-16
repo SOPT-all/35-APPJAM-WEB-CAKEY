@@ -1,11 +1,9 @@
 import { useState } from 'react';
 
-import { CardList, Modal } from '@components';
+import { CardList } from '@components';
 import { CATEGORY, SUB_CATEGORY } from '@constants';
 import CategoryBar from '@pages/designList/components/CategoryBar/CategoryBar';
-import DesignSearchModal from '@pages/designList/components/DesignSearchModal/DesignSearchModal';
 import SubCategoryBar from '@pages/designList/components/SubCategoryBar/SubCategoryBar';
-import useModal from 'src/hooks/useModal';
 
 import {
   cardListWrapper,
@@ -17,7 +15,7 @@ import {
 
 import { CategoryType, SubCategoryType } from '@types';
 
-const designListPageNullData = null;
+export const designListPageNullData = null;
 
 const designListPageData = {
   cakeCount: 100,
@@ -52,46 +50,7 @@ const designListPageData = {
   ],
 };
 
-const designItemData = {
-  cakeId: 1,
-  storeId: 1,
-  storeName: '버터뭉',
-  station: '홍대입구역',
-  isLiked: false,
-  likeCount: 200,
-  imageUrl: '../public/example-img.png',
-};
-
-const data = {
-  storeId: 1,
-  storeName: '케이크케이크케이크케이크',
-  station: '종로5가역',
-  cakes: [
-    {
-      cakeId: 1,
-      isLiked: true,
-      imageUrl: '../public/example-img.png',
-    },
-    {
-      cakeId: 5,
-      isLiked: false,
-      imageUrl: '../public/example-img.png',
-    },
-    {
-      cakeId: 3,
-      isLiked: true,
-      imageUrl: '../public/example-img.png',
-    },
-    {
-      cakeId: 2,
-      isLiked: true,
-      imageUrl: '../public/example-img.png',
-    },
-  ],
-};
-
 const DesignListPage = () => {
-  const { isModalOpen, openModal, closeModal } = useModal();
   const [selectedCategory, setSelectedCategory] =
     useState<CategoryType>('BIRTH');
   const [selectedSubCategory, setSelectedSubCategory] =
@@ -103,6 +62,11 @@ const DesignListPage = () => {
 
   const handleSubCategoryChange = (category: SubCategoryType) => {
     setSelectedSubCategory(category);
+  };
+
+  const selectedCategories = {
+    category: selectedCategory,
+    subCategory: selectedSubCategory,
   };
 
   return (
@@ -125,14 +89,8 @@ const DesignListPage = () => {
       </div>
 
       <div className={cardListWrapper}>
-        <CardList item="design" data={designListPageNullData} />
+        <CardList item="design" itemData={designListPageData} hasModal selectedData={selectedCategories} />
       </div>
-      {/* <button onClick={openModal}>모달 등장!</button> */}
-      {/* {isModalOpen && (
-        <Modal variant="bottom" backdropClick={closeModal} hasBackdrop>
-          <DesignSearchModal designDetailItem={data} storeId={data.storeId} />
-        </Modal>
-      )} */}
     </div>
   );
 };
