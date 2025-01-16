@@ -1,6 +1,7 @@
+import { Image } from '@components';
+
 import { gridStyle } from './StoreDesign.css';
 
-import { Image } from '@components';
 
 const StoreDesign = () => {
   const designs = [
@@ -25,7 +26,7 @@ const StoreDesign = () => {
         <Image
           key={design.cakeId}
           src={design.cakeImageUrl}
-          hasIcon={true}
+          hasIcon
           isActive={design.isLiked}
         />
       ))}

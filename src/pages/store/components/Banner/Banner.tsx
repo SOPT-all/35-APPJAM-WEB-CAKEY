@@ -1,4 +1,7 @@
 import { IconButton } from '@components';
+
+import { IcStoreLocation } from '@svgs';
+
 import {
   bannerContainer,
   locationStyle,
@@ -8,7 +11,6 @@ import {
   storeInfoBox,
   storeAddress,
 } from './Banner.css';
-import { IcStoreLocation } from '@svgs';
 
 const Banner = () => {
   const data = {

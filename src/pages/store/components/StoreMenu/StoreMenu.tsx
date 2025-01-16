@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-import SizeCardList from '../SizeCardList/SizeCardList';
 import {
   listStyle,
   listBox,
@@ -8,6 +7,7 @@ import {
   boxTitleSubText,
   tasteDescription,
 } from './StoreMenu.css';
+import SizeCardList from '../SizeCardList/SizeCardList';
 
 const StoreMenu = () => {
   const [menuData] = useState({

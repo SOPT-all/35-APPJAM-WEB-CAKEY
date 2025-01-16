@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { formatHours } from '@utils';
+
 import { IcArrowDown20, IcLineLocation, IcPhone, IcTime } from '@svgs';
 
 import {
