@@ -35,11 +35,12 @@ export const listTitle = style([
   },
 ]);
 
-export const dayOff = style([
-  flexGenerator(),
+export const listHour = style([
+  flexGenerator('row', 'flex-start', 'center'),
   vars.fonts.body06_r_16,
   {
     gap: '0.4rem',
+    height: '2.4rem',
   },
 ]);
 

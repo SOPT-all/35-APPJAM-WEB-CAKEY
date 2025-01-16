@@ -9,7 +9,7 @@ import {
   listBox,
   listTitle,
   listContent,
-  dayOff,
+  listHour,
   toggleButton,
 } from './StoreInfo.css';
 
@@ -51,8 +51,8 @@ const StoreInfo = () => {
       title: '영업 시간',
       content: (
         <ul className={listContent}>
-          <li className={dayOff}>
-            <span>월 정기휴무 (매주 월요일)</span>
+          <li className={listHour}>
+            <span>{formattedHours[0]}</span>
             <IcArrowDown20
               width={20}
               height={20}
@@ -61,9 +61,11 @@ const StoreInfo = () => {
             />
           </li>
           {isOpen &&
-            formattedHours.map((time, index) => {
-              return time ? <li key={index}>{time}</li> : null;
-            })}
+            formattedHours.slice(1).map((time) => (
+              <li key={time} className={listHour}>
+                {time}
+              </li>
+            ))}
         </ul>
       ),
     },
