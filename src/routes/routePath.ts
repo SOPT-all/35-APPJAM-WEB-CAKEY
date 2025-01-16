@@ -15,6 +15,7 @@ const myPages = {
 };
 
 const storePages = {
+  STOREBASE: '/store',
   STOREPAGE: '/store/:id',
 };
 
