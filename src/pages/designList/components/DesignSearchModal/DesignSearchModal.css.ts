@@ -21,7 +21,7 @@ export const infoWrapper = style([
   flexGenerator('row', 'space-between'),
   {
     width: '100%',
-    gap: '1.2rem',
+    gap: '0.7rem',
     padding: '0rem 2.8rem 0rem 2.8rem',
   },
 ]);
@@ -29,7 +29,7 @@ export const infoWrapper = style([
 export const textWrapper = style([
   flexGenerator('column', 'center', 'flex-start'),
   {
-    maxWidth: 'calc(100% - 12.1rem - 1.2rem)',
+    maxWidth: 'calc(100% - 12.1rem - 0.7rem)',
     gap: '0.3rem',
   },
 ]);
