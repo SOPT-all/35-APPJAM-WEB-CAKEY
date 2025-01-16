@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 
-import { IconButton } from '@components';
 import {
   StoreDefault42,
   StoreDefault54,
@@ -10,7 +9,8 @@ import {
 } from '@constants';
 import useMapLoader from '@pages/view/hooks/useMapLoader';
 
-import { iconButtonWrapperStyle, mapContainer } from './kakaoMap.css';
+import { mapContainer } from './kakaoMap.css';
+import MapSaveButton from '../MapSaveButton/MapSaveButton';
 
 interface KakaoMapProps {
   currentLocation: string;
@@ -54,6 +54,8 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
   useMapLoader();
 
   const defaultCenter = { lat: 37.556621, lng: 126.923877 };
+  // 찜 버튼 활성화 상태
+  const [isSaveActive, setIsSaveActive] = useState(false);
 
   // 현재 사용자의 위치
   const [currentPosition, setCurrentPosition] = useState<{
@@ -68,7 +70,7 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
   }>(defaultCenter);
 
   const handleSaveButtonClick = () => {
-    console.log('찜 버튼 클릭');
+    setIsSaveActive((prev) => !prev);
   };
 
   // useEffect(() => {
@@ -93,9 +95,7 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
           />
         ))}
       </Map>
-      <div className={iconButtonWrapperStyle} onClick={handleSaveButtonClick}>
-        <IconButton buttonType="save" onMap />
-      </div>
+      <MapSaveButton isActive={isSaveActive} onToggle={handleSaveButtonClick} />
     </div>
   );
 };
