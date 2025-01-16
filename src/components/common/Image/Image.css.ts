@@ -7,7 +7,6 @@ import { vars } from '@styles/theme.css';
 export const divStyle = style({
   position: 'relative',
   width: '100%',
-  height: '100%',
   aspectRatio: '1 / 1',
 });
 

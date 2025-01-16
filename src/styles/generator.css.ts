@@ -31,17 +31,18 @@ export const fixedGenerator = (
     center?: boolean;
   } = {},
   zIndex: number = 1
-) =>
-  style({
+) => {
+  const { center, ...otherOffsets } = offsets;
+  return style({
     position: 'fixed',
     zIndex,
     width: '100%',
     maxWidth: 'var(--max-width)',
     minWidth: 'var(--min-width)',
-    ...(offsets.center
-      ? {
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-        }
-      : offsets),
+    ...otherOffsets,
+    ...(center && {
+      left: '50%',
+      transform: 'translateX(-50%)',
+    }),
   });
+};
