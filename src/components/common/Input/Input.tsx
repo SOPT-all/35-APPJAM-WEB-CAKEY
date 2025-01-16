@@ -7,12 +7,7 @@ type InputProps = {
   placeholder?: string;
 };
 
-export const Input: React.FC<InputProps> = ({
-  inputLabel,
-  value,
-  onChange,
-  placeholder,
-}) => {
+const Input = ({ inputLabel, value, onChange, placeholder }: InputProps) => {
   return (
     <div className={inputWrapper}>
       <p className={inputTitle}>· {inputLabel} :</p>
@@ -26,3 +21,5 @@ export const Input: React.FC<InputProps> = ({
     </div>
   );
 };
+
+export default Input;

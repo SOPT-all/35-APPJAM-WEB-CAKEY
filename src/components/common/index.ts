@@ -1,6 +1,3 @@
-import { Button } from 'src/components/common/Button/Button';
-
-import { Input } from './Input/Input';
 import AuthModal from './AuthModal/AuthModal';
 import BottomSheet from './BottomSheet/BottomSheet';
 import CardList from './CardList/CardList';
@@ -9,11 +6,10 @@ import FilteringButton from './FilteringButton/FilteringButton';
 import Header from './Header/Header';
 import IconButton from './IconButton/IconButton';
 import Image from './Image/Image';
+import Input from './Input/Input';
 import Label from './Label/Label';
 import Modal from './Modal/Modal';
 import SocialLoginButton from './SocialLoginButton/SocialLoginButton';
-
-export { Button, SocialLoginButton, Input };
 import StoreCard from './StoreCard/StoreCard';
 import Tab from './Tab/Tab';
 import TextButton from './TextButton/TextButton';
@@ -35,4 +31,5 @@ export {
   BottomSheet,
   DesignCard,
   Toast,
+  Input,
 };
