@@ -6,15 +6,18 @@ import {
   StoreDefault54,
   StoreLike42,
   StoreLike54,
+  MyLocation,
 } from '@constants';
-import useMapLoader from '@pages/view/hooks/useMapLoader';
+import { useDebounce, useMapLoader } from '@pages/view/hooks';
 
 import { buttonSectionStyle, mapContainer } from './kakaoMap.css';
 import MapGpsButton from '../MapGpsButton/MapGpsButton';
 import MapSaveButton from '../MapSaveButton/MapSaveButton';
 
+import { StationType } from '@types';
+
 interface KakaoMapProps {
-  currentLocation: string;
+  currentLocation: StationType;
 }
 
 const allStationLocations = [
@@ -54,6 +57,16 @@ const markerIcon = {
 const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
   useMapLoader();
 
+  // useDebounce 훅 사용
+  const { debouncedFunction: handleDebouncedCenterChange } = useDebounce(
+    (map: kakao.maps.Map) => {
+      const lat = map.getCenter().getLat();
+      const lng = map.getCenter().getLng();
+      setCenter({ lat, lng });
+    },
+    500
+  );
+
   const defaultCenter = { lat: 37.556621, lng: 126.923877 };
   // 찜 버튼 활성화 상태
   const [isSaveActive, setIsSaveActive] = useState(false);
@@ -72,19 +85,61 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
     lng: number;
   }>(defaultCenter);
 
+  const fetchCurrentPosition = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          const newCenter = { lat: latitude, lng: longitude };
+          setCurrentPosition(newCenter);
+          setCenter(newCenter);
+          setIsGpsActive(true);
+        },
+        (error) => {
+          console.error('Error getting user location:', error);
+          setCurrentPosition(defaultCenter);
+          setCenter(defaultCenter);
+          setIsGpsActive(false);
+        }
+      );
+    }
+  };
+
+  const handleCenterChanged = (map: kakao.maps.Map) => {
+    setIsGpsActive(false);
+
+    handleDebouncedCenterChange(map);
+  };
+  const handleGpsButtonClick = () => {
+    fetchCurrentPosition();
+  };
   const handleSaveButtonClick = () => {
     setIsSaveActive((prev) => !prev);
   };
 
-  // useEffect(() => {
+  useEffect(() => {
+    if (currentLocation) {
+      setCenter({
+        lat: currentLocation.latitude,
+        lng: currentLocation.longitude,
+      });
+    }
+    // currentLocation 바뀌면 해당 지하철역으로 스토어 좌표 조회 해서 마커 띄워야함
+  }, [currentLocation]);
 
-  // }, [])
+  useEffect(() => {
+    fetchCurrentPosition();
+    // 첫 렌더링 시 전체 스토어 좌표 조회 해서 마커 띄워야함
+  }, []);
+
+  console.log('렌더링 됨');
   return (
     <div className={mapContainer}>
       <Map
-        center={defaultCenter}
+        center={center}
         level={2}
         style={{ width: '100%', height: '100%' }}
+        onCenterChanged={handleCenterChanged}
       >
         {allStationLocations.map((location) => (
           <MapMarker
@@ -97,13 +152,20 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
             onClick={() => {}}
           />
         ))}
+        <MapMarker
+          image={{
+            src: MyLocation,
+            size: { width: 32, height: 32 },
+          }}
+          position={currentPosition}
+        />
       </Map>
       <section className={buttonSectionStyle}>
         <MapSaveButton
           isActive={isSaveActive}
           onToggle={handleSaveButtonClick}
         />
-        <MapGpsButton isActive={isGpsActive} />
+        <MapGpsButton isActive={isGpsActive} onClick={handleGpsButtonClick} />
       </section>
     </div>
   );

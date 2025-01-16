@@ -9,9 +9,9 @@ export interface MapGpsButtonProps
   isActive: boolean;
 }
 
-const MapGpsButton = ({ isActive }: MapGpsButtonProps) => {
+const MapGpsButton = ({ isActive, onClick }: MapGpsButtonProps) => {
   return (
-    <button className={buttonStyle}>
+    <button className={buttonStyle} onClick={onClick}>
       {isActive ? (
         <IcGpsmarkerOn width={24} height={24} />
       ) : (

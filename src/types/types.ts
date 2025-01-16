@@ -35,3 +35,9 @@ export type SubCategoryType =
   | 'FANTASY'
   | 'ELSE';
 
+export interface StationType {
+  stationEnName: string;
+  stationKrName: string;
+  latitude: number;
+  longitude: number;
+}

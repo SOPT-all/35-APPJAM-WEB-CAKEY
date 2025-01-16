@@ -12,26 +12,15 @@ import {
 } from './SelectStationModal.css';
 import LocationSelectButton from '../LocationSelectButton/LocationSelectButton';
 
-const stations = [
-  '전체',
-  '홍대입구역',
-  '합정역',
-  '공덕역',
-  '디지털미디어시티역',
-  '성수역',
-  '가좌역',
-  '부산역',
-  '영등포시장역',
-  '영등포구청역',
-];
-
 interface SelectStationModalProps {
+  stationKrNames: string[];
   currentLocation: string;
   onCurrentLocationChange: (location: string) => void;
   onClose: () => void;
 }
 
 const SelectStationModal = ({
+  stationKrNames,
   currentLocation,
   onCurrentLocationChange,
   onClose,
@@ -59,7 +48,7 @@ const SelectStationModal = ({
           </div>
         </section>
         <section className={scrollSection}>
-          {stations.map((station, index) => (
+          {stationKrNames.map((station, index) => (
             <LocationSelectButton
               key={index}
               location={station}
