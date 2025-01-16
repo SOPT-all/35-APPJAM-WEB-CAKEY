@@ -3,7 +3,7 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import { MyList, MyPage } from '@pages/myPage/page';
+import { MyList } from '@pages/myPage/page';
 import { pageRoutes } from '@routes';
 
 import queryClient from './queryClient';
@@ -17,15 +17,6 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <ToastProvider>
         <RouterProvider router={router} />
-        <MyPage />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
         <MyList />
       </ToastProvider>
       <div style={{ fontSize: '16px' }}>

@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { Tab } from '@components';
 
-import { MyListContainer } from './MyList.css';
+import { myListContainer, myListTitle } from './MyList.css';
 
 const MyList = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -12,8 +12,8 @@ const MyList = () => {
   };
 
   return (
-    <div className={MyListContainer}>
-      <h1>찜 목록</h1>
+    <div className={myListContainer}>
+      <h1 className={myListTitle}>찜 목록</h1>
       <Tab
         tabType={'viewMyPage'}
         activeTab={activeTab}
