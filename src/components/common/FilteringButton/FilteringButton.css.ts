@@ -36,6 +36,8 @@ export const ulStyle = style([
     height: '7rem',
     borderRadius: 4,
     boxShadow: '0px 0px 4px 0px rgba(0, 0, 0, 0.18);',
+    backgroundColor: vars.colors.white,
+    zIndex: 2,
   },
 ]);
 

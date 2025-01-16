@@ -14,9 +14,24 @@ export interface StoreType {
 }
 
 export interface DesignItemType {
-    imageUrl: string;
-    storeName: string;
-    station: string;
-    likeCount: number;
-    isLiked: boolean;
+  cakeId: number;
+  storeId: number;
+  storeName: string;
+  station: string;
+  isLiked: boolean;
+  imageUrl: string;
+  likeCount: number;
 }
+
+export type CategoryType = 'BIRTH' | 'CHEER' | 'ANNIV' | 'SEASON';
+export type SubCategoryType =
+  | 'ALL'
+  | 'THEME'
+  | 'CUTE'
+  | 'MINIMAL'
+  | 'CHARAC'
+  | 'LUXURY'
+  | 'HUMOR'
+  | 'FANTASY'
+  | 'ELSE';
+
