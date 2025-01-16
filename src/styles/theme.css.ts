@@ -91,7 +91,7 @@ export const vars = createGlobalTheme(':root', {
     },
     head09_r_18: {
       fontWeight: '400',
-      fontSize: '2rem',
+      fontSize: '1.8rem',
       lineHeight: 'normal',
       letterSpacing: '-0.6px',
     },
