@@ -1,4 +1,4 @@
-import { input, inputTitle, inputWrapper } from './Input.css';
+import { inputTitle, inputContainer, inputStyle } from './Input.css';
 
 type InputProps = {
   inputLabel: string;
@@ -9,14 +9,14 @@ type InputProps = {
 
 const Input = ({ inputLabel, value, onChange, placeholder }: InputProps) => {
   return (
-    <div className={inputWrapper}>
+    <div className={inputContainer}>
       <p className={inputTitle}>· {inputLabel} :</p>
       <input
+        className={inputStyle({ state: value ? 'active' : 'default' })}
         type="text"
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className={input}
       />
     </div>
   );
