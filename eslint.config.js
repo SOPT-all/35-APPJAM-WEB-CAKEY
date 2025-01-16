@@ -79,6 +79,11 @@ export default tseslint.config(
               group: 'type',
               position: 'before',
             },
+            {
+              pattern: '{./pageRoutes, ./routePath}',
+              group: 'sibling',
+              position: 'after', 
+            },
           ],
           alphabetize: { order: 'asc', caseInsensitive: true },
           'newlines-between': 'always',
