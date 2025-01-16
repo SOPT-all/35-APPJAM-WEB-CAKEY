@@ -10,4 +10,8 @@ export { default as IcLineLikeOn20 } from './IcLineLikeOn20';
 export { default as IcMy } from './IcMy';
 export { default as IcSavedOff24 } from './IcSavedOff24';
 export { default as IcSavedOn24 } from './IcSavedOn24';
+export { default as IcStoreDefault42 } from './IcStoreDefault42';
+export { default as IcStoreDefault54 } from './IcStoreDefault54';
+export { default as IcStoreLike42 } from './IcStoreLike42';
+export { default as IcStoreLike54 } from './IcStoreLike54';
 export { default as ImgLogo } from './ImgLogo';

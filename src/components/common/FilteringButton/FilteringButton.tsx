@@ -1,4 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
+
+import { IcArrowDown20, IcArrowUp20 } from '@svgs';
+
 import {
   buttonTextStyle,
   filteringButtonStyle,
@@ -7,7 +10,6 @@ import {
   selectedLiStyle,
   ulStyle,
 } from './FilteringButton.css';
-import { IcArrowDown20, IcArrowUp20 } from '@svgs';
 
 interface FilteringButtonProps {
   onOptionSelect: (option: string) => void;

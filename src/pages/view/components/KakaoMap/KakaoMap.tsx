@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Map } from 'react-kakao-maps-sdk';
-import { mapContainer } from './kakaoMap.css';
+
 import useMapLoader from '@pages/view/hooks/useMapLoader';
+
+import { mapContainer } from './kakaoMap.css';
 
 const KakaoMap = () => {
   useMapLoader();

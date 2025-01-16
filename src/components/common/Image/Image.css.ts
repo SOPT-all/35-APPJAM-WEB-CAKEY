@@ -1,8 +1,8 @@
 import { style } from '@vanilla-extract/css';
+import { recipe } from '@vanilla-extract/recipes';
 
 import { flexGenerator } from '@styles/generator.css';
 import { vars } from '@styles/theme.css';
-import { recipe } from '@vanilla-extract/recipes';
 
 export const divStyle = style({
   position: 'relative',
