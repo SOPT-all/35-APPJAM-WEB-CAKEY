@@ -19,6 +19,10 @@ export const locationStyle = style([
   },
 ]);
 
+export const stationText = style({
+  margin: '0 1rem 0 0.2rem',
+});
+
 export const line = style({
   flex: 1,
   height: '0.1rem',
@@ -26,10 +30,11 @@ export const line = style({
 });
 
 export const storeInfoWrapper = style([
-  flexGenerator('row', 'center', 'flex-start'),
+  flexGenerator('row', 'space-between', 'flex-start'),
   {
     marginBottom: '1.6rem',
     gap: '1.4rem',
+    width: '100%',
   },
 ]);
 
@@ -47,6 +52,5 @@ export const storeAddress = style([
   {
     width: '100%',
     color: vars.colors.gray500,
-    wordBreak: 'keep-all',
   },
 ]);
