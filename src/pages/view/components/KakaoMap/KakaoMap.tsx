@@ -9,7 +9,8 @@ import {
 } from '@constants';
 import useMapLoader from '@pages/view/hooks/useMapLoader';
 
-import { mapContainer } from './kakaoMap.css';
+import { buttonSectionStyle, mapContainer } from './kakaoMap.css';
+import MapGpsButton from '../MapGpsButton/MapGpsButton';
 import MapSaveButton from '../MapSaveButton/MapSaveButton';
 
 interface KakaoMapProps {
@@ -56,6 +57,8 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
   const defaultCenter = { lat: 37.556621, lng: 126.923877 };
   // 찜 버튼 활성화 상태
   const [isSaveActive, setIsSaveActive] = useState(false);
+  // gps 버튼 활성화 상태
+  const [isGpsActive, setIsGpsActive] = useState(false);
 
   // 현재 사용자의 위치
   const [currentPosition, setCurrentPosition] = useState<{
@@ -95,7 +98,13 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
           />
         ))}
       </Map>
-      <MapSaveButton isActive={isSaveActive} onToggle={handleSaveButtonClick} />
+      <section className={buttonSectionStyle}>
+        <MapSaveButton
+          isActive={isSaveActive}
+          onToggle={handleSaveButtonClick}
+        />
+        <MapGpsButton isActive={isGpsActive} />
+      </section>
     </div>
   );
 };
