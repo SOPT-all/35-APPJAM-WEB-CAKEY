@@ -9,14 +9,10 @@ import {
   moreTextStyle,
 } from './Carousel.css';
 
-interface DesignCardDetailType {
-  cakeId: number;
-  cakeImageUrl: string;
-  isLiked: boolean;
-}
+import { DesignDetailType } from '@types';
 
 interface CarouselProps {
-  designs: DesignCardDetailType[];
+  designs: DesignDetailType[];
   storeId: number;
 }
 
@@ -31,7 +27,7 @@ const Carousel = ({ designs, storeId }: CarouselProps) => {
         return (
           <li key={design.cakeId} className={imageStyle}>
             <Image
-              src={design.cakeImageUrl}
+              src={design.imageUrl}
               hasIcon
               variant="rounded"
               isActive={design.isLiked}
