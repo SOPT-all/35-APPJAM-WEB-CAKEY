@@ -27,15 +27,11 @@ interface DesignCardListType {
 
 interface CardListProps {
   item: 'store' | 'design' | 'likedStore' | 'likedDesign';
-  data?: StoreCardListType | DesignCardListType;
+  data: StoreCardListType | DesignCardListType | null;
 }
 
 const CardList = ({ item, data }: CardListProps) => {
   const [, setOption] = useState(''); //option은 나중에 데이터 불러올 때 사용될 예정
-  const [cardListData, setCardListData] = useState<
-    StoreType[] | DesignItemType[]
-  >();
-  const [cardListCount, setCardListCount] = useState<number>();
 
   // filtering 버튼 관련한 로직 = onOptionSelect에 들어갈!
   const handleOptionSelect = (option: string) => {
@@ -44,19 +40,18 @@ const CardList = ({ item, data }: CardListProps) => {
 
   const isStoreItem = item === 'store' || item === 'likedStore';
 
-  if (data) {
-    // 데이터를 조건에 따라 바로 분기 처리
-
-    const filteredCardListData = isStoreItem
+  // 데이터가 없는 경우를 처리
+  const cardListData = data
+    ? isStoreItem
       ? (data as StoreCardListType).stores
-      : (data as DesignCardListType).cakes;
-    setCardListData(filteredCardListData);
+      : (data as DesignCardListType).cakes
+    : []; // 데이터가 없으면 빈 배열로 처리
 
-    const filteredCardListCount = isStoreItem
+  const cardListCount = data
+    ? isStoreItem
       ? (data as StoreCardListType).storeCount
-      : (data as DesignCardListType).cakeCount;
-    setCardListCount(filteredCardListCount);
-  }
+      : (data as DesignCardListType).cakeCount
+    : 0; // 데이터가 없으면 0으로 처리
 
   // 카드리스트 텍스트 상황에 따라 다르게
   const cardListCountText = {
@@ -75,7 +70,7 @@ const CardList = ({ item, data }: CardListProps) => {
 
   return (
     <div className={cardListContainer}>
-      {cardListData ? (
+      {data ? (
         <>
           <div className={cardListTextWrapper}>
             <div>

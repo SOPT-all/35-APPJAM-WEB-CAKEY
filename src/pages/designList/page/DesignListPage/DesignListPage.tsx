@@ -17,6 +17,8 @@ import {
 
 import { CategoryType, SubCategoryType } from '@types';
 
+const designListPageNullData = null;
+
 const designListPageData = {
   cakeCount: 100,
   cakes: [
@@ -123,7 +125,7 @@ const DesignListPage = () => {
       </div>
 
       <div className={cardListWrapper}>
-        <CardList item="design" />
+        <CardList item="design" data={designListPageNullData} />
       </div>
       {/* <button onClick={openModal}>모달 등장!</button> */}
       {/* {isModalOpen && (

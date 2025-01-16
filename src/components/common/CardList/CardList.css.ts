@@ -49,5 +49,9 @@ export const designCardListWrapper = style({
 export const cardListNullTextStyle = style([
   vars.fonts.body04_m_16,
   flexGenerator(),
-  { color: vars.colors.gray400, height: 'calc(100dvh - 23.6rem - 1.2rem)' },
+  {
+    color: vars.colors.gray400,
+    width: '100%',
+    height: 'calc(100dvh - 23.6rem - 1.2rem)',
+  },
 ]);
