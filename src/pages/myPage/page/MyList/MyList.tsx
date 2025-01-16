@@ -2,7 +2,12 @@ import { useState } from 'react';
 
 import { CardList, Tab } from '@components';
 
-import { cardListStyle, myListContainer, myListTitle, tabSticky } from './MyList.css';
+import {
+  cardListStyle,
+  myListContainer,
+  myListTitle,
+  tabSticky,
+} from './MyList.css';
 
 const MyList = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -45,6 +50,20 @@ const MyList = () => {
       {
         storeId: 3,
         storeName: '버터뭉3',
+        station: '홍대입구역',
+        address: '서울 마포구 구호로 385-2',
+        storeLikesCount: 26,
+        isLiked: true,
+        images: [
+          { imageId: 1, imageUrl: '../public/example-img.png' },
+          { imageId: 2, imageUrl: '../public/example-img.png' },
+          { imageId: 3, imageUrl: '../public/example-img.png' },
+          { imageId: 4, imageUrl: '../public/example-img.png' },
+        ],
+      },
+      {
+        storeId: 4,
+        storeName: '버터뭉4',
         station: '홍대입구역',
         address: '서울 마포구 구호로 385-2',
         storeLikesCount: 26,
