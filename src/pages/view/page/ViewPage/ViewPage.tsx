@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { Modal } from '@components';
 import { useModal } from '@hooks';
-import { SelectStationModal } from '@pages/view/components';
+import { LocationButton, SelectStationModal } from '@pages/view/components';
 import { KakaoMap } from '@pages/view/components';
 
 const ViewPage = () => {
@@ -12,11 +12,10 @@ const ViewPage = () => {
   const handleCurrentLocationChange = (location: string) => {
     setCurrentLocation(location);
   };
-
   return (
     <div>
-      <KakaoMap />
-      <button onClick={openModal}>모달열기</button>
+      <LocationButton currentLocation={currentLocation} onClick={openModal} />
+      <KakaoMap currentLocation={currentLocation} />
       {isModalOpen && (
         <Modal variant="center">
           <SelectStationModal

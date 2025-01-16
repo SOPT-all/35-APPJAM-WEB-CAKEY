@@ -3,5 +3,12 @@ import { style } from '@vanilla-extract/css';
 export const mapContainer = style({
   position: 'relative',
   width: '100%',
-  height: 'calc(100vh - 11.2rem)',
+  height: '100dvh',
+});
+
+export const customIconButtonStyle = style({
+  position: 'absolute',
+  top: '2rem',
+  right: '2rem',
+  zIndex: '1',
 });
