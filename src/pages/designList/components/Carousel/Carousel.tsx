@@ -9,14 +9,10 @@ import {
   moreTextStyle,
 } from './Carousel.css';
 
-export interface DesignCardDetailType {
-  cakeId: number;
-  imageUrl: string;
-  isLiked: boolean;
-}
+import { DesignDetailType } from '@types';
 
 interface CarouselProps {
-  designs: DesignCardDetailType[];
+  designs: DesignDetailType[];
   storeId: number;
 }
 

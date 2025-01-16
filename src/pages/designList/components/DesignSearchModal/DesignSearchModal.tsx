@@ -1,6 +1,5 @@
 import { Label, TextButton } from '@components';
 
-import Carousel, { DesignCardDetailType } from '../Carousel';
 import {
   buttonWrapper,
   carouselWrapper,
@@ -9,20 +8,24 @@ import {
   storeNameStyle,
   textWrapper,
 } from './DesignSearchModal.css';
+import Carousel from '../Carousel/Carousel';
 
-interface DesignDetailType {
+import { DesignDetailType } from '@types';
+
+interface StoreDesignDetailType {
   storeId: number;
   storeName: string;
   station: string;
-  cakes: DesignCardDetailType[];
+  cakes: DesignDetailType[];
 }
 
 interface DesignSearchModalProps {
-  data: DesignDetailType;
+  designDetailItem: StoreDesignDetailType;
+  storeId: number;
 }
 
-const DesignSearchModal = ({ data }: DesignSearchModalProps) => {
-  const { storeId, storeName, station, cakes } = data;
+const DesignSearchModal = ({ designDetailItem, storeId }: DesignSearchModalProps) => {
+  const { storeName, station, cakes } = designDetailItem;
   return (
     <div className={searchModalContainer}>
       <section className={carouselWrapper}>

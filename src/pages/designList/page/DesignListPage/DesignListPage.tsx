@@ -70,7 +70,7 @@ const DesignListPage = () => {
       <button onClick={openModal}>모달 등장!</button>
       {isModalOpen && (
         <Modal variant="bottom" backdropClick={closeModal} hasBackdrop>
-          <DesignSearchModal data={data} />
+          <DesignSearchModal designDetailItem={data} storeId={data.storeId} />
         </Modal>
       )}
     </>
