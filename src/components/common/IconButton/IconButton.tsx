@@ -18,7 +18,6 @@ export interface IconButtonProps
   count?: number;
   itemId?: number; // storeId | cakeId를 받아서 api 요청에 사용합니다
   onMap?: boolean;
-  customStyle?: string;
 }
 
 const buttonIcon = {
@@ -42,7 +41,6 @@ const IconButton = ({
   count,
   itemId,
   onMap = false,
-  customStyle,
 }: IconButtonProps) => {
   const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
@@ -50,7 +48,7 @@ const IconButton = ({
   };
   return (
     <button
-      className={`${buttonStyle({ buttonType, onMap })} ${customStyle || ''}`}
+      className={buttonStyle({ buttonType, onMap })}
       onClick={handleButtonClick}
     >
       {isActive

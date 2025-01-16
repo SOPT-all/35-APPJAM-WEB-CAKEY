@@ -6,7 +6,7 @@ export const mapContainer = style({
   height: '100dvh',
 });
 
-export const customIconButtonStyle = style({
+export const iconButtonWrapperStyle = style({
   position: 'absolute',
   top: '2rem',
   right: '2rem',

@@ -1,9 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 
-import useMapLoader from '@pages/view/hooks/useMapLoader';
-
-import { customIconButtonStyle, mapContainer } from './kakaoMap.css';
 import { IconButton } from '@components';
 import {
   StoreDefault42,
@@ -11,6 +8,9 @@ import {
   StoreLike42,
   StoreLike54,
 } from '@constants';
+import useMapLoader from '@pages/view/hooks/useMapLoader';
+
+import { iconButtonWrapperStyle, mapContainer } from './kakaoMap.css';
 
 interface KakaoMapProps {
   currentLocation: string;
@@ -67,6 +67,10 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
     lng: number;
   }>(defaultCenter);
 
+  const handleSaveButtonClick = () => {
+    console.log('찜 버튼 클릭');
+  };
+
   // useEffect(() => {
 
   // }, [])
@@ -89,7 +93,9 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
           />
         ))}
       </Map>
-      <IconButton buttonType="save" onMap customStyle={customIconButtonStyle} />
+      <div className={iconButtonWrapperStyle} onClick={handleSaveButtonClick}>
+        <IconButton buttonType="save" onMap />
+      </div>
     </div>
   );
 };
