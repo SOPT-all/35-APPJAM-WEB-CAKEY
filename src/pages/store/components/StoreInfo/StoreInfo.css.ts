@@ -45,7 +45,6 @@ export const dayOff = style([
 
 export const toggleButton = recipe({
   base: {
-    transition: 'transform 0.3s ease',
     cursor: 'pointer',
   },
   variants: {
