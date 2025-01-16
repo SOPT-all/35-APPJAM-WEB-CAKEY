@@ -29,7 +29,7 @@ export const infoWrapper = style([
 export const textWrapper = style([
   flexGenerator('column', 'center', 'flex-start'),
   {
-    width: 'fit-content',
+    maxWidth: 'calc(100% - 12.1rem - 1.2rem)',
     gap: '0.3rem',
   },
 ]);
@@ -38,9 +38,13 @@ export const storeNameStyle = style([
   vars.fonts.head05_sb_20,
   {
     color: vars.colors.black,
+    width: '100%',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+    overflow: 'hidden',
   },
 ]);
 
 export const buttonWrapper = style({
-  width: '12.1rem',
+  minWidth: '12.1rem',
 });
