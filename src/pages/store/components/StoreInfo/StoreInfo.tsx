@@ -4,7 +4,7 @@ import { formatHours } from '@utils';
 import { IcArrowDown20, IcLineLocation, IcPhone, IcTime } from '@svgs';
 
 import {
-  sectionStyle,
+  listStyle,
   listContainer,
   listBox,
   listTitle,
@@ -44,7 +44,7 @@ const StoreInfo = () => {
 
   const formattedHours = formatHours(data);
 
-  const infoSections: InfoItem[] = [
+  const infoItems: InfoItem[] = [
     {
       id: 'hours',
       icon: <IcTime width={24} height={24} />,
@@ -71,28 +71,28 @@ const StoreInfo = () => {
       id: 'location',
       icon: <IcLineLocation width={24} height={24} />,
       title: '위치',
-      content: <span className={listContent}>{data.address}</span>,
+      content: <p className={listContent}>{data.address}</p>,
     },
     {
       id: 'contact',
       icon: <IcPhone width={24} height={24} />,
       title: '연락처',
-      content: <span className={listContent}>{data.phone}</span>,
+      content: <p className={listContent}>{data.phone}</p>,
     },
   ];
 
   return (
-    <section className={sectionStyle}>
-      {infoSections.map(({ id, icon, title, content }) => (
-        <div key={id} className={listContainer}>
+    <ul className={listStyle}>
+      {infoItems.map(({ id, icon, title, content }) => (
+        <li key={id} className={listContainer}>
           {icon}
           <div className={listBox}>
             <h2 className={listTitle}>{title}</h2>
             {content}
           </div>
-        </div>
+        </li>
       ))}
-    </section>
+    </ul>
   );
 };
 

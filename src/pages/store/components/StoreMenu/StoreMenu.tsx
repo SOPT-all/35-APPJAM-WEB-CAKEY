@@ -2,8 +2,8 @@ import { useState } from 'react';
 
 import SizeCardList from '../SizeCardList/SizeCardList';
 import {
-  sectionStyle,
-  sectionBox,
+  listStyle,
+  listBox,
   boxTitle,
   boxTitleSubText,
   tasteDescription,
@@ -19,8 +19,8 @@ const StoreMenu = () => {
   });
 
   return (
-    <section className={sectionStyle}>
-      <div className={sectionBox}>
+    <ul className={listStyle}>
+      <li className={listBox}>
         <h2 className={boxTitle}>
           사이즈
           <span className={boxTitleSubText}>
@@ -28,13 +28,13 @@ const StoreMenu = () => {
           </span>
         </h2>
         <SizeCardList sizes={menuData.sizes} />
-      </div>
-      
-      <div className={sectionBox}>
+      </li>
+
+      <li className={listBox}>
         <h2 className={boxTitle}>맛</h2>
-        <div className={tasteDescription}>{menuData.taste}</div>
-      </div>
-    </section>
+        <p className={tasteDescription}>{menuData.taste}</p>
+      </li>
+    </ul>
   );
 };
 

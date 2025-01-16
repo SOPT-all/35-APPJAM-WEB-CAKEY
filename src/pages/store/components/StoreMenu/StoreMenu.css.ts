@@ -3,14 +3,14 @@ import { style } from '@vanilla-extract/css';
 import { vars } from '@styles/theme.css';
 import { flexGenerator } from '@styles/generator.css';
 
-export const sectionStyle = style({
+export const listStyle = style({
   display: 'flex',
   flexDirection: 'column',
   gap: '2.6rem',
   padding: '2.6rem 0',
 });
 
-export const sectionBox = style({
+export const listBox = style({
   display: 'flex',
   flexDirection: 'column',
   gap: '1.2rem',

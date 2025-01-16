@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css';
 
-export const sectionStyle = style({
+export const gridStyle = style({
   display: 'grid',
   gridTemplateColumns: '1fr 1fr',
 });
