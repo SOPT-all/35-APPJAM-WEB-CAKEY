@@ -20,6 +20,39 @@ import {
   SubCategoryType,
 } from '@types';
 
+const designCardListData = {
+  cakeCount: 100,
+  cakes: [
+    {
+      cakeId: 1,
+      storeId: 1,
+      storeName: '버터뭉',
+      station: '홍대입구역',
+      isLiked: false,
+      likeCount: 200,
+      imageUrl: '../public/example-img.png',
+    },
+    {
+      cakeId: 2,
+      storeId: 2,
+      storeName: '버터뭉2',
+      station: '서강대입구역',
+      isLiked: true,
+      likeCount: 30,
+      imageUrl: '../public/example-img.png',
+    },
+    {
+      cakeId: 3,
+      storeId: 1,
+      storeName: '버터뭉',
+      station: '홍대입구역',
+      isLiked: false,
+      likeCount: 200,
+      imageUrl: '../public/example-img.png',
+    },
+  ],
+};
+
 interface StoreCardListType {
   storeCount: number;
   stores: StoreType[];
@@ -37,17 +70,13 @@ interface SelectedCategoryDataType {
 
 interface CardListProps {
   item: 'store' | 'design' | 'likedStore' | 'likedDesign';
-  itemData: StoreCardListType | DesignCardListType | null;
   hasModal?: boolean;
   selectedData?: string | SelectedCategoryDataType;
 }
 
-const CardList = ({
-  item,
-  itemData,
-  hasModal = false,
-  selectedData,
-}: CardListProps) => {
+const CardList = ({ item, hasModal = false, selectedData }: CardListProps) => {
+  const itemData: DesignCardListType | StoreCardListType | null =
+    designCardListData; // itemData는 api로 받아올 데이터, 현재는 designCardList를 받아옴
   const [, setOption] = useState(''); //option은 나중에 데이터 불러올 때 사용될 예정
 
   // filtering 버튼 관련한 로직 = onOptionSelect에 들어갈!
@@ -57,18 +86,23 @@ const CardList = ({
 
   const isStoreItem = item === 'store' || item === 'likedStore';
 
-  // 데이터가 없는 경우를 처리
+  const isStoreCardListType = (
+    data: DesignCardListType | StoreCardListType | null
+  ): data is StoreCardListType => {
+    return data !== null && 'stores' in data;
+  };
+
   const cardListData = itemData
-    ? isStoreItem
-      ? (itemData as StoreCardListType).stores
-      : (itemData as DesignCardListType).cakes
-    : []; // 데이터가 없으면 빈 배열로 처리
+    ? isStoreCardListType(itemData)
+      ? itemData.stores // Store 데이터
+      : itemData.cakes // Design 데이터
+    : []; // itemData가 null일 경우 빈 배열
 
   const cardListCount = itemData
-    ? isStoreItem
-      ? (itemData as StoreCardListType).storeCount
-      : (itemData as DesignCardListType).cakeCount
-    : 0; // 데이터가 없으면 0으로 처리
+    ? isStoreCardListType(itemData)
+      ? itemData.storeCount // Store 데이터 개수
+      : itemData.cakeCount // Design 데이터 개수
+    : 0;
 
   // 카드리스트 텍스트 상황에 따라 다르게
   const cardListCountText = {

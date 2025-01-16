@@ -17,39 +17,6 @@ import { CategoryType, SubCategoryType } from '@types';
 
 export const designListPageNullData = null;
 
-const designListPageData = {
-  cakeCount: 100,
-  cakes: [
-    {
-      cakeId: 1,
-      storeId: 1,
-      storeName: '버터뭉',
-      station: '홍대입구역',
-      isLiked: false,
-      likeCount: 200,
-      imageUrl: '../public/example-img.png',
-    },
-    {
-      cakeId: 2,
-      storeId: 2,
-      storeName: '버터뭉2',
-      station: '서강대입구역',
-      isLiked: true,
-      likeCount: 30,
-      imageUrl: '../public/example-img.png',
-    },
-    {
-      cakeId: 3,
-      storeId: 1,
-      storeName: '버터뭉',
-      station: '홍대입구역',
-      isLiked: false,
-      likeCount: 200,
-      imageUrl: '../public/example-img.png',
-    },
-  ],
-};
-
 const DesignListPage = () => {
   const [selectedCategory, setSelectedCategory] =
     useState<CategoryType>('BIRTH');
@@ -89,7 +56,7 @@ const DesignListPage = () => {
       </div>
 
       <div className={cardListWrapper}>
-        <CardList item="design" itemData={designListPageData} hasModal selectedData={selectedCategories} />
+        <CardList item="design" hasModal selectedData={selectedCategories} />
       </div>
     </div>
   );
