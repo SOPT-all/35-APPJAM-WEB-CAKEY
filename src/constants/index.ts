@@ -1,2 +1,3 @@
-export * from './categoryData';
+export * from './category';
 export * from './size';
+
