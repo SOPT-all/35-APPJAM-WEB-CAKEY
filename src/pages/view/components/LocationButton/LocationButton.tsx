@@ -1,4 +1,7 @@
+import { ButtonHTMLAttributes } from 'react';
+
 import { IcArrowRight24, IcLocation } from '@svgs';
+
 import {
   buttonStyle,
   currentLocationTextStyle,
@@ -6,7 +9,6 @@ import {
   placeholderStyle,
   sectionStyle,
 } from './LocationButton.css';
-import { ButtonHTMLAttributes } from 'react';
 
 export interface LocationButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {

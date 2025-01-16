@@ -65,7 +65,7 @@ export default tseslint.config(
               position: 'before',
             },
             {
-              pattern: '{@svgs, @image/*, @styles/*}',
+              pattern: '{@svgs, @lotties, @image/*, @styles/*}',
               group: 'internal',
               position: 'after',
             },

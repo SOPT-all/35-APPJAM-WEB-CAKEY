@@ -1,6 +1,7 @@
 import { style } from '@vanilla-extract/css';
-import { vars } from '@styles/theme.css';
+
 import { fixedGenerator } from '@styles/generator.css';
+import { vars } from '@styles/theme.css';
 
 export const overlayStyle = style([
   fixedGenerator({ top: 0 }, 1),

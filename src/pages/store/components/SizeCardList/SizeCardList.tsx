@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
-import SizeCard from '../SizeCard/SizeCard';
+
+import { IcCircleArrowRight42 } from '@svgs';
+
 import {
   containerStyle,
   listContainer,
   scrollButton,
 } from './SizeCardList.css';
-import { IcCircleArrowRight42 } from '@svgs';
+import SizeCard from '../SizeCard/SizeCard';
 
 interface Size {
   sizeName: string;

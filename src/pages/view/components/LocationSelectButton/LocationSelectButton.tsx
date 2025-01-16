@@ -1,5 +1,7 @@
-import { IcCheck } from '@svgs';
 import { ButtonHTMLAttributes } from 'react';
+
+import { IcCheck } from '@svgs';
+
 import { buttonStyle, buttonTextStyle } from './LocationSelectButton.css';
 
 export interface LocationSelectButtonProps
