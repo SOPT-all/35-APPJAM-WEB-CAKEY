@@ -7,7 +7,7 @@ export const sectionStyle = style({
   display: 'flex',
   flexDirection: 'column',
   gap: '2.6rem',
-  padding: '2.6rem 0 8.9rem',
+  padding: '2.6rem 0',
 });
 
 export const sectionBox = style({

@@ -8,7 +8,7 @@ export const sectionStyle = style({
   display: 'flex',
   flexDirection: 'column',
   gap: '3.6rem',
-  padding: '2.6rem 2rem 11.5rem',
+  padding: '2.6rem 2rem',
 });
 
 export const listContainer = style([

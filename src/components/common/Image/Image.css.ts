@@ -8,6 +8,7 @@ export const divStyle = style({
   position: 'relative',
   width: '100%',
   aspectRatio: '1 / 1',
+  overflow: 'hidden',
 });
 
 export const numberLabelStyle = style([

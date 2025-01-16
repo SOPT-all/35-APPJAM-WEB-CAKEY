@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { pageStyle } from './StorePage.css';
 
 import { Tab } from '@components';
 import Banner from '@pages/store/components/Banner/Banner';
@@ -17,7 +18,7 @@ const StorePage = () => {
   const tabComponents = [<StoreDesign />, <StoreMenu />, <StoreInfo />];
 
   return (
-    <div>
+    <div className={pageStyle}>
       <Banner />
       <Tab
         tabType={'store'}
