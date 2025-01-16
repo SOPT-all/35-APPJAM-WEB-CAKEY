@@ -65,7 +65,7 @@ export default tseslint.config(
               position: 'before',
             },
             {
-              pattern: '{@svgs, @image/*, @styles/*}',
+              pattern: '{@svgs, @lotties, @image/*, @styles/*}',
               group: 'internal',
               position: 'after',
             },
@@ -78,6 +78,11 @@ export default tseslint.config(
               pattern: '@types', // type 관련은 type 그룹 위로
               group: 'type',
               position: 'before',
+            },
+            {
+              pattern: '{./pageRoutes, ./routePath}',
+              group: 'sibling',
+              position: 'after', 
             },
           ],
           alphabetize: { order: 'asc', caseInsensitive: true },

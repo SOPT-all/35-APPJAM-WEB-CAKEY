@@ -21,3 +21,28 @@ export const flexGenerator = (
     justifyContent,
     alignItems,
   });
+
+export const fixedGenerator = (
+  offsets: {
+    top?: number | string;
+    bottom?: number | string;
+    left?: number | string;
+    right?: number | string;
+    center?: boolean;
+  } = {},
+  zIndex: number = 1
+) => {
+  const { center, ...otherOffsets } = offsets;
+  return style({
+    position: 'fixed',
+    zIndex,
+    width: '100%',
+    maxWidth: 'var(--max-width)',
+    minWidth: 'var(--min-width)',
+    ...otherOffsets,
+    ...(center && {
+      left: '50%',
+      transform: 'translateX(-50%)',
+    }),
+  });
+};

@@ -1,7 +1,31 @@
-const ViewPage = () => {
-  return (
-    <div>ViewPage</div>
-  )
-}
+import { useState } from 'react';
 
-export default ViewPage
+import { Modal } from '@components';
+import { useModal } from '@hooks';
+import { SelectStationModal } from '@pages/view/components';
+
+const ViewPage = () => {
+  const { isModalOpen, openModal, closeModal } = useModal();
+  const [currentLocation, setCurrentLocation] = useState('전체');
+
+  const handleCurrentLocationChange = (location: string) => {
+    setCurrentLocation(location);
+  };
+
+  return (
+    <div>
+      <button onClick={openModal}>모달열기</button>
+      {isModalOpen && (
+        <Modal variant="center">
+          <SelectStationModal
+            currentLocation={currentLocation}
+            onCurrentLocationChange={handleCurrentLocationChange}
+            onClose={closeModal}
+          />
+        </Modal>
+      )}
+    </div>
+  );
+};
+
+export default ViewPage;
