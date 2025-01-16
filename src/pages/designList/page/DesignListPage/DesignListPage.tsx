@@ -1,15 +1,54 @@
 import { useState } from 'react';
 
-import { DesignCard, Modal } from '@components';
+import { CardList, Modal } from '@components';
 import { CATEGORY, SUB_CATEGORY } from '@constants';
 import CategoryBar from '@pages/designList/components/CategoryBar/CategoryBar';
 import DesignSearchModal from '@pages/designList/components/DesignSearchModal/DesignSearchModal';
 import SubCategoryBar from '@pages/designList/components/SubCategoryBar/SubCategoryBar';
 import useModal from 'src/hooks/useModal';
 
-import { DesignListPageLayout } from './DesignListPage.css';
+import {
+  cardListWrapper,
+  categoryContainer,
+  categoryWrapper,
+  designListPageLayout,
+  subCategoryWrapper,
+} from './DesignListPage.css';
 
 import { CategoryType, SubCategoryType } from '@types';
+
+const designListPageData = {
+  cakeCount: 100,
+  cakes: [
+    {
+      cakeId: 1,
+      storeId: 1,
+      storeName: '버터뭉',
+      station: '홍대입구역',
+      isLiked: false,
+      likeCount: 200,
+      imageUrl: '../public/example-img.png',
+    },
+    {
+      cakeId: 2,
+      storeId: 2,
+      storeName: '버터뭉2',
+      station: '서강대입구역',
+      isLiked: true,
+      likeCount: 30,
+      imageUrl: '../public/example-img.png',
+    },
+    {
+      cakeId: 3,
+      storeId: 1,
+      storeName: '버터뭉',
+      station: '홍대입구역',
+      isLiked: false,
+      likeCount: 200,
+      imageUrl: '../public/example-img.png',
+    },
+  ],
+};
 
 const designItemData = {
   cakeId: 1,
@@ -65,29 +104,34 @@ const DesignListPage = () => {
   };
 
   return (
-    <>
-      <div>
-        <CategoryBar
-          categories={CATEGORY}
-          selectedCategory={selectedCategory}
-          onCategoryChange={handleCategoryChange}
-        />
-        <SubCategoryBar
-          categories={SUB_CATEGORY}
-          selectedSubCategory={selectedSubCategory}
-          onSubCategoryChange={handleSubCategoryChange}
-        />
+    <div className={designListPageLayout}>
+      <div className={categoryContainer}>
+        <div className={categoryWrapper}>
+          <CategoryBar
+            categories={CATEGORY}
+            selectedCategory={selectedCategory}
+            onCategoryChange={handleCategoryChange}
+          />
+        </div>
+        <div className={subCategoryWrapper}>
+          <SubCategoryBar
+            categories={SUB_CATEGORY}
+            selectedSubCategory={selectedSubCategory}
+            onSubCategoryChange={handleSubCategoryChange}
+          />
+        </div>
       </div>
 
-      <button onClick={openModal}>모달 등장!</button>
-      {isModalOpen && (
+      <div className={cardListWrapper}>
+        <CardList item="design" />
+      </div>
+      {/* <button onClick={openModal}>모달 등장!</button> */}
+      {/* {isModalOpen && (
         <Modal variant="bottom" backdropClick={closeModal} hasBackdrop>
           <DesignSearchModal designDetailItem={data} storeId={data.storeId} />
         </Modal>
-      )}
-
-      <DesignCard designItem={designItemData} />
-    </>
+      )} */}
+    </div>
   );
 };
 
