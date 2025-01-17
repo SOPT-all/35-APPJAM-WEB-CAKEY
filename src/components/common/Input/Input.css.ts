@@ -7,7 +7,7 @@ import { vars } from '@styles/theme.css';
 export const inputContainer = style([
   flexGenerator('column', 'center', 'flex-start'),
   {
-    gap: '0.38rem',
+    gap: '0.4rem',
   },
 ]);
 
@@ -18,10 +18,6 @@ export const inputTitle = style([
     color: vars.colors.gray700,
   },
 ]);
-
-export const icFromDot = style({ width: '2rem' });
-
-export const icFromDotdot = style({ width: '1rem' });
 
 export const inputStyle = recipe({
   base: {
