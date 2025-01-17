@@ -15,6 +15,39 @@ import {
 
 import { CategoryType, SubCategoryType } from '@types';
 
+const designCardListData = {
+  cakeCount: 100,
+  cakes: [
+    {
+      cakeId: 1,
+      storeId: 1,
+      storeName: '버터뭉',
+      station: '홍대입구역',
+      isLiked: false,
+      likeCount: 200,
+      imageUrl: '../public/example-img.png',
+    },
+    {
+      cakeId: 2,
+      storeId: 2,
+      storeName: '버터뭉2',
+      station: '서강대입구역',
+      isLiked: true,
+      likeCount: 30,
+      imageUrl: '../public/example-img.png',
+    },
+    {
+      cakeId: 3,
+      storeId: 1,
+      storeName: '버터뭉',
+      station: '홍대입구역',
+      isLiked: false,
+      likeCount: 200,
+      imageUrl: '../public/example-img.png',
+    },
+  ],
+};
+
 export const designListPageNullData = null;
 
 const DesignListPage = () => {
@@ -31,10 +64,10 @@ const DesignListPage = () => {
     setSelectedSubCategory(category);
   };
 
-  const selectedCategories = {
-    category: selectedCategory,
-    subCategory: selectedSubCategory,
-  };
+  // const selectedCategories = {
+  //   category: selectedCategory,
+  //   subCategory: selectedSubCategory,
+  // };
 
   return (
     <div className={designListPageLayout}>
@@ -56,7 +89,7 @@ const DesignListPage = () => {
       </div>
 
       <div className={cardListWrapper}>
-        <CardList item="design" hasModal selectedData={selectedCategories} />
+        <CardList item="design" hasModal itemData={designCardListData} />
       </div>
     </div>
   );

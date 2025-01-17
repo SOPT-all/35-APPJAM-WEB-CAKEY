@@ -13,45 +13,7 @@ import DesignCard from '../DesignCard/DesignCard';
 import FilteringButton from '../FilteringButton/FilteringButton';
 import StoreCard from '../StoreCard/StoreCard';
 
-import {
-  CategoryType,
-  DesignItemType,
-  StoreType,
-  SubCategoryType,
-} from '@types';
-
-const designCardListData = {
-  cakeCount: 100,
-  cakes: [
-    {
-      cakeId: 1,
-      storeId: 1,
-      storeName: '버터뭉',
-      station: '홍대입구역',
-      isLiked: false,
-      likeCount: 200,
-      imageUrl: '../public/example-img.png',
-    },
-    {
-      cakeId: 2,
-      storeId: 2,
-      storeName: '버터뭉2',
-      station: '서강대입구역',
-      isLiked: true,
-      likeCount: 30,
-      imageUrl: '../public/example-img.png',
-    },
-    {
-      cakeId: 3,
-      storeId: 1,
-      storeName: '버터뭉',
-      station: '홍대입구역',
-      isLiked: false,
-      likeCount: 200,
-      imageUrl: '../public/example-img.png',
-    },
-  ],
-};
+import { DesignItemType, StoreType } from '@types';
 
 interface StoreCardListType {
   storeCount: number;
@@ -63,29 +25,22 @@ interface DesignCardListType {
   cakes: DesignItemType[];
 }
 
-interface SelectedCategoryDataType {
-  category: CategoryType;
-  subCategory: SubCategoryType;
-}
-
 interface CardListProps {
   item: 'store' | 'design' | 'likedStore' | 'likedDesign';
+  itemData: StoreCardListType | DesignCardListType | null;
   hasModal?: boolean;
-  selectedData?: string | SelectedCategoryDataType;
 }
 
-const CardList = ({ item, hasModal = false, selectedData }: CardListProps) => {
-  const itemData: DesignCardListType | StoreCardListType | null =
-    designCardListData; // itemData는 api로 받아올 데이터, 현재는 designCardList를 받아옴
+const CardList = ({ item, itemData, hasModal = false }: CardListProps) => {
   const [, setOption] = useState(''); //option은 나중에 데이터 불러올 때 사용될 예정
 
   // filtering 버튼 관련한 로직 = onOptionSelect에 들어갈!
   const handleOptionSelect = (option: string) => {
     setOption(option);
   };
+  
 
-  const isStoreItem = item === 'store' || item === 'likedStore';
-
+  // 데이터를 조건에 따라 바로 분기 처리
   const isStoreCardListType = (
     data: DesignCardListType | StoreCardListType | null
   ): data is StoreCardListType => {
@@ -119,9 +74,6 @@ const CardList = ({ item, hasModal = false, selectedData }: CardListProps) => {
     likedDesign: `찜한 디자인이 아직 없어요`,
   };
 
-  // 지하철 역, 혹은 카테고리 정보 > 추후에 api 요청될 때 사용될 예정
-  console.log(selectedData);
-
   return (
     <div className={cardListContainer}>
       {itemData ? (
@@ -142,7 +94,7 @@ const CardList = ({ item, hasModal = false, selectedData }: CardListProps) => {
             <FilteringButton onOptionSelect={handleOptionSelect} />
           </div>
 
-          {isStoreItem ? (
+          {item === 'store' || item === 'likedStore' ? (
             <div className={storeCardListWrapper}>
               {(cardListData as StoreType[]).map((store) => (
                 <StoreCard storeItem={store} />
