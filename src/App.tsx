@@ -3,11 +3,11 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import { ToastProvider } from '@contexts';
-// import { pageRoutes } from '@routes';
+import { pageRoutes } from '@routes';
+
+import queryClient from './queryClient';
 
 import '@styles/global.css';
-import queryClient from './queryClient';
-import pageRoutes from './routes/pageRoutes';
 
 const router = createBrowserRouter(pageRoutes);
 
