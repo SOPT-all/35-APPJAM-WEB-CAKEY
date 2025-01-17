@@ -6,28 +6,27 @@ export interface TextButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
   size: 'small' | 'medium' | 'large';
   color?: 'red' | 'gray' | 'stroke';
-  // isDisabled?: boolean;
+  disabled?: boolean;
 }
 
 const TextButton = ({
   size,
   color = 'red',
-  // isDisabled = false,
+  disabled = false,
   onClick,
   children,
 }: TextButtonProps) => {
   return (
-      <button
-        className={buttonStyle({
-          size,
-          color,
-          // isDisabled,
-        })}
-        onClick={onClick}
-        // disabled={isDisabled}
-      >
-        {children}
-      </button>
+    <button
+      className={buttonStyle({
+        size,
+        color,
+        disabled,
+      })}
+      onClick={onClick}
+    >
+      {children}
+    </button>
   );
 };
 
