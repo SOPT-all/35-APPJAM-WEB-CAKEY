@@ -6,9 +6,9 @@ import { vars } from '@styles/theme.css';
 export const modalContainer = style([
   flexGenerator('column', 'flex-start', 'center'),
   {
-    margin: 'auto 4.6rem',
-    height: '32.6rem',
-    backgroundColor: vars.colors.white,
+    width: 'calc(100dvw - 9.2rem)',
+    minWidth: 'calc(var(--min-width) - 9.2rem)',
+    maxWidth: 'calc(var(--max-width) - 9.2rem)',
   },
 ]);
 
