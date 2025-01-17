@@ -1,7 +1,15 @@
-import { inputTitle, inputContainer, inputStyle } from './Input.css';
+import { IcFormDot, IcFormDotdot } from '@svgs';
+
+import {
+  inputTitle,
+  inputContainer,
+  inputStyle,
+  icFromDot,
+  icFromDotdot,
+} from './Input.css';
 
 type InputProps = {
-  inputLabel: string;
+  inputLabel?: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
@@ -10,10 +18,14 @@ type InputProps = {
 const Input = ({ inputLabel, value, onChange, placeholder }: InputProps) => {
   return (
     <div className={inputContainer}>
-      <p className={inputTitle}>· {inputLabel} :</p>
+      <label htmlFor="value" className={inputTitle}>
+        <IcFormDot className={icFromDot} />
+        {inputLabel} <IcFormDotdot className={icFromDotdot} />
+      </label>
       <input
         className={inputStyle({ state: value ? 'active' : 'default' })}
         type="text"
+        id="value"
         value={value}
         onChange={onChange}
         placeholder={placeholder}

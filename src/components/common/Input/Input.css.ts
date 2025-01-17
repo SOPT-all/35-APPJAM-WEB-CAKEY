@@ -12,17 +12,22 @@ export const inputContainer = style([
 ]);
 
 export const inputTitle = style([
+  flexGenerator(),
   vars.fonts.body05_m_14,
   {
     color: vars.colors.gray700,
   },
 ]);
 
+export const icFromDot = style({ width: '2rem' });
+
+export const icFromDotdot = style({ width: '1rem' });
+
 export const inputStyle = recipe({
   base: {
     width: '100%',
     backgroundColor: vars.colors.gray100,
-    borderRadius: '0.8rem',
+    borderRadius: '8px',
     padding: '1.4rem 2rem',
     transition: 'border-color 0.3s ease',
   },
