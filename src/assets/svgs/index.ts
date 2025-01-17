@@ -8,6 +8,7 @@ export { default as IcFillLikeOn36 } from './IcFillLikeOn36';
 export { default as IcGpsmarkerOff } from './IcGpsmarkerOff';
 export { default as IcGpsmarkerOn } from './IcGpsmarkerOn';
 export { default as IcHomeAniv } from './IcHomeAniv';
+export { default as IcHomeArrow } from './IcHomeArrow';
 export { default as IcHomeBday } from './IcHomeBday';
 export { default as IcHomeCheer } from './IcHomeCheer';
 export { default as IcHomeSeason } from './IcHomeSeason';

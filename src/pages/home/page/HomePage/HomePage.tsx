@@ -1,6 +1,11 @@
+import { useState } from 'react';
+
 import { DesignCard } from '@components';
 import { CATEGORY } from '@constants';
 import CategoryCard from '@pages/home/components/CategoryCard/CategoryCard';
+import { MainKeyVisual } from 'src/assets/images';
+
+import { IcHomeArrow } from '@svgs';
 
 import {
   categoryWrapper,
@@ -13,6 +18,11 @@ import {
   likedCakeWrapper,
   likedCakeStyle,
   cakeTextStyle,
+  mainContentContainer,
+  mainTextWrapper,
+  mainTextStyle,
+  mainTextMiniStyle,
+  mainContentWrapper,
 } from './HomePage.css';
 
 const cakes = [
@@ -45,10 +55,33 @@ const cakes = [
   },
 ];
 
+const user = { userName: '박채연' };
+
 const HomePage = () => {
+  const [isLogin] = useState(true);
+
   return (
     <div className={homePageLayout}>
-      <section className={mainSectionContainer}>메인 이미지</section>
+      <section className={mainSectionContainer}>
+        <img src={MainKeyVisual} />
+        <div className={mainContentContainer}>
+          {isLogin ? (
+            <h1 className={mainTextStyle}>{user.userName} 님,</h1>
+          ) : (
+            <h1 className={mainTextStyle}>안녕하세요!</h1>
+          )}
+
+          <div className={mainContentWrapper}>
+            <div className={mainTextWrapper}>
+              <h1 className={mainTextStyle}>주문제작 케이크 찾으시나요?</h1>
+              <p className={mainTextMiniStyle}>
+                약속 장소와 가까운 스토어 둘러보기
+              </p>
+            </div>
+            <IcHomeArrow width={36} height={36} />
+          </div>
+        </div>
+      </section>
 
       <section className={subSectionContainer}>
         <section className={subSectionWrapper}>
