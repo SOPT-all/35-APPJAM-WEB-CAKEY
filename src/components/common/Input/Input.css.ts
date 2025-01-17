@@ -22,17 +22,22 @@ export const inputTitle = style([
 export const inputStyle = recipe({
   base: {
     width: '100%',
-    backgroundColor: vars.colors.gray100,
+    backgroundColor: vars.colors.white,
+    border: `1px solid ${vars.colors.gray300}`,
     borderRadius: '8px',
     padding: '1.4rem 2rem',
     transition: 'border-color 0.3s ease',
+    selectors: {
+      '&:focus': {
+        border: `1px solid ${vars.colors.gray500}`,
+      },
+    },
   },
   variants: {
     state: {
       default: { color: vars.colors.gray400 },
       active: {
         color: vars.colors.gray900,
-        border: `1px solid ${vars.colors.red1}`,
       },
     },
   },
