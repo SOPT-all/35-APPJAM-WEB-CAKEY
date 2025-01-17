@@ -1,24 +1,35 @@
+import { CATEGORY_COMPONENT } from '@constants';
+
 import {
   buttonWrapper,
+  categoryIconWrapper,
   categoryTextStyle,
   hashtagTextStyle,
   hashtagTextWrapper,
 } from './CategoryCard.css';
 
+import { CategoryType } from '@types';
+
 interface CategoryCardProps {
-  category: string;
-  hashtag: string[];
+  category: CategoryType;
 }
 
-const CategoryCard = ({ category, hashtag }: CategoryCardProps) => {
+const CategoryCard = ({ category }: CategoryCardProps) => {
+  const categoryText = CATEGORY_COMPONENT[category].text;
+  const hashtagText = CATEGORY_COMPONENT[category].hashtag;
+  const categoryIcon = CATEGORY_COMPONENT[category].icon;
+
+  const handleClickButton = () => {}; // 나중에 navigate 넣을거임
+
   return (
-    <button className={buttonWrapper}>
-      <h1 className={categoryTextStyle}>{category}</h1>
+    <button className={buttonWrapper} onClick={handleClickButton}>
       <div className={hashtagTextWrapper}>
-        {hashtag.map((tag) => (
+        {hashtagText.map((tag) => (
           <h2 className={hashtagTextStyle}>{tag}</h2>
         ))}
       </div>
+      <h1 className={categoryTextStyle}>{categoryText}</h1>
+      <div className={categoryIconWrapper}>{categoryIcon}</div>
     </button>
   );
 };

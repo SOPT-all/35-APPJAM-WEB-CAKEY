@@ -1,5 +1,5 @@
 import { DesignCard } from '@components';
-import { CATEGORY, CATEGORY_COMPONENT } from '@constants';
+import { CATEGORY } from '@constants';
 import CategoryCard from '@pages/home/components/CategoryCard/CategoryCard';
 
 import {
@@ -55,10 +55,9 @@ const HomePage = () => {
           <h1 className={subTextStyle}>어떤 날을 위한 케이크인가요?</h1>
           <div className={categoryWrapper}>
             {CATEGORY.map((category) => (
-              <CategoryCard
-                category={CATEGORY_COMPONENT[category].text}
-                hashtag={CATEGORY_COMPONENT[category].hashtag}
-              />
+              <>
+                <CategoryCard category={category} />
+              </>
             ))}
           </div>
         </section>
