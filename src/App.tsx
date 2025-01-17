@@ -3,6 +3,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import { ToastProvider } from '@contexts';
+import { StoreRankingButton } from '@pages/home/components';
 import { pageRoutes } from '@routes';
 
 import queryClient from './queryClient';
@@ -16,6 +17,7 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <ToastProvider>
         <RouterProvider router={router} />
+        <StoreRankingButton />
       </ToastProvider>
       <div style={{ fontSize: '16px' }}>
         <ReactQueryDevtools />
