@@ -33,12 +33,31 @@ export const modalDescription = style([
   { color: vars.colors.red1 },
 ]);
 
-export const orderForm = style([
-  flexGenerator('column'),
+export const modalForm = style({
+  padding: '0 0.4rem',
+  width: '100%',
+  fontSize: '9rem',
+});
+
+export const formContent = style([
+  flexGenerator('column', 'flex-start'),
   {
     gap: '1.8rem',
-    padding: '1.5rem 2rem',
+    padding: '1.5rem 1.6rem',
     width: '100%',
+    height: '18rem',
+    overflowY: 'scroll',
+
+    selectors: {
+      '&::-webkit-scrollbar': {
+        display: 'block',
+        width: '0.4rem',
+      },
+      '&::-webkit-scrollbar-thumb': {
+        borderRadius: '4.8rem',
+        backgroundColor: vars.colors.gray300,
+      },
+    },
   },
 ]);
 
@@ -48,5 +67,7 @@ export const modalFooter = style([
     padding: '1.2rem 2rem',
     width: '100%',
     borderTop: `1px solid ${vars.colors.gray100}`,
+    borderRadius: '0rem 0rem 1rem 1rem',
+    backgroundColor: vars.colors.white,
   },
 ]);

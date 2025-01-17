@@ -1,13 +1,16 @@
 import { TextButton } from '@components';
+
+import { IcFormX20 } from '@svgs';
+
 import {
   modalContainer,
   modalHeader,
   headerContent,
   modalDescription,
   modalFooter,
-  orderForm,
+  modalForm,
+  formContent,
 } from './OrderFormModal.css';
-import { IcFormX20 } from '@svgs';
 
 interface OrderFormModalProps {
   onClose: () => void;
@@ -30,7 +33,9 @@ const OrderFormModal = ({ onClose }: OrderFormModalProps) => {
           *주문서 양식은 가게마다 다를 수 있으니 확인해주세요
         </p>
       </section>
-      <form className={orderForm}></form>
+      <section className={modalForm}>
+        <form className={formContent}></form>
+      </section>
       <section className={modalFooter}>
         <TextButton size={'small'}>주문서 복사</TextButton>
       </section>
