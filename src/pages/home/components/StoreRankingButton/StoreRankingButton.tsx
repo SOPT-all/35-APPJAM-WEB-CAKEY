@@ -4,11 +4,11 @@ import { IcArrowRight20 } from '@svgs';
 
 import {
   isLiked,
+  labelStyle,
   rankingContainer,
   rankingLeftBox,
   rankingRightBox,
   rankingWrapper,
-  rightArrowButton,
   storeNameText,
 } from './StoreRankingButton.css';
 
@@ -30,7 +30,9 @@ const StoreRankingButton = ({ data, rank }: StoreRankingProps) => {
   return (
     <button className={rankingContainer}>
       <div className={rankingWrapper}>
-        <Label text={`${rank + 1}`} />
+        <div className={labelStyle}>
+          <Label text={`${rank + 1}`} />
+        </div>
         <div className={rankingLeftBox}>
           <h3 className={storeNameText}>{storeName}</h3>
           <p className={isLiked}>{storeLikes}</p>
@@ -38,7 +40,7 @@ const StoreRankingButton = ({ data, rank }: StoreRankingProps) => {
       </div>
       <div className={rankingRightBox}>
         <Label text={station} />
-        <IcArrowRight20 className={rightArrowButton} />
+        <IcArrowRight20 width={20} />
       </div>
     </button>
   );
