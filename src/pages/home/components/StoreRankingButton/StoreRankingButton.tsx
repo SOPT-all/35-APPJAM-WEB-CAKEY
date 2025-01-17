@@ -9,24 +9,38 @@ import {
   rankingRightBox,
   rankingWrapper,
   rightArrowButton,
-  storeName,
+  storeNameText,
 } from './StoreRankingButton.css';
 
-const StoreRankingButton = () => {
+interface StoreRankingType {
+  storeId: number;
+  storeName: string;
+  storeLikes: number;
+  station: string;
+}
+
+interface StoreRankingProps {
+  data: StoreRankingType;
+  rank: number;
+}
+
+const StoreRankingButton = ({ data, rank }: StoreRankingProps) => {
+  const { storeName, storeLikes, station } = data;
+
   return (
-    <div className={rankingContainer}>
+    <button className={rankingContainer}>
       <div className={rankingWrapper}>
-        <Label />
+        <Label text={`${rank + 1}`} />
         <div className={rankingLeftBox}>
-          <h3 className={storeName}>서희네 앙큼가게</h3>
-          <p className={isLiked}>1.3만</p>
+          <h3 className={storeNameText}>{storeName}</h3>
+          <p className={isLiked}>{storeLikes}</p>
         </div>
       </div>
       <div className={rankingRightBox}>
-        <Label />
+        <Label text={station} />
         <IcArrowRight20 className={rightArrowButton} />
       </div>
-    </div>
+    </button>
   );
 };
 

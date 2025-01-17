@@ -12,7 +12,7 @@ export const rankingWrapper = style([flexGenerator(), { gap: '1.3rem' }]);
 
 export const rankingLeftBox = style([flexGenerator(), { gap: '0.6rem' }]);
 
-export const storeName = style([
+export const storeNameText = style([
   vars.fonts.body04_m_16,
   { color: vars.colors.gray800 },
 ]);
