@@ -6,6 +6,8 @@ export { default as IcCheck } from './IcCheck';
 export { default as IcFillLikeOff36 } from './IcFillLikeOff36';
 export { default as IcFillLikeOn36 } from './IcFillLikeOn36';
 export { default as IcFormX20 } from './IcFormX20';
+export { default as IcFormDot } from './IcFormDot';
+export { default as IcFormDotdot } from './IcFormDotdot';
 export { default as IcGpsmarkerOff } from './IcGpsmarkerOff';
 export { default as IcGpsmarkerOn } from './IcGpsmarkerOn';
 export { default as IcKakao } from './IcKakao';
