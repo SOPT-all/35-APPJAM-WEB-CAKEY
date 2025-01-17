@@ -9,39 +9,21 @@ import {
   MyLocation,
 } from '@constants';
 import { useDebounce, useMapLoader } from '@pages/view/hooks';
+import {
+  ALLSTATIONLOCATIONS,
+  HONGDAELOCATIONS,
+  SAVEDLOCATIONS,
+} from 'src/constants/stations';
 
 import { buttonSectionStyle, mapContainer } from './kakaoMap.css';
 import MapGpsButton from '../MapGpsButton/MapGpsButton';
 import MapSaveButton from '../MapSaveButton/MapSaveButton';
 
-import { StationType } from '@types';
+import { CoordinateType, StationType } from '@types';
 
 interface KakaoMapProps {
   currentLocation: StationType;
 }
-
-const allStationLocations = [
-  {
-    storeId: 1,
-    latitude: 37.556621,
-    longitutde: 126.923877,
-  },
-  {
-    storeId: 2,
-    latitude: 37.55223,
-    longitutde: 126.92244,
-  },
-  {
-    storeId: 3,
-    latitude: 37.561056,
-    longitutde: 126.922655,
-  },
-  {
-    storeId: 4,
-    latitude: 37.555134,
-    longitutde: 126.936778,
-  },
-];
 
 const markerIcon = {
   saveOff: {
@@ -68,6 +50,7 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
   );
 
   const defaultCenter = { lat: 37.556621, lng: 126.923877 };
+  const [storeMarkerList, setStoreMarkerList] = useState<CoordinateType[]>([]);
   // 찜 버튼 활성화 상태
   const [isSaveActive, setIsSaveActive] = useState(false);
   // gps 버튼 활성화 상태
@@ -84,6 +67,10 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
     lat: number;
     lng: number;
   }>(defaultCenter);
+
+  const changedMarkerIcon = isSaveActive
+    ? markerIcon.saveOn.normal
+    : markerIcon.saveOff.normal;
 
   const fetchCurrentPosition = () => {
     if (navigator.geolocation) {
@@ -115,10 +102,18 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
   };
   const handleSaveButtonClick = () => {
     setIsSaveActive((prev) => !prev);
+    if (isSaveActive) {
+      // 스토어 좌표 리스트 조회 (ALL) 결과 data 넣기
+      setStoreMarkerList(ALLSTATIONLOCATIONS);
+    } else {
+      // 찜한 스토어 좌표 리스트 조회 결과 data 넣기
+      setStoreMarkerList(SAVEDLOCATIONS);
+    }
   };
 
   useEffect(() => {
     if (currentLocation) {
+      setStoreMarkerList(HONGDAELOCATIONS);
       setCenter({
         lat: currentLocation.latitude,
         lng: currentLocation.longitude,
@@ -130,6 +125,8 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
   useEffect(() => {
     fetchCurrentPosition();
     // 첫 렌더링 시 전체 스토어 좌표 조회 해서 마커 띄워야함
+    // 지금은 더미데이터 넣는 중
+    setStoreMarkerList(ALLSTATIONLOCATIONS);
   }, []);
 
   console.log('렌더링 됨');
@@ -137,17 +134,17 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
     <div className={mapContainer}>
       <Map
         center={center}
-        level={2}
+        level={4}
         style={{ width: '100%', height: '100%' }}
         onCenterChanged={handleCenterChanged}
       >
-        {allStationLocations.map((location) => (
+        {storeMarkerList.map((location) => (
           <MapMarker
             key={location.storeId}
             position={{ lat: location.latitude, lng: location.longitutde }}
             image={{
-              src: markerIcon.saveOff.clicked,
-              size: { width: 54, height: 54 },
+              src: changedMarkerIcon,
+              size: { width: 42, height: 42 },
             }}
             onClick={() => {}}
           />

@@ -4,7 +4,7 @@ import { Modal } from '@components';
 import { useModal } from '@hooks';
 import { LocationButton, SelectStationModal } from '@pages/view/components';
 import { KakaoMap } from '@pages/view/components';
-import STATIONS from 'src/constants/stations';
+import { STATIONS } from 'src/constants/stations';
 
 import { StationType } from '@types';
 

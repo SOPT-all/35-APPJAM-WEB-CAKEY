@@ -41,3 +41,9 @@ export interface StationType {
   latitude: number;
   longitude: number;
 }
+
+export interface CoordinateType {
+  storeId: number;
+  latitude: number;
+  longitutde: number;
+}
