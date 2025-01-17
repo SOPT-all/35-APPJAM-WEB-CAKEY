@@ -62,7 +62,7 @@ const HomePage = () => {
 
   return (
     <div className={homePageLayout}>
-      <section className={mainSectionContainer}>
+      <section className={mainSectionContainer} onClick={() => {}}>
         <img src={MainKeyVisual} />
         <div className={mainContentContainer}>
           {isLogin ? (
