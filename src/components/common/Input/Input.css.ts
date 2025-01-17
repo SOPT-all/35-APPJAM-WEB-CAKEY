@@ -28,7 +28,6 @@ export const inputStyle = recipe({
       border: `1px solid ${vars.colors.gray300}`,
       borderRadius: '8px',
       padding: '1.4rem 2rem',
-      transition: 'border-color 0.3s ease',
       selectors: {
         '&:focus': {
           border: `1px solid ${vars.colors.gray500}`,
