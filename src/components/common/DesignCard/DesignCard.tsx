@@ -17,7 +17,7 @@ interface DesignCardProps extends HTMLAttributes<HTMLDivElement> {
 
 
 const DesignCard = ({ designItem, numberLabel}: DesignCardProps) => {
-  const { storeId, cakeId, imageUrl, storeName, station, likeCount, isLiked } =
+  const { storeId, cakeId, imageUrl, storeName, station, cakeLikesCount, isLiked } =
     designItem;
 
   const handleCardClick = () => {
@@ -34,7 +34,7 @@ const DesignCard = ({ designItem, numberLabel}: DesignCardProps) => {
         </div>
         <IconButton
           buttonType="like20"
-          count={likeCount}
+          count={cakeLikesCount}
           isActive={isLiked}
           itemId={cakeId}
         />
