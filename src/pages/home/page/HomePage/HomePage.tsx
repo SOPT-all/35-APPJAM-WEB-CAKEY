@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import { DesignCard } from '@components';
 import { CATEGORY } from '@constants';
+import { StoreRankingButton } from '@pages/home/components';
 import CategoryCard from '@pages/home/components/CategoryCard/CategoryCard';
 import { MainKeyVisual } from 'src/assets/images';
 
@@ -23,9 +24,43 @@ import {
   mainTextStyle,
   mainTextMiniStyle,
   mainContentWrapper,
+  likedStoreWrapper,
 } from './HomePage.css';
 
-const cakes = [
+const storeRankingData = [
+  {
+    storeId: 1,
+    storeName: '케이꾸야',
+    storeLikesCount: 130,
+    station: '홍대입구역',
+  },
+  {
+    storeId: 2,
+    storeName: '서연이네 스윗 마카롱',
+    storeLikesCount: 12,
+    station: '종로3가역',
+  },
+  {
+    storeId: 3,
+    storeName: '채연이랑 달콤달콤',
+    storeLikesCount: 43,
+    station: '동대문역사문화공원역',
+  },
+  {
+    storeId: 4,
+    storeName: '화랑이는 감딸기',
+    storeLikesCount: 546,
+    station: '화랑대역',
+  },
+  {
+    storeId: 5,
+    storeName: '지유네 케이크집',
+    storeLikesCount: 65,
+    station: '태릉입구역',
+  },
+];
+
+const cakeRankingData = [
   {
     cakeId: 1,
     storeId: 1,
@@ -97,13 +132,25 @@ const HomePage = () => {
 
         <section className={subSectionWrapper}>
           <h1 className={subTextStyle}>인기 스토어</h1>
-          <div>랭킹</div>
+          <div className={likedStoreWrapper}>
+            {storeRankingData.map((store, index) => {
+              return index < 4 ? (
+                <StoreRankingButton rank={index + 1} data={store} />
+              ) : (
+                <StoreRankingButton
+                  rank={index + 1}
+                  data={store}
+                  hasBorder={false}
+                />
+              );
+            })}
+          </div>
         </section>
 
         <section className={cakeSectionWrapper}>
           <h1 className={cakeTextStyle}>인기 케이크</h1>
           <div className={likedCakeWrapper}>
-            {cakes.map((cake, index) => (
+            {cakeRankingData.map((cake, index) => (
               <div className={likedCakeStyle}>
                 <DesignCard numberLabel={`${index + 1}`} designItem={cake} />
               </div>

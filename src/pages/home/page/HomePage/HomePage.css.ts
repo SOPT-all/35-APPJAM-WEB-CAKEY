@@ -72,6 +72,18 @@ export const subSectionWrapper = style([
   { gap: '1.8rem', padding: '0 2rem', width: '100%' },
 ]);
 
+export const likedStoreWrapper = style([
+  flexGenerator('column'),
+  {
+    width: '100%',
+    gap: ' 1.2rem',
+  },
+]);
+
+// export const likedStoreStyle = style({
+//   width: '100%',
+// });
+
 export const cakeSectionWrapper = style([
   flexGenerator('column', 'flex-start', 'flex-start'),
   { width: '100%', gap: '1.8rem' },

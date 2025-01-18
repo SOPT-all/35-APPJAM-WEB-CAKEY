@@ -24,9 +24,14 @@ interface StoreRankingType {
 interface StoreRankingProps {
   data: StoreRankingType;
   rank: number;
+  hasBorder?: boolean;
 }
 
-const StoreRankingButton = ({ data, rank }: StoreRankingProps) => {
+const StoreRankingButton = ({
+  data,
+  rank,
+  hasBorder = true,
+}: StoreRankingProps) => {
   const { storeId, storeName, storeLikesCount, station } = data;
   const navigate = useNavigate();
 
@@ -35,7 +40,10 @@ const StoreRankingButton = ({ data, rank }: StoreRankingProps) => {
   };
 
   return (
-    <button className={rankingContainer} onClick={handleButtonClick}>
+    <button
+      className={rankingContainer({ hasBorder })}
+      onClick={handleButtonClick}
+    >
       <div className={rankingWrapper}>
         <div className={labelStyle}>
           <Label text={`${rank}`} />
