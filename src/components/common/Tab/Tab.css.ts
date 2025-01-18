@@ -25,6 +25,7 @@ export const tabButton = recipe({
     borderBottom: `2px solid ${vars.colors.gray300}`,
     width: '100%',
     textAlign: 'center',
+    backgroundColor: vars.colors.white,
   },
   variants: {
     tabType: {
