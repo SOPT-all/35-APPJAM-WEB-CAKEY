@@ -134,7 +134,7 @@ const MyList = () => {
     <div className={myListContainer}>
       <section className={titleWrapper}>
         <h1 className={myListTitle}>찜 목록</h1>
-      </section>{' '}
+      </section>
       <div className={tabSticky}>
         <Tab
           tabType={'viewMyPage'}
