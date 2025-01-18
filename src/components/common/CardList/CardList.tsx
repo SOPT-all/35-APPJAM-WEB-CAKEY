@@ -22,7 +22,7 @@ import {
 
 interface CardListProps {
   item: ItemType;
-  itemData: StoreCardListType | DesignCardListType | null;
+  itemData: StoreCardListType | DesignCardListType;
   hasModal?: boolean;
   handleOptionSelect: (option: OptionType) => void;
 }
@@ -35,7 +35,7 @@ const CardList = ({
 }: CardListProps) => {
   // 데이터를 조건에 따라 바로 분기 처리
   const isStoreCardListType = (
-    data: DesignCardListType | StoreCardListType | null
+    data: DesignCardListType | StoreCardListType
   ): data is StoreCardListType => {
     return data !== null && 'stores' in data;
   };
@@ -69,7 +69,7 @@ const CardList = ({
 
   return (
     <div className={cardListContainer}>
-      {itemData ? (
+      {cardListData.length > 0 ? (
         <>
           <div className={cardListTextWrapper}>
             <div>
