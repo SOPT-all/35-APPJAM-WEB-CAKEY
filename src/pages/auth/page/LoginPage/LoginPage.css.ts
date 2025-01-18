@@ -10,7 +10,7 @@ export const loginPageStlye = style([
 
 export const titleWrapper = style([
   flexGenerator('column', 'center', 'flex-start'),
-  { gap: '1.8rem', padding: '0 2rem', margin: '5.7rem 0 0' },
+  { gap: '1.8rem', padding: '0 2rem', margin: '5.7rem 0 1rem' },
 ]);
 
 export const titleText = style([
@@ -28,7 +28,7 @@ export const loginMainImage = style({ marginLeft: 'auto', width: '29.3rem' });
 
 export const loginButtonWrapper = style([
   flexGenerator('column'),
-  { gap: '2rem', padding: '0 2rem', width: '100%', margin: '0 0 3.4rem' },
+  { gap: '2rem', padding: '0 2rem', width: '100%', marginBottom: '3.4rem' },
 ]);
 
 export const noLoginButton = style([
