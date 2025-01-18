@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { CardList } from '@components';
 import { CATEGORY, SUB_CATEGORY } from '@constants';
@@ -17,6 +17,7 @@ import {
 import { CategoryType, SubCategoryType } from '@types';
 
 const DesignListPage = () => {
+  const subCategoryRef = useRef<HTMLUListElement>(null);
   const [selectedCategories, setSelectedCategories] = useState<{
     category: CategoryType;
     subCategory: SubCategoryType;
@@ -24,6 +25,15 @@ const DesignListPage = () => {
     category: 'BIRTH',
     subCategory: 'ALL',
   });
+
+  useEffect(() => {
+    if (subCategoryRef.current) {
+      subCategoryRef.current.scrollTo({
+        left: 0,
+        behavior: 'smooth',
+      });
+    }
+  }, [selectedCategories.category]);
 
   const handleCategoryChange = (category: CategoryType) => {
     setSelectedCategories({
@@ -59,6 +69,7 @@ const DesignListPage = () => {
             categories={SUB_CATEGORY}
             selectedSubCategory={selectedCategories.subCategory}
             onSubCategoryChange={handleSubCategoryChange}
+            ref={subCategoryRef}
           />
         </div>
       </div>
