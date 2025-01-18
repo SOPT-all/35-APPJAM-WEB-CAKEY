@@ -6,13 +6,13 @@ export interface TextButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
   size: 'small' | 'medium' | 'large' | 'xLarge';
   color?: 'red' | 'gray' | 'stroke';
-  // isDisabled?: boolean;
+  disabled?: boolean;
 }
 
 const TextButton = ({
   size,
   color = 'red',
-  // isDisabled = false,
+  disabled = false,
   onClick,
   children,
 }: TextButtonProps) => {
@@ -21,10 +21,10 @@ const TextButton = ({
       className={buttonStyle({
         size,
         color,
-        // isDisabled,
+        disabled,
       })}
+      disabled={disabled}
       onClick={onClick}
-      // disabled={isDisabled}
     >
       {children}
     </button>

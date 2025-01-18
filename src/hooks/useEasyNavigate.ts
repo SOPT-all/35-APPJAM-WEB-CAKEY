@@ -2,6 +2,8 @@ import { useNavigate } from 'react-router-dom';
 
 import routePath from 'src/routes/routePath';
 
+import { CategoryType } from '@types';
+
 const useEasyNavigate = () => {
   const navigate = useNavigate();
 
@@ -17,12 +19,16 @@ const useEasyNavigate = () => {
     navigate(routePath.MYPAGE);
   };
 
-  const goStorePage = () => {
-    navigate(routePath.STOREPAGE);
+  const goLikeListPage = () => {
+    navigate(routePath.LIKELISTPAGE);
   };
 
-  const goDesignListPage = () => {
-    navigate(routePath.DESIGNLISTPAGE);
+  const goStorePage = (storeId: number) => {
+    navigate(routePath.STOREPAGE.replace(':id', String(storeId)));
+  };
+
+  const goDesignListPage = (category: CategoryType) => {
+    navigate(routePath.DESIGNLISTPAGE, { state: { category } });
   };
 
   const goLoginPage = () => {
@@ -33,6 +39,7 @@ const useEasyNavigate = () => {
     goHomePage,
     goViewPage,
     goMyPage,
+    goLikeListPage,
     goStorePage,
     goDesignListPage,
     goLoginPage,
