@@ -10,7 +10,7 @@ import { useDebounce } from './useDebounce';
 
 import { CoordinateType, StationType } from '@types';
 
-const defaultCenter = { lat: 37.556621, lng: 126.923877 };
+const DEFAULT_CENTER = { lat: 37.556621, lng: 126.923877 };
 
 export const useKakaoMap = (
   currentLocation: StationType,
@@ -24,13 +24,13 @@ export const useKakaoMap = (
   const [currentPosition, setCurrentPosition] = useState<{
     lat: number;
     lng: number;
-  }>(defaultCenter);
+  }>(DEFAULT_CENTER);
 
   // 지도의 중심 좌표
   const [center, setCenter] = useState<{
     lat: number;
     lng: number;
-  }>(defaultCenter);
+  }>(DEFAULT_CENTER);
 
   // 찜 버튼 활성화 상태
   const [isSaveActive, setIsSaveActive] = useState(false);
@@ -50,8 +50,8 @@ export const useKakaoMap = (
         },
         (error) => {
           console.error('Error getting user location:', error);
-          setCurrentPosition(defaultCenter);
-          setCenter(defaultCenter);
+          setCurrentPosition(DEFAULT_CENTER);
+          setCenter(DEFAULT_CENTER);
           setIsGpsActive(false);
         }
       );

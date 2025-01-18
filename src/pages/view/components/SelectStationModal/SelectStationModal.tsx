@@ -7,7 +7,7 @@ import {
   h1Style,
   modalLayoutStyle,
   scrollSection,
-  spanBox,
+  spanStyle,
   textSection,
 } from './SelectStationModal.css';
 import LocationSelectButton from '../LocationSelectButton/LocationSelectButton';
@@ -42,10 +42,7 @@ const SelectStationModal = ({
       <div className={modalLayoutStyle}>
         <section className={textSection}>
           <h1 className={h1Style}>지하철역을 선택해주세요</h1>
-          <div className={spanBox}>
-            <span>아직 등록되지 않은 지역이 있어요!</span>
-            <span>현재 등록 지역 : 마포구</span>
-          </div>
+          <span className={spanStyle}>아직 등록되지 않은 지역이 있어요!</span>
         </section>
         <section className={scrollSection}>
           {stationKrNames.map((station, index) => (
