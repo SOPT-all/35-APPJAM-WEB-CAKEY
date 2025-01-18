@@ -13,7 +13,7 @@ export const overlayStyle = style([
 export const bottomSheetStyle = style([
   fixedGenerator({ bottom: 0 }, 2),
   {
-    height: '80vh',
+    height: '79vh',
     padding: '1.4rem 2rem 0',
 
     backgroundColor: vars.colors.white,
@@ -32,7 +32,6 @@ export const handler = style({
 });
 
 export const content = style({
-  height: '100%',
+  height: 'calc(100% - 0.4rem)',
   overflowY: 'scroll',
-  overscrollBehavior: 'none',
 });

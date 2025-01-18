@@ -5,6 +5,7 @@ import { vars } from '@styles/theme.css';
 export const tabStyle = recipe({
   base: {
     display: 'flex',
+    width: '100%',
     color: vars.colors.gray300,
   },
   variants: {

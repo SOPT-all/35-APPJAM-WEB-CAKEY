@@ -16,7 +16,7 @@ interface CategoriesType {
 
 interface useFilteredCardListProps {
   item: ItemType;
-  parameterType: string | CategoriesType;
+  parameterType?: string | CategoriesType;
 }
 
 const useFilteredCardList = ({
@@ -24,9 +24,10 @@ const useFilteredCardList = ({
   parameterType,
 }: useFilteredCardListProps) => {
   const [option, setOption] = useState<OptionType>('latest');
-  const [data, setData] = useState<
-    StoreCardListType | DesignCardListType | null
-  >(null);
+  const [data, setData] = useState<StoreCardListType | DesignCardListType>({
+    cakeCount: 0,
+    cakes: [],
+  });
 
   const handleOptionSelect = (newOption: OptionType) => {
     setOption(newOption);
