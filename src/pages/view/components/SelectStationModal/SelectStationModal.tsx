@@ -69,7 +69,7 @@ const SelectStationModal = ({
           ))}
         </section>
         <section className={footerSection}>
-          <TextButton size="large" onClick={handleSelectButtonClick}>
+          <TextButton size="xLarge" onClick={handleSelectButtonClick}>
             선택하기
           </TextButton>
         </section>

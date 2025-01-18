@@ -4,7 +4,7 @@ import { buttonStyle } from 'src/components/common/TextButton/TextButton.css';
 
 export interface TextButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
-  size: 'small' | 'medium' | 'semiLarge' | 'large';
+  size: 'small' | 'medium' | 'large' | 'xLarge';
   color?: 'red' | 'gray' | 'stroke';
   // isDisabled?: boolean;
 }
