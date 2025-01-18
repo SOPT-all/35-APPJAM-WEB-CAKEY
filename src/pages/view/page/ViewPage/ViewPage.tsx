@@ -27,7 +27,7 @@ const ViewPage = () => {
     );
 
     if (selectedStation) {
-      setCurrentLocation(selectedStation); // 객체로 설정
+      setCurrentLocation(selectedStation);
     } else {
       console.error(`Station "${stationName}" not found`);
     }
@@ -40,8 +40,6 @@ const ViewPage = () => {
   useEffect(() => {
     // 전체 지하철역 조회 api get
   }, []);
-
-  console.log(selectedStoreId);
 
   return (
     <div>
