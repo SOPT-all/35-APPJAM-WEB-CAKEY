@@ -13,8 +13,6 @@ const BottomTab = ({ kakaoLink }: BottomTabProps) => {
   const handleOrderClick = () => {
     if (kakaoLink) {
       window.location.href = kakaoLink;
-    } else {
-      console.error('링크가 존재하지 않습니다.');
     }
   };
 
