@@ -1,14 +1,14 @@
 import { motion, PanInfo } from 'framer-motion';
 import { useState, useRef, useCallback, ReactNode } from 'react';
 
-import { useBottomSheet } from '@hooks';
-
 import {
   bottomSheetStyle,
   content,
   handler,
   overlayStyle,
 } from './BottomSheet.css';
+
+import { BottomSheetState } from '@types';
 
 const OFFSET_THRESHOLD = 100;
 const DELTA_THRESHOLD = 5;
@@ -26,12 +26,16 @@ const overlayVariants = {
 };
 
 interface BottomSheetProps {
+  animateState: BottomSheetState;
+  handleAnimateChange: (animate: BottomSheetState) => void;
   children: ReactNode;
 }
 
-const BottomSheet = ({ children }: BottomSheetProps) => {
-  const { animateState, handleAnimateChange } = useBottomSheet();
-
+const BottomSheet = ({
+  animateState,
+  handleAnimateChange,
+  children,
+}: BottomSheetProps) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const [isAtTop, setIsAtTop] = useState(true);
 
@@ -73,7 +77,6 @@ const BottomSheet = ({ children }: BottomSheetProps) => {
     else if (animateState === 'default') handleAnimateChange('closed');
   };
 
-  console.log(animateState);
   return (
     <>
       <motion.div

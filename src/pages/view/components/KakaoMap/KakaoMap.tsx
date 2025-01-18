@@ -2,6 +2,7 @@ import { Map, MapMarker } from 'react-kakao-maps-sdk';
 
 import { BottomSheet, Modal } from '@components';
 import { MyLocation } from '@constants';
+import { useBottomSheet } from '@hooks';
 import { useMapLoader } from '@pages/view/hooks';
 import { useKakaoMap } from '@pages/view/hooks/useKakaoMap';
 import { getMarkerIcon } from '@utils';
@@ -24,6 +25,7 @@ interface KakaoMapProps {
 
 const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
   useMapLoader();
+  const { animateState, handleAnimateChange } = useBottomSheet();
   const {
     selectedStoreId,
     storeMarkerList,
@@ -36,7 +38,7 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
     handleSaveButtonClick,
     handleMarkerClick,
     handleMapClick,
-  } = useKakaoMap(currentLocation);
+  } = useKakaoMap(currentLocation, handleAnimateChange);
 
   return (
     <>
@@ -87,7 +89,12 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
         </section>
       </div>
       {selectedStoreId === 0 ? (
-        <BottomSheet>1</BottomSheet>
+        <BottomSheet
+          animateState={animateState}
+          handleAnimateChange={handleAnimateChange}
+        >
+          1
+        </BottomSheet>
       ) : (
         <Modal variant="bottom">1</Modal>
       )}

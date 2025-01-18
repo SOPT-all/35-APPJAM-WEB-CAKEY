@@ -66,3 +66,5 @@ export interface CoordinateType {
   latitude: number;
   longitutde: number;
 }
+
+export type BottomSheetState = 'closed' | 'default' | 'opened';

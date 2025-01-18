@@ -6,11 +6,13 @@ import { LocationButton, SelectStationModal } from '@pages/view/components';
 import { KakaoMap } from '@pages/view/components';
 import { STATIONS } from 'src/constants/stations';
 
+import { locationButtonWrapper } from './ViewPage.css';
+
 import { StationType } from '@types';
 
 const ViewPage = () => {
   const { isModalOpen, openModal, closeModal } = useModal();
-  const [stations, setStations] = useState<StationType[]>(STATIONS);
+  const [stations] = useState<StationType[]>(STATIONS);
 
   const [currentLocation, setCurrentLocation] = useState({
     stationEnName: 'ALL',
@@ -39,10 +41,12 @@ const ViewPage = () => {
 
   return (
     <div>
-      <LocationButton
-        currentLocation={currentLocation.stationKrName}
-        onClick={openModal}
-      />
+      <div className={locationButtonWrapper}>
+        <LocationButton
+          currentLocation={currentLocation.stationKrName}
+          onClick={openModal}
+        />
+      </div>
       <KakaoMap currentLocation={currentLocation} />
       {isModalOpen && (
         <Modal variant="center">
