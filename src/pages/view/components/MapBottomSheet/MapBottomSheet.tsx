@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { BottomSheet, CardList, Tab } from '@components';
-import useFilteredCardList from 'src/hooks/useFilteredCardList';
+import { useFilteredCardList } from '@hooks';
 
 import {
   sectionContainer,

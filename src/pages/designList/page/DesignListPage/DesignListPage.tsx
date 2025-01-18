@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 
 import { CardList } from '@components';
 import { CATEGORY, SUB_CATEGORY } from '@constants';
+import { useFilteredCardList } from '@hooks';
 import CategoryBar from '@pages/designList/components/CategoryBar/CategoryBar';
 import SubCategoryBar from '@pages/designList/components/SubCategoryBar/SubCategoryBar';
-import useFilteredCardList from 'src/hooks/useFilteredCardList';
 
 import {
   cardListWrapper,
