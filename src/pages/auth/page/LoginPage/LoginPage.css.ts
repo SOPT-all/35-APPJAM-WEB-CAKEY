@@ -27,7 +27,7 @@ export const imageButtonContainer = style([
 export const loginMainImage = style({ marginLeft: 'auto', width: '29.3rem' });
 
 export const loginButtonWrapper = style([
-  flexGenerator('column', 'center', 'center'),
+  flexGenerator('column'),
   { gap: '2rem', padding: '0 2rem', width: '100%', margin: '0 0 3.4rem' },
 ]);
 
