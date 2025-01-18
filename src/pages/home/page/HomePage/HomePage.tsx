@@ -1,10 +1,9 @@
 import { useState } from 'react';
 
 import { DesignCard } from '@components';
-import { CATEGORY } from '@constants';
+import { CATEGORY, MainKeyVisual } from '@constants';
 import { StoreRankingButton } from '@pages/home/components';
 import CategoryCard from '@pages/home/components/CategoryCard/CategoryCard';
-import { MainKeyVisual } from 'src/assets/images';
 
 import { IcHomeArrow } from '@svgs';
 
@@ -121,7 +120,7 @@ const HomePage = () => {
           <h1 className={subTextStyle}>어떤 날을 위한 케이크인가요?</h1>
           <div className={categoryWrapper}>
             {CATEGORY.map((category) => (
-                <CategoryCard category={category} />
+              <CategoryCard category={category} />
             ))}
           </div>
         </section>
@@ -148,7 +147,11 @@ const HomePage = () => {
           <div className={likedCakeWrapper}>
             {cakeRankingData.map((cake, index) => (
               <div className={likedCakeStyle}>
-                <DesignCard numberLabel={`${index + 1}`} designItem={cake} />
+                <DesignCard
+                  numberLabel={`${index + 1}`}
+                  designItem={cake}
+                  designId={cake.cakeId}
+                />
               </div>
             ))}
           </div>
