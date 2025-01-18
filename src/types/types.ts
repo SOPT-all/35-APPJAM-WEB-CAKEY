@@ -29,6 +29,16 @@ export interface DesignDetailType {
   isLiked: boolean;
 }
 
+export interface StoreCardListType {
+  storeCount: number;
+  stores: StoreType[];
+}
+
+export interface DesignCardListType {
+  cakeCount: number;
+  cakes: DesignItemType[];
+}
+
 export type CategoryType = 'BIRTH' | 'CHEER' | 'ANNIV' | 'SEASON';
 export type SubCategoryType =
   | 'ALL'
@@ -41,3 +51,18 @@ export type SubCategoryType =
   | 'FANTASY'
   | 'ELSE';
 
+export type ItemType = 'store' | 'design' | 'likedStore' | 'likedDesign';
+export type OptionType = 'latest' | 'popularity';
+
+export interface StationType {
+  stationEnName: string;
+  stationKrName: string;
+  latitude: number;
+  longitude: number;
+}
+
+export interface CoordinateType {
+  storeId: number;
+  latitude: number;
+  longitutde: number;
+}

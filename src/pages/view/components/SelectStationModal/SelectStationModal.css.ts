@@ -28,11 +28,9 @@ export const h1Style = style([
   },
 ]);
 
-export const spanBox = style([
-  flexGenerator('column', 'flex-start', 'flex-start'),
+export const spanStyle = style([
   vars.fonts.body07_r_14,
   {
-    gap: '0.2rem',
     color: vars.colors.gray700,
   },
 ]);
@@ -45,7 +43,7 @@ export const scrollSection = style([
     width: '100%',
     maxHeight: 'calc(100dvh - 8rem - 7.3rem - 4rem - 6rem)',
     overflowY: 'auto',
-    margin: '1.7rem 0',
+    margin: '3.6rem 0 1.7rem 0',
     scrollbarGutter: 'stable',
 
     '::-webkit-scrollbar': {

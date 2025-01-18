@@ -11,22 +11,29 @@ import {
   ulStyle,
 } from './FilteringButton.css';
 
+import { OptionType } from '@types';
+
 interface FilteringButtonProps {
-  onOptionSelect: (option: string) => void;
+  onOptionSelect: (option: OptionType) => void;
 }
+
+const OPTION = {
+  latest: '최신순',
+  popularity: '인기순',
+};
 
 const FilteringButton = ({ onOptionSelect }: FilteringButtonProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState('최신순');
+  const [selectedOption, setSelectedOption] = useState<OptionType>('latest');
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const options = ['최신순', '인기순'];
+  const options: OptionType[] = ['latest', 'popularity'];
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleOptionClick = (option: string) => {
+  const handleOptionClick = (option: OptionType) => {
     setSelectedOption(option);
     onOptionSelect(option);
     setIsOpen(false);
@@ -59,7 +66,7 @@ const FilteringButton = ({ onOptionSelect }: FilteringButtonProps) => {
       onClick={toggleDropdown}
       ref={dropdownRef}
     >
-      <button className={buttonTextStyle}>{selectedOption}</button>
+      <button className={buttonTextStyle}>{OPTION[selectedOption]}</button>
 
       {isOpen ? (
         <IcArrowUp20 width={24} height={24} />
@@ -76,7 +83,7 @@ const FilteringButton = ({ onOptionSelect }: FilteringButtonProps) => {
               }`}
               onClick={() => handleOptionClick(option)}
             >
-              {option}
+              {OPTION[option]}
             </li>
           ))}
         </ul>

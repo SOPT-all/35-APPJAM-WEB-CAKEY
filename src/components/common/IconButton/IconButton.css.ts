@@ -15,8 +15,12 @@ export const buttonStyle = recipe({
   ],
   variants: {
     buttonType: {
-      save: {
+      save24: {
         width: '2.4rem',
+        gap: 0,
+      },
+      save28: {
+        width: '2.8rem',
         gap: 0,
       },
       like20: {

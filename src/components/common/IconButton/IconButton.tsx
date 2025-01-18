@@ -13,7 +13,7 @@ import { buttonStyle, countStyle } from './IconButton.css';
 
 export interface IconButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
-  buttonType: 'save' | 'like20' | 'like36';
+  buttonType: 'save24' | 'save28' | 'like20' | 'like36';
   isActive?: boolean;
   count?: number;
   itemId?: number; // storeId | cakeId를 받아서 api 요청에 사용합니다
@@ -21,9 +21,13 @@ export interface IconButtonProps
 }
 
 const buttonIcon = {
-  save: {
+  save24: {
     active: <IcSavedOn24 width={24} height={24} />,
     inactive: <IcSavedOff24 width={24} height={24} />,
+  },
+  save28: {
+    active: <IcSavedOn24 width={28} height={28} />,
+    inactive: <IcSavedOff24 width={28} height={28} />,
   },
   like20: {
     active: <IcLineLikeOn20 width={20} height={20} />,
