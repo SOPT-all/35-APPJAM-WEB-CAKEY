@@ -1,5 +1,6 @@
 import { SocialLoginButton } from '@components';
 import { LoginPageImage } from '@constants';
+import { useEasyNavigate } from '@hooks';
 
 import { ImgLogo } from '@svgs';
 
@@ -14,6 +15,7 @@ import {
 } from './LoginPage.css';
 
 const LoginPage = () => {
+  const { goHomePage } = useEasyNavigate();
   return (
     <div className={loginPageStlye}>
       <div className={titleWrapper}>
@@ -29,7 +31,9 @@ const LoginPage = () => {
           <SocialLoginButton platform="kakao">
             카카오로 시작하기
           </SocialLoginButton>
-          <u className={noLoginButton}>로그인 없이 둘러보기</u>
+          <u className={noLoginButton} onClick={goHomePage}>
+            로그인 없이 둘러보기
+          </u>
         </div>
       </div>
     </div>

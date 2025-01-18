@@ -1,3 +1,5 @@
+import { useEasyNavigate } from '@hooks';
+
 import { authModalContainer, buttonSet, modalMessage } from './AuthModal.css';
 import TextButton from '../TextButton/TextButton';
 
@@ -14,6 +16,7 @@ const AuthModal = ({
   authActionButtonText,
   onClose,
 }: AuthModalProps) => {
+  const { goLoginPage } = useEasyNavigate();
   return (
     <div className={authModalContainer}>
       <h1 className={modalMessage}>{modalText}</h1>
@@ -21,7 +24,7 @@ const AuthModal = ({
         <TextButton size={'small'} color={'gray'} onClick={onClose}>
           {closeButtonText}
         </TextButton>
-        <TextButton size={'small'} color={'red'}>
+        <TextButton size={'small'} color={'red'} onClick={goLoginPage}>
           {authActionButtonText}
         </TextButton>
       </div>

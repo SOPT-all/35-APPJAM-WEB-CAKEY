@@ -19,4 +19,9 @@ export const myListTitle = style([
 
 export const cardListStyle = style({ padding: '1.2rem 2rem 0' });
 
-export const tabSticky = style({ position: 'sticky', top: '6rem', zIndex: 1 });
+export const tabSticky = style({
+  width: '100%',
+  position: 'sticky',
+  top: '6rem',
+  zIndex: 1,
+});

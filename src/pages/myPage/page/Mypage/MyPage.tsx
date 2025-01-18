@@ -1,5 +1,6 @@
 import { AuthModal, Modal, TextButton } from '@components';
-import { useModal } from '@hooks';
+import { WHIPEE_CONTACT_FORM } from '@constants';
+import { useEasyNavigate, useModal } from '@hooks';
 import { LetsGoButton, ProfileCard } from '@pages/myPage/components';
 
 import {
@@ -19,6 +20,12 @@ const MyPage = () => {
 
   const { isModalOpen, openModal, closeModal } = useModal();
 
+  const { goLikeListPage, goLoginPage } = useEasyNavigate();
+
+  const handleContactForm = () => {
+    window.open(WHIPEE_CONTACT_FORM, '_blank');
+  };
+
   return (
     <>
       <section className={profileCardStyle[isLogin ? 'login' : 'logout']}>
@@ -31,12 +38,12 @@ const MyPage = () => {
 
       {isLogin ? (
         <div className={letsGoButtonWrapper}>
-          <LetsGoButton text={'찜 목록'} />
-          <LetsGoButton text={'휘피에 문의하기'} />
+          <LetsGoButton text={'찜 목록'} onClick={goLikeListPage} />
+          <LetsGoButton text={'휘피에 문의하기'} onClick={handleContactForm} />
           <LetsGoButton text={'로그아웃'} onClick={openModal} />
         </div>
       ) : (
-        <div className={loginButton}>
+        <div className={loginButton} onClick={goLoginPage}>
           <TextButton size={'large'} color={'red'}>
             로그인 하기
           </TextButton>
