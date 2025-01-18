@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { Modal } from '@components';
+import { useModal } from '@hooks';
 import { formatHours } from '@utils';
 
 import { IcArrowDown20, IcLineLocation, IcPhone, IcTime } from '@svgs';
@@ -13,10 +15,9 @@ import {
   listHour,
   toggleButton,
 } from './StoreInfo.css';
-import OrderGuideButton from '../OrderGuideButton/OrderGuideButton';
-import { useModal } from '@hooks';
-import { Modal } from '@components';
 import OrderFormModal from '../OrderFormModal/OrderFormModal';
+import OrderGuideButton from '../OrderGuideButton/OrderGuideButton';
+
 
 interface StoreInfoProps {
   infoData: {

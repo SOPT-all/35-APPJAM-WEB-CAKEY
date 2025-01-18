@@ -49,6 +49,7 @@ const storeData = {
     address: '서울특별시 중구 동호로 385-2 아이디어회관 301호',
     phone: '010-1234-1234',
   },
+  kakaoLink: 'https://open.kakao.com/aeoirujaesl',
 };
 
 export default storeData;
