@@ -1,10 +1,12 @@
-import { useState } from 'react';
-
 import { AuthModal, Modal, TextButton } from '@components';
 import { useModal } from '@hooks';
 import { LetsGoButton, ProfileCard } from '@pages/myPage/components';
 
-import { letsGoButtonStyle, loginButton, profileCardStyle } from './MyPage.css';
+import {
+  letsGoButtonWrapper,
+  loginButton,
+  profileCardStyle,
+} from './MyPage.css';
 
 const user = {
   userId: 1,
@@ -13,34 +15,34 @@ const user = {
 };
 
 const MyPage = () => {
-  const [isLogin, setIsLogin] = useState(true);
+  const isLogin = true; //추후 삭제 후 localStorage.getItem로 수정할 예정
 
   const { isModalOpen, openModal, closeModal } = useModal();
 
   return (
-    <div>
-      <div className={profileCardStyle[isLogin ? 'login' : 'logout']}>
+    <>
+      <section className={profileCardStyle[isLogin ? 'login' : 'logout']}>
         <ProfileCard
           isLogin={isLogin}
           userName={user.userName}
           userEmail={user.userEmail}
         />
-      </div>
-      <div>
-        {isLogin ? (
-          <div className={letsGoButtonStyle}>
-            <LetsGoButton text={'찜 목록'} />
-            <LetsGoButton text={'휘피에 문의하기'} />
-            <LetsGoButton text={'로그아웃'} onClick={openModal} />
-          </div>
-        ) : (
-          <div className={loginButton}>
-            <TextButton size={'large'} color={'red'} onClick={() => setIsLogin}>
-              로그인 하기
-            </TextButton>
-          </div>
-        )}
-      </div>
+      </section>
+
+      {isLogin ? (
+        <div className={letsGoButtonWrapper}>
+          <LetsGoButton text={'찜 목록'} />
+          <LetsGoButton text={'휘피에 문의하기'} />
+          <LetsGoButton text={'로그아웃'} onClick={openModal} />
+        </div>
+      ) : (
+        <div className={loginButton}>
+          <TextButton size={'large'} color={'red'}>
+            로그인 하기
+          </TextButton>
+        </div>
+      )}
+
       {isModalOpen && (
         <Modal variant={'center'} hasBackdrop backdropClick={closeModal}>
           <AuthModal
@@ -51,7 +53,7 @@ const MyPage = () => {
           />
         </Modal>
       )}
-    </div>
+    </>
   );
 };
 

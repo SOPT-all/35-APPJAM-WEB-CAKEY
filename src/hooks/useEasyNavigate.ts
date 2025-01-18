@@ -2,8 +2,6 @@ import { useNavigate } from 'react-router-dom';
 
 import routePath from 'src/routes/routePath';
 
-// import { routePath } from '@routes';
-
 const useEasyNavigate = () => {
   const navigate = useNavigate();
 

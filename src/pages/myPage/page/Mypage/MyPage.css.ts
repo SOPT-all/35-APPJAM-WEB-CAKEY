@@ -7,9 +7,9 @@ export const profileCardStyle = styleVariants({
   logout: { margin: '3.8rem 0 3rem' },
 });
 
-export const letsGoButtonStyle = style([
+export const letsGoButtonWrapper = style([
   flexGenerator('column'),
-  { padding: '0 1.9rem 0 2rem', gap: '0.6rem' },
+  { padding: '0 2rem', gap: '0.6rem' },
 ]);
 
 export const loginButton = style({ padding: '0 2rem' });

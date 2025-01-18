@@ -12,5 +12,4 @@ export {
   myPageRoutes,
   storeRoutes,
   viewRoutes,
-
 };

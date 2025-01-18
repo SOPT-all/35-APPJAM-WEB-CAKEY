@@ -7,6 +7,7 @@ import {
   myListContainer,
   myListTitle,
   tabSticky,
+  titleWrapper,
 } from './MyList.css';
 
 const MyList = () => {
@@ -131,7 +132,9 @@ const MyList = () => {
 
   return (
     <div className={myListContainer}>
-      <h1 className={myListTitle}>찜 목록</h1>
+      <section className={titleWrapper}>
+        <h1 className={myListTitle}>찜 목록</h1>
+      </section>{' '}
       <div className={tabSticky}>
         <Tab
           tabType={'viewMyPage'}
@@ -139,17 +142,14 @@ const MyList = () => {
           onTabChange={handleTab}
         />
       </div>
-      <div>
+      <main className={cardListStyle}>
         {activeTab === 0 ? (
-          <div className={cardListStyle}>
-            <CardList item={'likedStore'} data={likedStoreData} />
-          </div>
+          <CardList item={'likedStore'} data={likedStoreData} />
         ) : (
-          <div className={cardListStyle}>
-            <CardList item={'likedDesign'} data={likedDesignData} />
-          </div>
+          <CardList item={'likedDesign'} data={likedDesignData} />
         )}
-      </div>
+      </main>
+      ;
     </div>
   );
 };
