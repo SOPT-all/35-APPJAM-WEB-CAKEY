@@ -5,7 +5,13 @@ import { vars } from '@styles/theme.css';
 
 export const rankingContainer = style([
   flexGenerator('row', 'space-between', 'center'),
-  { width: '100%', maxWidth: '100%', gap: '1.2rem', overflow: 'hidden' },
+  {
+    width: '100%',
+    height: '2.3rem',
+    maxWidth: '100%',
+    gap: '1.2rem',
+    overflow: 'hidden',
+  },
 ]);
 
 export const rankingWrapper = style([

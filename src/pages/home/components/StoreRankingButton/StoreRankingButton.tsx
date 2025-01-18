@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import { Label } from '@components';
 
 import { IcArrowRight20 } from '@svgs';
@@ -15,7 +17,7 @@ import {
 interface StoreRankingType {
   storeId: number;
   storeName: string;
-  storeLikes: number;
+  storeLikesCount: number;
   station: string;
 }
 
@@ -25,22 +27,27 @@ interface StoreRankingProps {
 }
 
 const StoreRankingButton = ({ data, rank }: StoreRankingProps) => {
-  const { storeName, storeLikes, station } = data;
+  const { storeId, storeName, storeLikesCount, station } = data;
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    navigate(`/store/${storeId}`);
+  };
 
   return (
-    <button className={rankingContainer}>
+    <button className={rankingContainer} onClick={handleButtonClick}>
       <div className={rankingWrapper}>
         <div className={labelStyle}>
           <Label text={`${rank + 1}`} />
         </div>
         <div className={rankingLeftBox}>
           <h3 className={storeNameText}>{storeName}</h3>
-          <p className={isLiked}>{storeLikes}</p>
+          <p className={isLiked}>{storeLikesCount}</p>
         </div>
       </div>
       <div className={rankingRightBox}>
         <Label text={station} />
-        <IcArrowRight20 width={20} />
+        <IcArrowRight20 width={20} height={20} />
       </div>
     </button>
   );
