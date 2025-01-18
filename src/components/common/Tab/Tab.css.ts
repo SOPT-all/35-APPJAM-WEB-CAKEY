@@ -1,11 +1,23 @@
-import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
 import { vars } from '@styles/theme.css';
 
-export const tabStyle = style({
-  display: 'flex',
-  color: vars.colors.gray300,
+export const tabStyle = recipe({
+  base: {
+    display: 'flex',
+    color: vars.colors.gray300,
+  },
+  variants: {
+    tabType: {
+      viewMyPage: {},
+      store: {
+        position: 'sticky',
+        top: '6rem',
+        zIndex: 1,
+        backgroundColor: vars.colors.white,
+      },
+    },
+  },
 });
 
 export const tabButton = recipe({
@@ -13,6 +25,7 @@ export const tabButton = recipe({
     borderBottom: `2px solid ${vars.colors.gray300}`,
     width: '100%',
     textAlign: 'center',
+    backgroundColor: vars.colors.white,
   },
   variants: {
     tabType: {

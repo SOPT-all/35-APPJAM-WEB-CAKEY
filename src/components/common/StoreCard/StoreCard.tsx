@@ -54,7 +54,7 @@ const StoreCard = ({ storeItem }: StoreCardProps) => {
           <p className={storeAddressStyle}>{address}</p>
         </div>
         <IconButton
-          buttonType={'save'}
+          buttonType={'save24'}
           isActive={isLiked}
           count={storeLikesCount}
           itemId={storeId}

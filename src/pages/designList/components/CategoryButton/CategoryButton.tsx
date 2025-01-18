@@ -1,6 +1,10 @@
 import { CATEGORY_COMPONENT } from '@constants';
 
-import { activeTextStyle, categoryButtonStyle, unActiveTextStyle } from './CategoryButton.css';
+import {
+  activeTextStyle,
+  categoryButtonStyle,
+  unActiveTextStyle,
+} from './CategoryButton.css';
 
 import { CategoryType } from '@types';
 
@@ -16,11 +20,16 @@ const CategoryButton = ({
   onCategoryChange,
 }: CategoryButtonProps) => {
   return (
-    <button className={categoryButtonStyle} onClick={() => onCategoryChange(category)}>
+    <button
+      className={categoryButtonStyle}
+      onClick={() => onCategoryChange(category)}
+    >
       {isActive
         ? CATEGORY_COMPONENT[category].active
         : CATEGORY_COMPONENT[category].unActive}
-        <p className={isActive ? activeTextStyle : unActiveTextStyle}>{CATEGORY_COMPONENT[category].text}</p>
+      <p className={isActive ? activeTextStyle : unActiveTextStyle}>
+        {CATEGORY_COMPONENT[category].text}
+      </p>
     </button>
   );
 };
