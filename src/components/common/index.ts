@@ -6,6 +6,7 @@ import FilteringButton from './FilteringButton/FilteringButton';
 import Header from './Header/Header';
 import IconButton from './IconButton/IconButton';
 import Image from './Image/Image';
+import Input from './Input/Input';
 import Label from './Label/Label';
 import Modal from './Modal/Modal';
 import SocialLoginButton from './SocialLoginButton/SocialLoginButton';
@@ -30,4 +31,5 @@ export {
   BottomSheet,
   DesignCard,
   Toast,
+  Input,
 };

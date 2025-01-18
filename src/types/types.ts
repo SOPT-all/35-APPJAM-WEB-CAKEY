@@ -23,6 +23,12 @@ export interface DesignItemType {
   likeCount: number;
 }
 
+export interface DesignDetailType {
+  cakeId: number;
+  imageUrl: string;
+  isLiked: boolean;
+}
+
 export type CategoryType = 'BIRTH' | 'CHEER' | 'ANNIV' | 'SEASON';
 export type SubCategoryType =
   | 'ALL'
