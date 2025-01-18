@@ -20,7 +20,7 @@ const MyPage = () => {
 
   const { isModalOpen, openModal, closeModal } = useModal();
 
-  const { goMyList, goLoginPage } = useEasyNavigate();
+  const { goLikeListPage, goLoginPage } = useEasyNavigate();
 
   const handleContactForm = () => {
     window.open(WHIPEE_CONTACT_FORM, '_blank');
@@ -38,7 +38,7 @@ const MyPage = () => {
 
       {isLogin ? (
         <div className={letsGoButtonWrapper}>
-          <LetsGoButton text={'찜 목록'} onClick={goMyList} />
+          <LetsGoButton text={'찜 목록'} onClick={goLikeListPage} />
           <LetsGoButton text={'휘피에 문의하기'} onClick={handleContactForm} />
           <LetsGoButton text={'로그아웃'} onClick={openModal} />
         </div>

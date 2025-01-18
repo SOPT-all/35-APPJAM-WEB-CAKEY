@@ -19,8 +19,8 @@ const useEasyNavigate = () => {
     navigate(routePath.MYPAGE);
   };
 
-  const goMyList = () => {
-    navigate(routePath.MYLIST);
+  const goLikeListPage = () => {
+    navigate(routePath.LIKELISTPAGE);
   };
 
   const goStorePage = (storeId: number) => {
@@ -39,7 +39,7 @@ const useEasyNavigate = () => {
     goHomePage,
     goViewPage,
     goMyPage,
-    goMyList,
+    goLikeListPage,
     goStorePage,
     goDesignListPage,
     goLoginPage,
