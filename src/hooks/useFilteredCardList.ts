@@ -24,9 +24,10 @@ const useFilteredCardList = ({
   parameterType,
 }: useFilteredCardListProps) => {
   const [option, setOption] = useState<OptionType>('latest');
-  const [data, setData] = useState<
-    StoreCardListType | DesignCardListType | null
-  >(null);
+  const [data, setData] = useState<StoreCardListType | DesignCardListType>({
+    cakeCount: 0,
+    cakes: [],
+  });
 
   const handleOptionSelect = (newOption: OptionType) => {
     setOption(newOption);
@@ -134,7 +135,7 @@ const useFilteredCardList = ({
             storeName: '버터뭉',
             station: '홍대입구역',
             isLiked: false,
-            likeCount: 200,
+            cakeLikesCount: 200,
             imageUrl: '../public/example-img.png',
           },
           {
@@ -143,7 +144,7 @@ const useFilteredCardList = ({
             storeName: '버터뭉2',
             station: '서강대입구역',
             isLiked: true,
-            likeCount: 30,
+            cakeLikesCount: 30,
             imageUrl: '../public/example-img.png',
           },
           {
@@ -152,7 +153,7 @@ const useFilteredCardList = ({
             storeName: '버터뭉',
             station: '홍대입구역',
             isLiked: false,
-            likeCount: 200,
+            cakeLikesCount: 200,
             imageUrl: '../public/example-img.png',
           },
         ],
