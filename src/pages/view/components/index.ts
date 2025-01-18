@@ -1,15 +1,13 @@
 import KakaoMap from './KakaoMap/KakaoMap';
 import LocationButton from './LocationButton/LocationButton';
 import LocationSelectButton from './LocationSelectButton/LocationSelectButton';
-import MapGpsButton from './MapGpsButton/MapGpsButton';
-import MapSaveButton from './MapSaveButton/MapSaveButton';
+import MapButton from './MapButton/MapButton';
 import SelectStationModal from './SelectStationModal/SelectStationModal';
 
 export {
+  KakaoMap,
   LocationButton,
   LocationSelectButton,
+  MapButton,
   SelectStationModal,
-  KakaoMap,
-  MapSaveButton,
-  MapGpsButton,
 };

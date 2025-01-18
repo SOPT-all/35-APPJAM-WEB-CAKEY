@@ -5,9 +5,15 @@ import { useMapLoader } from '@pages/view/hooks';
 import { useKakaoMap } from '@pages/view/hooks/useKakaoMap';
 import { getMarkerIcon } from '@utils';
 
+import {
+  IcGpsmarkerOff,
+  IcGpsmarkerOn,
+  IcSavedOff24,
+  IcSavedOn24,
+} from '@svgs';
+
 import { buttonSectionStyle, mapContainer } from './kakaoMap.css';
-import MapGpsButton from '../MapGpsButton/MapGpsButton';
-import MapSaveButton from '../MapSaveButton/MapSaveButton';
+import MapButton from '../MapButton/MapButton';
 
 import { StationType } from '@types';
 
@@ -64,11 +70,18 @@ const KakaoMap = ({ currentLocation, onMarkerClick }: KakaoMapProps) => {
         />
       </Map>
       <section className={buttonSectionStyle}>
-        <MapSaveButton
+        <MapButton
           isActive={isSaveActive}
-          onToggle={handleSaveButtonClick}
+          onClick={handleSaveButtonClick}
+          activeIcon={<IcSavedOn24 width={24} height={24} />}
+          inactiveIcon={<IcSavedOff24 width={24} height={24} />}
         />
-        <MapGpsButton isActive={isGpsActive} onClick={handleGpsButtonClick} />
+        <MapButton
+          isActive={isGpsActive}
+          onClick={handleGpsButtonClick}
+          activeIcon={<IcGpsmarkerOn width={24} height={24} />}
+          inactiveIcon={<IcGpsmarkerOff width={24} height={24} />}
+        />
       </section>
     </div>
   );
