@@ -8,6 +8,7 @@ export const storeCardContainer = style([
   {
     gap: '1rem',
     padding: '1.8rem 1.4rem',
+    width: '100%',
     border: `1px solid ${vars.colors.gray200}`,
     borderRadius: '8px',
     backgroundColor: vars.colors.white,
