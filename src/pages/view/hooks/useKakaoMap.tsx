@@ -8,14 +8,15 @@ import {
 
 import { useDebounce } from './useDebounce';
 
-import { CoordinateType, StationType } from '@types';
+import { BottomSheetState, CoordinateType, StationType } from '@types';
 
 const DEFAULT_CENTER = { lat: 37.556621, lng: 126.923877 };
 
 export const useKakaoMap = (
   currentLocation: StationType,
-  onMarkerClick: (storeId: number) => void
+  handleAnimateChange: (animate: BottomSheetState) => void
 ) => {
+  const [selectedStoreId, setSelectedStoreId] = useState<number>(0);
   const [storeMarkerList, setStoreMarkerList] = useState<
     (CoordinateType & { clicked: boolean })[]
   >([]);
@@ -94,7 +95,7 @@ export const useKakaoMap = (
           : { ...marker, clicked: false }
       )
     );
-    onMarkerClick(storeId);
+    setSelectedStoreId(storeId);
   };
 
   const handleMapClick = () => {
@@ -102,6 +103,8 @@ export const useKakaoMap = (
     setStoreMarkerList((prev) =>
       prev.map((marker) => ({ ...marker, clicked: false }))
     );
+    setSelectedStoreId(0);
+    handleAnimateChange(selectedStoreId !== 0 ? 'default' : 'closed');
   };
 
   useEffect(() => {
@@ -128,6 +131,7 @@ export const useKakaoMap = (
   }, []);
 
   return {
+    selectedStoreId,
     storeMarkerList,
     currentPosition,
     center,

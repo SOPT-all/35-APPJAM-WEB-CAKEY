@@ -6,12 +6,14 @@ import { LocationButton, SelectStationModal } from '@pages/view/components';
 import { KakaoMap } from '@pages/view/components';
 import { STATIONS } from 'src/constants/stations';
 
+import { locationButtonWrapper } from './ViewPage.css';
+
 import { StationType } from '@types';
 
 const ViewPage = () => {
   const { isModalOpen, openModal, closeModal } = useModal();
-  const [stations, setStations] = useState<StationType[]>(STATIONS);
-  const [selectedStoreId, setSelectedStoreId] = useState<number | null>(null);
+  const [stations] = useState<StationType[]>(STATIONS);
+
   const [currentLocation, setCurrentLocation] = useState({
     stationEnName: 'ALL',
     stationKrName: '전체',
@@ -33,24 +35,19 @@ const ViewPage = () => {
     }
   };
 
-  const handleMarkerClick = (storeId: number) => {
-    setSelectedStoreId(storeId);
-  };
-
   useEffect(() => {
     // 전체 지하철역 조회 api get
   }, []);
 
   return (
     <div>
-      <LocationButton
-        currentLocation={currentLocation.stationKrName}
-        onClick={openModal}
-      />
-      <KakaoMap
-        currentLocation={currentLocation}
-        onMarkerClick={handleMarkerClick}
-      />
+      <div className={locationButtonWrapper}>
+        <LocationButton
+          currentLocation={currentLocation.stationKrName}
+          onClick={openModal}
+        />
+      </div>
+      <KakaoMap currentLocation={currentLocation} />
       {isModalOpen && (
         <Modal variant="center">
           <SelectStationModal

@@ -8,7 +8,7 @@ import {
   overlayStyle,
 } from './BottomSheet.css';
 
-type BottomSheetState = 'closed' | 'default' | 'opened';
+import { BottomSheetState } from '@types';
 
 const OFFSET_THRESHOLD = 100;
 const DELTA_THRESHOLD = 5;
@@ -21,16 +21,21 @@ const variants = {
 
 const overlayVariants = {
   opened: { display: 'block' },
-  default: { display: 'block' },
+  default: { display: 'none' },
   closed: { display: 'none' },
 };
 
 interface BottomSheetProps {
+  animateState: BottomSheetState;
+  handleAnimateChange: (animate: BottomSheetState) => void;
   children: ReactNode;
 }
 
-const BottomSheet = ({ children }: BottomSheetProps) => {
-  const [animateState, setAnimateState] = useState<BottomSheetState>('default');
+const BottomSheet = ({
+  animateState,
+  handleAnimateChange,
+  children,
+}: BottomSheetProps) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const [isAtTop, setIsAtTop] = useState(true);
 
@@ -56,20 +61,20 @@ const BottomSheet = ({ children }: BottomSheetProps) => {
     if (offset.y > 0) {
       // 아래쪽으로 드래그한 경우
       if (animateState === 'opened' && isAtTop) {
-        setAnimateState('default');
+        handleAnimateChange('default');
       } else {
-        setAnimateState(animateState === 'opened' ? 'default' : 'closed');
+        handleAnimateChange(animateState === 'opened' ? 'default' : 'closed');
       }
     } else {
       // 위쪽으로 드래그한 경우
-      setAnimateState(animateState === 'closed' ? 'default' : 'opened');
+      handleAnimateChange(animateState === 'closed' ? 'default' : 'opened');
     }
   };
 
   // 오버레이 클릭 시 바텀 시트 상태 변경
   const handleOverlayTap = () => {
-    if (animateState === 'opened') setAnimateState('default');
-    else if (animateState === 'default') setAnimateState('closed');
+    if (animateState === 'opened') handleAnimateChange('default');
+    else if (animateState === 'default') handleAnimateChange('closed');
   };
 
   return (
