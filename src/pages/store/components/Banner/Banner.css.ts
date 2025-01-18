@@ -5,14 +5,18 @@ import { vars } from '@styles/theme.css';
 
 export const bannerContainer = style([
   flexGenerator('column', 'center', 'flex-start'),
-  { width: '100%', padding: '0 2rem' },
+  {
+    margin: '0.6rem 0 1.6rem',
+    padding: '0 2rem',
+    gap: '1.8rem',
+    width: '100%',
+  },
 ]);
 
 export const locationStyle = style([
   flexGenerator(),
   vars.fonts.body04_m_16,
   {
-    margin: '0.6rem 0 1.8rem',
     width: '100%',
     height: '3rem',
     color: vars.colors.gray600,
@@ -32,7 +36,6 @@ export const line = style({
 export const storeInfoWrapper = style([
   flexGenerator('row', 'space-between', 'flex-start'),
   {
-    marginBottom: '1.6rem',
     gap: '1.4rem',
     width: '100%',
   },

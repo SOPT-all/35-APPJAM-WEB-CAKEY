@@ -8,7 +8,7 @@ const BottomTab = () => {
       <TextButton size={'large'} color={'stroke'}>
         지도뷰
       </TextButton>
-      <TextButton size={'large'}>주문하러가기</TextButton>
+      <TextButton size={'large'}>주문하러 가기</TextButton>
     </nav>
   );
 };

@@ -33,6 +33,7 @@ const Banner = ({ storeData }: BannerProps) => {
         <span className={stationText}>{storeData.station}</span>
         <div className={line} />
       </div>
+
       <div className={storeInfoWrapper}>
         <div className={storeInfoBox}>
           <h1>{storeData.storeName}</h1>
