@@ -1,5 +1,5 @@
 import { AuthModal, Modal, TextButton } from '@components';
-import { useModal } from '@hooks';
+import { useEasyNavigate, useModal } from '@hooks';
 import { LetsGoButton, ProfileCard } from '@pages/myPage/components';
 
 import {
@@ -19,6 +19,8 @@ const MyPage = () => {
 
   const { isModalOpen, openModal, closeModal } = useModal();
 
+  const { goMyList } = useEasyNavigate();
+
   return (
     <>
       <section className={profileCardStyle[isLogin ? 'login' : 'logout']}>
@@ -31,7 +33,7 @@ const MyPage = () => {
 
       {isLogin ? (
         <div className={letsGoButtonWrapper}>
-          <LetsGoButton text={'찜 목록'} />
+          <LetsGoButton text={'찜 목록'} onClick={goMyList} />
           <LetsGoButton text={'휘피에 문의하기'} />
           <LetsGoButton text={'로그아웃'} onClick={openModal} />
         </div>

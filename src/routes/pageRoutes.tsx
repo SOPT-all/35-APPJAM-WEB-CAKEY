@@ -4,6 +4,7 @@ import {
   authRoutes,
   designListRoutes,
   homeRoutes,
+  myListRoutes,
   myPageRoutes,
   storeRoutes,
   viewRoutes,
@@ -18,6 +19,7 @@ const allRoutes = [
   ...myPageRoutes,
   ...storeRoutes,
   ...viewRoutes,
+  ...myListRoutes,
 ];
 
 const pageRoutes: RouteObject[] = [

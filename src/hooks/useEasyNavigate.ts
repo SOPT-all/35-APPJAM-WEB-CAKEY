@@ -17,6 +17,10 @@ const useEasyNavigate = () => {
     navigate(routePath.MYPAGE);
   };
 
+  const goMyList = () => {
+    navigate(routePath.MYLIST);
+  };
+
   const goStorePage = () => {
     navigate(routePath.STOREPAGE);
   };
@@ -33,6 +37,7 @@ const useEasyNavigate = () => {
     goHomePage,
     goViewPage,
     goMyPage,
+    goMyList,
     goStorePage,
     goDesignListPage,
     goLoginPage,

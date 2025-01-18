@@ -16,7 +16,7 @@ interface CategoriesType {
 
 interface useFilteredCardListProps {
   item: ItemType;
-  parameterType: string | CategoriesType;
+  parameterType?: string | CategoriesType;
 }
 
 const useFilteredCardList = ({
@@ -24,9 +24,10 @@ const useFilteredCardList = ({
   parameterType,
 }: useFilteredCardListProps) => {
   const [option, setOption] = useState<OptionType>('latest');
-  const [data, setData] = useState<
-    StoreCardListType | DesignCardListType | null
-  >(null);
+  const [data, setData] = useState<StoreCardListType | DesignCardListType>({
+    cakeCount: 0,
+    cakes: [],
+  });
 
   const handleOptionSelect = (newOption: OptionType) => {
     setOption(newOption);
@@ -39,7 +40,7 @@ const useFilteredCardList = ({
   // api 데이터 불러오는 코드가 들어와야 함
   // 지금은 일단 mockData로 대체
   useEffect(() => {
-    if (item === 'store') {
+    if (item === 'store' || item === 'likedStore') {
       const storeCardListData = {
         storeCount: 122,
         stores: [
@@ -53,19 +54,19 @@ const useFilteredCardList = ({
             images: [
               {
                 imageId: 1,
-                imageUrl: 'https://example.com/image1.jpg',
+                imageUrl: '../public/example-img.png',
               },
               {
                 imageId: 2,
-                imageUrl: 'https://example.com/image2.jpg',
+                imageUrl: '../public/example-img.png',
               },
               {
                 imageId: 3,
-                imageUrl: 'https://example.com/image3.jpg',
+                imageUrl: '../public/example-img.png',
               },
               {
                 imageId: 4,
-                imageUrl: 'https://example.com/image4.jpg',
+                imageUrl: '../public/example-img.png',
               },
             ],
           },
@@ -79,19 +80,19 @@ const useFilteredCardList = ({
             images: [
               {
                 imageId: 5,
-                imageUrl: 'https://example.com/image1.jpg',
+                imageUrl: '../public/example-img.png',
               },
               {
                 imageId: 6,
-                imageUrl: 'https://example.com/image2.jpg',
+                imageUrl: '../public/example-img.png',
               },
               {
                 imageId: 7,
-                imageUrl: 'https://example.com/image3.jpg',
+                imageUrl: '../public/example-img.png',
               },
               {
                 imageId: 8,
-                imageUrl: 'https://example.com/image4.jpg',
+                imageUrl: '../public/example-img.png',
               },
             ],
           },
@@ -105,26 +106,26 @@ const useFilteredCardList = ({
             images: [
               {
                 imageId: 9,
-                imageUrl: 'https://example.com/image1.jpg',
+                imageUrl: '../public/example-img.png',
               },
               {
                 imageId: 10,
-                imageUrl: 'https://example.com/image2.jpg',
+                imageUrl: '../public/example-img.png',
               },
               {
                 imageId: 11,
-                imageUrl: 'https://example.com/image3.jpg',
+                imageUrl: '../public/example-img.png',
               },
               {
                 imageId: 12,
-                imageUrl: 'https://example.com/image4.jpg',
+                imageUrl: '../public/example-img.png',
               },
             ],
           },
         ],
       };
       setData(storeCardListData);
-    } else if (item === 'design') {
+    } else if (item === 'design' || item === 'likedDesign') {
       const designCardListData = {
         cakeCount: 100,
         cakes: [
