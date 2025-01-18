@@ -12,6 +12,7 @@ const designListPages = {
 
 const myPages = {
   MYPAGE: '/mypage',
+  LIKELISTPAGE: '/mypage/like-list'
 };
 
 const storePages = {
