@@ -1,10 +1,13 @@
 export { default as IcCircleArrowRight42 } from './IcCircleArrowRight42';
 export { default as IcArrowDown20 } from './IcArrowDown20';
+export { default as IcArrowRight20 } from './IcArrowRight20';
 export { default as IcArrowRight24 } from './IcArrowRight24';
 export { default as IcArrowUp20 } from './IcArrowUp20';
 export { default as IcCheck } from './IcCheck';
 export { default as IcFillLikeOff36 } from './IcFillLikeOff36';
 export { default as IcFillLikeOn36 } from './IcFillLikeOn36';
+export { default as IcFormDot } from './IcFormDot';
+export { default as IcFormDotdot } from './IcFormDotdot';
 export { default as IcGpsmarkerOff } from './IcGpsmarkerOff';
 export { default as IcGpsmarkerOn } from './IcGpsmarkerOn';
 export { default as IcHomeAniv } from './IcHomeAniv';
