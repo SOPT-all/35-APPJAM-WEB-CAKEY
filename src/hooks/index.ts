@@ -1,5 +1,6 @@
+import useClipboard from './useClipboard';
 import useEasyNavigate from './useEasyNavigate';
 import useFilteredCardList from './useFilteredCardList';
 import useModal from './useModal';
 
-export { useEasyNavigate, useFilteredCardList, useModal };
+export { useClipboard, useEasyNavigate, useFilteredCardList, useModal };

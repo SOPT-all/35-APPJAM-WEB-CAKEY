@@ -20,7 +20,7 @@ export interface DesignItemType {
   station: string;
   isLiked: boolean;
   imageUrl: string;
-  likeCount: number;
+  cakeLikesCount: number;
 }
 
 export interface DesignDetailType {

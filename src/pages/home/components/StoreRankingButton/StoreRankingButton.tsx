@@ -1,6 +1,5 @@
-import { useNavigate } from 'react-router-dom';
-
 import { Label } from '@components';
+import { useEasyNavigate } from '@hooks';
 
 import { IcArrowRight20 } from '@svgs';
 
@@ -24,18 +23,23 @@ interface StoreRankingType {
 interface StoreRankingProps {
   data: StoreRankingType;
   rank: number;
+  hasBorder?: boolean;
 }
 
-const StoreRankingButton = ({ data, rank }: StoreRankingProps) => {
+const StoreRankingButton = ({
+  data,
+  rank,
+  hasBorder = true,
+}: StoreRankingProps) => {
   const { storeId, storeName, storeLikesCount, station } = data;
-  const navigate = useNavigate();
 
-  const handleButtonClick = () => {
-    navigate(`/store/${storeId}`);
-  };
+  const { goStorePage } = useEasyNavigate();
 
   return (
-    <button className={rankingContainer} onClick={handleButtonClick}>
+    <button
+      className={rankingContainer({ hasBorder })}
+      onClick={() => goStorePage(storeId)}
+    >
       <div className={rankingWrapper}>
         <div className={labelStyle}>
           <Label text={`${rank}`} />
