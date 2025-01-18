@@ -9,14 +9,20 @@ import {
   tabWrapper,
 } from './MapBottomSheet.css';
 
+import { BottomSheetState } from '@types';
+
 interface MapBottomSheetProps {
   selectedStation: string;
   isSaveActive: boolean;
+  animateState: BottomSheetState;
+  handleAnimateChange: (animate: BottomSheetState) => void;
 }
 
 const MapBottomSheet = ({
   selectedStation,
   isSaveActive,
+  animateState,
+  handleAnimateChange,
 }: MapBottomSheetProps) => {
   const [activeTab, setActiveTab] = useState(0);
 
@@ -37,7 +43,10 @@ const MapBottomSheet = ({
   };
 
   return (
-    <BottomSheet>
+    <BottomSheet
+      animateState={animateState}
+      handleAnimateChange={handleAnimateChange}
+    >
       {selectedStation === 'ALL' ? (
         <div className={listContainer}>
           <CardList

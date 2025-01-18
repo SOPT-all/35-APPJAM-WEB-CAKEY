@@ -1,6 +1,6 @@
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 
-import { BottomSheet, Modal } from '@components';
+import { Modal } from '@components';
 import { MyLocation } from '@constants';
 import { useBottomSheet } from '@hooks';
 import { useMapLoader } from '@pages/view/hooks';
@@ -15,6 +15,7 @@ import {
 } from '@svgs';
 
 import { buttonSectionStyle, mapContainer } from './kakaoMap.css';
+import MapBottomSheet from '../MapBottomSheet/MapBottomSheet';
 import MapButton from '../MapButton/MapButton';
 
 import { StationType } from '@types';
@@ -89,12 +90,12 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
         </section>
       </div>
       {selectedStoreId === 0 ? (
-        <BottomSheet
+        <MapBottomSheet
+          selectedStation={currentLocation.stationEnName}
+          isSaveActive={isSaveActive}
           animateState={animateState}
           handleAnimateChange={handleAnimateChange}
-        >
-          1
-        </BottomSheet>
+        />
       ) : (
         <Modal variant="bottom">1</Modal>
       )}
