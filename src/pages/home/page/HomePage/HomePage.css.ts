@@ -22,12 +22,6 @@ export const mainContentContainer = style([
     position: 'absolute',
     bottom: '3.5rem',
     padding: '0 2rem',
-  },
-]);
-
-export const mainTextContainer = style([
-  flexGenerator('column', 'flex-start', 'flex-start'),
-  {
     gap: '0.4rem',
   },
 ]);
@@ -63,7 +57,7 @@ export const subSectionContainer = style([
   {
     width: '100%',
     gap: '4.2rem',
-    padding: '3.3rem 0 7.3rem',
+    padding: '3.3rem 0 7.4rem',
   },
 ]);
 
@@ -79,10 +73,6 @@ export const likedStoreWrapper = style([
     gap: ' 1.2rem',
   },
 ]);
-
-// export const likedStoreStyle = style({
-//   width: '100%',
-// });
 
 export const cakeSectionWrapper = style([
   flexGenerator('column', 'flex-start', 'flex-start'),

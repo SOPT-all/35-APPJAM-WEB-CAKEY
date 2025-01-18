@@ -100,11 +100,9 @@ const HomePage = () => {
       <section className={mainSectionContainer} onClick={() => {}}>
         <img src={MainKeyVisual} />
         <div className={mainContentContainer}>
-          {isLogin ? (
-            <h1 className={mainTextStyle}>{user.userName} 님,</h1>
-          ) : (
-            <h1 className={mainTextStyle}>안녕하세요!</h1>
-          )}
+          <h1 className={mainTextStyle}>
+            {isLogin ? `${user.userName} 님,` : '안녕하세요!'}
+          </h1>
 
           <div className={mainContentWrapper}>
             <div className={mainTextWrapper}>
@@ -118,14 +116,12 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section className={subSectionContainer}>
+      <main className={subSectionContainer}>
         <section className={subSectionWrapper}>
           <h1 className={subTextStyle}>어떤 날을 위한 케이크인가요?</h1>
           <div className={categoryWrapper}>
             {CATEGORY.map((category) => (
-              <>
                 <CategoryCard category={category} />
-              </>
             ))}
           </div>
         </section>
@@ -157,7 +153,7 @@ const HomePage = () => {
             ))}
           </div>
         </section>
-      </section>
+      </main>
     </div>
   );
 };
