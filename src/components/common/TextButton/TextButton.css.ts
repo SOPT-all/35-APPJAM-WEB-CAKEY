@@ -44,11 +44,8 @@ export const buttonStyle = recipe({
       ),
     },
 
-    // isDisabled: {
-    //   true: createButtonColorStyles(
-    //     vars.colors.gray7,
-    //     vars.colors.gray3,
-    //   ),
-    // },
+    disabled: {
+      true: createButtonColorStyles(vars.colors.gray200, vars.colors.gray500),
+    },
   },
 });

@@ -29,6 +29,7 @@ export const orderButton = style([
   vars.fonts.body08_r_12,
   {
     padding: '0.6rem 0.4rem',
+    cursor: 'pointer',
   },
 ]);
 

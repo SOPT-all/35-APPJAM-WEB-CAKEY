@@ -57,6 +57,16 @@ globalStyle('select', {
   },
 });
 
+// U 태그 스타일
+globalStyle('u', {
+  '@layer': {
+    [base]: {
+      textDecorationLine: 'underline',
+      textUnderlinePosition: 'from-font',
+    },
+  },
+});
+
 // #root 스타일
 globalStyle('#root', {
   '@layer': {

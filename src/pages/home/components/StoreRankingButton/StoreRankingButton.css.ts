@@ -1,18 +1,28 @@
 import { style } from '@vanilla-extract/css';
+import { recipe } from '@vanilla-extract/recipes';
 
 import { flexGenerator } from '@styles/generator.css';
 import { vars } from '@styles/theme.css';
 
-export const rankingContainer = style([
-  flexGenerator('row', 'space-between', 'center'),
-  {
-    width: '100%',
-    height: '2.3rem',
-    maxWidth: '100%',
-    gap: '1.2rem',
-    overflow: 'hidden',
+export const rankingContainer = recipe({
+  base: [
+    flexGenerator('row', 'space-between', 'center'),
+    {
+      width: '100%',
+      maxWidth: '100%',
+      gap: '1.2rem',
+      overflow: 'hidden',
+      paddingBottom: '1.2rem',
+    },
+  ],
+  variants: {
+    hasBorder: {
+      true: {
+        borderBottom: `1px solid ${vars.colors.gray100}`,
+      },
+    },
   },
-]);
+});
 
 export const rankingWrapper = style([
   flexGenerator('row', 'flex-start'),

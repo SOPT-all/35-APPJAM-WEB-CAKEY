@@ -8,6 +8,7 @@ export const inputContainer = style([
   flexGenerator('column', 'center', 'flex-start'),
   {
     gap: '0.4rem',
+    width: '100%',
   },
 ]);
 

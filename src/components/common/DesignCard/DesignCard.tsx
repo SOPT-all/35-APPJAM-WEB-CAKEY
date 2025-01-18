@@ -1,7 +1,7 @@
 import { HTMLAttributes } from 'react';
 
 import { IconButton, Image, Label, Modal } from '@components';
-import { useModal } from '@hooks';
+import { useEasyNavigate, useModal } from '@hooks';
 import DesignSearchModal from '@pages/designList/components/DesignSearchModal/DesignSearchModal';
 
 import {
@@ -25,16 +25,17 @@ const DesignCard = ({
   numberLabel,
   hasModal = false,
 }: DesignCardProps) => {
-  const { storeId, imageUrl, storeName, station, likeCount, isLiked } =
+  const { storeId, imageUrl, storeName, station, cakeLikesCount, isLiked } =
     designItem;
 
   const { isModalOpen, openModal, closeModal } = useModal();
+  const { goStorePage } = useEasyNavigate();
 
   const handleCardClick = () => {
     if (hasModal) {
       openModal(); // 둘러보기 페이지에서는 모달 띄우기
     } else {
-      console.log('디자인카드 클릭', storeId); // 나머지 페이지에선 상세보기로 이동
+      goStorePage(storeId); // 나머지 페이지에선 상세보기로 이동
     }
   };
 
@@ -49,7 +50,7 @@ const DesignCard = ({
           </div>
           <IconButton
             buttonType="like20"
-            count={likeCount}
+            count={cakeLikesCount}
             isActive={isLiked}
             itemId={designId}
           />

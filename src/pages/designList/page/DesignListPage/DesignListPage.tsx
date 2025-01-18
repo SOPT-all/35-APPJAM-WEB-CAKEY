@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import { CardList } from '@components';
 import { CATEGORY, SUB_CATEGORY } from '@constants';
@@ -17,12 +18,15 @@ import {
 import { CategoryType, SubCategoryType } from '@types';
 
 const DesignListPage = () => {
+  const location = useLocation();
+  const currentCategory = location.state?.category ?? 'BIRTH';
+
   const subCategoryRef = useRef<HTMLUListElement>(null);
   const [selectedCategories, setSelectedCategories] = useState<{
     category: CategoryType;
     subCategory: SubCategoryType;
   }>({
-    category: 'BIRTH',
+    category: currentCategory,
     subCategory: 'ALL',
   });
 
