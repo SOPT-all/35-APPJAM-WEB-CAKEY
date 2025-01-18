@@ -4,6 +4,7 @@ import { CardList } from '@components';
 import { CATEGORY, SUB_CATEGORY } from '@constants';
 import CategoryBar from '@pages/designList/components/CategoryBar/CategoryBar';
 import SubCategoryBar from '@pages/designList/components/SubCategoryBar/SubCategoryBar';
+import useFilteredCardList from 'src/hooks/useFilteredCardList';
 
 import {
   cardListWrapper,
@@ -15,59 +16,52 @@ import {
 
 import { CategoryType, SubCategoryType } from '@types';
 
-const designCardListData = {
-  cakeCount: 100,
-  cakes: [
-    {
-      cakeId: 1,
-      storeId: 1,
-      storeName: '버터뭉',
-      station: '홍대입구역',
-      isLiked: false,
-      likeCount: 200,
-      imageUrl: '../public/example-img.png',
-    },
-    {
-      cakeId: 2,
-      storeId: 2,
-      storeName: '버터뭉2',
-      station: '서강대입구역',
-      isLiked: true,
-      likeCount: 30,
-      imageUrl: '../public/example-img.png',
-    },
-    {
-      cakeId: 3,
-      storeId: 1,
-      storeName: '버터뭉',
-      station: '홍대입구역',
-      isLiked: false,
-      likeCount: 200,
-      imageUrl: '../public/example-img.png',
-    },
-  ],
-};
-
-export const designListPageNullData = null;
-
 const DesignListPage = () => {
-  const [selectedCategory, setSelectedCategory] =
-    useState<CategoryType>('BIRTH');
-  const [selectedSubCategory, setSelectedSubCategory] =
-    useState<SubCategoryType>('ALL');
+  // const [selectedCategory, setSelectedCategory] =
+  //   useState<CategoryType>('BIRTH');
+  // const [selectedSubCategory, setSelectedSubCategory] =
+  //   useState<SubCategoryType>('ALL');
 
-  const handleCategoryChange = (category: CategoryType) => {
-    setSelectedCategory(category);
-  };
-
-  const handleSubCategoryChange = (category: SubCategoryType) => {
-    setSelectedSubCategory(category);
-  };
-
-  // const selectedCategories = {
-  //   category: selectedCategory,
-  //   subCategory: selectedSubCategory,
+  // const handleCategoryChange = (category: CategoryType) => {
+  //   setSelectedCategories(category);
   // };
+
+  // const handleSubCategoryChange = (category: SubCategoryType) => {
+  //   setSelectedSubCategory(category);
+  // };
+
+  const [selectedCategories, setSelectedCategories] = useState<{
+    category: CategoryType;
+    subCategory: SubCategoryType;
+  }>({
+    category: 'BIRTH',
+    subCategory: 'ALL',
+  });
+
+  const handleCategoriesChange = (
+    key: 'category' | 'subCategory',
+    value: string
+  ) => {
+    setSelectedCategories((prevState) => ({
+      ...prevState,
+      [key]: value,
+    }));
+  };
+
+  // const selectedCategories = [selectedCategory, selectedSubCategory];
+
+  const { item, handleOptionSelect, data } = useFilteredCardList({
+    item: 'design',
+    parameterType: selectedCategories,
+  });
+
+  // hook에 들어갈 내용
+  // 필터링 관련된 상태와 코드
+  // api 호출하는 코드
+
+  // api 호출할 때 필요한 내용
+  // store | design | likedStore | likedDesign -> 페이지에서 훅으로 넘겨주기
+  // latest | popularity -> 훅 내부에서
 
   return (
     <div className={designListPageLayout}>
@@ -75,21 +69,26 @@ const DesignListPage = () => {
         <div className={categoryWrapper}>
           <CategoryBar
             categories={CATEGORY}
-            selectedCategory={selectedCategory}
-            onCategoryChange={handleCategoryChange}
+            selectedCategory={selectedCategories.category}
+            onCategoryChange={handleCategoriesChange}
           />
         </div>
         <div className={subCategoryWrapper}>
           <SubCategoryBar
             categories={SUB_CATEGORY}
-            selectedSubCategory={selectedSubCategory}
-            onSubCategoryChange={handleSubCategoryChange}
+            selectedSubCategory={selectedCategories.subCategory}
+            onSubCategoryChange={handleCategoriesChange}
           />
         </div>
       </div>
 
       <div className={cardListWrapper}>
-        <CardList item="design" hasModal itemData={designCardListData} />
+        <CardList
+          item={item}
+          hasModal
+          itemData={data}
+          handleOptionSelect={handleOptionSelect}
+        />
       </div>
     </div>
   );

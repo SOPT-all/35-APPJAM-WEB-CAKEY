@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import {
   cardListContainer,
   cardListNullTextStyle,
@@ -13,33 +11,28 @@ import DesignCard from '../DesignCard/DesignCard';
 import FilteringButton from '../FilteringButton/FilteringButton';
 import StoreCard from '../StoreCard/StoreCard';
 
-import { DesignItemType, StoreType } from '@types';
-
-interface StoreCardListType {
-  storeCount: number;
-  stores: StoreType[];
-}
-
-interface DesignCardListType {
-  cakeCount: number;
-  cakes: DesignItemType[];
-}
+import {
+  DesignCardListType,
+  DesignItemType,
+  ItemType,
+  OptionType,
+  StoreCardListType,
+  StoreType,
+} from '@types';
 
 interface CardListProps {
-  item: 'store' | 'design' | 'likedStore' | 'likedDesign';
+  item: ItemType;
   itemData: StoreCardListType | DesignCardListType | null;
   hasModal?: boolean;
+  handleOptionSelect: (option: OptionType) => void;
 }
 
-const CardList = ({ item, itemData, hasModal = false }: CardListProps) => {
-  const [, setOption] = useState(''); //option은 나중에 데이터 불러올 때 사용될 예정
-
-  // filtering 버튼 관련한 로직 = onOptionSelect에 들어갈!
-  const handleOptionSelect = (option: string) => {
-    setOption(option);
-  };
-  
-
+const CardList = ({
+  item,
+  itemData,
+  hasModal = false,
+  handleOptionSelect,
+}: CardListProps) => {
   // 데이터를 조건에 따라 바로 분기 처리
   const isStoreCardListType = (
     data: DesignCardListType | StoreCardListType | null
