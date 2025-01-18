@@ -19,7 +19,14 @@ const MyPage = () => {
 
   const { isModalOpen, openModal, closeModal } = useModal();
 
-  const { goMyList } = useEasyNavigate();
+  const { goMyList, goLoginPage } = useEasyNavigate();
+
+  const handleButtonClick = () => {
+    window.open(
+      'https://docs.google.com/forms/d/1yB7kSUqh2scItQQ-GKqfNHrMfMX-yLn6g4ib7EGmd1c/edit',
+      '_blank'
+    );
+  };
 
   return (
     <>
@@ -34,11 +41,11 @@ const MyPage = () => {
       {isLogin ? (
         <div className={letsGoButtonWrapper}>
           <LetsGoButton text={'찜 목록'} onClick={goMyList} />
-          <LetsGoButton text={'휘피에 문의하기'} />
+          <LetsGoButton text={'휘피에 문의하기'} onClick={handleButtonClick} />
           <LetsGoButton text={'로그아웃'} onClick={openModal} />
         </div>
       ) : (
-        <div className={loginButton}>
+        <div className={loginButton} onClick={goLoginPage}>
           <TextButton size={'large'} color={'red'}>
             로그인 하기
           </TextButton>
