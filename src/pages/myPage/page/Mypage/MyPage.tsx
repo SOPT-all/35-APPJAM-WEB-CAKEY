@@ -1,4 +1,5 @@
 import { AuthModal, Modal, TextButton } from '@components';
+import { WHIPEE_CONTACT_FORM } from '@constants';
 import { useEasyNavigate, useModal } from '@hooks';
 import { LetsGoButton, ProfileCard } from '@pages/myPage/components';
 
@@ -21,11 +22,8 @@ const MyPage = () => {
 
   const { goMyList, goLoginPage } = useEasyNavigate();
 
-  const handleButtonClick = () => {
-    window.open(
-      'https://docs.google.com/forms/d/1yB7kSUqh2scItQQ-GKqfNHrMfMX-yLn6g4ib7EGmd1c/edit',
-      '_blank'
-    );
+  const handleContactForm = () => {
+    window.open(WHIPEE_CONTACT_FORM, '_blank');
   };
 
   return (
@@ -41,7 +39,7 @@ const MyPage = () => {
       {isLogin ? (
         <div className={letsGoButtonWrapper}>
           <LetsGoButton text={'찜 목록'} onClick={goMyList} />
-          <LetsGoButton text={'휘피에 문의하기'} onClick={handleButtonClick} />
+          <LetsGoButton text={'휘피에 문의하기'} onClick={handleContactForm} />
           <LetsGoButton text={'로그아웃'} onClick={openModal} />
         </div>
       ) : (
