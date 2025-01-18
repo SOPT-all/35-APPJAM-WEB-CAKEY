@@ -71,11 +71,6 @@ export const designDescription = style([
   },
 ]);
 
-export const underline = style({
-  textDecorationLine: 'underline',
-  textUnderlinePosition: 'from-font',
-});
-
 export const modalFooter = style([
   vars.fonts.body09_r_10,
   {

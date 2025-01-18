@@ -15,7 +15,6 @@ import {
   modalForm,
   formContent,
   designDescription,
-  underline,
 } from './OrderFormModal.css';
 
 interface OrderFormModalProps {
@@ -91,7 +90,7 @@ const OrderFormModal = ({ onClose }: OrderFormModalProps) => {
           <Input>
             <Input.Label>디자인</Input.Label>
             <p className={designDescription}>
-              <u className={underline}>카카오톡에서 이미지를 첨부</u>해주세요
+              <u>카카오톡에서 이미지를 첨부</u>해주세요
             </p>
           </Input>
         </form>
