@@ -1,4 +1,5 @@
 import { Label, TextButton } from '@components';
+import { useEasyNavigate } from '@hooks';
 
 import {
   buttonWrapper,
@@ -44,6 +45,9 @@ const designDetailItem = {
 
 const DesignSearchModal = ({ storeId }: DesignSearchModalProps) => {
   const { storeName, station, cakes } = designDetailItem; // 추후 서버에서 받아올 데이터
+
+  const { goStorePage } = useEasyNavigate();
+
   return (
     <div className={searchModalContainer}>
       <section className={carouselWrapper}>
@@ -57,7 +61,9 @@ const DesignSearchModal = ({ storeId }: DesignSearchModalProps) => {
         </div>
 
         <div className={buttonWrapper}>
-          <TextButton size="small">상세보기</TextButton>
+          <TextButton size="small" onClick={() => goStorePage(storeId)}>
+            상세보기
+          </TextButton>
         </div>
       </section>
     </div>

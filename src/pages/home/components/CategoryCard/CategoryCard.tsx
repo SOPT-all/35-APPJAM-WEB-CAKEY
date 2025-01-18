@@ -1,4 +1,5 @@
 import { CATEGORY_COMPONENT } from '@constants';
+import { useEasyNavigate } from '@hooks';
 
 import {
   buttonWrapper,
@@ -18,8 +19,11 @@ const CategoryCard = ({ category }: CategoryCardProps) => {
   const categoryText = CATEGORY_COMPONENT[category].text;
   const hashtagText = CATEGORY_COMPONENT[category].hashtag;
   const categoryIcon = CATEGORY_COMPONENT[category].icon;
+  const { goDesignListPage } = useEasyNavigate();
 
-  const handleClickButton = () => {}; // 나중에 navigate 넣을거임
+  const handleClickButton = () => {
+    goDesignListPage(category);
+  };
 
   return (
     <button className={buttonWrapper} onClick={handleClickButton}>

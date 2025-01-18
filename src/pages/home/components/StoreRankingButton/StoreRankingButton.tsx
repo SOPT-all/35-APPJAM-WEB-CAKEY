@@ -1,6 +1,5 @@
-import { useNavigate } from 'react-router-dom';
-
 import { Label } from '@components';
+import { useEasyNavigate } from '@hooks';
 
 import { IcArrowRight20 } from '@svgs';
 
@@ -33,16 +32,13 @@ const StoreRankingButton = ({
   hasBorder = true,
 }: StoreRankingProps) => {
   const { storeId, storeName, storeLikesCount, station } = data;
-  const navigate = useNavigate();
 
-  const handleButtonClick = () => {
-    navigate(`/store/${storeId}`);
-  };
+  const { goStorePage } = useEasyNavigate();
 
   return (
     <button
       className={rankingContainer({ hasBorder })}
-      onClick={handleButtonClick}
+      onClick={() => goStorePage(storeId)}
     >
       <div className={rankingWrapper}>
         <div className={labelStyle}>

@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import { DesignCard } from '@components';
 import { CATEGORY, MainKeyVisual } from '@constants';
+import { useEasyNavigate } from '@hooks';
 import { StoreRankingButton } from '@pages/home/components';
 import CategoryCard from '@pages/home/components/CategoryCard/CategoryCard';
 
@@ -93,10 +94,16 @@ const user = { userName: '박채연' };
 
 const HomePage = () => {
   const [isLogin] = useState(true);
+  const { goViewPage } = useEasyNavigate();
 
   return (
     <div className={homePageLayout}>
-      <section className={mainSectionContainer} onClick={() => {}}>
+      <section
+        className={mainSectionContainer}
+        onClick={() => {
+          goViewPage();
+        }}
+      >
         <img src={MainKeyVisual} />
         <div className={mainContentContainer}>
           <h1 className={mainTextStyle}>
