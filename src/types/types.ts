@@ -40,3 +40,16 @@ export type SubCategoryType =
   | 'HUMOR'
   | 'FANTASY'
   | 'ELSE';
+
+export interface StationType {
+  stationEnName: string;
+  stationKrName: string;
+  latitude: number;
+  longitude: number;
+}
+
+export interface CoordinateType {
+  storeId: number;
+  latitude: number;
+  longitutde: number;
+}
