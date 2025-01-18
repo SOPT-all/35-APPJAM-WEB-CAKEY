@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 
 import {
-  StoreDefault42,
+  StoreDefault32,
   StoreDefault54,
-  StoreLike42,
+  StoreLike32,
   StoreLike54,
   MyLocation,
 } from '@constants';
@@ -23,20 +23,21 @@ import { CoordinateType, StationType } from '@types';
 
 interface KakaoMapProps {
   currentLocation: StationType;
+  onMarkerClick: (storeId: number) => void;
 }
 
 const markerIcon = {
   saveOff: {
-    normal: StoreDefault42,
-    clicked: StoreDefault54,
+    normal: StoreDefault32,
+    clicked: StoreLike54,
   },
   saveOn: {
-    normal: StoreLike42,
-    clicked: StoreLike54,
+    normal: StoreLike32,
+    clicked: StoreDefault54,
   },
 };
 
-const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
+const KakaoMap = ({ currentLocation, onMarkerClick }: KakaoMapProps) => {
   useMapLoader();
 
   // useDebounce 훅 사용
@@ -50,7 +51,9 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
   );
 
   const defaultCenter = { lat: 37.556621, lng: 126.923877 };
-  const [storeMarkerList, setStoreMarkerList] = useState<CoordinateType[]>([]);
+  const [storeMarkerList, setStoreMarkerList] = useState<
+    (CoordinateType & { clicked: boolean })[]
+  >([]);
   // 찜 버튼 활성화 상태
   const [isSaveActive, setIsSaveActive] = useState(false);
   // gps 버튼 활성화 상태
@@ -67,10 +70,6 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
     lat: number;
     lng: number;
   }>(defaultCenter);
-
-  const changedMarkerIcon = isSaveActive
-    ? markerIcon.saveOn.normal
-    : markerIcon.saveOff.normal;
 
   const fetchCurrentPosition = () => {
     if (navigator.geolocation) {
@@ -94,7 +93,6 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
 
   const handleCenterChanged = (map: kakao.maps.Map) => {
     setIsGpsActive(false);
-
     handleDebouncedCenterChange(map);
   };
   const handleGpsButtonClick = () => {
@@ -102,34 +100,71 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
   };
   const handleSaveButtonClick = () => {
     setIsSaveActive((prev) => !prev);
-    if (isSaveActive) {
-      // 스토어 좌표 리스트 조회 (ALL) 결과 data 넣기
-      setStoreMarkerList(ALLSTATIONLOCATIONS);
-    } else {
-      // 찜한 스토어 좌표 리스트 조회 결과 data 넣기
-      setStoreMarkerList(SAVEDLOCATIONS);
-    }
+    setStoreMarkerList(
+      (isSaveActive ? ALLSTATIONLOCATIONS : SAVEDLOCATIONS).map((location) => ({
+        ...location,
+        clicked: false,
+      }))
+    );
+  };
+
+  const getMarkerIcon = (marker: { clicked: boolean }) => {
+    const icons = isSaveActive ? markerIcon.saveOn : markerIcon.saveOff;
+    const iconSrc = marker.clicked ? icons.clicked : icons.normal;
+
+    const size =
+      iconSrc === StoreDefault32 || iconSrc === StoreLike32
+        ? { width: 32, height: 32 }
+        : { width: 54, height: 54 };
+
+    return { src: iconSrc, size };
+  };
+
+  const handleMarkerClick = (storeId: number) => {
+    setStoreMarkerList((prev) =>
+      prev.map((marker) =>
+        marker.storeId === storeId
+          ? { ...marker, clicked: true }
+          : { ...marker, clicked: false }
+      )
+    );
+    onMarkerClick(storeId);
+  };
+
+  const handleMapClick = () => {
+    // 지도 빈 공간 클릭 시 모든 마커의 clicked 상태를 초기화
+    setStoreMarkerList((prev) =>
+      prev.map((marker) => ({ ...marker, clicked: false }))
+    );
   };
 
   useEffect(() => {
     if (currentLocation) {
-      setStoreMarkerList(HONGDAELOCATIONS);
-      setCenter({
-        lat: currentLocation.latitude,
-        lng: currentLocation.longitude,
-      });
+      if (currentLocation.stationEnName === 'ALL') {
+        // 현재 위치를 가져와 센터 설정
+        fetchCurrentPosition();
+      } else {
+        // 특정 지하철역으로 설정
+        setStoreMarkerList(
+          HONGDAELOCATIONS.map((location) => ({ ...location, clicked: false }))
+        );
+        setCenter({
+          lat: currentLocation.latitude,
+          lng: currentLocation.longitude,
+        });
+      }
     }
-    // currentLocation 바뀌면 해당 지하철역으로 스토어 좌표 조회 해서 마커 띄워야함
   }, [currentLocation]);
 
   useEffect(() => {
     fetchCurrentPosition();
     // 첫 렌더링 시 전체 스토어 좌표 조회 해서 마커 띄워야함
     // 지금은 더미데이터 넣는 중
-    setStoreMarkerList(ALLSTATIONLOCATIONS);
+    setStoreMarkerList(
+      ALLSTATIONLOCATIONS.map((location) => ({ ...location, clicked: false }))
+    );
   }, []);
 
-  console.log('렌더링 됨');
   return (
     <div className={mapContainer}>
       <Map
@@ -137,18 +172,23 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
         level={4}
         style={{ width: '100%', height: '100%' }}
         onCenterChanged={handleCenterChanged}
+        onClick={handleMapClick}
       >
-        {storeMarkerList.map((location) => (
-          <MapMarker
-            key={location.storeId}
-            position={{ lat: location.latitude, lng: location.longitutde }}
-            image={{
-              src: changedMarkerIcon,
-              size: { width: 42, height: 42 },
-            }}
-            onClick={() => {}}
-          />
-        ))}
+        {storeMarkerList.map((location) => {
+          const { src, size } = getMarkerIcon(location);
+
+          return (
+            <MapMarker
+              key={location.storeId}
+              position={{ lat: location.latitude, lng: location.longitutde }}
+              image={{
+                src,
+                size,
+              }}
+              onClick={() => handleMarkerClick(location.storeId)}
+            />
+          );
+        })}
         <MapMarker
           image={{
             src: MyLocation,
