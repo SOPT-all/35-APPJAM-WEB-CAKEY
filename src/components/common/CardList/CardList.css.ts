@@ -4,7 +4,7 @@ import { flexGenerator } from '@styles/generator.css';
 import { vars } from '@styles/theme.css';
 
 export const cardListContainer = style([
-  flexGenerator('column', 'flex-start', 'flex-start'),
+  flexGenerator('column'),
   {
     gap: '1.2rem',
     width: '100%',
@@ -45,3 +45,13 @@ export const designCardListWrapper = style({
   gridTemplateColumns: 'repeat(2, 1fr)',
   gap: '1.2rem 1.5rem',
 });
+
+export const cardListNullTextStyle = style([
+  vars.fonts.body04_m_16,
+  flexGenerator(),
+  {
+    color: vars.colors.gray400,
+    width: '100%',
+    height: 'calc(100dvh - 23.6rem - 1.2rem)',
+  },
+]);

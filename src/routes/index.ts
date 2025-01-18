@@ -6,8 +6,6 @@ import routePath from './routePath';
 import storeRoutes from './storeRoutes';
 import viewRoutes from './viewRoutes';
 
-import pageRoutes from './pageRoutes';
-
 export {
   authRoutes,
   designListRoutes,
@@ -15,6 +13,4 @@ export {
   myPageRoutes,
   storeRoutes,
   viewRoutes,
-  routePath,
-  pageRoutes,
 };
