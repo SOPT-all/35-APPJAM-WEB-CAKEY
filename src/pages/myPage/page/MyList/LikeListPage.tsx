@@ -9,9 +9,9 @@ import {
   myListTitle,
   tabSticky,
   titleWrapper,
-} from './MyList.css';
+} from './LikeListPage.css';
 
-const MyList = () => {
+const LikeListPage = () => {
   const [activeTab, setActiveTab] = useState(0);
 
   const handleTab = (index: number) => {
@@ -65,4 +65,4 @@ const MyList = () => {
   );
 };
 
-export default MyList;
+export default LikeListPage;

@@ -12,10 +12,7 @@ const designListPages = {
 
 const myPages = {
   MYPAGE: '/mypage',
-};
-
-const myList = {
-  MYLIST: '/my-list',
+  LIKELISTPAGE: '/mypage/like-list'
 };
 
 const storePages = {
@@ -32,7 +29,6 @@ export default {
   ...homePages,
   ...designListPages,
   ...myPages,
-  ...myList,
   ...storePages,
   ...viewPages,
 };
