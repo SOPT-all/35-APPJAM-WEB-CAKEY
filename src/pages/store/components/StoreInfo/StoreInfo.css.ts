@@ -49,7 +49,7 @@ export const toggleButton = recipe({
     cursor: 'pointer',
   },
   variants: {
-    isOpen: {
+    isToggleOpen: {
       true: { transform: 'rotate(180deg)' },
     },
   },

@@ -7,12 +7,16 @@ import {
   orderGuideSubText,
 } from './OrderGuideButton.css';
 
-const OrderGuideButton = () => {
+interface OrderGuideButtonProps {
+  onOpen: () => void;
+}
+
+const OrderGuideButton = ({ onOpen }: OrderGuideButtonProps) => {
   return (
     <li className={containerStyle}>
       <div className={buttonWrapper}>
         <h1>주문서 양식</h1>
-        <button className={orderButton}>
+        <button className={orderButton} onClick={onOpen}>
           <span>양식 작성하기</span>
           <IcArrowRight24 width={16} height={16} />
         </button>
