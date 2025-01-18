@@ -12,10 +12,8 @@ import { CoordinateType, StationType } from '@types';
 
 const DEFAULT_CENTER = { lat: 37.556621, lng: 126.923877 };
 
-export const useKakaoMap = (
-  currentLocation: StationType,
-  onMarkerClick: (storeId: number) => void
-) => {
+export const useKakaoMap = (currentLocation: StationType) => {
+  const [selectedStoreId, setSelectedStoreId] = useState<number>(0);
   const [storeMarkerList, setStoreMarkerList] = useState<
     (CoordinateType & { clicked: boolean })[]
   >([]);
@@ -94,7 +92,7 @@ export const useKakaoMap = (
           : { ...marker, clicked: false }
       )
     );
-    onMarkerClick(storeId);
+    setSelectedStoreId(storeId);
   };
 
   const handleMapClick = () => {
@@ -102,7 +100,7 @@ export const useKakaoMap = (
     setStoreMarkerList((prev) =>
       prev.map((marker) => ({ ...marker, clicked: false }))
     );
-    onMarkerClick(0);
+    setSelectedStoreId(0);
   };
 
   useEffect(() => {
@@ -129,6 +127,7 @@ export const useKakaoMap = (
   }, []);
 
   return {
+    selectedStoreId,
     storeMarkerList,
     currentPosition,
     center,
