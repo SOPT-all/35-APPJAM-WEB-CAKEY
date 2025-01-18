@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import {
   listStyle,
   listBox,
@@ -9,15 +7,21 @@ import {
 } from './StoreMenu.css';
 import SizeCardList from '../SizeCardList/SizeCardList';
 
-const StoreMenu = () => {
-  const [menuData] = useState({
-    sizes: [
-      { sizeName: '미니', price: 10000 },
-      { sizeName: '1호', price: 20000 },
-    ],
-    taste: '겉크림 - 크림치즈크림',
-  });
+interface Size {
+  sizeName: string;
+  price: number;
+}
 
+interface MenuData {
+  sizes: Size[];
+  taste: string;
+}
+
+interface StoreMenuProps {
+  menuData: MenuData;
+}
+
+const StoreMenu = ({ menuData }: StoreMenuProps) => {
   return (
     <ul className={listStyle}>
       <li className={listBox}>

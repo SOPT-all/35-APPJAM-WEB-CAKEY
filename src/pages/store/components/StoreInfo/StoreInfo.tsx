@@ -15,24 +15,26 @@ import {
 } from './StoreInfo.css';
 import OrderGuideButton from '../OrderGuideButton/OrderGuideButton';
 
-const data = {
-  monOpen: '09:00',
-  monClose: '18:00',
-  tueOpen: '09:00',
-  tueClose: '18:00',
-  wedOpen: '09:00',
-  wedClose: '18:00',
-  thuOpen: null,
-  thuClose: null,
-  friOpen: '09:00',
-  friClose: '18:00',
-  satOpen: '09:00',
-  satClose: '18:00',
-  sunOpen: '09:00',
-  sunClose: '18:00',
-  address: '서울특별시 중구 동호로 385-2 아이디어회관 301호',
-  phone: '010-1234-1234',
-};
+interface StoreInfoProps {
+  infoData: {
+    monOpen: string | null;
+    monClose: string | null;
+    tueOpen: string | null;
+    tueClose: string | null;
+    wedOpen: string | null;
+    wedClose: string | null;
+    thuOpen: string | null;
+    thuClose: string | null;
+    friOpen: string | null;
+    friClose: string | null;
+    satOpen: string | null;
+    satClose: string | null;
+    sunOpen: string | null;
+    sunClose: string | null;
+    address: string;
+    phone: string;
+  };
+}
 
 interface InfoItem {
   id: string;
@@ -41,10 +43,10 @@ interface InfoItem {
   content: React.ReactNode;
 }
 
-const StoreInfo = () => {
+const StoreInfo = ({ infoData }: StoreInfoProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const formattedHours = formatHours(data);
+  const formattedHours = formatHours(infoData);
 
   const infoItems: InfoItem[] = [
     {
@@ -75,13 +77,13 @@ const StoreInfo = () => {
       id: 'location',
       icon: <IcLineLocation width={24} height={24} />,
       title: '위치',
-      content: <p className={listContent}>{data.address}</p>,
+      content: <p className={listContent}>{infoData.address}</p>,
     },
     {
       id: 'contact',
       icon: <IcPhone width={24} height={24} />,
       title: '연락처',
-      content: <p className={listContent}>{data.phone}</p>,
+      content: <p className={listContent}>{infoData.phone}</p>,
     },
   ];
 

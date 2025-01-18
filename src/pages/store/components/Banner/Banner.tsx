@@ -12,29 +12,37 @@ import {
   storeAddress,
 } from './Banner.css';
 
-const Banner = () => {
-  const data = {
-    storeId: 1,
-    storeName: '버터뭉',
-    address: '서울 중구 동호로 285-2 아이디어회관 301호 ',
-    station: '홍대입구역',
-    isLiked: true,
-    imageUrl: '/example-img.png',
-  };
+interface StoreData {
+  storeId: number;
+  storeName: string;
+  address: string;
+  station: string;
+  isLiked: boolean;
+  imageUrl: string;
+}
 
+interface BannerProps {
+  storeData: StoreData;
+}
+
+const Banner = ({ storeData }: BannerProps) => {
   return (
     <main className={bannerContainer}>
       <div className={locationStyle}>
         <IcStoreLocation width={20} height={20} />
-        <span className={stationText}>{data.station}</span>
+        <span className={stationText}>{storeData.station}</span>
         <div className={line} />
       </div>
       <div className={storeInfoWrapper}>
         <div className={storeInfoBox}>
-          <h1>{data.storeName}</h1>
-          <p className={storeAddress}>{data.address}</p>
+          <h1>{storeData.storeName}</h1>
+          <p className={storeAddress}>{storeData.address}</p>
         </div>
-        <IconButton buttonType={'save28'} count={32} />
+        <IconButton
+          buttonType={'save28'}
+          isActive={storeData.isLiked}
+          count={32}
+        />
       </div>
     </main>
   );

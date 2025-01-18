@@ -2,27 +2,20 @@ import { Image } from '@components';
 
 import { gridStyle } from './StoreDesign.css';
 
+interface DesignData {
+  cakeId: number;
+  cakeImageUrl: string;
+  isLiked: boolean;
+}
 
-const StoreDesign = () => {
-  const designs = [
-    // 추후 삭제 예정
-    { cakeId: 1, cakeImageUrl: '/example-img.png', isLiked: true },
-    { cakeId: 2, cakeImageUrl: '/example-img.png', isLiked: false },
-    { cakeId: 3, cakeImageUrl: '/example-img.png', isLiked: true },
-    { cakeId: 4, cakeImageUrl: '/example-img.png', isLiked: false },
-    { cakeId: 5, cakeImageUrl: '/example-img.png', isLiked: true },
-    { cakeId: 6, cakeImageUrl: '/example-img.png', isLiked: false },
-    { cakeId: 7, cakeImageUrl: '/example-img.png', isLiked: true },
-    { cakeId: 8, cakeImageUrl: '/example-img.png', isLiked: false },
-    { cakeId: 9, cakeImageUrl: '/example-img.png', isLiked: true },
-    { cakeId: 10, cakeImageUrl: '/example-img.png', isLiked: false },
-    { cakeId: 11, cakeImageUrl: '/example-img.png', isLiked: true },
-    { cakeId: 12, cakeImageUrl: '/example-img.png', isLiked: false },
-  ];
+interface StoreDesignProps {
+  designData: DesignData[];
+}
 
+const StoreDesign = ({ designData = [] }: StoreDesignProps) => {
   return (
     <div className={gridStyle}>
-      {designs.map((design) => (
+      {designData.map((design) => (
         <Image
           key={design.cakeId}
           src={design.cakeImageUrl}
