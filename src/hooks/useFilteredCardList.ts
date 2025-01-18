@@ -9,14 +9,14 @@ import {
   SubCategoryType,
 } from '@types';
 
+interface CategoriesType {
+  category: CategoryType;
+  subCategory: SubCategoryType;
+}
+
 interface useFilteredCardListProps {
   item: ItemType;
-  parameterType:
-    | string
-    | {
-        category: CategoryType;
-        subCategory: SubCategoryType;
-      };
+  parameterType: string | CategoriesType;
 }
 
 const useFilteredCardList = ({
