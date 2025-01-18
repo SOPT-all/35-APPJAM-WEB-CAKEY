@@ -28,6 +28,7 @@ globalStyle('html, body', {
       justifyContent: 'center',
       alignItems: 'center',
       scrollBehavior: 'smooth',
+      overscrollBehavior: 'none',
     },
   },
 });

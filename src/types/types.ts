@@ -53,3 +53,16 @@ export type SubCategoryType =
 
 export type ItemType = 'store' | 'design' | 'likedStore' | 'likedDesign';
 export type OptionType = 'latest' | 'popularity';
+
+export interface StationType {
+  stationEnName: string;
+  stationKrName: string;
+  latitude: number;
+  longitude: number;
+}
+
+export interface CoordinateType {
+  storeId: number;
+  latitude: number;
+  longitutde: number;
+}

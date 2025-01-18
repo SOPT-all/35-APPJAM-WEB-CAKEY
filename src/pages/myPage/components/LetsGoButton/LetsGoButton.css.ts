@@ -6,6 +6,7 @@ import { vars } from '@styles/theme.css';
 export const letsGoContainer = style([
   flexGenerator('row', 'space-between'),
   {
+    width: '100%',
     padding: '1.8rem',
     cursor: 'pointer',
     borderRadius: '10px',
