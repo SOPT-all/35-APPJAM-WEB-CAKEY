@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Input, TextButton } from '@components';
 import { ORDER_FORM_FIELDS } from '@constants';
 import { useToast } from '@contexts';
+import { useClipboard } from '@hooks';
 
 import { IcFormX20 } from '@svgs';
 
@@ -22,6 +23,7 @@ interface OrderFormModalProps {
 }
 
 const OrderFormModal = ({ onClose }: OrderFormModalProps) => {
+  const { copyToClipboard } = useClipboard();
   const { showToast } = useToast();
 
   const [formData, setFormData] = useState({
@@ -51,15 +53,14 @@ const OrderFormModal = ({ onClose }: OrderFormModalProps) => {
       )
       .join('\n');
 
-    navigator.clipboard
-      .writeText(textToCopy.trim())
-      .then(() => {
+    copyToClipboard(textToCopy).then((success) => {
+      if (success) {
         onClose();
         showToast('check', '주문서가 복사되었어요');
-      })
-      .catch(() => {
+      } else {
         showToast('error', '주문서 복사에 실패했어요');
-      });
+      }
+    });
   };
 
   return (

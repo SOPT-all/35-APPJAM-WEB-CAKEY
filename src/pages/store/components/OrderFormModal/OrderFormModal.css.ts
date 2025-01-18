@@ -36,7 +36,6 @@ export const modalDescription = style([
 export const modalForm = style({
   padding: '0 0.4rem',
   width: '100%',
-  fontSize: '9rem',
 });
 
 export const formContent = style([
@@ -77,7 +76,7 @@ export const modalFooter = style([
     padding: '1.2rem 2rem',
     width: '100%',
     borderTop: `1px solid ${vars.colors.gray100}`,
-    borderRadius: '0rem 0rem 1rem 1rem',
+    borderRadius: '0 0 10px 10px',
     backgroundColor: vars.colors.white,
   },
 ]);
