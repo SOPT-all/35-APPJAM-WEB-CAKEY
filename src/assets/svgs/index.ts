@@ -28,6 +28,7 @@ export { default as IcSearchCategoryCheerUnactivate } from './IcSearchCategoryCh
 export { default as IcSearchCategorySeasonUnactivate } from './IcSearchCategorySeasonUnactivate';
 export { default as IcToastCheck } from './IcToastCheck';
 export { default as IcToastError } from './IcToastError';
+export { default as IcX } from './IcX';
 export { default as ImgLogo } from './ImgLogo';
 export { default as ImgMypageProfileLogin } from './ImgMypageProfileLogin';
 export { default as ImgStore11Cm } from './ImgStore11Cm';
