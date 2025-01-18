@@ -11,7 +11,7 @@ import { SubCategoryType } from '@types';
 interface SubCategoryProps {
   categories: SubCategoryType[];
   selectedSubCategory: SubCategoryType;
-  onSubCategoryChange: (key: 'subCategory', value: string) => void;
+  onSubCategoryChange: (category: SubCategoryType) => void;
 }
 
 const SubCategoryBar = ({
@@ -29,7 +29,7 @@ const SubCategoryBar = ({
               ? activeCategoryStyle
               : defaultCategoryStyle
           }
-          onClick={() => onSubCategoryChange('subCategory', category)}
+          onClick={() => onSubCategoryChange(category)}
         >
           {SUB_CATEGORY_TEXT[category]}
         </li>

@@ -6,7 +6,7 @@ import { CategoryType } from '@types';
 interface CategoryBarProps {
   categories: CategoryType[];
   selectedCategory: CategoryType;
-  onCategoryChange: (key: 'category', value: string) => void;
+  onCategoryChange: (category: CategoryType) => void;
 }
 
 const CategoryBar = ({
