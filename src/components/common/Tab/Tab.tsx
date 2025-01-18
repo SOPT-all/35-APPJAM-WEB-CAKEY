@@ -13,7 +13,7 @@ const tabs = {
 export const Tab = ({ tabType, activeTab, onTabChange }: TabProps) => {
   const tabList = tabType === 'viewMyPage' ? tabs.viewMyPage : tabs.store;
   return (
-    <div className={tabStyle}>
+    <div className={tabStyle({ tabType })}>
       {tabList.map((tab, index) => (
         <button
           key={index}

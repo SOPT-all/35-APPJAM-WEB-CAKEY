@@ -40,4 +40,3 @@ export type SubCategoryType =
   | 'HUMOR'
   | 'FANTASY'
   | 'ELSE';
-

@@ -20,7 +20,7 @@ const meta = {
     // radio 버튼
     size: {
       control: { type: 'radio' },
-      options: ['small', 'medium', 'large'],
+      options: ['small', 'medium', 'large', 'xLarge'],
     },
     color: {
       control: { type: 'radio' },
