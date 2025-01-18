@@ -102,6 +102,7 @@ export const useKakaoMap = (
     setStoreMarkerList((prev) =>
       prev.map((marker) => ({ ...marker, clicked: false }))
     );
+    onMarkerClick(0);
   };
 
   useEffect(() => {
