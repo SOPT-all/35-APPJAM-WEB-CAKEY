@@ -38,7 +38,7 @@ const StoreRankingButton = ({ data, rank }: StoreRankingProps) => {
     <button className={rankingContainer} onClick={handleButtonClick}>
       <div className={rankingWrapper}>
         <div className={labelStyle}>
-          <Label text={`${rank + 1}`} />
+          <Label text={`${rank}`} />
         </div>
         <div className={rankingLeftBox}>
           <h3 className={storeNameText}>{storeName}</h3>
