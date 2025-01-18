@@ -1,4 +1,8 @@
-import { TextButton } from '@components';
+import { useState } from 'react';
+
+import { Input, TextButton } from '@components';
+import { ORDER_FORM_FIELDS } from '@constants';
+import { useToast } from '@contexts';
 
 import { IcFormX20 } from '@svgs';
 
@@ -10,6 +14,8 @@ import {
   modalFooter,
   modalForm,
   formContent,
+  designDescription,
+  underline,
 } from './OrderFormModal.css';
 
 interface OrderFormModalProps {
@@ -17,27 +23,88 @@ interface OrderFormModalProps {
 }
 
 const OrderFormModal = ({ onClose }: OrderFormModalProps) => {
+  const { showToast } = useToast();
+
+  const [formData, setFormData] = useState({
+    user: '',
+    pickup: '',
+    size: '',
+    flavor: '',
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [id]: value,
+    }));
+  };
+
+  const isFormComplete = Object.values(formData).every(
+    (value) => value.trim() !== ''
+  );
+
+  const handleCopy = () => {
+    const textToCopy = Object.entries(formData)
+      .map(
+        ([key, value]) =>
+          `${ORDER_FORM_FIELDS.find((field) => field.id === key)?.label}: ${value}`
+      )
+      .join('\n');
+
+    navigator.clipboard
+      .writeText(textToCopy.trim())
+      .then(() => {
+        onClose();
+        showToast('check', '주문서가 복사되었어요');
+      })
+      .catch(() => {
+        showToast('error', '주문서 복사에 실패했어요');
+      });
+  };
+
   return (
     <div className={modalContainer}>
       <section className={modalHeader}>
         <div className={headerContent}>
-          <span>주문 가이드</span>
-          <IcFormX20
-            width={20}
-            height={20}
-            cursor="pointer"
-            onClick={onClose}
-          />
+          <h1>주문 가이드</h1>
+          <IcFormX20 width={20} cursor="pointer" onClick={onClose} />
         </div>
         <p className={modalDescription}>
           *주문서 양식은 가게마다 다를 수 있으니 확인해주세요
         </p>
       </section>
+
       <section className={modalForm}>
-        <form className={formContent}></form>
+        <form className={formContent}>
+          {ORDER_FORM_FIELDS.map((field) => (
+            <Input key={field.id}>
+              <Input.Label htmlFor={field.id}>{field.label}</Input.Label>
+              <Input.InputField
+                id={field.id}
+                value={formData[field.id]}
+                onChange={handleInputChange}
+                placeholder={field.placeholder}
+              />
+            </Input>
+          ))}
+          <Input>
+            <Input.Label>디자인</Input.Label>
+            <p className={designDescription}>
+              <u className={underline}>카카오톡에서 이미지를 첨부</u>해주세요
+            </p>
+          </Input>
+        </form>
       </section>
+
       <section className={modalFooter}>
-        <TextButton size={'small'}>주문서 복사</TextButton>
+        <TextButton
+          size={'small'}
+          disabled={!isFormComplete}
+          onClick={handleCopy}
+        >
+          주문서 복사
+        </TextButton>
       </section>
     </div>
   );

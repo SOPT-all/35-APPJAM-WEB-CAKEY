@@ -14,7 +14,6 @@ export const modalContainer = style([
 
 export const modalHeader = style([
   flexGenerator('column', 'center', 'flex-start'),
-  vars.fonts.head06_sb_16,
   {
     gap: '0.4rem',
     padding: '2.4rem 2rem 1.6rem 2rem',
@@ -25,7 +24,8 @@ export const modalHeader = style([
 
 export const headerContent = style([
   flexGenerator('row', 'space-between'),
-  { gap: '0.7rem', width: '100%' },
+  vars.fonts.head06_sb_16,
+  { gap: '0.7rem', width: '100%', color: vars.colors.black },
 ]);
 
 export const modalDescription = style([
@@ -60,6 +60,21 @@ export const formContent = style([
     },
   },
 ]);
+
+export const designDescription = style([
+  flexGenerator(),
+  vars.fonts.body07_r_14,
+  {
+    padding: '1.4rem 2rem',
+    width: '100%',
+    color: vars.colors.gray600,
+  },
+]);
+
+export const underline = style({
+  textDecorationLine: 'underline',
+  textUnderlinePosition: 'from-font',
+});
 
 export const modalFooter = style([
   vars.fonts.body09_r_10,

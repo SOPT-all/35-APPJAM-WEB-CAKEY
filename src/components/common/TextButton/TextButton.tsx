@@ -23,6 +23,7 @@ const TextButton = ({
         color,
         disabled,
       })}
+      disabled={disabled}
       onClick={onClick}
     >
       {children}
