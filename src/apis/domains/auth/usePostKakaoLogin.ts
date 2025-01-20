@@ -3,13 +3,15 @@ import { AxiosResponse } from 'axios';
 
 import { post } from '@apis/instance';
 
+import { END_POINT, queryKey } from '@constants';
+
 import { ApiResponseType, LoginSuccessResponse } from '@types';
 
 const postKakaoLogin = async (
   authCode: string
 ): Promise<AxiosResponse<ApiResponseType<LoginSuccessResponse>>> => {
   const response = await post<ApiResponseType<LoginSuccessResponse>>(
-    `/api/v1/user/login`,
+    END_POINT.KAKAO_LOGIN,
     {
       socialType: 'KAKAO',
     },
@@ -31,10 +33,10 @@ export const usePostKakaoLogin = () => {
     onSuccess: (response) => {
       const resData = response.data.data;
       if (resData) {
-        const { userId, userName } = resData;
-        console.log(userId, userName);
+        // const { userId, userName } = resData;
+        localStorage.setItem('user', JSON.stringify(resData));
 
-        queryClient.invalidateQueries({ queryKey: ['kakaoLogin'] });
+        queryClient.invalidateQueries({ queryKey: [queryKey.KAKAO_LOGIN] });
       }
     },
   });
