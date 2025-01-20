@@ -1,7 +1,11 @@
-import { useSuspenseQuery } from "@tanstack/react-query"
+import { queryKey } from '@constants';
+import { useSuspenseQuery } from '@tanstack/react-query';
 
-export const useFetchStoreCoordinateList = () => {
-    return useSuspenseQuery({
-        
-    })
-}
+const fetchStoreCoordinateList = async (station: string): Promise<> => {};
+
+export const useFetchStoreCoordinateList = (station: string) => {
+  return useSuspenseQuery({
+    queryKey: [queryKey.STORE_COORDINATE_LIST],
+    queryFn: () => fetchStoreCoordinateList(station),
+  });
+};
