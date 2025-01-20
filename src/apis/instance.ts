@@ -1,9 +1,11 @@
 import axios from 'axios';
 
-export const instance = axios.create({
-  baseURL: import.meta.env.VITE_APP_BASE_URL,
+import { BASE_URL } from '@constants';
 
-  withCredentials: true,
+export const instance = axios.create({
+  baseURL: BASE_URL,
+
+  withCredentials: false,
 
   // headers: {
   //   // Authorization: `Bearer 엑세스 토큰`,
