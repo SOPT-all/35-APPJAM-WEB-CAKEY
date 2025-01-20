@@ -1,11 +1,13 @@
 import axios from 'axios';
 
+import { BASE_URL } from '@constants';
+
 import { onErrorResponse } from './error';
 
 export const instance = axios.create({
-  baseURL: import.meta.env.VITE_APP_BASE_URL,
+  baseURL: BASE_URL,
 
-  withCredentials: true,
+  withCredentials: false,
 
   // headers: {
   //   // Authorization: `Bearer 엑세스 토큰`,
