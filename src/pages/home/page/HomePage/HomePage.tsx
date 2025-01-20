@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { useFetchStoreRank } from '@apis/home/useFetchStoreRank';
+
 import { DesignCard } from '@components';
 import { CATEGORY, MainKeyVisual } from '@constants';
 import { useEasyNavigate } from '@hooks';
@@ -95,6 +97,9 @@ const user = { userName: '박채연' };
 const HomePage = () => {
   const [isLogin] = useState(true);
   const { goViewPage } = useEasyNavigate();
+
+  const { data: storeRankData } = useFetchStoreRank();
+  console.log(storeRankData);
 
   return (
     <div className={homePageLayout}>
