@@ -1,10 +1,8 @@
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { UseSuspenseQueryResult } from '@tanstack/react-query';
 
 import { instance } from '@apis/instance';
 
-import { END_POINT } from '@constants/apis/api';
-import { queryKey } from '@constants/apis/queryKey';
+import { END_POINT, queryKey } from '@constants';
 
 import { ApiResponseType, StoreRankResponse } from '@types';
 
@@ -19,10 +17,7 @@ const fetchStoreRank = async (): Promise<StoreRankResponse> => {
   }
 };
 
-export const useFetchStoreRank = (): UseSuspenseQueryResult<
-  StoreRankResponse,
-  Error
-> => {
+export const useFetchStoreRank = () => {
   return useSuspenseQuery({
     queryKey: [queryKey.STORE_RANK],
     queryFn: fetchStoreRank,
