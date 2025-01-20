@@ -7,17 +7,16 @@ export interface StoreRankResponse {
   }>;
 }
 
+export interface CakeRank {
+  cakeId: number;
+  storeId: number;
+  imageUrl: string;
+  storeName: string;
+  cakeLikesCount: number;
+  station: string;
+  isLiked: boolean;
+}
+
 export interface CakeRankResponse {
-  map(arg0: (cake: any, index: any) => import("react/jsx-runtime").JSX.Element): import("react").ReactNode;
-  cakes: [
-    {
-      cakeId: number;
-      storeId: number;
-      imageUrl: string;
-      storeName: string;
-      cakeLikesCount: number;
-      station: string;
-      isLiked: boolean;
-    },
-  ];
+  cakeList: CakeRank[];
 }

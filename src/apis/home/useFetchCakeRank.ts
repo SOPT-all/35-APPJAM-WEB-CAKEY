@@ -4,14 +4,14 @@ import { instance } from '@apis/instance';
 
 import { END_POINT, queryKey } from '@constants';
 
-import { ApiResponseType, CakeRankResponse } from '@types';
+import { ApiResponseType, CakeRank, CakeRankResponse } from '@types';
 
-const fetchCakeRank = async (): Promise<CakeRankResponse> => {
+const fetchCakeRank = async (): Promise<CakeRank[]> => {
   try {
     const response = await instance.get<ApiResponseType<CakeRankResponse>>(
       END_POINT.FETCH_CAKE_RANK
     );
-    return response.data.data;
+    return response.data.data.cakeList;
   } catch (error) {
     console.log(error);
     throw error;
@@ -21,6 +21,6 @@ const fetchCakeRank = async (): Promise<CakeRankResponse> => {
 export const useFetchCakeRank = () => {
   return useSuspenseQuery({
     queryKey: [queryKey.CAKE_RANK],
-    queryFn: fetchCakeRank,
+    queryFn: () => fetchCakeRank(),
   });
 };
