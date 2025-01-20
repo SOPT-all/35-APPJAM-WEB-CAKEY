@@ -13,12 +13,17 @@ const platformIcon = {
   kakao: <IcKakao />,
 };
 
-const SocialLoginButton = ({ platform, children }: SocialLoginButtonProps) => {
+const SocialLoginButton = ({
+  platform,
+  children,
+  onClick,
+}: SocialLoginButtonProps) => {
   return (
     <button
       className={buttonStyle({
         platform,
       })}
+      onClick={onClick}
     >
       <span className={iconStyle}>{platformIcon[platform]}</span>
       {children}

@@ -1,4 +1,5 @@
 export const queryKey = {
+  KAKAO_LOGIN: 'kakaoLogin',
   STORE_RANK: 'storeRank',
   STORE_INFO: 'storeInfo',
   STORE_DETAIL_DESIGN: 'storeDetailDesign',

@@ -1,6 +1,7 @@
 export const BASE_URL = import.meta.env.VITE_APP_BASE_URL;
 
 export const END_POINT = {
+  KAKAO_LOGIN: '/api/v1/user/login',
   FETCH_STORE_RANK: '/api/v1/store/rank',
   FETCH_STORE_INFO: (storeId: number) => `/api/v1/store/${storeId}/select`,
   FETCH_STORE_DETAIL_DESIGN: (storeId: number) =>
