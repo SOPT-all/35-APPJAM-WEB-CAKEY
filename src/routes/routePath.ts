@@ -1,5 +1,6 @@
 const authPages = {
   LOGINPAGE: '/login',
+  KAKAO_REDIRECTION: '/kakao/redirection',
 };
 
 const homePages = {
@@ -12,7 +13,7 @@ const designListPages = {
 
 const myPages = {
   MYPAGE: '/mypage',
-  LIKELISTPAGE: '/mypage/like-list'
+  LIKELISTPAGE: '/mypage/like-list',
 };
 
 const storePages = {
