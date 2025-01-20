@@ -1,5 +1,7 @@
 import axios, { AxiosError } from 'axios';
 
+import { ERROR_MESSAGE } from '@constants';
+
 export interface ApiErrorResponse {
   code: number;
   message: string;
@@ -11,9 +13,8 @@ export const onErrorResponse = (error: AxiosError) => {
       data: ApiErrorResponse;
     };
 
-    const httpStatus = response?.status;
     const errorCode = response?.data?.code;
-    const errorMessage = `${errorCode} + ${httpStatus}`;
+    const errorMessage = ERROR_MESSAGE[errorCode];
 
     return Promise.reject(new Error(errorMessage));
   }
