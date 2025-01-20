@@ -15,6 +15,7 @@ const postKakaoLogin = async (
     END_POINT.KAKAO_LOGIN,
     {
       socialType: 'KAKAO',
+      redirectUri: import.meta.env.VITE_REDIRECT_URI,
     },
     {
       headers: {
