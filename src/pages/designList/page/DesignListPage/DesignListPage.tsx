@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
+import { useFetchDesignList } from '@apis/designList/useFetchDesignList';
+
 import { CardList } from '@components';
-import { CATEGORY, SUB_CATEGORY } from '@constants';
+import { CATEGORY, END_POINT, SUB_CATEGORY } from '@constants';
 import { useFilteredCardList } from '@hooks';
 import CategoryBar from '@pages/designList/components/CategoryBar/CategoryBar';
 import SubCategoryBar from '@pages/designList/components/SubCategoryBar/SubCategoryBar';
@@ -38,6 +40,19 @@ const DesignListPage = () => {
       });
     }
   }, [selectedCategories.category]);
+
+  const { data: designListData } = useFetchDesignList(
+    selectedCategories.category,
+    selectedCategories.subCategory
+  );
+  console.log(designListData);
+  console.log(selectedCategories.category, selectedCategories.subCategory);
+  // console.log(
+  //   END_POINT.FETCH_DESIGN_LIST(
+  //     selectedCategories.category,
+  //     selectedCategories.subCategory
+  //   )
+  // );
 
   const handleCategoryChange = (category: CategoryType) => {
     setSelectedCategories({
