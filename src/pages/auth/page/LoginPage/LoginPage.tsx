@@ -1,6 +1,9 @@
+import { useEffect } from 'react';
+
 import { SocialLoginButton } from '@components';
 import { LoginPageImage } from '@constants';
 import { useEasyNavigate } from '@hooks';
+import { isLoggedIn } from '@utils';
 
 import { ImgLogo } from '@svgs';
 
@@ -16,6 +19,19 @@ import {
 
 const LoginPage = () => {
   const { goHomePage } = useEasyNavigate();
+  const kakaoLoginUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${
+    import.meta.env.VITE_REST_API_KEY
+  }&redirect_uri=${import.meta.env.VITE_REDIRECT_URI}&response_type=code`;
+
+  const handleLoginClick = () => {
+    window.location.replace(kakaoLoginUrl);
+  };
+
+  useEffect(() => {
+    if (isLoggedIn()) {
+      goHomePage();
+    }
+  }, [goHomePage]);
   return (
     <div className={loginPageStlye}>
       <div className={titleWrapper}>
@@ -28,12 +44,10 @@ const LoginPage = () => {
       <div className={imageButtonContainer}>
         <img src={LoginPageImage} className={loginMainImage} />
         <div className={loginButtonWrapper}>
-          <SocialLoginButton platform="kakao">
+          <SocialLoginButton platform="kakao" onClick={handleLoginClick}>
             카카오로 시작하기
           </SocialLoginButton>
-          <u className={noLoginButton} onClick={goHomePage}>
-            로그인 없이 둘러보기
-          </u>
+          <u className={noLoginButton}>로그인 없이 둘러보기</u>
         </div>
       </div>
     </div>

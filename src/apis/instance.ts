@@ -6,10 +6,6 @@ export const instance = axios.create({
   baseURL: BASE_URL,
 
   withCredentials: false,
-
-  // headers: {
-  //   // Authorization: `Bearer 엑세스 토큰`,
-  // }, 서버에서 set-cookie로 줘서 만약 필요 없으면 지울 예정
 });
 
 export function get<T>(...args: Parameters<typeof instance.get>) {
