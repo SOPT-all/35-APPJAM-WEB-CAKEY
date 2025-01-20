@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import { onErrorResponse } from './error';
+
 export const instance = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_URL,
 
@@ -9,6 +11,8 @@ export const instance = axios.create({
   //   // Authorization: `Bearer 엑세스 토큰`,
   // }, 서버에서 set-cookie로 줘서 만약 필요 없으면 지울 예정
 });
+
+instance.interceptors.response.use((response) => response, onErrorResponse);
 
 export function get<T>(...args: Parameters<typeof instance.get>) {
   return instance.get<T>(...args);
