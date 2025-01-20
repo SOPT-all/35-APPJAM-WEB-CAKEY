@@ -13,6 +13,7 @@ const fetchStoreRank = async (): Promise<StoreRankResponse> => {
     );
     return response.data.data;
   } catch (error) {
+    console.log(error);
     throw error;
   }
 };

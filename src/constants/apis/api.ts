@@ -5,4 +5,5 @@ export const END_POINT = {
   FETCH_STORE_COORDINATE_LIST: (station: string) =>
     `/api/v1/store/coordinate-list?station=${station}`,
   KAKAO_LOGIN: '/api/v1/user/login',
+  FETCH_CAKE_LIKES_LATEST: '/api/v1/cake/likes/latest',
 } as const;
