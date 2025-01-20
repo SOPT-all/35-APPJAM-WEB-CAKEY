@@ -33,6 +33,7 @@
       "@image/*": ["/image/*"],
       "@components": ["src/components/common"],
       "@constants": ["src/constants"],
+      "@constants/*": ["src/constants/*"],
       "@contexts": ["src/contexts"],
       "@hooks": ["src/hooks"],
       "@pages/*": ["src/pages/*"],
