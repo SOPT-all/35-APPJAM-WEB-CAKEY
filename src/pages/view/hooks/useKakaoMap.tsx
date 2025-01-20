@@ -8,7 +8,7 @@ import {
 
 import { useDebounce } from './useDebounce';
 
-import { BottomSheetState, CoordinateType, StationType } from '@types';
+import { BottomSheetState, StationCoordinateType, StationType } from '@types';
 
 const DEFAULT_CENTER = { lat: 37.556621, lng: 126.923877 };
 
@@ -18,7 +18,7 @@ export const useKakaoMap = (
 ) => {
   const [selectedStoreId, setSelectedStoreId] = useState<number>(0);
   const [storeMarkerList, setStoreMarkerList] = useState<
-    (CoordinateType & { clicked: boolean })[]
+    (StationCoordinateType & { clicked: boolean })[]
   >([]);
 
   // 현재 사용자의 위치

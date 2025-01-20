@@ -61,10 +61,4 @@ export interface StationType {
   longitude: number;
 }
 
-export interface CoordinateType {
-  storeId: number;
-  latitude: number;
-  longitutde: number;
-}
-
 export type BottomSheetState = 'closed' | 'default' | 'opened';
