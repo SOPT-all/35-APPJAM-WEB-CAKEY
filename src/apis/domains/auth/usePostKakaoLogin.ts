@@ -4,6 +4,7 @@ import { AxiosResponse } from 'axios';
 import { post } from '@apis/instance';
 
 import { END_POINT, queryKey } from '@constants';
+import { useEasyNavigate } from '@hooks';
 
 import { ApiResponseType, LoginSuccessResponse } from '@types';
 
@@ -27,6 +28,7 @@ const postKakaoLogin = async (
 
 export const usePostKakaoLogin = () => {
   const queryClient = useQueryClient();
+  const { goHomePage } = useEasyNavigate();
 
   return useMutation({
     mutationFn: (authCode: string) => postKakaoLogin(authCode),
@@ -37,7 +39,11 @@ export const usePostKakaoLogin = () => {
         localStorage.setItem('user', JSON.stringify(resData));
 
         queryClient.invalidateQueries({ queryKey: [queryKey.KAKAO_LOGIN] });
+        goHomePage();
       }
+    },
+    onError: (error) => {
+      console.log(error);
     },
   });
 };
