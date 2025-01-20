@@ -1,11 +1,8 @@
 import { useEffect } from 'react';
 
-import { usePostKakaoLogin } from '@apis/domains/auth/usePostKakaoLogin';
-
-import { useEasyNavigate } from '@hooks';
+import { usePostKakaoLogin } from '@apis/auth/usePostKakaoLogin';
 
 const Redirection = () => {
-  const { goHomePage } = useEasyNavigate();
   const code: string =
     new URL(window.location.href).searchParams.get('code') || '';
   window.history.forward();
