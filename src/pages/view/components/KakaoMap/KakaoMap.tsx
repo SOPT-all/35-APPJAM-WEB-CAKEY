@@ -57,7 +57,7 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
             return (
               <MapMarker
                 key={location.storeId}
-                position={{ lat: location.latitude, lng: location.longitutde }}
+                position={{ lat: location.latitude, lng: location.longitude }}
                 image={{
                   src,
                   size,
