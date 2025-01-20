@@ -22,6 +22,8 @@ interface StoreMenuProps {
 }
 
 const StoreMenu = ({ menuData }: StoreMenuProps) => {
+  const sizes = menuData.sizes || [];
+
   return (
     <ul className={listStyle}>
       <li className={listBox}>
@@ -31,7 +33,7 @@ const StoreMenu = ({ menuData }: StoreMenuProps) => {
             *상세 사이즈는 가게마다 다를 수 있어요
           </span>
         </h2>
-        <SizeCardList sizes={menuData.sizes} />
+        <SizeCardList sizes={sizes} />
       </li>
 
       <li className={listBox}>

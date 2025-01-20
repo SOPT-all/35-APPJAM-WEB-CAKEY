@@ -5,17 +5,13 @@ import { Image, Modal } from '@components';
 import { gridStyle } from './StoreDesign.css';
 import ImageModal from '../ImageModal/ImageModal';
 
-interface DesignData {
-  cakeId: number;
-  cakeImageUrl: string;
-  isLiked: boolean;
-}
+import { storeDetailDesign } from '@types';
 
 interface StoreDesignProps {
-  designData: DesignData[];
+  designData: storeDetailDesign[];
 }
 
-const StoreDesign = ({ designData = [] }: StoreDesignProps) => {
+const StoreDesign = ({ designData }: StoreDesignProps) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const handleImageClick = (imageUrl: string) => {
@@ -32,13 +28,9 @@ const StoreDesign = ({ designData = [] }: StoreDesignProps) => {
         {designData.map((design) => (
           <li
             key={design.cakeId}
-            onClick={() => handleImageClick(design.cakeImageUrl)}
+            onClick={() => handleImageClick(design.imageUrl)}
           >
-            <Image
-              src={design.cakeImageUrl}
-              hasIcon
-              isActive={design.isLiked}
-            />
+            <Image src={design.imageUrl} hasIcon isActive={design.isLiked} />
           </li>
         ))}
       </ul>
