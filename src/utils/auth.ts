@@ -3,5 +3,5 @@ export const getToken = () => {
 };
 
 export const isLoggedIn = () => {
-  return getToken() ? true : false;
+  return Boolean(getToken());
 };
