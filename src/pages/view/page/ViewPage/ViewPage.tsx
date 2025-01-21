@@ -1,6 +1,6 @@
 import { startTransition, useState } from 'react';
 
-import { useFetchStations } from '@apis/view/useFetchStations';
+import { useFetchStations } from '@apis/view';
 
 import { Modal } from '@components';
 import { useModal } from '@hooks';
