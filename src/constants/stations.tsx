@@ -65,72 +65,72 @@ const ALLSTATIONLOCATIONS = [
   {
     storeId: 1,
     latitude: 37.556621,
-    longitutde: 126.923877,
+    longitude: 126.923877,
   },
   {
     storeId: 2,
     latitude: 37.55223,
-    longitutde: 126.92244,
+    longitude: 126.92244,
   },
   {
     storeId: 3,
     latitude: 37.561056,
-    longitutde: 126.922655,
+    longitude: 126.922655,
   },
   {
     storeId: 4,
     latitude: 37.555134,
-    longitutde: 126.936778,
+    longitude: 126.936778,
   },
   {
     storeId: 5,
     latitude: 37.558982,
-    longitutde: 126.925856,
+    longitude: 126.925856,
   },
   {
     storeId: 6,
     latitude: 37.554738,
-    longitutde: 126.921476,
+    longitude: 126.921476,
   },
   {
     storeId: 7,
     latitude: 37.559743,
-    longitutde: 126.930125,
+    longitude: 126.930125,
   },
   {
     storeId: 8,
     latitude: 37.556328,
-    longitutde: 126.928901,
+    longitude: 126.928901,
   },
   {
     storeId: 9,
     latitude: 37.557112,
-    longitutde: 126.922348,
+    longitude: 126.922348,
   },
   {
     storeId: 10,
     latitude: 37.554297,
-    longitutde: 126.924713,
+    longitude: 126.924713,
   },
   {
     storeId: 11,
     latitude: 37.556742,
-    longitutde: 126.927189,
+    longitude: 126.927189,
   },
   {
     storeId: 12,
     latitude: 37.558414,
-    longitutde: 126.923305,
+    longitude: 126.923305,
   },
   {
     storeId: 13,
     latitude: 37.553839,
-    longitutde: 126.920731,
+    longitude: 126.920731,
   },
   {
     storeId: 14,
     latitude: 37.55912,
-    longitutde: 126.92645,
+    longitude: 126.92645,
   },
 ];
 
@@ -138,42 +138,42 @@ const HONGDAELOCATIONS = [
   {
     storeId: 1,
     latitude: 37.556621,
-    longitutde: 126.923877,
+    longitude: 126.923877,
   },
   {
     storeId: 2,
     latitude: 37.55223,
-    longitutde: 126.92244,
+    longitude: 126.92244,
   },
   {
     storeId: 3,
     latitude: 37.561056,
-    longitutde: 126.922655,
+    longitude: 126.922655,
   },
   {
     storeId: 4,
     latitude: 37.555134,
-    longitutde: 126.936778,
+    longitude: 126.936778,
   },
   {
     storeId: 5,
     latitude: 37.558982,
-    longitutde: 126.925856,
+    longitude: 126.925856,
   },
   {
     storeId: 6,
     latitude: 37.554738,
-    longitutde: 126.921476,
+    longitude: 126.921476,
   },
   {
     storeId: 7,
     latitude: 37.559743,
-    longitutde: 126.930125,
+    longitude: 126.930125,
   },
   {
     storeId: 8,
     latitude: 37.556328,
-    longitutde: 126.928901,
+    longitude: 126.928901,
   },
 ];
 
@@ -181,47 +181,47 @@ const SAVEDLOCATIONS = [
   {
     storeId: 6,
     latitude: 37.554738,
-    longitutde: 126.921476,
+    longitude: 126.921476,
   },
   {
     storeId: 7,
     latitude: 37.559743,
-    longitutde: 126.930125,
+    longitude: 126.930125,
   },
   {
     storeId: 8,
     latitude: 37.556328,
-    longitutde: 126.928901,
+    longitude: 126.928901,
   },
   {
     storeId: 9,
     latitude: 37.557112,
-    longitutde: 126.922348,
+    longitude: 126.922348,
   },
   {
     storeId: 10,
     latitude: 37.554297,
-    longitutde: 126.924713,
+    longitude: 126.924713,
   },
   {
     storeId: 11,
     latitude: 37.556742,
-    longitutde: 126.927189,
+    longitude: 126.927189,
   },
   {
     storeId: 12,
     latitude: 37.558414,
-    longitutde: 126.923305,
+    longitude: 126.923305,
   },
   {
     storeId: 13,
     latitude: 37.553839,
-    longitutde: 126.920731,
+    longitude: 126.920731,
   },
   {
     storeId: 14,
     latitude: 37.55912,
-    longitutde: 126.92645,
+    longitude: 126.92645,
   },
 ];
 

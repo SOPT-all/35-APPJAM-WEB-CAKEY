@@ -19,6 +19,7 @@ import MapBottomSheet from '../MapBottomSheet/MapBottomSheet';
 import MapButton from '../MapButton/MapButton';
 
 import { StationType } from '@types';
+import SelectedStoreModal from '../SelectedStoreModal/SelectedStoreModal';
 
 interface KakaoMapProps {
   currentLocation: StationType;
@@ -57,7 +58,7 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
             return (
               <MapMarker
                 key={location.storeId}
-                position={{ lat: location.latitude, lng: location.longitutde }}
+                position={{ lat: location.latitude, lng: location.longitude }}
                 image={{
                   src,
                   size,
@@ -97,7 +98,9 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
           handleAnimateChange={handleAnimateChange}
         />
       ) : (
-        <Modal variant="bottom">1</Modal>
+        <Modal variant="bottom">
+          <SelectedStoreModal storeId={1} />
+        </Modal>
       )}
     </>
   );
