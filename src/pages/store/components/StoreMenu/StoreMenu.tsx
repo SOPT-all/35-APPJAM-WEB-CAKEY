@@ -7,23 +7,13 @@ import {
 } from './StoreMenu.css';
 import SizeCardList from '../SizeCardList/SizeCardList';
 
-interface Size {
-  sizeName: string;
-  price: number;
-}
-
-interface MenuData {
-  sizes: Size[];
-  taste: string;
-}
+import { StoreDetailMenuResponse } from '@types';
 
 interface StoreMenuProps {
-  menuData: MenuData;
+  menuData: StoreDetailMenuResponse;
 }
 
 const StoreMenu = ({ menuData }: StoreMenuProps) => {
-  const sizes = menuData.sizes || [];
-
   return (
     <ul className={listStyle}>
       <li className={listBox}>
@@ -33,7 +23,7 @@ const StoreMenu = ({ menuData }: StoreMenuProps) => {
             *상세 사이즈는 가게마다 다를 수 있어요
           </span>
         </h2>
-        <SizeCardList sizes={sizes} />
+        <SizeCardList sizes={menuData.sizeDtoList} />
       </li>
 
       <li className={listBox}>

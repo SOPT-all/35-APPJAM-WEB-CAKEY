@@ -5,7 +5,7 @@ import { BASE_URL } from '@constants';
 export const instance = axios.create({
   baseURL: BASE_URL,
 
-  withCredentials: false,
+  withCredentials: true,
 });
 
 export function get<T>(...args: Parameters<typeof instance.get>) {

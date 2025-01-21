@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import {
   useFetchStoreDetailDesign,
@@ -15,25 +16,25 @@ import StoreDesign from '@pages/store/components/StoreDesign/StoreDesign';
 import StoreInfo from '@pages/store/components/StoreInfo/StoreInfo';
 import StoreMenu from '@pages/store/components/StoreMenu/StoreMenu';
 
-import data from './storeData';
 import { sectionStyle } from './StorePage.css';
 
 const StorePage = () => {
-  const [activeTab, setActiveTab] = useState(0);
+  const storeId = Number(useParams<{ id: string }>().id);
 
-  const { data: storeData } = useFetchStoreInfo(1);
-  const { data: designData } = useFetchStoreDetailDesign(1);
-  // const { data: menuData } = useFetchStoreDetailSize(1);
-  const menuData = data.menuData;
-  const { data: infoData } = useFetchStoreDetailInfo(1);
-  const { data: linkData } = useFetchStoreLink(1);
+  const { data: storeData } = useFetchStoreInfo(storeId);
+  const { data: designData } = useFetchStoreDetailDesign(storeId);
+  const { data: menuData } = useFetchStoreDetailSize(storeId);
+  const { data: infoData } = useFetchStoreDetailInfo(storeId);
+  const { data: linkData } = useFetchStoreLink(storeId);
+
+  const [activeTab, setActiveTab] = useState(0);
 
   const handleTabChange = (index: number) => {
     setActiveTab(index);
   };
 
   const tabComponents = [
-    <StoreDesign designData={designData.storeDesignDtoList} />,
+    <StoreDesign designData={designData} />,
     <StoreMenu menuData={menuData} />,
     <StoreInfo infoData={infoData} />,
   ];

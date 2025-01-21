@@ -5,10 +5,10 @@ import { Image, Modal } from '@components';
 import { gridStyle } from './StoreDesign.css';
 import ImageModal from '../ImageModal/ImageModal';
 
-import { storeDetailDesign } from '@types';
+import { StoreDetailDesign } from '@types';
 
 interface StoreDesignProps {
-  designData: storeDetailDesign[];
+  designData: StoreDetailDesign[];
 }
 
 const StoreDesign = ({ designData }: StoreDesignProps) => {

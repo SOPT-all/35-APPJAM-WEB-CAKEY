@@ -8,23 +8,23 @@ export interface StoreInfoResponse {
   storeLikesCount: number;
 }
 
-export interface storeDetailDesign {
+export interface StoreDetailDesign {
   cakeId: number;
   imageUrl: string;
   isLiked: boolean;
 }
 
 export interface StoreDetailDesignResponse {
-  storeDesignDtoList: storeDetailDesign[];
+  storeDesignDtoList: StoreDetailDesign[];
 }
 
-interface storeDetailSize {
+export interface StoreDetailSize {
   sizeName: string;
   price: number;
 }
 
 export interface StoreDetailMenuResponse {
-  sizes: storeDetailSize[];
+  sizeDtoList: StoreDetailSize[];
   taste: string;
 }
 
