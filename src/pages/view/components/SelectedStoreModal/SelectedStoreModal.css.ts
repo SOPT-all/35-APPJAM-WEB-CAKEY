@@ -8,6 +8,7 @@ export const modalContainer = style([
   {
     gap: '1.6rem',
     padding: '2rem',
+    width: '100%',
   },
 ]);
 

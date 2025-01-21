@@ -36,13 +36,14 @@ const SelectedStoreModal = ({ storeId }: SelectedStoreModalProps) => {
         <div className={textWrapper}>
           <div className={storeNameWrapper}>
             <h1>{storeData.storeName}</h1>
-            <IconButton buttonType={'save24'} />
+            <IconButton
+              buttonType={'save24'}
+              isActive={storeData.isLiked}
+              itemId={storeId}
+            />
           </div>
           <div className={addressWrapper}>
-            <p className={addressStyle}>
-              서울 중구 동호로 385-2 아이디어회관
-              301호호호sdkjhfkdksnkjnds호호호호
-            </p>
+            <p className={addressStyle}>{storeData.address}</p>
             <Label text={storeData.station} />
           </div>
         </div>
