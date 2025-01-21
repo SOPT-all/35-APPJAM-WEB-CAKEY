@@ -1,5 +1,7 @@
 import React, { ButtonHTMLAttributes } from 'react';
 
+import { usePostStoreLikes } from '@apis/likes';
+
 import {
   IcFillLikeOff36,
   IcFillLikeOn36,
@@ -44,9 +46,12 @@ const IconButton = ({
   count,
   itemId,
 }: IconButtonProps) => {
+  const { mutate } = usePostStoreLikes();
   const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    console.log('iconClick', itemId);
+    if (itemId !== undefined) {
+      mutate(itemId);
+    }
   };
   return (
     <button className={buttonStyle({ buttonType })} onClick={handleButtonClick}>
