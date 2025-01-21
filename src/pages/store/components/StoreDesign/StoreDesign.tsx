@@ -32,7 +32,12 @@ const StoreDesign = ({ storeId }: StoreDesignProps) => {
             key={design.cakeId}
             onClick={() => handleImageClick(design.imageUrl)}
           >
-            <Image src={design.imageUrl} hasIcon isActive={design.isLiked} />
+            <Image
+              src={design.cakeImageUrl}
+              hasIcon
+              isActive={design.isLiked}
+              itemId={design.cakeId}
+            />
           </li>
         ))}
       </ul>

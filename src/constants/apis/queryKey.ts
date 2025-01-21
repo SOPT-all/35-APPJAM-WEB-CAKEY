@@ -9,4 +9,5 @@ export const queryKey = {
   STORE_COORDINATE_LIST: 'storeCoordinateList',
   STORE_STATIONS: 'storeStations',
   CAKE_RANK: 'cakeRank',
+  USER: 'user',
 } as const;

@@ -5,3 +5,8 @@ export interface ApiResponseType<T> {
   message: string;
   data: T;
 }
+
+export interface MutateResposneType {
+  code: number;
+  message: string;
+}
