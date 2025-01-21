@@ -6,3 +6,7 @@ export interface LikedStoreListResponse {
     storeCount: number,
     stores: StoreType[],   
 }
+export interface UserResponse {
+  userName: string;
+  userEmail: string;
+}

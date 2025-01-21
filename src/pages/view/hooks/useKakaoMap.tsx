@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import { useFetchStoreCoordinateList } from '@apis/view';
+
 import {
   ALLSTATIONLOCATIONS,
   HONGDAELOCATIONS,
@@ -8,7 +10,7 @@ import {
 
 import { useDebounce } from './useDebounce';
 
-import { BottomSheetState, CoordinateType, StationType } from '@types';
+import { BottomSheetState, StationType, StoreCoordinate } from '@types';
 
 const DEFAULT_CENTER = { lat: 37.556621, lng: 126.923877 };
 
@@ -16,9 +18,13 @@ export const useKakaoMap = (
   currentLocation: StationType,
   handleAnimateChange: (animate: BottomSheetState) => void
 ) => {
+  const { data: storeCoordinateList } = useFetchStoreCoordinateList(
+    currentLocation.stationEnName
+  );
+
   const [selectedStoreId, setSelectedStoreId] = useState<number>(0);
   const [storeMarkerList, setStoreMarkerList] = useState<
-    (CoordinateType & { clicked: boolean })[]
+    (StoreCoordinate & { clicked: boolean })[]
   >([]);
 
   // 현재 사용자의 위치
@@ -129,6 +135,17 @@ export const useKakaoMap = (
       ALLSTATIONLOCATIONS.map((location) => ({ ...location, clicked: false }))
     );
   }, []);
+
+  useEffect(() => {
+    if (storeCoordinateList) {
+      setStoreMarkerList(
+        storeCoordinateList.map((store) => ({
+          ...store,
+          clicked: false,
+        }))
+      );
+    }
+  }, [storeCoordinateList]);
 
   return {
     selectedStoreId,

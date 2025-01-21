@@ -112,17 +112,4 @@ export type ItemType =
   | 'likedStoreDesign';
 export type OptionType = 'latest' | 'popularity';
 
-export interface StationType {
-  stationEnName: string;
-  stationKrName: string;
-  latitude: number;
-  longitude: number;
-}
-
-export interface CoordinateType {
-  storeId: number;
-  latitude: number;
-  longitutde: number;
-}
-
 export type BottomSheetState = 'closed' | 'default' | 'opened';

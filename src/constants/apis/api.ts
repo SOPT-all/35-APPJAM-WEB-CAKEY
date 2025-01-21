@@ -17,4 +17,9 @@ export const END_POINT = {
     size: number
   ) =>
     `/api/v1/store/likes/${option}?storeIdCursor=${storeIdCursor}&size=${size}`,
+  FETCH_STORE_COORDINATE_LIST: (station: string) =>
+    `/api/v1/store/coordinate-list?station=${station}`,
+  FETCH_STORE_STATIONS: '/api/v1/store/station',
+  FETCH_USER: '/api/v1/user',
+  FETCH_CAKE_RANK: '/api/v1/cake/rank',
 } as const;

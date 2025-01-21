@@ -1,18 +1,17 @@
-import { useEffect, useState } from 'react';
+import { startTransition, useState } from 'react';
+
+import { useFetchStations } from '@apis/view';
 
 import { Modal } from '@components';
 import { useModal } from '@hooks';
 import { LocationButton, SelectStationModal } from '@pages/view/components';
 import { KakaoMap } from '@pages/view/components';
-import { STATIONS } from 'src/constants/stations';
 
 import { locationButtonWrapper } from './ViewPage.css';
 
-import { StationType } from '@types';
-
 const ViewPage = () => {
   const { isModalOpen, openModal, closeModal } = useModal();
-  const [stations] = useState<StationType[]>(STATIONS);
+  const { data: stations } = useFetchStations();
 
   const [currentLocation, setCurrentLocation] = useState({
     stationEnName: 'ALL',
@@ -20,24 +19,23 @@ const ViewPage = () => {
     latitude: 0.0,
     longitude: 0.0,
   });
-
-  const stationKrNames = stations.map((station) => station.stationKrName);
+  const stationKrNames = (stations || []).map(
+    (station) => station.stationKrName
+  );
 
   const handleCurrentLocationChange = (stationName: string) => {
-    const selectedStation = stations.find(
+    const selectedStation = (stations || []).find(
       (station) => station.stationKrName === stationName
     );
 
     if (selectedStation) {
-      setCurrentLocation(selectedStation);
+      startTransition(() => {
+        setCurrentLocation(selectedStation);
+      });
     } else {
       console.error(`Station "${stationName}" not found`);
     }
   };
-
-  useEffect(() => {
-    // 전체 지하철역 조회 api get
-  }, []);
 
   return (
     <div>
