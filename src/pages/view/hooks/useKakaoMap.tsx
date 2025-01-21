@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { startTransition, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import {
@@ -20,15 +20,10 @@ export const useKakaoMap = (
     currentLocation.stationEnName
   );
 
-  const location = useLocation();
-  const locationState = location.state.location;
-  console.log(locationState);
-
   const [selectedStoreId, setSelectedStoreId] = useState<number>(0);
   const [storeMarkerList, setStoreMarkerList] = useState<
     (StoreCoordinate & { clicked: boolean })[]
   >([]);
-  console.log('storeMarkerList', storeMarkerList);
 
   // 현재 사용자의 위치
   const [currentPosition, setCurrentPosition] = useState<{
@@ -50,6 +45,11 @@ export const useKakaoMap = (
 
   const { data: likesStoreCoordinateList } =
     useFetchLikesStoreCoordinate(isSaveActive);
+
+  const location = useLocation();
+  const locationState = location?.state?.location || null;
+  // console.log('locationState', locationState);
+  // console.log(currentPosition);
 
   const fetchCurrentPosition = () => {
     if (navigator.geolocation) {
@@ -100,39 +100,25 @@ export const useKakaoMap = (
   };
 
   const handleMarkerClick = (storeId: number) => {
-    setStoreMarkerList((prev) =>
-      prev.map((marker) =>
-        marker.storeId === storeId
-          ? { ...marker, clicked: true }
-          : { ...marker, clicked: false }
-      )
-    );
-    setSelectedStoreId(storeId);
+    startTransition(() => {
+      setStoreMarkerList((prev) =>
+        prev.map((marker) =>
+          marker.storeId === storeId
+            ? { ...marker, clicked: true }
+            : { ...marker, clicked: false }
+        )
+      );
+      setSelectedStoreId(storeId);
+    });
   };
 
   const handleMapClick = () => {
-    // 지도 빈 공간 클릭 시 모든 마커의 clicked 상태를 초기화
     setStoreMarkerList((prev) =>
       prev.map((marker) => ({ ...marker, clicked: false }))
     );
     setSelectedStoreId(0);
     handleAnimateChange(selectedStoreId !== 0 ? 'default' : 'closed');
   };
-
-  useEffect(() => {
-    if (locationState) {
-      setStoreMarkerList([
-        {
-          ...locationState,
-          clicked: true,
-        },
-      ]);
-      setCenter({
-        lat: locationState.latitude,
-        lng: locationState.longitude,
-      });
-    }
-  }, [locationState]);
 
   useEffect(() => {
     if (currentLocation) {
@@ -152,14 +138,16 @@ export const useKakaoMap = (
         });
       }
     }
-  }, [currentLocation]);
+  }, [currentLocation, storeCoordinateList]);
 
   useEffect(() => {
     fetchCurrentPosition();
-    setStoreMarkerList(
-      storeCoordinateList.map((location) => ({ ...location, clicked: false }))
-    );
-  }, []);
+    if (storeCoordinateList) {
+      setStoreMarkerList(
+        storeCoordinateList.map((location) => ({ ...location, clicked: false }))
+      );
+    }
+  }, [storeCoordinateList]);
 
   useEffect(() => {
     if (storeCoordinateList) {
@@ -171,6 +159,25 @@ export const useKakaoMap = (
       );
     }
   }, [storeCoordinateList]);
+
+  useEffect(() => {
+    if (locationState) {
+      setStoreMarkerList([
+        {
+          ...locationState,
+          clicked: true,
+        },
+      ]);
+
+      // 지도 중심을 locationState 위치로 설정
+      setCenter({
+        lat: locationState.latitude,
+        lng: locationState.longitude,
+      });
+
+      setSelectedStoreId(locationState.storeId);
+    }
+  }, [locationState]);
 
   return {
     selectedStoreId,
