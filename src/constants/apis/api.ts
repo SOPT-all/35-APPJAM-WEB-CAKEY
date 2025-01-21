@@ -8,4 +8,14 @@ export const END_POINT = {
   KAKAO_LOGIN: '/api/v1/user/login',
   FETCH_USER: '/api/v1/user',
   FETCH_CAKE_RANK: '/api/v1/cake/rank',
+  FETCH_STATION_DESIGN_LIST: (
+    order: OrderType,
+    station: string,
+    pageParam?: number
+  ) => {
+    const url = `/api/v1/cake/station/${order}?station=${station}`;
+    return pageParam ? `${url}&cakeIdCursor=${pageParam}` : url;
+  },
 } as const;
+
+export type OrderType = 'latest' | 'popualarity';

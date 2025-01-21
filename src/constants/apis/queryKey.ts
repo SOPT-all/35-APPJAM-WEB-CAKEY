@@ -5,4 +5,5 @@ export const queryKey = {
   KAKAO_LOGIN: 'kakaoLogin',
   CAKE_RANK: 'cakeRank',
   USER: 'user',
+  STATION_DESIGN_LIST: 'stationDesignList',
 } as const;
