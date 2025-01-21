@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes } from 'react';
+import React, { ButtonHTMLAttributes, useState } from 'react';
 
 import { usePostCakeLikes, usePostStoreLikes } from '@apis/likes';
 import { useDeleteCakeLikes } from '@apis/likes/useDeleteCakeLikes';
@@ -45,31 +45,43 @@ const buttonIcon = {
 const IconButton = ({
   buttonType,
   isActive,
-  count,
+  count = 0,
   itemId,
 }: IconButtonProps) => {
+  const [localActive, setLocalActive] = useState(isActive);
+  const [localCount, setLocalCount] = useState(count);
+
   const { mutate: postStoreLikes } = usePostStoreLikes();
   const { mutate: postCakeLikes } = usePostCakeLikes();
   const { mutate: deleteStoreLikes } = useDeleteStoreLikes();
-  const { mutate: deleteCardLikes } = useDeleteCakeLikes();
+  const { mutate: deleteCakeLikes } = useDeleteCakeLikes();
 
   const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
+    if (itemId === undefined) return;
 
-    if (itemId !== undefined) {
-      if (buttonType === 'save24' || buttonType === 'save28') {
-        postStoreLikes(itemId);
-      } else {
-        postCakeLikes(itemId);
-      }
-    }
+    const isStore = buttonType === 'save24' || buttonType === 'save28';
 
-    if (itemId !== undefined) {
-      if (buttonType === 'save24' || buttonType === 'save28') {
-        deleteStoreLikes(itemId);
-      } else {
-        deleteCardLikes(itemId);
-      }
+    const optimisticUpdate = () => {
+      setLocalActive(!localActive);
+      setLocalCount(localCount + (localActive ? -1 : 1));
+    };
+
+    const rollbackUpdate = () => {
+      setLocalActive(localActive);
+      setLocalCount(localCount);
+    };
+
+    optimisticUpdate();
+
+    if (localActive) {
+      (isStore ? deleteStoreLikes : deleteCakeLikes)(itemId, {
+        onError: () => rollbackUpdate(),
+      });
+    } else {
+      (isStore ? postStoreLikes : postCakeLikes)(itemId, {
+        onError: () => rollbackUpdate(),
+      });
     }
   };
 
