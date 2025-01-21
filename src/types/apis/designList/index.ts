@@ -1,14 +1,9 @@
-import { DesignItemType } from "src/types/types";
+import { DesignItemType } from 'src/types/types';
 
-export interface DesignListLatestResponse {
-    nextCakeIdCursor: number,
-    isLastData: number,
-    cakeCount: number,
-    cakes: DesignItemType[]
-}
-
-export interface DesignListPopularityResponse {
-    isLastData: number,
-    cakeCount: number,
-    cakes: DesignItemType[]
+export interface DesignListResponse {
+  nextCakeIdCursor: number;
+  nextCakeLikesCursor?: number;
+  isLastData: boolean;
+  cakeCount: number;
+  cakes: DesignItemType[];
 }
