@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { useFetchCakeRank } from '@apis/home/useFetchCakeRank';
+import { useFetchCakeRank } from '@apis/home';
 
 import { DesignCard } from '@components';
 import { CATEGORY, MainKeyVisual } from '@constants';
