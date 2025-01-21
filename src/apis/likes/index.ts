@@ -1,3 +1,4 @@
+import { usePostStoreLikes } from './usePostStoreLikes';
 import { usePostCakeLikes } from './usePostCakeLikes';
 
-export { usePostCakeLikes };
+export { usePostStoreLikes, usePostCakeLikes };
