@@ -1,13 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { useFetchStoreCoordinateList } from '@apis/view';
-
 import {
-  ALLSTATIONLOCATIONS,
-  HONGDAELOCATIONS,
-  SAVEDLOCATIONS,
-} from 'src/constants/stations';
+  useFetchLikesStoreCoordinate,
+  useFetchStoreCoordinateList,
+} from '@apis/view';
 
 import { useDebounce } from './useDebounce';
 
@@ -51,6 +48,9 @@ export const useKakaoMap = (
   // gps 버튼 활성화 상태
   const [isGpsActive, setIsGpsActive] = useState(false);
 
+  const { data: likesStoreCoordinateList } =
+    useFetchLikesStoreCoordinate(isSaveActive);
+
   const fetchCurrentPosition = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -91,11 +91,11 @@ export const useKakaoMap = (
 
   const handleSaveButtonClick = () => {
     setIsSaveActive((prev) => !prev);
+
+    const markerList =
+      (isSaveActive ? storeCoordinateList : likesStoreCoordinateList) || [];
     setStoreMarkerList(
-      (isSaveActive ? ALLSTATIONLOCATIONS : SAVEDLOCATIONS).map((location) => ({
-        ...location,
-        clicked: false,
-      }))
+      markerList.map((store) => ({ ...store, clicked: false }))
     );
   };
 
@@ -136,11 +136,15 @@ export const useKakaoMap = (
 
   useEffect(() => {
     if (currentLocation) {
+      setIsSaveActive(false);
       if (currentLocation.stationEnName === 'ALL') {
         fetchCurrentPosition();
       } else {
         setStoreMarkerList(
-          HONGDAELOCATIONS.map((location) => ({ ...location, clicked: false }))
+          storeCoordinateList.map((location) => ({
+            ...location,
+            clicked: false,
+          }))
         );
         setCenter({
           lat: currentLocation.latitude,
@@ -153,7 +157,7 @@ export const useKakaoMap = (
   useEffect(() => {
     fetchCurrentPosition();
     setStoreMarkerList(
-      ALLSTATIONLOCATIONS.map((location) => ({ ...location, clicked: false }))
+      storeCoordinateList.map((location) => ({ ...location, clicked: false }))
     );
   }, []);
 

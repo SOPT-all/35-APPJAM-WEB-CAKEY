@@ -8,6 +8,7 @@ export const queryKey = {
   STORE_LINK: 'storeLink',
   STORE_COORDINATE_LIST: 'storeCoordinateList',
   SELECT_STORE_COORDINATE: 'selectStoreCoordinate',
+  LIKES_STORE_COORDINATE_LIST: 'likesStoreCoordinateList',
   STORE_STATIONS: 'storeStations',
   CAKE_RANK: 'cakeRank',
   USER: 'user',
