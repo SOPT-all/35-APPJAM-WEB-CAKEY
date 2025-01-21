@@ -1,8 +1,11 @@
 import React, { ButtonHTMLAttributes, useState } from 'react';
 
-import { usePostCakeLikes, usePostStoreLikes } from '@apis/likes';
-import { useDeleteCakeLikes } from '@apis/likes/useDeleteCakeLikes';
-import { useDeleteStoreLikes } from '@apis/likes/useDeleteStoreLikes';
+import {
+  useDeleteCakeLikes,
+  useDeleteStoreLikes,
+  usePostCakeLikes,
+  usePostStoreLikes,
+} from '@apis/likes';
 
 import {
   IcFillLikeOff36,
@@ -88,7 +91,7 @@ const IconButton = ({
       });
     }
   };
-  
+
   return (
     <button className={buttonStyle({ buttonType })} onClick={handleButtonClick}>
       {localActive
