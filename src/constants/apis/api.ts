@@ -12,6 +12,6 @@ export const END_POINT = {
   FETCH_STORE_DETAIL_SIZE: (storeId: number) => `/api/v1/store/${storeId}/size`,
   FETCH_STORE_DETAIL_INFO: (storeId: number) =>
     `/api/v1/store/${storeId}/information`,
-  FETCH_STORE_LINK: (storeId: number) => `/api/v1/store/kakao-link/${storeId}`,
+  FETCH_STORE_LINK: (storeId: number) => `/api/v1/store/kakaoLink/${storeId}`,
   FETCH_CAKE_RANK: '/api/v1/cake/rank',
 } as const;
