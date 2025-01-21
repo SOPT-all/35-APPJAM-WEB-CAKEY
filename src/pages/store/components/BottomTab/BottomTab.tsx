@@ -1,8 +1,9 @@
+import { useFetchStoreLink } from '@apis/store';
+
 import { TextButton } from '@components';
 import { useEasyNavigate } from '@hooks';
 
 import { container } from './BottomTab.css';
-import { useFetchStoreLink } from '@apis/store';
 
 interface BottomTabProps {
   storeId: number;

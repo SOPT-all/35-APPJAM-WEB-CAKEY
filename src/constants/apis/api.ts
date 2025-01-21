@@ -6,12 +6,12 @@ export const END_POINT = {
   FETCH_STORE_COORDINATE_LIST: (station: string) =>
     `/api/v1/store/coordinate-list?station=${station}`,
   FETCH_STORE_STATIONS: '/api/v1/store/station',
-  FETCH_STORE_INFO: (storeId: number) => `/api/v1/store/${storeId}/select`,
+  FETCH_STORE_INFO: (storeId: number) => `/api/v1/store/select/${storeId}`,
   FETCH_STORE_DETAIL_DESIGN: (storeId: number) =>
-    `/api/v1/store/${storeId}/design`,
+    `/api/v1/store/design/${storeId}`,
   FETCH_STORE_DETAIL_SIZE: (storeId: number) => `/api/v1/store/${storeId}/size`,
   FETCH_STORE_DETAIL_INFO: (storeId: number) =>
     `/api/v1/store/${storeId}/information`,
-  FETCH_STORE_LINK: (storeId: number) => `/api/v1/store/${storeId}/kakaoLink`,
+  FETCH_STORE_LINK: (storeId: number) => `/api/v1/store/kakao-link/${storeId}`,
   FETCH_CAKE_RANK: '/api/v1/cake/rank',
 } as const;
