@@ -18,7 +18,6 @@ import {
 import OrderFormModal from '../OrderFormModal/OrderFormModal';
 import OrderGuideButton from '../OrderGuideButton/OrderGuideButton';
 
-
 interface StoreInfoProps {
   infoData: {
     monOpen: string | null;
@@ -84,12 +83,16 @@ const StoreInfo = ({ infoData }: StoreInfoProps) => {
       title: '위치',
       content: <p className={listContent}>{infoData.address}</p>,
     },
-    {
-      id: 'contact',
-      icon: <IcPhone width={24} height={24} />,
-      title: '연락처',
-      content: <p className={listContent}>{infoData.phone}</p>,
-    },
+    ...(infoData.phone
+      ? [
+          {
+            id: 'contact',
+            icon: <IcPhone width={24} height={24} />,
+            title: '연락처',
+            content: <p className={listContent}>{infoData.phone}</p>,
+          },
+        ]
+      : []),
   ];
 
   return (
