@@ -18,7 +18,6 @@ export const useKakaoMap = (
   const { data: storeCoordinateList } = useFetchStoreCoordinateList(
     currentLocation.stationEnName
   );
-  const { data: likesStoreCoordinateList } = useFetchLikesStoreCoordinate();
 
   const [selectedStoreId, setSelectedStoreId] = useState<number>(0);
   const [storeMarkerList, setStoreMarkerList] = useState<
@@ -42,6 +41,9 @@ export const useKakaoMap = (
 
   // gps 버튼 활성화 상태
   const [isGpsActive, setIsGpsActive] = useState(false);
+
+  const { data: likesStoreCoordinateList } =
+    useFetchLikesStoreCoordinate(isSaveActive);
 
   const fetchCurrentPosition = () => {
     if (navigator.geolocation) {
@@ -116,6 +118,7 @@ export const useKakaoMap = (
 
   useEffect(() => {
     if (currentLocation) {
+      setIsSaveActive(false);
       if (currentLocation.stationEnName === 'ALL') {
         fetchCurrentPosition();
       } else {
