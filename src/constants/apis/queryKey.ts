@@ -4,4 +4,5 @@ export const queryKey = {
   STORE_STATIONS: 'storeStations',
   KAKAO_LOGIN: 'kakaoLogin',
   CAKE_RANK: 'cakeRank',
+  USER: 'user',
 } as const;
