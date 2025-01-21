@@ -41,7 +41,7 @@ const Banner = ({ storeData }: BannerProps) => {
         </div>
         <IconButton
           buttonType={'save28'}
-          isActive={false}
+          isActive={storeData.isLiked}
           itemId={storeData.storeId}
           count={32}
         />
