@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { useFetchCakeLikesLatest } from '@apis/myPage/useFetchCakeLiskesLatest';
+
 import { CardList, Tab } from '@components';
 import useFilteredCardList from 'src/hooks/useFilteredCardList';
 
@@ -26,13 +28,15 @@ const LikeListPage = () => {
     item: 'likedStore',
   });
 
-  const {
-    data: likedDesignData,
-    handleOptionSelect: likedDesignOptionChange,
-    item: likedDesignItem,
-  } = useFilteredCardList({
-    item: 'likedDesign',
-  });
+  // const {
+  //   data: likedDesignData,
+  //   handleOptionSelect: likedDesignOptionChange,
+  //   item: likedDesignItem,
+  // } = useFilteredCardList({
+  //   item: 'likedDesign',
+  // });
+
+  const { data: cakeLikesLatestData } = useFetchCakeLikesLatest();
 
   return (
     <div className={myListContainer}>
