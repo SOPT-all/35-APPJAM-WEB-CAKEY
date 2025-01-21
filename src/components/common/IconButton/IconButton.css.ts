@@ -1,4 +1,3 @@
-import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
 import { flexGenerator } from '@styles/generator.css';
@@ -24,29 +23,27 @@ export const buttonStyle = recipe({
         gap: 0,
       },
       like20: {
+        width: '2rem',
         gap: '0.6rem',
       },
       like36: {
         width: '3.6rem',
+        gap: 0,
       },
-    },
-    onMap: {
-      true: {
-        width: '4rem',
-        height: '4rem',
-        borderRadius: '50%',
-        backgroundColor: vars.colors.white,
-      },
-      false: {},
     },
   },
 });
 
-export const countStyle = style([
-  vars.fonts.body08_r_12,
-  {
-    display: 'block',
-    height: '1.4rem',
+export const countStyle = recipe({
+  base: {
     color: vars.colors.gray400,
   },
-]);
+  variants: {
+    buttonType: {
+      save24: [vars.fonts.body08_r_12],
+      save28: [vars.fonts.body07_r_14],
+      like20: [vars.fonts.body08_r_12],
+      like36: [],
+    },
+  },
+});
