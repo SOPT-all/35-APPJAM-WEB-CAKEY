@@ -7,9 +7,7 @@ export const modalContainer = style([
   flexGenerator('column', 'flex-start', 'flex-start'),
   {
     position: 'relative',
-    width: '100dvw',
-    maxWidth: 'var(--max-width)',
-    minWidth: 'var(--min-width)',
+    width: '100%',
     height: '100dvh',
     backgroundColor: vars.colors.black,
   },

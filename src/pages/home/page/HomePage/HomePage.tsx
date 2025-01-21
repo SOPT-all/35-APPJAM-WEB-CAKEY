@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useFetchCakeRank } from '@apis/home';
 
 import { DesignCard } from '@components';
 import { CATEGORY, MainKeyVisual } from '@constants';
 import { useEasyNavigate } from '@hooks';
 import { StoreRankingButton } from '@pages/home/components';
 import CategoryCard from '@pages/home/components/CategoryCard/CategoryCard';
+import { isLoggedIn } from '@utils';
 
 import { IcHomeArrow } from '@svgs';
 
@@ -60,41 +61,13 @@ const storeRankingData = [
   },
 ];
 
-const cakeRankingData = [
-  {
-    cakeId: 1,
-    storeId: 1,
-    imageUrl: '../public/example-img.png',
-    storeName: '햄니케이크',
-    cakeLikesCount: 444,
-    station: '종로5가역',
-    isLiked: true,
-  },
-  {
-    cakeId: 2,
-    storeId: 2,
-    imageUrl: '../public/example-img.png',
-    storeName: '햄니케이크',
-    cakeLikesCount: 444,
-    station: '종로5가역',
-    isLiked: true,
-  },
-  {
-    cakeId: 3,
-    storeId: 3,
-    imageUrl: '../public/example-img.png',
-    storeName: '햄니케이크',
-    cakeLikesCount: 444,
-    station: '종로5가역',
-    isLiked: false,
-  },
-];
-
-const user = { userName: '박채연' };
-
 const HomePage = () => {
-  const [isLogin] = useState(true);
+  const isLogin = isLoggedIn();
   const { goViewPage } = useEasyNavigate();
+  const { data: cakeRankData } = useFetchCakeRank();
+  const user = isLogin
+    ? JSON.parse(localStorage.getItem('user') || '{}')
+    : null;
 
   return (
     <div className={homePageLayout}>
@@ -152,7 +125,7 @@ const HomePage = () => {
         <section className={cakeSectionWrapper}>
           <h1 className={cakeTextStyle}>인기 케이크</h1>
           <div className={likedCakeWrapper}>
-            {cakeRankingData.map((cake, index) => (
+            {cakeRankData.map((cake, index) => (
               <div className={likedCakeStyle}>
                 <DesignCard
                   numberLabel={`${index + 1}`}
