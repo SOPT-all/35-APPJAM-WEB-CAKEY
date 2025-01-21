@@ -1,9 +1,14 @@
 export const queryKey = {
+  KAKAO_LOGIN: 'kakaoLogin',
   STORE_RANK: 'storeRank',
+  STORE_INFO: 'storeInfo',
+  STORE_DETAIL_DESIGN: 'storeDetailDesign',
+  STORE_DETAIL_SIZE: 'storeDetailSize',
+  STORE_DETAIL_INFO: 'storeDetailInfo',
+  STORE_LINK: 'storeLink',
   STORE_COORDINATE_LIST: 'storeCoordinateList',
   SELECT_STORE_COORDINATE: 'selectStoreCoordinate',
   STORE_STATIONS: 'storeStations',
-  KAKAO_LOGIN: 'kakaoLogin',
   CAKE_RANK: 'cakeRank',
   USER: 'user',
 } as const;
