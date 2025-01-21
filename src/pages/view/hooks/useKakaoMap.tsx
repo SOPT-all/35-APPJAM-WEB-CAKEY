@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import { useFetchStoreCoordinateList } from '@apis/view';
 
@@ -22,10 +23,15 @@ export const useKakaoMap = (
     currentLocation.stationEnName
   );
 
+  const location = useLocation();
+  const locationState = location.state.location;
+  console.log(locationState);
+
   const [selectedStoreId, setSelectedStoreId] = useState<number>(0);
   const [storeMarkerList, setStoreMarkerList] = useState<
     (StoreCoordinate & { clicked: boolean })[]
   >([]);
+  console.log('storeMarkerList', storeMarkerList);
 
   // 현재 사용자의 위치
   const [currentPosition, setCurrentPosition] = useState<{
@@ -112,6 +118,21 @@ export const useKakaoMap = (
     setSelectedStoreId(0);
     handleAnimateChange(selectedStoreId !== 0 ? 'default' : 'closed');
   };
+
+  useEffect(() => {
+    if (locationState) {
+      setStoreMarkerList([
+        {
+          ...locationState,
+          clicked: true,
+        },
+      ]);
+      setCenter({
+        lat: locationState.latitude,
+        lng: locationState.longitude,
+      });
+    }
+  }, [locationState]);
 
   useEffect(() => {
     if (currentLocation) {

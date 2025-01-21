@@ -1,3 +1,4 @@
+import { useFetchSelectStoreCoordinate } from './useFetchSelectStoreCoordinate';
 import { useFetchStoreDetailDesign } from './useFetchStoreDetailDesign';
 import { useFetchStoreDetailInfo } from './useFetchStoreDetailInfo';
 import { useFetchStoreDetailSize } from './useFetchStoreDetailSize';
@@ -10,4 +11,5 @@ export {
   useFetchStoreDetailInfo,
   useFetchStoreDetailSize,
   useFetchStoreLink,
+  useFetchSelectStoreCoordinate,
 };
