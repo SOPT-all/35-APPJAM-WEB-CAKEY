@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { useFetchStoreCoordinateList } from '@apis/view/useFetchStoreCoordinateList';
+import { useFetchStoreCoordinateList } from '@apis/view';
 
 import {
   ALLSTATIONLOCATIONS,
