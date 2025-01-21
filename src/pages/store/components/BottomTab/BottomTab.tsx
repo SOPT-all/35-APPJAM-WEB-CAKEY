@@ -1,18 +1,22 @@
+import { useFetchStoreLink } from '@apis/store';
+
 import { TextButton } from '@components';
 import { useEasyNavigate } from '@hooks';
 
 import { container } from './BottomTab.css';
 
 interface BottomTabProps {
-  kakaoLink: string;
+  storeId: number;
 }
 
-const BottomTab = ({ kakaoLink }: BottomTabProps) => {
+const BottomTab = ({ storeId }: BottomTabProps) => {
+  const { data: kakaoLink } = useFetchStoreLink(storeId);
+
   const { goViewPage } = useEasyNavigate();
 
   const handleOrderClick = () => {
     if (kakaoLink) {
-      window.location.href = kakaoLink;
+      window.open(String(kakaoLink), '_blank');
     }
   };
 
