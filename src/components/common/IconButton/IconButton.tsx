@@ -45,11 +45,11 @@ const buttonIcon = {
 const IconButton = ({
   buttonType,
   isActive,
-  count = 0,
+  count,
   itemId,
 }: IconButtonProps) => {
   const [localActive, setLocalActive] = useState(isActive);
-  const [localCount, setLocalCount] = useState(count);
+  const [localCount, setLocalCount] = useState<number | undefined>(count);
 
   const { mutate: postStoreLikes } = usePostStoreLikes();
   const { mutate: postCakeLikes } = usePostCakeLikes();
@@ -63,13 +63,17 @@ const IconButton = ({
     const isStore = buttonType === 'save24' || buttonType === 'save28';
 
     const optimisticUpdate = () => {
-      setLocalActive(!localActive);
-      setLocalCount(localCount + (localActive ? -1 : 1));
+      setLocalActive((prev) => !prev);
+      if (localCount !== undefined) {
+        setLocalCount(localCount + (localActive ? -1 : 1));
+      }
     };
 
     const rollbackUpdate = () => {
-      setLocalActive(localActive);
-      setLocalCount(localCount);
+      setLocalActive((prev) => !prev);
+      if (localCount !== undefined) {
+        setLocalCount(count);
+      }
     };
 
     optimisticUpdate();
@@ -84,14 +88,14 @@ const IconButton = ({
       });
     }
   };
-
+  
   return (
     <button className={buttonStyle({ buttonType })} onClick={handleButtonClick}>
-      {isActive
+      {localActive
         ? buttonIcon[buttonType]?.active
         : buttonIcon[buttonType]?.inactive}
-      {count !== undefined && (
-        <span className={countStyle({ buttonType })}>{count}</span>
+      {localCount !== undefined && (
+        <span className={countStyle({ buttonType })}>{localCount}</span>
       )}
     </button>
   );
