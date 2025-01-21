@@ -1,4 +1,4 @@
-import { useSuspenseQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 
 import { instance } from '@apis/instance';
 
@@ -7,7 +7,7 @@ import { END_POINT, queryKey } from '@constants';
 import { ApiResponseType } from '@types';
 
 interface cakeType {
-  cakeId: string;
+  cakeId: number;
   isLiked: boolean;
   imageUrl: string;
 }
@@ -16,7 +16,7 @@ interface DesignDetailResponse {
   storeId: number;
   storeName: string;
   station: string;
-  cakes: cakeType[];
+  cake: cakeType[];
 }
 
 const fetchDesignDetail = async (
@@ -38,10 +38,12 @@ const fetchDesignDetail = async (
 export const useFetchDesignDetail = (
   cakeId: number,
   dayCategory: string,
-  themeName: string
+  themeName: string,
+  options: { enabled: boolean }
 ) => {
-  return useSuspenseQuery({
+  return useQuery({
     queryKey: [queryKey.DESIGN_DETAIL],
     queryFn: () => fetchDesignDetail(cakeId, dayCategory, themeName),
+    ...options,
   });
 };

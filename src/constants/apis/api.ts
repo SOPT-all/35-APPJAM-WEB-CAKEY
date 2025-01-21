@@ -9,14 +9,12 @@ export const END_POINT = {
     dayCategory: string,
     themeName: string
   ) =>
-    `/api/v1/cake/${cakeId}/select?dayCategory=${dayCategory}&themeName=${themeName}`,
+    `/api/v1/cake/select/${cakeId}?dayCategory=${dayCategory}&themeName=${themeName}`,
   KAKAO_LOGIN: '/api/v1/user/login',
-  FETCH_LIKED_STORE_LIST: (
-    option: string,
-    storeIdCursor: number,
-    size: number
-  ) =>
-    `/api/v1/store/likes/${option}?storeIdCursor=${storeIdCursor}&size=${size}`,
+  FETCH_LIKED_STORE_LIST: (option: string, pageParam?: string) =>
+    pageParam
+      ? `/api/v1/store/likes/${option}?storeIdCursor=${pageParam}`
+      : `/api/v1/store/likes/${option}`,
   FETCH_STORE_COORDINATE_LIST: (station: string) =>
     `/api/v1/store/coordinate-list?station=${station}`,
   FETCH_STORE_STATIONS: '/api/v1/store/station',

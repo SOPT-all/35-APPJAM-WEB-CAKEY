@@ -32,13 +32,11 @@ import {
 const HomePage = () => {
   const isLogin = isLoggedIn();
   const { goViewPage } = useEasyNavigate();
-  // const { data: storeRankData } = useFetchStoreRank();
+  const { data: storeRankData } = useFetchStoreRank();
   const { data: cakeRankData } = useFetchCakeRank();
   const user = isLogin
     ? JSON.parse(localStorage.getItem('user') || '{}')
     : null;
-
-  const { data } = useFetchStoreRank();
 
   return (
     <div className={homePageLayout}>
@@ -79,7 +77,7 @@ const HomePage = () => {
         <section className={subSectionWrapper}>
           <h1 className={subTextStyle}>인기 스토어</h1>
           <div className={likedStoreWrapper}>
-            {data.storeList.map((store, index) => {
+            {storeRankData.map((store, index) => {
               return index < 4 ? (
                 <StoreRankingButton rank={index + 1} data={store} />
               ) : (

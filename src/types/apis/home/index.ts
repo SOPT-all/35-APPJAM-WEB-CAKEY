@@ -1,4 +1,4 @@
-interface StoreRankType {
+export interface StoreRank {
   storeId: number;
   storeName: string;
   storeLikesCount: number;
@@ -6,7 +6,7 @@ interface StoreRankType {
 }
 
 export interface StoreRankResponse {
-  storeList: StoreRankType[];
+  storeList: StoreRank[];
 }
 
 export interface CakeRank {

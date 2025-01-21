@@ -17,7 +17,7 @@ export const myListTitle = style([
   { color: vars.colors.gray900 },
 ]);
 
-export const cardListStyle = style({ padding: '1.2rem 2rem 0' });
+export const cardListStyle = style({ padding: '1.2rem 2rem 0', width: '100%' });
 
 export const tabSticky = style({
   width: '100%',

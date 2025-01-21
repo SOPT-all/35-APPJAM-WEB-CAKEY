@@ -1,4 +1,4 @@
-import { useSuspenseQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 
 import { instance } from '@apis/instance';
 
@@ -28,7 +28,7 @@ export const useFetchDesignList = (
   themeName: string,
   options?: { enabled?: boolean }
 ) => {
-  return useSuspenseQuery({
+  return useQuery({
     queryKey: [queryKey.DESIGN_LIST, option, dayCategory, themeName],
     queryFn: () => fetchDesignList(option, dayCategory, themeName),
     ...options,

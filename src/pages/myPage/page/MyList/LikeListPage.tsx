@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { useFetchLikedStoreList } from '@apis/myPage/useFetchLikedStoreList';
+
 import { CardList, Tab } from '@components';
 import useFilteredCardList from 'src/hooks/useFilteredCardList';
 
@@ -18,21 +20,10 @@ const LikeListPage = () => {
     setActiveTab(index);
   };
 
-  const {
-    data: likedStoreData,
-    handleOptionSelect: likedStoreOptionChange,
-    item: likedStoreItem,
-  } = useFilteredCardList({
-    item: 'likedStore',
-  });
+  const { option, handleOptionSelect } = useFilteredCardList();
 
-  const {
-    data: likedDesignData,
-    handleOptionSelect: likedDesignOptionChange,
-    item: likedDesignItem,
-  } = useFilteredCardList({
-    item: 'likedDesign',
-  });
+  // 찜한 스토어 조회 api (마이리스트 페이지, 지도 페이지)
+  const { data: LikedStoreListData } = useFetchLikedStoreList(option);
 
   return (
     <div className={myListContainer}>
@@ -49,15 +40,15 @@ const LikeListPage = () => {
       <main className={cardListStyle}>
         {activeTab === 0 ? (
           <CardList
-            item={likedStoreItem}
-            itemData={likedStoreData}
-            handleOptionSelect={likedStoreOptionChange}
+            item="likedStore"
+            itemData={LikedStoreListData}
+            handleOptionSelect={handleOptionSelect}
           />
-        ) : (
+        ) : ( // 여기 일단 store로 둠 ... 나중에 design 연결하는 사람이 바꿔라 ㅋㅋ
           <CardList
-            item={likedDesignItem}
-            itemData={likedDesignData}
-            handleOptionSelect={likedDesignOptionChange}
+            item="likedStore"
+            itemData={LikedStoreListData}
+            handleOptionSelect={handleOptionSelect}
           />
         )}
       </main>

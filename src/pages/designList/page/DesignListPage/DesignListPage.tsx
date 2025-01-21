@@ -1,6 +1,8 @@
 import { startTransition, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
+import { useFetchDesignList } from '@apis/designList/useFetchDesignList';
+
 import { CardList } from '@components';
 import { CATEGORY, SUB_CATEGORY } from '@constants';
 import { useFilteredCardList } from '@hooks';
@@ -57,40 +59,47 @@ const DesignListPage = () => {
     });
   };
 
-  const { item, handleOptionSelect, data } = useFilteredCardList({
-    item: 'design',
-    categories: selectedCategories,
-  });
+  const { option, handleOptionSelect } = useFilteredCardList();
+
+  // 디자인 둘러보기 조회 api
+  const { data: DesignListData } = useFetchDesignList(
+    option,
+    selectedCategories.category ?? 'BIRTH',
+    selectedCategories.subCategory ?? 'ALL'
+  );
 
   return (
-    <div className={designListPageLayout}>
-      <div className={categoryContainer}>
-        <div className={categoryWrapper}>
-          <CategoryBar
-            categories={CATEGORY}
-            selectedCategory={selectedCategories.category}
-            onCategoryChange={handleCategoryChange}
-          />
+    <>
+      <div className={designListPageLayout}>
+        <div className={categoryContainer}>
+          <div className={categoryWrapper}>
+            <CategoryBar
+              categories={CATEGORY}
+              selectedCategory={selectedCategories.category}
+              onCategoryChange={handleCategoryChange}
+            />
+          </div>
+          <div className={subCategoryWrapper}>
+            <SubCategoryBar
+              categories={SUB_CATEGORY}
+              selectedSubCategory={selectedCategories.subCategory}
+              onSubCategoryChange={handleSubCategoryChange}
+              ref={subCategoryRef}
+            />
+          </div>
         </div>
-        <div className={subCategoryWrapper}>
-          <SubCategoryBar
-            categories={SUB_CATEGORY}
-            selectedSubCategory={selectedCategories.subCategory}
-            onSubCategoryChange={handleSubCategoryChange}
-            ref={subCategoryRef}
-          />
-        </div>
-      </div>
 
-      <div className={cardListWrapper}>
-        <CardList
-          item={item}
-          hasModal
-          itemData={data}
-          handleOptionSelect={handleOptionSelect}
-        />
+        <div className={cardListWrapper}>
+          <CardList
+            item="design"
+            itemData={DesignListData}
+            handleOptionSelect={handleOptionSelect}
+            hasModal
+            selectedCategories={selectedCategories}
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

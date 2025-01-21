@@ -12,46 +12,62 @@ import FilteringButton from '../FilteringButton/FilteringButton';
 import StoreCard from '../StoreCard/StoreCard';
 
 import {
+  CategoryType,
   DesignCardListType,
   DesignItemType,
   ItemType,
   OptionType,
   StoreCardListType,
   StoreType,
+  SubCategoryType,
 } from '@types';
-
-
 
 interface CardListProps {
   item: ItemType;
-  itemData: StoreCardListType | DesignCardListType;
-  hasModal?: boolean;
+  itemData?: StoreCardListType | DesignCardListType;
   handleOptionSelect: (option: OptionType) => void;
+  hasModal?: boolean;
+  selectedCategories?: {
+    category: CategoryType;
+    subCategory: SubCategoryType;
+  };
 }
 
 const CardList = ({
   item,
   itemData,
-  hasModal = false,
   handleOptionSelect,
+  hasModal,
+  selectedCategories,
 }: CardListProps) => {
-  // 데이터를 조건에 따라 바로 분기 처리
   const isStoreCardListType = (
     data: DesignCardListType | StoreCardListType
   ): data is StoreCardListType => {
-    return data !== null && 'stores' in data;
+    return 'stores' in data && 'storeCount' in data;
   };
 
+  const isDesignCardListType = (
+    data: DesignCardListType | StoreCardListType
+  ): data is DesignCardListType => {
+    return 'cakes' in data && 'cakeCount' in data;
+  };
+
+  // itemData가 StoreCardListType인 경우 stores에 접근 가능
   const cardListData = itemData
     ? isStoreCardListType(itemData)
       ? itemData.stores // Store 데이터
-      : itemData.cakes // Design 데이터
+      : isDesignCardListType(itemData)
+        ? itemData.cakes // Design 데이터
+        : []
     : []; // itemData가 null일 경우 빈 배열
 
+  // itemData가 StoreCardListType인 경우 storeCount에 접근 가능
   const cardListCount = itemData
     ? isStoreCardListType(itemData)
       ? itemData.storeCount // Store 데이터 개수
-      : itemData.cakeCount // Design 데이터 개수
+      : isDesignCardListType(itemData)
+        ? itemData.cakeCount // Design 데이터 개수
+        : 0
     : 0;
 
   // 카드리스트 텍스트 상황에 따라 다르게
@@ -60,7 +76,7 @@ const CardList = ({
     design: ` 개의 디자인`,
     likedStore: `찜한 스토어 `,
     likedDesign: `찜한 디자인 `,
-    likedStoreDesign: `찜한 스토어의 디자인`
+    likedStoreDesign: `찜한 스토어의 디자인`,
   };
 
   const cardListNullText = {
@@ -68,12 +84,12 @@ const CardList = ({
     design: `등록된 케이크가 아직 없어요`,
     likedStore: `찜한 스토어가 아직 없어요`,
     likedDesign: `찜한 디자인이 아직 없어요`,
-    likedStoreDesign: `찜한 스토어의 디자인이 아직 없어요`
+    likedStoreDesign: `찜한 스토어의 디자인이 아직 없어요`,
   };
 
   return (
     <div className={cardListContainer}>
-      {cardListData?.length > 0 ? (
+      {cardListData.length > 0 ? (
         <>
           <div className={cardListTextWrapper}>
             <div>
@@ -83,7 +99,9 @@ const CardList = ({
 
               <span className={countTextStyle}>{cardListCountText[item]}</span>
 
-              {(item === 'likedStore' || item === 'likedDesign' || item === 'likedStoreDesign') && (
+              {(item === 'likedStore' ||
+                item === 'likedDesign' ||
+                item === 'likedStoreDesign') && (
                 <span className={countNumberStyle}>{cardListCount}</span>
               )}
             </div>
@@ -104,6 +122,7 @@ const CardList = ({
                   designItem={cake}
                   designId={cake.cakeId}
                   hasModal={hasModal}
+                  selectedCategories={selectedCategories}
                 />
               ))}
             </div>

@@ -29,49 +29,6 @@ export interface DesignDetailType {
   isLiked: boolean;
 }
 
-// 타입 뭉치지말고 나눠서 쓰되, 겹치는거 상속받아서 처리하기
-
-// storeCardList 기본 type
-export interface StoreCardListType {
-  storeCount: number;
-  stores: StoreType[];
-}
-
-// designCardList 기본 Type
-export interface DesignCardListType {
-  cakeCount: number;
-  cakes: DesignItemType[];
-}
-
-// 스토어 정보 리스트 (최신순)
-interface StoreInfoatestType extends StoreCardListType {
-  nextStoreIdCursor: number;
-  isLastData: boolean;
-}
-// 스토어 정보 리스트 (인기순)
-interface StoreInfoPopularityType extends StoreCardListType {
-  nextLikesCursor: number;
-  lastStoreIdCursor: number;
-}
-// 해당 역 디자인 조회 (최신순)
-interface StationDesignLatestType extends DesignCardListType {
-  cakeIdCursor: number;
-}
-// 해당 역 디자인 조회 (인기순)
-interface StationDesignPopularity extends DesignCardListType {
-  cakeLikesCursor: number;
-  cakeIdCursor: number;
-}
-// 찜한 스토어 조회 (최신순)
-interface LikedStoreInfo
-// 찜한 스토어 조회 (인기순)
-// 찜한 스토어의 디자인 조회 (최신순)
-// 찜한 스토어 디자인 조회 (인기순)
-// 디자인 둘러보기 조회 (최신순)
-// 디자인 둘러보기 조회 (인기순)
-// 찜한 디자인 조회 (최신순)
-// 찜한 디자인 조회 (인기순)
-
 export interface StoreCardListType {
   storeCount: number;
   stores: StoreType[];
