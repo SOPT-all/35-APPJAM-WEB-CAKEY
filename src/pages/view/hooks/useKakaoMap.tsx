@@ -1,12 +1,9 @@
 import { useEffect, useState } from 'react';
 
-import { useFetchStoreCoordinateList } from '@apis/view/useFetchStoreCoordinateList';
-
 import {
-  ALLSTATIONLOCATIONS,
-  HONGDAELOCATIONS,
-  SAVEDLOCATIONS,
-} from 'src/constants/stations';
+  useFetchLikesStoreCoordinate,
+  useFetchStoreCoordinateList,
+} from '@apis/view';
 
 import { useDebounce } from './useDebounce';
 
@@ -21,6 +18,7 @@ export const useKakaoMap = (
   const { data: storeCoordinateList } = useFetchStoreCoordinateList(
     currentLocation.stationEnName
   );
+  const { data: likesStoreCoordinateList } = useFetchLikesStoreCoordinate();
 
   const [selectedStoreId, setSelectedStoreId] = useState<number>(0);
   const [storeMarkerList, setStoreMarkerList] = useState<
@@ -86,10 +84,13 @@ export const useKakaoMap = (
   const handleSaveButtonClick = () => {
     setIsSaveActive((prev) => !prev);
     setStoreMarkerList(
-      (isSaveActive ? ALLSTATIONLOCATIONS : SAVEDLOCATIONS).map((location) => ({
-        ...location,
-        clicked: false,
-      }))
+      isSaveActive
+        ? storeCoordinateList?.map((store) => ({ ...store, clicked: false })) ||
+            []
+        : likesStoreCoordinateList?.map((store) => ({
+            ...store,
+            clicked: false,
+          })) || []
     );
   };
 
@@ -119,7 +120,10 @@ export const useKakaoMap = (
         fetchCurrentPosition();
       } else {
         setStoreMarkerList(
-          HONGDAELOCATIONS.map((location) => ({ ...location, clicked: false }))
+          storeCoordinateList.map((location) => ({
+            ...location,
+            clicked: false,
+          }))
         );
         setCenter({
           lat: currentLocation.latitude,
@@ -132,7 +136,7 @@ export const useKakaoMap = (
   useEffect(() => {
     fetchCurrentPosition();
     setStoreMarkerList(
-      ALLSTATIONLOCATIONS.map((location) => ({ ...location, clicked: false }))
+      storeCoordinateList.map((location) => ({ ...location, clicked: false }))
     );
   }, []);
 
