@@ -6,4 +6,5 @@ export const END_POINT = {
     `/api/v1/store/coordinate-list?station=${station}`,
   KAKAO_LOGIN: '/api/v1/user/login',
   FETCH_USER: '/api/v1/user',
+  FETCH_CAKE_RANK: '/api/v1/cake/rank',
 } as const;

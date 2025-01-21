@@ -1,4 +1,4 @@
-import { useFetchUser } from '@apis/myPage/useFetchUser';
+import { useFetchUser } from '@apis/myPage';
 
 import { AuthModal, Modal, TextButton } from '@components';
 import { WHIPEE_CONTACT_FORM } from '@constants';

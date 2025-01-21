@@ -6,3 +6,17 @@ export interface StoreRankResponse {
     station: string;
   }>;
 }
+
+export interface CakeRank {
+  cakeId: number;
+  storeId: number;
+  imageUrl: string;
+  storeName: string;
+  cakeLikesCount: number;
+  station: string;
+  isLiked: boolean;
+}
+
+export interface CakeRankResponse {
+  cakeList: CakeRank[];
+}
