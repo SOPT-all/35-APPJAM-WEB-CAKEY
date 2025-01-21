@@ -1,8 +1,16 @@
 import { startTransition, useState } from 'react';
 
 import { useFetchDesignList } from '@apis/designList/useFetchDesignList';
+import { useFetchLikedStoreList } from '@apis/myPage/useFetchLikedStoreList';
 
-import { CategoryType, ItemType, OptionType, SubCategoryType } from '@types';
+import {
+  CategoryType,
+  DesignCardListType,
+  ItemType,
+  OptionType,
+  StoreCardListType,
+  SubCategoryType,
+} from '@types';
 
 interface CategoriesType {
   category: CategoryType;
@@ -21,6 +29,7 @@ const useFilteredCardList = ({
   station,
 }: useFilteredCardListProps) => {
   const [option, setOption] = useState<OptionType>('latest');
+  const [data, setData] = useState<StoreCardListType | DesignCardListType>();
 
   const handleOptionSelect = (newOption: OptionType) => {
     startTransition(() => {
@@ -34,7 +43,7 @@ const useFilteredCardList = ({
   console.log(station);
 
   // 디자인 둘러보기 조회 api (둘러보기 페이지)
-  const { data } = useFetchDesignList(
+  const { data: DesignListData } = useFetchDesignList(
     option,
     categories?.category ?? 'BIRTH',
     categories?.subCategory ?? 'ALL',
@@ -44,6 +53,19 @@ const useFilteredCardList = ({
         (!!categories?.category || !!categories?.subCategory),
     }
   );
+
+  // 찜한 스토어 조회 api (마이리스트 페이지, 지도 페이지)
+  const { data: LikedStoreListData } = useFetchLikedStoreList(option, 0, 10, {
+    enabled: item === 'likedStore',
+  });
+
+  if (item === 'design') {
+    setData(DesignListData);
+  }
+
+  if (item === 'likedStore') {
+    setData(LikedStoreListData);
+  }
 
   return {
     item,

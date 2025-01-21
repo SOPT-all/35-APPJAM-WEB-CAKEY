@@ -57,28 +57,10 @@ const DesignListPage = () => {
     });
   };
 
-  // console.log(selectedCategories);
-
   const { item, handleOptionSelect, data } = useFilteredCardList({
     item: 'design',
     categories: selectedCategories,
   });
-
-  // const { item, handleOptionSelect } = useFilteredCardList({
-  //   item: 'design',
-  //   categories: selectedCategories,
-  // });
-
-  // const { data: designData } = useFetchDesignList(
-  //   'latest',
-  //   selectedCategories.category,
-  //   selectedCategories.subCategory,
-  //   {
-  //     enabled:
-  //       item === 'design' &&
-  //       (!!selectedCategories.category || !!selectedCategories.subCategory),
-  //   }
-  // );
 
   return (
     <div className={designListPageLayout}>

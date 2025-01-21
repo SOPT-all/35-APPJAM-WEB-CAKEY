@@ -59,7 +59,8 @@ const CardList = ({
     store: ` 개의 스토어`,
     design: ` 개의 디자인`,
     likedStore: `찜한 스토어 `,
-    likedDesign: `찜한 스토어의 디자인 `,
+    likedDesign: `찜한 디자인 `,
+    likedStoreDesign: `찜한 스토어의 디자인`
   };
 
   const cardListNullText = {
@@ -67,6 +68,7 @@ const CardList = ({
     design: `등록된 케이크가 아직 없어요`,
     likedStore: `찜한 스토어가 아직 없어요`,
     likedDesign: `찜한 디자인이 아직 없어요`,
+    likedStoreDesign: `찜한 스토어의 디자인이 아직 없어요`
   };
 
   return (
@@ -81,7 +83,7 @@ const CardList = ({
 
               <span className={countTextStyle}>{cardListCountText[item]}</span>
 
-              {(item === 'likedStore' || item === 'likedDesign') && (
+              {(item === 'likedStore' || item === 'likedDesign' || item === 'likedStoreDesign') && (
                 <span className={countNumberStyle}>{cardListCount}</span>
               )}
             </div>

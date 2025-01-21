@@ -11,4 +11,10 @@ export const END_POINT = {
   ) =>
     `/api/v1/cake/${cakeId}/select?dayCategory=${dayCategory}&themeName=${themeName}`,
   KAKAO_LOGIN: '/api/v1/user/login',
+  FETCH_LIKED_STORE_LIST: (
+    option: string,
+    storeIdCursor: number,
+    size: number
+  ) =>
+    `/api/v1/store/likes/${option}?storeIdCursor=${storeIdCursor}&size=${size}`,
 } as const;

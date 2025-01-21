@@ -1,8 +1,10 @@
+interface StoreRankType {
+  storeId: number;
+  storeName: string;
+  storeLikesCount: number;
+  station: string;
+}
+
 export interface StoreRankResponse {
-  storeList: Array<{
-    storeId: number;
-    storeName: string;
-    storeLikesCount: number;
-    station: string;
-  }>;
+  storeList: StoreRankType[];
 }
