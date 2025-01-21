@@ -7,12 +7,13 @@ import { END_POINT, queryKey } from '@constants';
 import { ApiResponseType, DesignListResponse } from '@types';
 
 const fetchDesignList = async (
-  daycategory: string,
-  theme: string
+  option: string,
+  dayCategory: string,
+  themeName: string
 ): Promise<DesignListResponse> => {
   try {
     const response = await instance.get<ApiResponseType<DesignListResponse>>(
-      END_POINT.FETCH_DESIGN_LIST(daycategory, theme)
+      END_POINT.FETCH_DESIGN_LIST(option, dayCategory, themeName)
     );
     return response.data.data;
   } catch (error) {
@@ -21,9 +22,15 @@ const fetchDesignList = async (
   }
 };
 
-export const useFetchDesignList = (daycategory: string, theme: string) => {
+export const useFetchDesignList = (
+  option: string,
+  dayCategory: string,
+  themeName: string,
+  options?: { enabled?: boolean }
+) => {
   return useSuspenseQuery({
-    queryKey: [queryKey.DESIGN_LIST],
-    queryFn: () => fetchDesignList(daycategory, theme),
+    queryKey: [queryKey.DESIGN_LIST, option, dayCategory, themeName],
+    queryFn: () => fetchDesignList(option, dayCategory, themeName),
+    ...options,
   });
 };

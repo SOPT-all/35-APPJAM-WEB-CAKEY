@@ -1,13 +1,8 @@
-import { useEffect, useState } from 'react';
+import { startTransition, useState } from 'react';
 
-import {
-  CategoryType,
-  DesignCardListType,
-  ItemType,
-  OptionType,
-  StoreCardListType,
-  SubCategoryType,
-} from '@types';
+import { useFetchDesignList } from '@apis/designList/useFetchDesignList';
+
+import { CategoryType, ItemType, OptionType, SubCategoryType } from '@types';
 
 interface CategoriesType {
   category: CategoryType;
@@ -16,151 +11,39 @@ interface CategoriesType {
 
 interface useFilteredCardListProps {
   item: ItemType;
-  parameterType?: string | CategoriesType;
+  categories?: CategoriesType;
+  station?: string;
 }
 
 const useFilteredCardList = ({
   item,
-  parameterType,
+  categories,
+  station,
 }: useFilteredCardListProps) => {
   const [option, setOption] = useState<OptionType>('latest');
-  const [data, setData] = useState<StoreCardListType | DesignCardListType>({
-    cakeCount: 0,
-    cakes: [],
-  });
 
   const handleOptionSelect = (newOption: OptionType) => {
-    setOption(newOption);
+    startTransition(() => {
+      setOption(newOption);
+    });
   };
 
-  // api 호출할 땐, item, option, parameterType을 이용
-  console.log(option);
-  console.log(parameterType);
+  // api 호출할 땐, item, option, categories, station 이용
 
-  // api 데이터 불러오는 코드가 들어와야 함
-  // 지금은 일단 mockData로 대체
-  useEffect(() => {
-    if (item === 'store' || item === 'likedStore') {
-      const storeCardListData = {
-        storeCount: 122,
-        stores: [
-          {
-            storeId: 1,
-            storeName: '버터뭉1',
-            station: '종로5가역',
-            address: '서울 중구 동호로 385-2',
-            storeLikesCount: 30,
-            isLiked: false,
-            images: [
-              {
-                imageId: 1,
-                imageUrl: '../public/example-img.png',
-              },
-              {
-                imageId: 2,
-                imageUrl: '../public/example-img.png',
-              },
-              {
-                imageId: 3,
-                imageUrl: '../public/example-img.png',
-              },
-              {
-                imageId: 4,
-                imageUrl: '../public/example-img.png',
-              },
-            ],
-          },
-          {
-            storeId: 2,
-            storeName: '버터뭉2',
-            station: '홍대입구역',
-            address: '서울 마포구 동호로 385-2',
-            storeLikesCount: 28,
-            isLiked: true,
-            images: [
-              {
-                imageId: 5,
-                imageUrl: '../public/example-img.png',
-              },
-              {
-                imageId: 6,
-                imageUrl: '../public/example-img.png',
-              },
-              {
-                imageId: 7,
-                imageUrl: '../public/example-img.png',
-              },
-              {
-                imageId: 8,
-                imageUrl: '../public/example-img.png',
-              },
-            ],
-          },
-          {
-            storeId: 3,
-            storeName: '버터뭉3',
-            station: '홍대입구역',
-            address: '서울 마포구 구호로 385-2',
-            storeLikesCount: 26,
-            isLiked: false,
-            images: [
-              {
-                imageId: 9,
-                imageUrl: '../public/example-img.png',
-              },
-              {
-                imageId: 10,
-                imageUrl: '../public/example-img.png',
-              },
-              {
-                imageId: 11,
-                imageUrl: '../public/example-img.png',
-              },
-              {
-                imageId: 12,
-                imageUrl: '../public/example-img.png',
-              },
-            ],
-          },
-        ],
-      };
-      setData(storeCardListData);
-    } else if (item === 'design' || item === 'likedDesign') {
-      const designCardListData = {
-        cakeCount: 100,
-        cakes: [
-          {
-            cakeId: 1,
-            storeId: 1,
-            storeName: '버터뭉',
-            station: '홍대입구역',
-            isLiked: false,
-            cakeLikesCount: 200,
-            imageUrl: '../public/example-img.png',
-          },
-          {
-            cakeId: 2,
-            storeId: 2,
-            storeName: '버터뭉2',
-            station: '서강대입구역',
-            isLiked: true,
-            cakeLikesCount: 30,
-            imageUrl: '../public/example-img.png',
-          },
-          {
-            cakeId: 3,
-            storeId: 1,
-            storeName: '버터뭉',
-            station: '홍대입구역',
-            isLiked: false,
-            cakeLikesCount: 200,
-            imageUrl: '../public/example-img.png',
-          },
-        ],
-      };
-      setData(designCardListData);
+  // 지하철역 가지고 api 부를 때 사용
+  console.log(station);
+
+  // 디자인 둘러보기 조회 api (둘러보기 페이지)
+  const { data } = useFetchDesignList(
+    option,
+    categories?.category ?? 'BIRTH',
+    categories?.subCategory ?? 'ALL',
+    {
+      enabled:
+        item === 'design' &&
+        (!!categories?.category || !!categories?.subCategory),
     }
-  }, [item, parameterType]);
+  );
 
   return {
     item,

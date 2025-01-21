@@ -1,7 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
+import { startTransition, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-
-import { useFetchDesignDetail } from '@apis/designList/useFetchDesignDetail';
 
 import { CardList } from '@components';
 import { CATEGORY, SUB_CATEGORY } from '@constants';
@@ -18,7 +16,6 @@ import {
 } from './DesignListPage.css';
 
 import { CategoryType, SubCategoryType } from '@types';
-import { useFetchDesignList } from '@apis/designList/useFetchDesignList';
 
 const DesignListPage = () => {
   const location = useLocation();
@@ -42,44 +39,46 @@ const DesignListPage = () => {
     }
   }, [selectedCategories.category]);
 
-  // const { data: datadata } = useFetchDesignDetail(
-  //   1,
-  //   selectedCategories.category,
-  //   selectedCategories.subCategory
-  // );
-  // console.log(datadata);
-
-  const { data: designListData } = useFetchDesignList(
-    selectedCategories.category,
-    selectedCategories.subCategory
-  );
-  console.log(designListData);
-  console.log(selectedCategories.category, selectedCategories.subCategory);
-  // console.log(
-  //   END_POINT.FETCH_DESIGN_LIST(
-  //     selectedCategories.category,
-  //     selectedCategories.subCategory
-  //   )
-  // );
-
   const handleCategoryChange = (category: CategoryType) => {
-    setSelectedCategories({
-      category: category,
-      subCategory: 'ALL',
+    startTransition(() => {
+      setSelectedCategories({
+        category: category,
+        subCategory: 'ALL',
+      });
     });
   };
 
   const handleSubCategoryChange = (category: SubCategoryType) => {
-    setSelectedCategories((prevState) => ({
-      ...prevState,
-      subCategory: category,
-    }));
+    startTransition(() => {
+      setSelectedCategories((prevState) => ({
+        ...prevState,
+        subCategory: category,
+      }));
+    });
   };
+
+  // console.log(selectedCategories);
 
   const { item, handleOptionSelect, data } = useFilteredCardList({
     item: 'design',
-    parameterType: selectedCategories,
+    categories: selectedCategories,
   });
+
+  // const { item, handleOptionSelect } = useFilteredCardList({
+  //   item: 'design',
+  //   categories: selectedCategories,
+  // });
+
+  // const { data: designData } = useFetchDesignList(
+  //   'latest',
+  //   selectedCategories.category,
+  //   selectedCategories.subCategory,
+  //   {
+  //     enabled:
+  //       item === 'design' &&
+  //       (!!selectedCategories.category || !!selectedCategories.subCategory),
+  //   }
+  // );
 
   return (
     <div className={designListPageLayout}>

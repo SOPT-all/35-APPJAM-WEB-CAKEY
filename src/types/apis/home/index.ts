@@ -1,5 +1,5 @@
 export interface StoreRankResponse {
-  stores: Array<{
+  storeList: Array<{
     storeId: number;
     storeName: string;
     storeLikesCount: number;

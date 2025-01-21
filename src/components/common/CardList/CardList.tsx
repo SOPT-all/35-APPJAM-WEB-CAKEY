@@ -20,6 +20,8 @@ import {
   StoreType,
 } from '@types';
 
+
+
 interface CardListProps {
   item: ItemType;
   itemData: StoreCardListType | DesignCardListType;
@@ -69,7 +71,7 @@ const CardList = ({
 
   return (
     <div className={cardListContainer}>
-      {cardListData.length > 0 ? (
+      {cardListData?.length > 0 ? (
         <>
           <div className={cardListTextWrapper}>
             <div>

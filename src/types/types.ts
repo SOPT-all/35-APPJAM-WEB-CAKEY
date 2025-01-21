@@ -32,11 +32,21 @@ export interface DesignDetailType {
 export interface StoreCardListType {
   storeCount: number;
   stores: StoreType[];
+  nextStoreIdCursor?: number;
+  isLastData?: boolean;
+  nextLikesCursor?: number;
+  lastStoreIdCursor?: number;
 }
 
 export interface DesignCardListType {
   cakeCount: number;
   cakes: DesignItemType[];
+  cakeIdCursor?: number
+  cakeLikesCursor?: number;
+  nextCakeIdCursor?: number;
+  nextCakeLikesCursor?: number;
+  isLastData?: boolean;
+  nextLikeCursor?: number;
 }
 
 export type CategoryType = 'BIRTH' | 'CHEER' | 'ANNIV' | 'SEASON';

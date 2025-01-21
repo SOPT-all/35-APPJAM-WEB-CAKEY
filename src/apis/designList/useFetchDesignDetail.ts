@@ -2,7 +2,7 @@ import { useSuspenseQuery } from '@tanstack/react-query';
 
 import { instance } from '@apis/instance';
 
-import { queryKey } from '@constants';
+import { END_POINT, queryKey } from '@constants';
 
 import { ApiResponseType } from '@types';
 
@@ -21,12 +21,12 @@ interface DesignDetailResponse {
 
 const fetchDesignDetail = async (
   cakeId: number,
-  daycategory: string,
+  dayCategory: string,
   themeName: string
 ): Promise<DesignDetailResponse> => {
   try {
     const response = await instance.get<ApiResponseType<DesignDetailResponse>>(
-      `/api/v1/cake/${cakeId}/select?dayCategory=${daycategory}&theme=ALL`
+      END_POINT.FETCH_DESIGN_DETAIL(cakeId, dayCategory, themeName)
     );
     return response.data.data;
   } catch (error) {
@@ -37,11 +37,11 @@ const fetchDesignDetail = async (
 
 export const useFetchDesignDetail = (
   cakeId: number,
-  daycategory: string,
+  dayCategory: string,
   themeName: string
 ) => {
   return useSuspenseQuery({
     queryKey: [queryKey.DESIGN_DETAIL],
-    queryFn: () => fetchDesignDetail(cakeId, daycategory, themeName),
+    queryFn: () => fetchDesignDetail(cakeId, dayCategory, themeName),
   });
 };
