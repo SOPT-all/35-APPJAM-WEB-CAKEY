@@ -21,6 +21,6 @@ const fetchCakeRank = async (): Promise<CakeRank[]> => {
 export const useFetchCakeRank = () => {
   return useSuspenseQuery({
     queryKey: [queryKey.CAKE_RANK],
-    queryFn: () => fetchCakeRank(),
+    queryFn: fetchCakeRank,
   });
 };

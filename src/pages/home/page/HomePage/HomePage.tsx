@@ -68,7 +68,6 @@ const HomePage = () => {
   const [isLogin] = useState(true);
   const { goViewPage } = useEasyNavigate();
   const { data: cakeRankData } = useFetchCakeRank();
-  console.log(cakeRankData);
 
   return (
     <div className={homePageLayout}>
