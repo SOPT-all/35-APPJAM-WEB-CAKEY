@@ -1,3 +1,5 @@
+import { useFetchStoreInfo } from '@apis/store';
+
 import { IconButton, Image, Label, TextButton } from '@components';
 import { useEasyNavigate } from '@hooks';
 
@@ -11,20 +13,12 @@ import {
   addressStyle,
 } from './SelectedStoreModal.css';
 
-const storeData = {
-  storeName: '버터뭉',
-  address: '서울 중구 동호로 285-2 아이디어회관 301호',
-  station: '홍대입구역',
-  isLiked: true,
-  imageUrl: '/example-img.png',
-  storeLikesCount: 13000,
-};
-
 interface SelectedStoreModalProps {
   storeId: number;
 }
 const SelectedStoreModal = ({ storeId }: SelectedStoreModalProps) => {
   const { goStorePage } = useEasyNavigate();
+  const { data: storeData } = useFetchStoreInfo(storeId);
 
   return (
     <div className={modalContainer}>

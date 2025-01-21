@@ -1,10 +1,8 @@
-interface Hours {
-  [key: string]: string | null;
-}
+import { StoreDetailInfoResponse } from '@types';
 
-export const formatHours = (hours: Hours): string[] => {
-  const days = ['일', '월', '화', '수', '목', '금', '토'];
-  const keys = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+export const formatHours = (hours: StoreDetailInfoResponse): string[] => {
+  const days = ['일', '월', '화', '수', '목', '금', '토'] as const;
+  const keys = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'] as const;
 
   const today = new Date().getDay();
   const rearrangedDays = [...days.slice(today), ...days.slice(0, today)];

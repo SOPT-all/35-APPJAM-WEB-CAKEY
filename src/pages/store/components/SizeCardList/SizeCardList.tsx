@@ -9,13 +9,10 @@ import {
 } from './SizeCardList.css';
 import SizeCard from '../SizeCard/SizeCard';
 
-interface Size {
-  sizeName: string;
-  price: number;
-}
+import { StoreDetailSize } from '@types';
 
 interface SizeCardListProps {
-  sizes: Size[];
+  sizes: StoreDetailSize[];
 }
 const SizeCardList = ({ sizes }: SizeCardListProps) => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
