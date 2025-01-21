@@ -51,7 +51,6 @@ const IconButton = ({
   const { mutate } = usePostStoreLikes();
   const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    console.log('clicked', itemId);
     if (itemId !== undefined) {
       mutate(itemId);
     }
