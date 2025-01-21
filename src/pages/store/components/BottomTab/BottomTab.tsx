@@ -16,7 +16,7 @@ const BottomTab = ({ storeId }: BottomTabProps) => {
 
   const handleOrderClick = () => {
     if (kakaoLink) {
-      window.location.href = String(kakaoLink);
+      window.open(String(kakaoLink), '_blank');
     }
   };
 
