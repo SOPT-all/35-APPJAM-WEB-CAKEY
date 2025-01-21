@@ -1,6 +1,8 @@
 import React, { ButtonHTMLAttributes } from 'react';
 
 import { usePostCakeLikes, usePostStoreLikes } from '@apis/likes';
+import { useDeleteCakeLikes } from '@apis/likes/useDeleteCakeLikes';
+import { useDeleteStoreLikes } from '@apis/likes/useDeleteStoreLikes';
 
 import {
   IcFillLikeOff36,
@@ -46,8 +48,10 @@ const IconButton = ({
   count,
   itemId,
 }: IconButtonProps) => {
-  const { mutate: postCakeLikes } = usePostCakeLikes();
   const { mutate: postStoreLikes } = usePostStoreLikes();
+  const { mutate: postCakeLikes } = usePostCakeLikes();
+  const { mutate: deleteStoreLikes } = useDeleteStoreLikes();
+  const { mutate: deleteCardLikes } = useDeleteCakeLikes();
 
   const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
@@ -59,7 +63,16 @@ const IconButton = ({
         postCakeLikes(itemId);
       }
     }
+
+    if (itemId !== undefined) {
+      if (buttonType === 'save24' || buttonType === 'save28') {
+        deleteStoreLikes(itemId);
+      } else {
+        deleteCardLikes(itemId);
+      }
+    }
   };
+
   return (
     <button className={buttonStyle({ buttonType })} onClick={handleButtonClick}>
       {isActive

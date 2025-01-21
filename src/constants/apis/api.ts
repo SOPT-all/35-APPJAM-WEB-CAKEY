@@ -11,4 +11,5 @@ export const END_POINT = {
   POST_CAKE_LIKES: (cakeId: number) => `/api/v1/cake/likes/${cakeId}`,
   POST_STORE_LIKES: (storeId: number) => `/api/v1/store/likes/${storeId}`,
   DELETE_CAKE_LIKES: (cakeId: number) => `/api/v1/cake/likes/${cakeId}`,
+  DELETE_STORE_LIKES: (storeId: number) => `/api/v1/store/likes/${storeId}`
 } as const;
