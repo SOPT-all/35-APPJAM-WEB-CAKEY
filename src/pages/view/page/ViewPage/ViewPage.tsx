@@ -19,8 +19,6 @@ const ViewPage = () => {
     latitude: 0.0,
     longitude: 0.0,
   });
-  console.log(stations);
-  console.log('currentLocation', currentLocation);
   const stationKrNames = (stations || []).map(
     (station) => station.stationKrName
   );
