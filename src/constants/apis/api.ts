@@ -5,6 +5,7 @@ export const END_POINT = {
   FETCH_STORE_RANK: '/api/v1/store/rank',
   FETCH_STORE_COORDINATE_LIST: (station: string) =>
     `/api/v1/store/coordinate-list?station=${station}`,
+  FETCH_LIKES_STORE_COORDINATE_LIST: '/api/v1/store/likes/coordinate',
   FETCH_STORE_STATIONS: '/api/v1/store/station',
   FETCH_STORE_INFO: (storeId: number) => `/api/v1/store/select/${storeId}`,
   FETCH_STORE_DETAIL_DESIGN: (storeId: number) =>
