@@ -6,6 +6,11 @@ export interface ApiResponseType<T> {
   data: T;
 }
 
+export interface MutateResposneType {
+  code: number;
+  message: string;
+}
+
 export interface ErrorResponse {
   response: {
     data: {

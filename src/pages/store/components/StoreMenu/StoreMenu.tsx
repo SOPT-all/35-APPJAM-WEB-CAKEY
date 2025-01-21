@@ -1,3 +1,5 @@
+import { useFetchStoreDetailSize } from '@apis/store';
+
 import {
   listStyle,
   listBox,
@@ -7,21 +9,13 @@ import {
 } from './StoreMenu.css';
 import SizeCardList from '../SizeCardList/SizeCardList';
 
-interface Size {
-  sizeName: string;
-  price: number;
-}
-
-interface MenuData {
-  sizes: Size[];
-  taste: string;
-}
-
 interface StoreMenuProps {
-  menuData: MenuData;
+  storeId: number;
 }
 
-const StoreMenu = ({ menuData }: StoreMenuProps) => {
+const StoreMenu = ({ storeId }: StoreMenuProps) => {
+  const { data: menuData } = useFetchStoreDetailSize(storeId);
+
   return (
     <ul className={listStyle}>
       <li className={listBox}>
@@ -31,7 +25,7 @@ const StoreMenu = ({ menuData }: StoreMenuProps) => {
             *상세 사이즈는 가게마다 다를 수 있어요
           </span>
         </h2>
-        <SizeCardList sizes={menuData.sizes} />
+        <SizeCardList sizes={menuData.sizeDtoList} />
       </li>
 
       <li className={listBox}>

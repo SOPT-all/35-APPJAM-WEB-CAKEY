@@ -17,9 +17,9 @@ import {
 import { buttonSectionStyle, mapContainer } from './kakaoMap.css';
 import MapBottomSheet from '../MapBottomSheet/MapBottomSheet';
 import MapButton from '../MapButton/MapButton';
+import SelectedStoreModal from '../SelectedStoreModal/SelectedStoreModal';
 
 import { StationType } from '@types';
-import SelectedStoreModal from '../SelectedStoreModal/SelectedStoreModal';
 
 interface KakaoMapProps {
   currentLocation: StationType;
