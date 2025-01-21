@@ -1,5 +1,7 @@
 import React, { ButtonHTMLAttributes } from 'react';
 
+import { usePostStoreLikes } from '@apis/likes';
+
 import {
   IcFillLikeOff36,
   IcFillLikeOn36,
@@ -16,8 +18,7 @@ export interface IconButtonProps
   buttonType: 'save24' | 'save28' | 'like20' | 'like36';
   isActive?: boolean;
   count?: number;
-  itemId?: number; // storeId | cakeId를 받아서 api 요청에 사용합니다
-  onMap?: boolean;
+  itemId?: number;
 }
 
 const buttonIcon = {
@@ -44,21 +45,22 @@ const IconButton = ({
   isActive,
   count,
   itemId,
-  onMap = false,
 }: IconButtonProps) => {
+  const { mutate } = usePostStoreLikes();
   const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    console.log('iconClick', itemId);
+    if (itemId !== undefined) {
+      mutate(itemId);
+    }
   };
   return (
-    <button
-      className={buttonStyle({ buttonType, onMap })}
-      onClick={handleButtonClick}
-    >
+    <button className={buttonStyle({ buttonType })} onClick={handleButtonClick}>
       {isActive
         ? buttonIcon[buttonType]?.active
         : buttonIcon[buttonType]?.inactive}
-      {count !== undefined && <span className={countStyle}>{count}</span>}
+      {count !== undefined && (
+        <span className={countStyle({ buttonType })}>{count}</span>
+      )}
     </button>
   );
 };

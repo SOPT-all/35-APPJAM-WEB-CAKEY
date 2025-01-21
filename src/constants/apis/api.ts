@@ -9,4 +9,5 @@ export const END_POINT = {
   KAKAO_LOGIN: '/api/v1/user/login',
   FETCH_USER: '/api/v1/user',
   FETCH_CAKE_RANK: '/api/v1/cake/rank',
+  POST_STORE_LIKES: (storeId: number) => `/api/v1/store/likes/${storeId}`,
 } as const;
