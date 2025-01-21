@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { startTransition, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { useFetchStoreInfo } from '@apis/store';
@@ -20,7 +20,9 @@ const StorePage = () => {
   const [activeTab, setActiveTab] = useState(0);
 
   const handleTabChange = (index: number) => {
-    setActiveTab(index);
+    startTransition(() => {
+      setActiveTab(index);
+    });
   };
 
   const tabComponents = [
