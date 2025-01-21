@@ -54,11 +54,4 @@ export type SubCategoryType =
 export type ItemType = 'store' | 'design' | 'likedStore' | 'likedDesign';
 export type OptionType = 'latest' | 'popularity';
 
-export interface StationType {
-  stationEnName: string;
-  stationKrName: string;
-  latitude: number;
-  longitude: number;
-}
-
 export type BottomSheetState = 'closed' | 'default' | 'opened';
