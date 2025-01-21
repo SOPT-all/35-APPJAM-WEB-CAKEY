@@ -19,7 +19,7 @@ const fetchLikesStoreCoordinate = async (): Promise<StoreCoordinate[]> => {
     return response.data.data.stores;
   } catch (error) {
     const errorResponse = error as ErrorResponse;
-    if (errorResponse.response.data.code === 40402) {
+    if (errorResponse.response.data.code === 40420) {
       return [];
     }
     throw error;
@@ -29,7 +29,7 @@ const fetchLikesStoreCoordinate = async (): Promise<StoreCoordinate[]> => {
 export const useFetchLikesStoreCoordinate = (isSaveActive: boolean) => {
   return useQuery({
     queryKey: [queryKey.LIKES_STORE_COORDINATE_LIST],
-    queryFn: () => fetchLikesStoreCoordinate(),
+    queryFn: fetchLikesStoreCoordinate,
     enabled: isSaveActive,
     staleTime: 0,
     gcTime: 0,

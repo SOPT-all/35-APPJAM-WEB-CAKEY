@@ -85,14 +85,11 @@ export const useKakaoMap = (
 
   const handleSaveButtonClick = () => {
     setIsSaveActive((prev) => !prev);
+
+    const markerList =
+      (isSaveActive ? storeCoordinateList : likesStoreCoordinateList) || [];
     setStoreMarkerList(
-      isSaveActive
-        ? storeCoordinateList?.map((store) => ({ ...store, clicked: false })) ||
-            []
-        : likesStoreCoordinateList?.map((store) => ({
-            ...store,
-            clicked: false,
-          })) || []
+      markerList.map((store) => ({ ...store, clicked: false }))
     );
   };
 
