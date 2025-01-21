@@ -38,7 +38,7 @@ const StoreDesign = ({ storeId }: StoreDesignProps) => {
       </ul>
 
       {selectedImage && (
-        <Modal variant="center">
+        <Modal variant="bottom">
           <ImageModal imgUrl={selectedImage} onClose={closeImageModal} />
         </Modal>
       )}
