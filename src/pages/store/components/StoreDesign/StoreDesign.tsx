@@ -1,17 +1,19 @@
 import { useState } from 'react';
 
+import { useFetchStoreDetailDesign } from '@apis/store';
+
 import { Image, Modal } from '@components';
 
 import { gridStyle } from './StoreDesign.css';
 import ImageModal from '../ImageModal/ImageModal';
 
-import { StoreDetailDesign } from '@types';
-
 interface StoreDesignProps {
-  designData: StoreDetailDesign[];
+  storeId: number;
 }
 
-const StoreDesign = ({ designData }: StoreDesignProps) => {
+const StoreDesign = ({ storeId }: StoreDesignProps) => {
+  const { data: designData } = useFetchStoreDetailDesign(storeId);
+
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const handleImageClick = (imageUrl: string) => {

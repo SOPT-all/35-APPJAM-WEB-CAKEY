@@ -1,3 +1,5 @@
+import { useFetchStoreDetailSize } from '@apis/store';
+
 import {
   listStyle,
   listBox,
@@ -7,13 +9,13 @@ import {
 } from './StoreMenu.css';
 import SizeCardList from '../SizeCardList/SizeCardList';
 
-import { StoreDetailMenuResponse } from '@types';
-
 interface StoreMenuProps {
-  menuData: StoreDetailMenuResponse;
+  storeId: number;
 }
 
-const StoreMenu = ({ menuData }: StoreMenuProps) => {
+const StoreMenu = ({ storeId }: StoreMenuProps) => {
+  const { data: menuData } = useFetchStoreDetailSize(storeId);
+
   return (
     <ul className={listStyle}>
       <li className={listBox}>

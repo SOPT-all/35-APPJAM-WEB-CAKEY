@@ -1,13 +1,7 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import {
-  useFetchStoreDetailDesign,
-  useFetchStoreDetailInfo,
-  useFetchStoreDetailSize,
-  useFetchStoreInfo,
-  useFetchStoreLink,
-} from '@apis/store';
+import { useFetchStoreInfo } from '@apis/store';
 
 import { Tab } from '@components';
 import Banner from '@pages/store/components/Banner/Banner';
@@ -22,10 +16,6 @@ const StorePage = () => {
   const storeId = Number(useParams<{ id: string }>().id);
 
   const { data: storeData } = useFetchStoreInfo(storeId);
-  const { data: designData } = useFetchStoreDetailDesign(storeId);
-  const { data: menuData } = useFetchStoreDetailSize(storeId);
-  const { data: infoData } = useFetchStoreDetailInfo(storeId);
-  const { data: linkData } = useFetchStoreLink(storeId);
 
   const [activeTab, setActiveTab] = useState(0);
 
@@ -34,9 +24,9 @@ const StorePage = () => {
   };
 
   const tabComponents = [
-    <StoreDesign designData={designData} />,
-    <StoreMenu menuData={menuData} />,
-    <StoreInfo infoData={infoData} />,
+    <StoreDesign storeId={storeId} />,
+    <StoreMenu storeId={storeId} />,
+    <StoreInfo storeId={storeId} />,
   ];
 
   return (
@@ -48,7 +38,7 @@ const StorePage = () => {
         onTabChange={handleTabChange}
       />
       <section className={sectionStyle}>{tabComponents[activeTab]}</section>
-      <BottomTab kakaoLink={linkData.kakaoLink} />
+      <BottomTab storeId={storeId} />
     </>
   );
 };

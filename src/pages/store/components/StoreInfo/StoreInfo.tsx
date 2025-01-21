@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { useFetchStoreDetailInfo } from '@apis/store';
+
 import { Modal } from '@components';
 import { useModal } from '@hooks';
 import { formatHours } from '@utils';
@@ -19,24 +21,7 @@ import OrderFormModal from '../OrderFormModal/OrderFormModal';
 import OrderGuideButton from '../OrderGuideButton/OrderGuideButton';
 
 interface StoreInfoProps {
-  infoData: {
-    monOpen: string | null;
-    monClose: string | null;
-    tueOpen: string | null;
-    tueClose: string | null;
-    wedOpen: string | null;
-    wedClose: string | null;
-    thuOpen: string | null;
-    thuClose: string | null;
-    friOpen: string | null;
-    friClose: string | null;
-    satOpen: string | null;
-    satClose: string | null;
-    sunOpen: string | null;
-    sunClose: string | null;
-    address: string;
-    phone: string;
-  };
+  storeId: number;
 }
 
 interface InfoItem {
@@ -46,7 +31,9 @@ interface InfoItem {
   content: React.ReactNode;
 }
 
-const StoreInfo = ({ infoData }: StoreInfoProps) => {
+const StoreInfo = ({ storeId }: StoreInfoProps) => {
+  const { data: infoData } = useFetchStoreDetailInfo(storeId);
+
   const { isModalOpen, openModal, closeModal } = useModal();
   const [isToggleOpen, setIsToggleOpen] = useState(false);
 

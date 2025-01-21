@@ -28,23 +28,15 @@ export interface StoreDetailMenuResponse {
   taste: string;
 }
 
-export interface StoreDetailInfoResponse {
-  monOpen: string | null;
-  monClose: string | null;
-  tueOpen: string | null;
-  tueClose: string | null;
-  wedOpen: string | null;
-  wedClose: string | null;
-  thuOpen: string | null;
-  thuClose: string | null;
-  friOpen: string | null;
-  friClose: string | null;
-  satOpen: string | null;
-  satClose: string | null;
-  sunOpen: string | null;
-  sunClose: string | null;
+type NullableString = string | null;
+
+type WeeklySchedule = {
+  [key in `${'mon' | 'tue' | 'wed' | 'thu' | 'fri' | 'sat' | 'sun'}${'Open' | 'Close'}`]: NullableString;
+};
+
+export interface StoreDetailInfoResponse extends WeeklySchedule {
   address: string;
-  phone: string;
+  phone: NullableString;
 }
 
 export interface StoreLinkResponse {
