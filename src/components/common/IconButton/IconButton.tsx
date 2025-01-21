@@ -46,14 +46,18 @@ const IconButton = ({
   count,
   itemId,
 }: IconButtonProps) => {
-  // const { mutate } = usePostCakeLikes();
-
-  // const { mutate } = usePostStoreLikes();
+  const { mutate: postCakeLikes } = usePostCakeLikes();
+  const { mutate: postStoreLikes } = usePostStoreLikes();
 
   const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
+
     if (itemId !== undefined) {
-      // mutate(itemId);
+      if (buttonType === 'save24' || buttonType === 'save28') {
+        postStoreLikes(itemId);
+      } else {
+        postCakeLikes(itemId);
+      }
     }
   };
   return (

@@ -38,6 +38,7 @@ const StoreDesign = ({ designData = [] }: StoreDesignProps) => {
               src={design.cakeImageUrl}
               hasIcon
               isActive={design.isLiked}
+              itemId={design.cakeId}
             />
           </li>
         ))}
