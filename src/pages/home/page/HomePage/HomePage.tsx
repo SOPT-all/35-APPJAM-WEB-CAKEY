@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import { useFetchCakeRank } from '@apis/home';
 
 import { DesignCard } from '@components';
@@ -7,6 +5,7 @@ import { CATEGORY, MainKeyVisual } from '@constants';
 import { useEasyNavigate } from '@hooks';
 import { StoreRankingButton } from '@pages/home/components';
 import CategoryCard from '@pages/home/components/CategoryCard/CategoryCard';
+import { isLoggedIn } from '@utils';
 
 import { IcHomeArrow } from '@svgs';
 
@@ -62,12 +61,13 @@ const storeRankingData = [
   },
 ];
 
-const user = { userName: '박채연' };
-
 const HomePage = () => {
-  const [isLogin] = useState(true);
+  const isLogin = isLoggedIn();
   const { goViewPage } = useEasyNavigate();
   const { data: cakeRankData } = useFetchCakeRank();
+  const user = isLogin
+    ? JSON.parse(localStorage.getItem('user') || '{}')
+    : null;
 
   return (
     <div className={homePageLayout}>
