@@ -68,8 +68,8 @@ const HomePage = () => {
         <section className={subSectionWrapper}>
           <h1 className={subTextStyle}>어떤 날을 위한 케이크인가요?</h1>
           <div className={categoryWrapper}>
-            {CATEGORY.map((category) => (
-              <CategoryCard category={category} />
+            {CATEGORY.map((category, index) => (
+              <CategoryCard key={index} category={category} />
             ))}
           </div>
         </section>
@@ -79,9 +79,14 @@ const HomePage = () => {
           <div className={likedStoreWrapper}>
             {storeRankData.map((store, index) => {
               return index < 4 ? (
-                <StoreRankingButton rank={index + 1} data={store} />
+                <StoreRankingButton
+                  key={store.storeId}
+                  rank={index + 1}
+                  data={store}
+                />
               ) : (
                 <StoreRankingButton
+                  key={store.storeId}
                   rank={index + 1}
                   data={store}
                   hasBorder={false}
@@ -95,12 +100,8 @@ const HomePage = () => {
           <h1 className={cakeTextStyle}>인기 케이크</h1>
           <div className={likedCakeWrapper}>
             {cakeRankData.map((cake, index) => (
-              <div className={likedCakeStyle}>
-                <DesignCard
-                  numberLabel={`${index + 1}`}
-                  designItem={cake}
-                  designId={cake.cakeId}
-                />
+              <div className={likedCakeStyle} key={cake.cakeId}>
+                <DesignCard numberLabel={`${index + 1}`} designItem={cake} />
               </div>
             ))}
           </div>

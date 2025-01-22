@@ -38,12 +38,10 @@ const fetchDesignDetail = async (
 export const useFetchDesignDetail = (
   cakeId: number,
   dayCategory: string,
-  themeName: string,
-  options: { enabled: boolean }
+  themeName: string
 ) => {
   return useQuery({
     queryKey: [queryKey.DESIGN_DETAIL],
     queryFn: () => fetchDesignDetail(cakeId, dayCategory, themeName),
-    ...options,
   });
 };

@@ -1,3 +1,5 @@
+import { useFetchDesignDetail } from '@apis/designList/useFetchDesignDetail';
+
 import { Label, TextButton } from '@components';
 import { useEasyNavigate } from '@hooks';
 
@@ -11,56 +13,41 @@ import {
 } from './DesignSearchModal.css';
 import Carousel from '../Carousel/Carousel';
 
-interface DesignSearchModalCakesType {
-  cakeId: number;
-  isLiked: boolean;
-  imageUrl: string;
-}
-
-interface DesignSearchModalType {
-  storeId: number;
-  storeName: string;
-  station: string;
-  cake: DesignSearchModalCakesType[];
-}
+import { CategoryType, SubCategoryType } from '@types';
 
 interface DesignSearchModalProps {
   storeId: number;
-  data: DesignSearchModalType;
+  cakeId: number;
+  selectedCategories?: {
+    category: CategoryType;
+    subCategory: SubCategoryType;
+  };
 }
 
-// const designDetailItem = {
-//   storeId: 1,
-//   storeName: '케이크케이크케이크케이크',
-//   station: '종로5가역',
-//   cakes: [
-//     {
-//       cakeId: 1,
-//       isLiked: true,
-//       imageUrl: '../public/example-img.png',
-//     },
-//     {
-//       cakeId: 5,
-//       isLiked: false,
-//       imageUrl: '../public/example-img.png',
-//     },
-//     {
-//       cakeId: 3,
-//       isLiked: true,
-//       imageUrl: '../public/example-img.png',
-//     },
-//     {
-//       cakeId: 2,
-//       isLiked: true,
-//       imageUrl: '../public/example-img.png',
-//     },
-//   ],
-// };
-
-const DesignSearchModal = ({ storeId, data }: DesignSearchModalProps) => {
-  const { storeName, station, cake } = data; // 추후 서버에서 받아올 데이터
+const DesignSearchModal = ({
+  storeId,
+  cakeId,
+  selectedCategories,
+}: DesignSearchModalProps) => {
+  const { data, isLoading } = useFetchDesignDetail(
+    cakeId,
+    selectedCategories?.category ?? 'BIRTH',
+    selectedCategories?.subCategory ?? 'ALL'
+  );
 
   const { goStorePage } = useEasyNavigate();
+
+  if (isLoading) {
+    return <div>로딩중...</div>;
+  }
+
+  if (!data) {
+    return <div>데이터 없음...</div>;
+  }
+
+  console.log(cakeId);
+
+  const { storeName, station, cake } = data;
 
   return (
     <div className={searchModalContainer}>

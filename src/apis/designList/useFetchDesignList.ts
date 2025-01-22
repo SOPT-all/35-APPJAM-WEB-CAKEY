@@ -4,7 +4,7 @@ import { instance } from '@apis/instance';
 
 import { END_POINT, queryKey } from '@constants';
 
-import { ApiResponseType, DesignListResponse } from '@types';
+import { ApiResponseType, DesignListResponse, ErrorResponse } from '@types';
 
 const fetchDesignList = async (
   option: string,
@@ -17,7 +17,17 @@ const fetchDesignList = async (
     );
     return response.data.data;
   } catch (error) {
-    console.log(error);
+    const errorResponse = error as ErrorResponse;
+    console.log(errorResponse.response.data.code);
+    if (errorResponse.response.data.code === 40420) {
+      return {
+        nextCakeIdCursor: 0,
+        nextCakeLikesCursor: 0,
+        isLastData: false,
+        cakeCount: 0,
+        cakes: [],
+      };
+    }
     throw error;
   }
 };
@@ -25,12 +35,11 @@ const fetchDesignList = async (
 export const useFetchDesignList = (
   option: string,
   dayCategory: string,
-  themeName: string,
-  options?: { enabled?: boolean }
+  themeName: string
 ) => {
   return useQuery({
     queryKey: [queryKey.DESIGN_LIST, option, dayCategory, themeName],
     queryFn: () => fetchDesignList(option, dayCategory, themeName),
-    ...options,
+    staleTime: 0,
   });
 };

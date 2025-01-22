@@ -112,15 +112,15 @@ const CardList = ({
           {item === 'store' || item === 'likedStore' ? (
             <div className={storeCardListWrapper}>
               {(cardListData as StoreType[]).map((store) => (
-                <StoreCard storeItem={store} />
+                <StoreCard storeItem={store} key={store.storeId} />
               ))}
             </div>
           ) : (
             <div className={designCardListWrapper}>
               {(cardListData as DesignItemType[]).map((cake) => (
                 <DesignCard
+                  key={cake.cakeId}
                   designItem={cake}
-                  designId={cake.cakeId}
                   hasModal={hasModal}
                   selectedCategories={selectedCategories}
                 />

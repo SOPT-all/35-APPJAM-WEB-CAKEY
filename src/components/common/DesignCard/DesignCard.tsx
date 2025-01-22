@@ -1,7 +1,5 @@
 import { HTMLAttributes } from 'react';
 
-import { useFetchDesignDetail } from '@apis/designList/useFetchDesignDetail';
-
 import { IconButton, Image, Label, Modal } from '@components';
 import { useEasyNavigate, useModal } from '@hooks';
 import DesignSearchModal from '@pages/designList/components/DesignSearchModal/DesignSearchModal';
@@ -16,7 +14,6 @@ import {
 import { CategoryType, DesignItemType, SubCategoryType } from '@types';
 interface DesignCardProps extends HTMLAttributes<HTMLDivElement> {
   designItem: DesignItemType;
-  designId: number;
   numberLabel?: string;
   hasModal?: boolean;
   handleCardClick?: () => void;
@@ -28,7 +25,6 @@ interface DesignCardProps extends HTMLAttributes<HTMLDivElement> {
 
 const DesignCard = ({
   designItem,
-  designId,
   numberLabel,
   hasModal = false,
   selectedCategories,
@@ -55,25 +51,6 @@ const DesignCard = ({
     }
   };
 
-  const { data, isLoading } = useFetchDesignDetail(
-    cakeId,
-    selectedCategories?.category ?? 'BIRTH',
-    selectedCategories?.subCategory ?? 'ALL',
-    {
-      enabled: !!hasModal,
-    }
-  );
-
-  if (isLoading) {
-    <div>로딩중...</div>;
-  }
-
-  if (!data) {
-    <div>데이터 없음...</div>;
-  }
-
-  console.log(data);
-
   return (
     <>
       <article className={container} onClick={handleCardClick}>
@@ -87,14 +64,14 @@ const DesignCard = ({
             buttonType="like20"
             count={cakeLikesCount}
             isActive={isLiked}
-            itemId={designId}
+            itemId={cakeId}
           />
         </div>
       </article>
 
-      {isModalOpen && data && (
+      {isModalOpen && (
         <Modal variant="bottom" hasBackdrop backdropClick={closeModal}>
-          <DesignSearchModal storeId={storeId} data={data} />
+          <DesignSearchModal cakeId={cakeId} storeId={storeId} selectedCategories={selectedCategories} />
         </Modal>
       )}
     </>
