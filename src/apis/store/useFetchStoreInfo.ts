@@ -20,7 +20,7 @@ const fetchStoreInfo = async (storeId: number): Promise<StoreInfoResponse> => {
 
 export const useFetchStoreInfo = (storeId: number) => {
   return useSuspenseQuery({
-    queryKey: [queryKey.STORE_INFO],
+    queryKey: [queryKey.STORE_INFO, storeId],
     queryFn: () => fetchStoreInfo(storeId),
   });
 };

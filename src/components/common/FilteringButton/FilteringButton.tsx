@@ -14,6 +14,7 @@ import {
 import { OptionType } from '@types';
 
 interface FilteringButtonProps {
+  option: OptionType
   onOptionSelect: (option: OptionType) => void;
 }
 
@@ -22,9 +23,9 @@ const OPTION = {
   popularity: '인기순',
 };
 
-const FilteringButton = ({ onOptionSelect }: FilteringButtonProps) => {
+const FilteringButton = ({ option, onOptionSelect }: FilteringButtonProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<OptionType>('latest');
+  const [selectedOption, setSelectedOption] = useState<OptionType>(option);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const options: OptionType[] = ['latest', 'popularity'];
@@ -66,7 +67,7 @@ const FilteringButton = ({ onOptionSelect }: FilteringButtonProps) => {
       onClick={toggleDropdown}
       ref={dropdownRef}
     >
-      <button className={buttonTextStyle}>{OPTION[selectedOption]}</button>
+      <button className={buttonTextStyle}>{OPTION[option]}</button>
 
       {isOpen ? (
         <IcArrowUp20 width={24} height={24} />
