@@ -2,26 +2,16 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 
 import { instance } from '@apis/instance';
 
-import { END_POINT, OrderType, queryKey } from '@constants';
+import { END_POINT, queryKey } from '@constants';
 
-import {
-  ApiResponseType,
-  StationStorePopularityResponse,
-  StationStoreResponse,
-} from '@types';
+import { ApiResponseType, OptionType, StationStoreResponse } from '@types';
 
-type OrderTypeResponse<T extends OrderType> = T extends 'latest'
-  ? StationStoreResponse
-  : T extends 'popularity'
-    ? StationStorePopularityResponse
-    : never;
-
-const fetchStationStore = async <T extends OrderType>(
-  order: T,
+const fetchStationStore = async (
+  order: OptionType,
   station: string,
   storeLikesCursor: number,
   storeIdCursor: number
-): Promise<OrderTypeResponse<T>> => {
+): Promise<StationStoreResponse> => {
   try {
     const url = END_POINT.FETCH_STATION_STORE_LIST(
       order,
@@ -30,7 +20,7 @@ const fetchStationStore = async <T extends OrderType>(
       storeIdCursor
     );
     const response =
-      await instance.get<ApiResponseType<OrderTypeResponse<T>>>(url);
+      await instance.get<ApiResponseType<StationStoreResponse>>(url);
     console.log(response.data.data);
     return response.data.data;
   } catch (error) {
@@ -39,15 +29,10 @@ const fetchStationStore = async <T extends OrderType>(
   }
 };
 
-export const useFetchStationStore = <T extends OrderType>(
-  order: T,
-  station: string
-) => {
-  return useInfiniteQuery<OrderTypeResponse<T>, Error>({
+export const useFetchStationStore = (order: OptionType, station: string) => {
+  return useInfiniteQuery<StationStoreResponse, Error>({
     queryKey: [queryKey.STATION_STORE_LIST, order, station],
-    queryFn: ({
-      pageParam = { storeLikesCursor: undefined, storeIdCursor: undefined },
-    }) => {
+    queryFn: ({ pageParam }) => {
       const param = pageParam as {
         storeLikesCursor: number;
         storeIdCursor: number;
@@ -66,9 +51,9 @@ export const useFetchStationStore = <T extends OrderType>(
             'nextLikesCursor' in lastPage
               ? lastPage.nextLikesCursor
               : undefined,
-              storeIdCursor:
+          storeIdCursor:
             'lastStoreId' in lastPage
-              ? lastPage.lastStoreId
+              ? (lastPage.lastStoreId ?? undefined)
               : lastPage.nextStoreIdCursor,
         };
       }

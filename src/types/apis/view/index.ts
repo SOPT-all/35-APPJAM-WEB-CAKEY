@@ -1,3 +1,5 @@
+import { StoreType } from '@types';
+
 export interface StoreCoordinate {
   storeId: number;
   latitude: number;
@@ -28,7 +30,9 @@ interface StationDesign {
 
 export interface StationDesignResponse {
   isLastData: boolean;
-  nextCakeIdCursor: number;
+  nextCakeIdCursor?: number;
+  cakeIdCursor?: number;
+  cakeLikesCursor?: number;
   cakeCount: number;
   cakes: StationDesign[];
 }
@@ -51,23 +55,9 @@ export interface StationStore {
 
 export interface StationStoreResponse {
   isLastData: boolean;
-  nextStoreIdCursor: number;
+  nextStoreIdCursor?: number;
+  nextLikesCursor?: number;
+  lastStoreId?: number;
   storeCount: number;
   stores: StationStore[];
-}
-
-export interface StationStorePopularityResponse {
-  nextLikesCursor: number;
-  lastStoreId: number;
-  isLastData: boolean;
-  storeCount: number;
-  stores: StationStore[];
-}
-
-export interface DesignPopularityResponse {
-  isLastData: boolean;
-  cakeIdCursor: number;
-  cakeLikesCursor: number;
-  cakeCount: number;
-  cakes: StationDesign[];
 }

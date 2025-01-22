@@ -36,6 +36,7 @@ export interface StoreCardListType {
   isLastData?: boolean;
   nextLikesCursor?: number;
   lastStoreIdCursor?: number;
+  lastStoreId?: number;
 }
 
 export interface DesignCardListType {

@@ -2,35 +2,23 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 
 import { instance } from '@apis/instance';
 
-import { END_POINT, OrderType, queryKey } from '@constants';
+import { END_POINT, queryKey } from '@constants';
 
-import {
-  ApiResponseType,
-  StationDesignResponse,
-  DesignPopularityResponse,
-} from '@types';
+import { ApiResponseType, OptionType, StationDesignResponse } from '@types';
 
-type OrderTypeResponse<T extends OrderType> = T extends 'latest'
-  ? StationDesignResponse
-  : T extends 'popularity'
-    ? DesignPopularityResponse
-    : never;
-
-const fetchLikedStoreDesign = async <T extends OrderType>(
-  order: T,
+const fetchLikedStoreDesign = async (
+  order: OptionType,
   cakeIdCursor?: number,
   cakeLikesCursor?: number
-): Promise<OrderTypeResponse<T>> => {
+): Promise<StationDesignResponse> => {
   try {
     const url = END_POINT.FETCH_LIKED_STORE_DESIGN_LIST(
       order,
       cakeIdCursor,
       cakeLikesCursor
     );
-
     const response =
-      await instance.get<ApiResponseType<OrderTypeResponse<T>>>(url);
-    console.log(response.data.data);
+      await instance.get<ApiResponseType<StationDesignResponse>>(url);
     return response.data.data;
   } catch (error) {
     console.log(error);
@@ -38,15 +26,18 @@ const fetchLikedStoreDesign = async <T extends OrderType>(
   }
 };
 
-export const useFetchLikedStoreDesign = <T extends OrderType>(order: T) => {
-  return useInfiniteQuery<OrderTypeResponse<T>, Error>({
+export const useFetchLikedStoreDesign = (order: OptionType) => {
+  return useInfiniteQuery<StationDesignResponse, Error>({
     queryKey: [queryKey.LIKED_STORE_DESIGN_LIST, order],
-    queryFn: ({ pageParam = { cakeIdCursor: 0, cakeLikesCursor: 0 } }) => {
-      console.log(pageParam);
+    queryFn: ({ pageParam }) => {
+      const param = pageParam as {
+        cakeIdCursor: number;
+        cakeLikesCursor: number;
+      };
       return fetchLikedStoreDesign(
         order,
-        pageParam.cakeIdCursor,
-        pageParam.cakeLikesCursor
+        param.cakeIdCursor,
+        param.cakeLikesCursor
       );
     },
     getNextPageParam: (lastPage) => {
@@ -55,13 +46,15 @@ export const useFetchLikedStoreDesign = <T extends OrderType>(order: T) => {
           cakeIdCursor:
             'nextCakeIdCursor' in lastPage
               ? lastPage.nextCakeIdCursor
-              : lastPage.cakeIdCursor,
+              : (lastPage.cakeIdCursor ?? undefined),
           cakeLikesCursor:
-            'cakeIdCursor' in lastPage ? lastPage.cakeLikesCursor : undefined,
+            'cakeLikesCursor' in lastPage
+              ? lastPage.cakeLikesCursor
+              : undefined,
         };
       }
       return null;
     },
-    initialPageParam: { cakeIdCursor: 0, cakeLikesCursor: 0 },
+    initialPageParam: { cakeIdCursor: undefined, cakeLikesCursor: undefined },
   });
 };

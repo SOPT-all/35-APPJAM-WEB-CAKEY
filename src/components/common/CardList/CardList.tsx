@@ -21,16 +21,19 @@ import {
   StoreType,
   SubCategoryType,
 } from '@types';
+import { useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 
 interface CardListProps {
   item: ItemType;
-  itemData?: StoreCardListType | DesignCardListType;
+  itemData: StoreCardListType[] | DesignCardListType[] | undefined;
   handleOptionSelect: (option: OptionType) => void;
   hasModal?: boolean;
   selectedCategories?: {
     category: CategoryType;
     subCategory: SubCategoryType;
   };
+  fetchNextPage: () => void;
 }
 
 const CardList = ({
@@ -39,7 +42,11 @@ const CardList = ({
   handleOptionSelect,
   hasModal,
   selectedCategories,
+  fetchNextPage,
 }: CardListProps) => {
+  const { ref, inView } = useInView();
+
+  // 데이터를 조건에 따라 바로 분기 처리
   const isStoreCardListType = (
     data: DesignCardListType | StoreCardListType
   ): data is StoreCardListType => {
@@ -52,23 +59,22 @@ const CardList = ({
     return 'cakes' in data && 'cakeCount' in data;
   };
 
-  // itemData가 StoreCardListType인 경우 stores에 접근 가능
   const cardListData = itemData
-    ? isStoreCardListType(itemData)
-      ? itemData.stores // Store 데이터
-      : isDesignCardListType(itemData)
-        ? itemData.cakes // Design 데이터
-        : []
-    : []; // itemData가 null일 경우 빈 배열
+    ?.map((data) => {
+      if (isStoreCardListType(data)) {
+        return data.stores;
+      } else if (isDesignCardListType(data)) {
+        return data.cakes;
+      }
+      return [];
+    })
+    .flat();
 
-  // itemData가 StoreCardListType인 경우 storeCount에 접근 가능
-  const cardListCount = itemData
-    ? isStoreCardListType(itemData)
-      ? itemData.storeCount // Store 데이터 개수
-      : isDesignCardListType(itemData)
-        ? itemData.cakeCount // Design 데이터 개수
-        : 0
-    : 0;
+  const cardListCount = itemData?.reduce(
+    (count, data) =>
+      count + (isStoreCardListType(data) ? data.storeCount : data.cakeCount),
+    0
+  );
 
   // 카드리스트 텍스트 상황에 따라 다르게
   const cardListCountText = {
@@ -87,9 +93,15 @@ const CardList = ({
     likedStoreDesign: `찜한 스토어의 디자인이 아직 없어요`,
   };
 
+  useEffect(() => {
+    if (inView) {
+      fetchNextPage();
+    }
+  }, [inView]);
+
   return (
     <div className={cardListContainer}>
-      {cardListData.length > 0 ? (
+      {cardListData && cardListData.length > 0 ? (
         <>
           <div className={cardListTextWrapper}>
             <div>
@@ -131,6 +143,7 @@ const CardList = ({
       ) : (
         <span className={cardListNullTextStyle}>{cardListNullText[item]}</span>
       )}
+      <div ref={ref} style={{ width: '100%', height: '3rem' }} />
     </div>
   );
 };

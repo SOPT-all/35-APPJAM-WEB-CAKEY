@@ -2,25 +2,15 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 
 import { instance } from '@apis/instance';
 
-import { END_POINT, OrderType, queryKey } from '@constants';
-import {
-  ApiResponseType,
-  DesignPopularityResponse,
-  StationDesignResponse,
-} from '@types';
+import { END_POINT, queryKey } from '@constants';
+import { ApiResponseType, OptionType, StationDesignResponse } from '@types';
 
-type OrderTypeResponse<T extends OrderType> = T extends 'latest'
-  ? StationDesignResponse
-  : T extends 'popularity'
-    ? DesignPopularityResponse
-    : never;
-
-const fetchStationDesign = async <T extends OrderType>(
-  order: T,
+const fetchStationDesign = async (
+  order: OptionType,
   station: string,
   cakeLikesCursor: number,
   cakeIdCursor: number
-): Promise<OrderTypeResponse<T>> => {
+): Promise<StationDesignResponse> => {
   try {
     const url = END_POINT.FETCH_STATION_DESIGN_LIST(
       order,
@@ -29,8 +19,7 @@ const fetchStationDesign = async <T extends OrderType>(
       cakeIdCursor
     );
     const response =
-      await instance.get<ApiResponseType<OrderTypeResponse<T>>>(url);
-    console.log(response.data.data);
+      await instance.get<ApiResponseType<StationDesignResponse>>(url);
     return response.data.data;
   } catch (error) {
     console.log(error);
@@ -38,15 +27,10 @@ const fetchStationDesign = async <T extends OrderType>(
   }
 };
 
-export const useFetchStationDesign = <T extends OrderType>(
-  order: T,
-  station: string
-) => {
-  return useInfiniteQuery<OrderTypeResponse<T>, Error>({
+export const useFetchStationDesign = (order: OptionType, station: string) => {
+  return useInfiniteQuery<StationDesignResponse, Error>({
     queryKey: [queryKey.STATION_DESIGN_LIST, order, station],
-    queryFn: ({
-      pageParam = { cakeLikesCursor: undefined, cakeIdCursor: undefined },
-    }) => {
+    queryFn: ({ pageParam }) => {
       const param = pageParam as {
         cakeLikesCursor: number;
         cakeIdCursor: number;
@@ -68,7 +52,7 @@ export const useFetchStationDesign = <T extends OrderType>(
           cakeIdCursor:
             'nextCakeIdCursor' in lastPage
               ? lastPage.nextCakeIdCursor
-              : lastPage.cakeIdCursor,
+              : (lastPage.cakeIdCursor ?? undefined),
         };
       }
       return null;
