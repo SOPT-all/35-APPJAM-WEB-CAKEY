@@ -21,7 +21,7 @@ export const imageStyle = style({
 
 export const moreButtonStyle = style([
   flexGenerator('column'),
-  { gap: '0.8rem' },
+  { gap: '0.8rem', cursor: 'pointer' },
 ]);
 
 export const moreTextStyle = style([

@@ -41,7 +41,7 @@ export const useFetchDesignDetail = (
   themeName: string
 ) => {
   return useQuery({
-    queryKey: [queryKey.DESIGN_DETAIL],
+    queryKey: [queryKey.DESIGN_DETAIL, cakeId],
     queryFn: () => fetchDesignDetail(cakeId, dayCategory, themeName),
   });
 };
