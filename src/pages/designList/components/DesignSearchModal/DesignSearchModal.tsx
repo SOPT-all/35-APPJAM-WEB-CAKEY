@@ -16,7 +16,6 @@ import Carousel from '../Carousel/Carousel';
 import { CategoryType, SubCategoryType } from '@types';
 
 interface DesignSearchModalProps {
-  storeId: number;
   cakeId: number;
   selectedCategories?: {
     category: CategoryType;
@@ -25,11 +24,11 @@ interface DesignSearchModalProps {
 }
 
 const DesignSearchModal = ({
-  storeId,
   cakeId,
   selectedCategories,
 }: DesignSearchModalProps) => {
-  const { data, isLoading } = useFetchDesignDetail(
+  // 디자인 상세보기 조회 api
+  const { data } = useFetchDesignDetail(
     cakeId,
     selectedCategories?.category ?? 'BIRTH',
     selectedCategories?.subCategory ?? 'ALL'
@@ -37,17 +36,11 @@ const DesignSearchModal = ({
 
   const { goStorePage } = useEasyNavigate();
 
-  if (isLoading) {
-    return <div>로딩중...</div>;
-  }
-
   if (!data) {
     return <div>데이터 없음...</div>;
   }
 
-  console.log(cakeId);
-
-  const { storeName, station, cake } = data;
+  const { storeName, station, cake, storeId } = data;
 
   return (
     <div className={searchModalContainer}>

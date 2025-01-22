@@ -43,6 +43,7 @@ const LikeListPage = () => {
           <CardList
             item="likedStore"
             itemData={LikedStoreListData?.pages.flat()}
+            option={option}
             handleOptionSelect={handleOptionSelect}
             fetchNextPage={fetchNextPage}
           />
@@ -50,6 +51,7 @@ const LikeListPage = () => {
           <CardList
             item="likedStore"
             itemData={LikedStoreListData?.pages.flat()}
+            option={option}
             handleOptionSelect={handleOptionSelect}
             fetchNextPage={fetchNextPage}
           />

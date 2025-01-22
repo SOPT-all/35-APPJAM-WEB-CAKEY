@@ -47,6 +47,7 @@ const DesignListPage = () => {
         category: category,
         subCategory: 'ALL',
       });
+      handleOptionSelect('latest');
     });
   };
 
@@ -56,6 +57,7 @@ const DesignListPage = () => {
         ...prevState,
         subCategory: category,
       }));
+      handleOptionSelect('latest');
     });
   };
 
@@ -93,6 +95,7 @@ const DesignListPage = () => {
           <CardList
             item="design"
             itemData={DesignListData}
+            option={option}
             handleOptionSelect={handleOptionSelect}
             hasModal
             selectedCategories={selectedCategories}
