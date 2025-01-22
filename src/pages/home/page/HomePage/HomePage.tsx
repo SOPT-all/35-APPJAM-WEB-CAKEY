@@ -9,7 +9,6 @@ import CategoryCard from '@pages/home/components/CategoryCard/CategoryCard';
 import { isLoggedIn } from '@utils';
 
 import { IcHomeArrow } from '@svgs';
-import { useInView } from 'react-intersection-observer';
 
 import {
   categoryWrapper,
@@ -29,13 +28,8 @@ import {
   mainContentWrapper,
   likedStoreWrapper,
 } from './HomePage.css';
-import { useFetchLikedStoreDesign } from '@apis/view/useFetchLikedStoreDesign';
-import { useEffect } from 'react';
-import { useFetchStationDesign } from '@apis/view/useFetchStationDesign';
-import { useFetchStationStore } from '@apis/view/useFetchStationStore';
 
 const HomePage = () => {
-  const { ref, inView } = useInView();
   const isLogin = isLoggedIn();
   const { goViewPage } = useEasyNavigate();
   const { data: storeRankData } = useFetchStoreRank();
@@ -43,17 +37,6 @@ const HomePage = () => {
   const user = isLogin
     ? JSON.parse(localStorage.getItem('user') || '{}')
     : null;
-
-  const { data, fetchNextPage, hasNextPage } = useFetchStationStore(
-    'popularity',
-    'ALL'
-  );
-
-  useEffect(() => {
-    if (inView) {
-      fetchNextPage();
-    }
-  }, [inView]);
 
   return (
     <div className={homePageLayout}>
@@ -124,9 +107,6 @@ const HomePage = () => {
           </div>
         </section>
       </main>
-      {hasNextPage && (
-        <li ref={ref} style={{ width: '100%', height: '3rem' }} />
-      )}
     </div>
   );
 };
