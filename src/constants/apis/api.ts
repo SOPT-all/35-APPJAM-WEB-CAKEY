@@ -5,8 +5,29 @@ export const BASE_URL = import.meta.env.VITE_APP_BASE_URL;
 export const END_POINT = {
   KAKAO_LOGIN: '/api/v1/user/login',
   FETCH_STORE_RANK: '/api/v1/store/rank',
-  FETCH_DESIGN_LIST: (option: string, dayCategory: string, themeName: string) =>
-    `/api/v1/cake/${option}?dayCategory=${dayCategory}&themeName=${themeName}`,
+  FETCH_DESIGN_LIST: (
+    option: OptionType,
+    dayCategory: string,
+    themeName: string,
+    cakeLikesCursor?: number,
+    cakeIdCursor?: number
+  ) => {
+    const url = `/api/v1/cake/${option}?dayCategory=${dayCategory}&themeName=${themeName}`;
+
+    if (option === 'popularity') {
+      if (cakeIdCursor !== undefined && cakeLikesCursor !== undefined) {
+        return `${url}&cakeIdCursor=${cakeIdCursor}&cakeLikesCursor=${cakeLikesCursor}`;
+      } else if (cakeIdCursor !== undefined) {
+        return `${url}&cakeIdCursor=${cakeIdCursor}`;
+      } else if (cakeLikesCursor !== undefined) {
+        return `${url}&cakeLikesCursor=${cakeLikesCursor}`;
+      }
+    } else if (cakeIdCursor !== undefined) {
+      return `${url}&cakeIdCursor=${cakeIdCursor}`;
+    }
+
+    return url;
+  },
   FETCH_DESIGN_DETAIL: (
     cakeId: number,
     dayCategory: string,
