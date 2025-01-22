@@ -44,12 +44,14 @@ const LikeListPage = () => {
           <CardList
             item="likedStore"
             itemData={LikedStoreListData}
+            option={option}
             handleOptionSelect={handleOptionSelect}
           />
         ) : (
           <CardList
             item="likedDesign"
             itemData={LikedCakeListData}
+            option={option}
             handleOptionSelect={handleOptionSelect}
           />
         )}

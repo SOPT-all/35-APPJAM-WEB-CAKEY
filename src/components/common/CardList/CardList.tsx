@@ -25,6 +25,7 @@ import {
 interface CardListProps {
   item: ItemType;
   itemData?: StoreCardListType | DesignCardListType;
+  option: OptionType;
   handleOptionSelect: (option: OptionType) => void;
   hasModal?: boolean;
   selectedCategories?: {
@@ -36,6 +37,7 @@ interface CardListProps {
 const CardList = ({
   item,
   itemData,
+  option,
   handleOptionSelect,
   hasModal,
   selectedCategories,
@@ -106,7 +108,10 @@ const CardList = ({
               )}
             </div>
 
-            <FilteringButton onOptionSelect={handleOptionSelect} />
+            <FilteringButton
+              option={option}
+              onOptionSelect={handleOptionSelect}
+            />
           </div>
 
           {item === 'store' || item === 'likedStore' ? (
