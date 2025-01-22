@@ -47,6 +47,7 @@ const DesignListPage = () => {
         category: category,
         subCategory: 'ALL',
       });
+      handleOptionSelect('latest');
     });
   };
 
@@ -56,6 +57,7 @@ const DesignListPage = () => {
         ...prevState,
         subCategory: category,
       }));
+      handleOptionSelect('latest');
     });
   };
 
