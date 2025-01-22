@@ -27,8 +27,8 @@ export const mapStyle = recipe({
   },
   variants: {
     animateState: {
-      default: { height: 'calc(60vh)' },
-      closed: { height: 'calc(87vh)', top: '5vh' },
+      default: { height: '60vh' },
+      closed: { height: '87vh', top: '5vh' },
       opened: {},
     },
   },
