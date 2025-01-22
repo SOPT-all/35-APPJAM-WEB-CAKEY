@@ -71,7 +71,7 @@ const DesignCard = ({
 
       {isModalOpen && (
         <Modal variant="bottom" hasBackdrop backdropClick={closeModal}>
-          <DesignSearchModal cakeId={cakeId} storeId={storeId} selectedCategories={selectedCategories} />
+          <DesignSearchModal cakeId={cakeId} selectedCategories={selectedCategories} />
         </Modal>
       )}
     </>

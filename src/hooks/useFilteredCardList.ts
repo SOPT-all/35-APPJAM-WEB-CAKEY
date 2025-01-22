@@ -7,7 +7,6 @@ const useFilteredCardList = () => {
 
   const handleOptionSelect = (newOption: OptionType) => {
     setOption(newOption);
-    console.log(option);
   };
 
   return {

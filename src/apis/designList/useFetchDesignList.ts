@@ -19,7 +19,7 @@ const fetchDesignList = async (
   } catch (error) {
     const errorResponse = error as ErrorResponse;
     console.log(errorResponse.response.data.code);
-    if (errorResponse.response.data.code === 40420) {
+    if (errorResponse.response.data.code === 40410) {
       return {
         nextCakeIdCursor: 0,
         nextCakeLikesCursor: 0,
@@ -27,8 +27,9 @@ const fetchDesignList = async (
         cakeCount: 0,
         cakes: [],
       };
+    } else {
+      throw error;
     }
-    throw error;
   }
 };
 
@@ -40,7 +41,5 @@ export const useFetchDesignList = (
   return useQuery({
     queryKey: [queryKey.DESIGN_LIST, option, dayCategory, themeName],
     queryFn: () => fetchDesignList(option, dayCategory, themeName),
-    // staleTime: 0,
-    // gcTime: 0,
   });
 };
