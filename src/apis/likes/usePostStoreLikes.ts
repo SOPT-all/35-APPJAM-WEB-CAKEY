@@ -8,7 +8,7 @@ import { MutateResposneType } from '@types';
 
 const postStoreLikes = async (storeId: number): Promise<MutateResposneType> => {
   try {
-    const response = await instance.post(END_POINT.POST_STORE_LIKES(storeId));
+    const response = await instance.post(END_POINT.POST_LIKE('store', storeId));
     return response.data;
   } catch (error) {
     console.log(error);

@@ -6,17 +6,20 @@ import { END_POINT } from '@constants';
 
 import { MutateResposneType } from '@types';
 
-const postCakeLikes = async (cakeId: number): Promise<MutateResposneType> => {
+const deleteStoreLikes = async (
+  storeId: number
+): Promise<MutateResposneType> => {
   try {
-    const response = await instance.post(END_POINT.DELETE_LIKE('cake', cakeId));
+    const response = await instance.delete(END_POINT.DELETE_LIKE('store', storeId));
     return response.data;
   } catch (error) {
     console.log(error);
     throw error;
   }
 };
-export const usePostCakeLikes = () => {
+
+export const useDeleteStoreLikes = () => {
   return useMutation({
-    mutationFn: (cakeId: number) => postCakeLikes(cakeId),
+    mutationFn: (storeId: number) => deleteStoreLikes(storeId),
   });
 };
