@@ -1,10 +1,12 @@
+export interface StoreRank {
+  storeId: number;
+  storeName: string;
+  storeLikesCount: number;
+  station: string;
+}
+
 export interface StoreRankResponse {
-  stores: Array<{
-    storeId: number;
-    storeName: string;
-    storeLikesCount: number;
-    station: string;
-  }>;
+  storeList: StoreRank[];
 }
 
 export interface CakeRank {

@@ -4,16 +4,16 @@ import { instance } from '@apis/instance';
 
 import { END_POINT, queryKey } from '@constants';
 
-import { ApiResponseType, StoreRankResponse } from '@types';
+import { ApiResponseType, StoreRank, StoreRankResponse } from '@types';
 
-const fetchStoreRank = async (): Promise<StoreRankResponse> => {
+const fetchStoreRank = async (): Promise<StoreRank[]> => {
   try {
     const response = await instance.get<ApiResponseType<StoreRankResponse>>(
       END_POINT.FETCH_STORE_RANK
     );
-    return response.data.data;
+    return response.data.data.storeList;
   } catch (error) {
-    console.log(error)
+    console.log(error);
     throw error;
   }
 };
