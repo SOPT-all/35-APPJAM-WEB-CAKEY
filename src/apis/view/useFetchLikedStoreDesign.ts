@@ -19,7 +19,6 @@ const fetchLikedStoreDesign = async (
     );
     const response =
       await instance.get<ApiResponseType<StationDesignResponse>>(url);
-    console.log(response.data.data);
     return response.data.data;
   } catch (error) {
     console.log(error);
@@ -27,7 +26,10 @@ const fetchLikedStoreDesign = async (
   }
 };
 
-export const useFetchLikedStoreDesign = (option: OptionType) => {
+export const useFetchLikedStoreDesign = (
+  option: OptionType,
+  isEnabled: boolean
+) => {
   return useInfiniteQuery<StationDesignResponse, Error>({
     queryKey: [queryKey.LIKED_STORE_DESIGN_LIST, option],
     queryFn: ({ pageParam }) => {
@@ -57,5 +59,6 @@ export const useFetchLikedStoreDesign = (option: OptionType) => {
       return null;
     },
     initialPageParam: { cakeIdCursor: undefined, cakeLikesCursor: undefined },
+    enabled: isEnabled,
   });
 };

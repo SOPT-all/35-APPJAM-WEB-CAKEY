@@ -102,7 +102,7 @@ const CardList = ({
     if (inView) {
       fetchNextPage();
     }
-  }, [inView]);
+  }, [inView, fetchNextPage]);
 
   return (
     <div className={cardListContainer}>

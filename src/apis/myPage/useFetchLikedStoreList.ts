@@ -24,11 +24,9 @@ const fetchLikedStoreList = async (
     );
     const response =
       await instance.get<ApiResponseType<StoreCardListType>>(url);
-    console.log(response.data.data);
     return response.data.data;
   } catch (error) {
     const errorResponse = error as ErrorResponse;
-    console.log(errorResponse.response.data.code);
     if (errorResponse.response.data.code === 40420) {
       return {
         nextStoreIdCursor: -1,
@@ -43,7 +41,7 @@ const fetchLikedStoreList = async (
 
 export const useFetchLikedStoreList = (
   option: OptionType,
-  isEnabled?: boolean
+  isEnabled: boolean
 ) => {
   return useInfiniteQuery<StoreCardListType, Error>({
     queryKey: [queryKey.LIKED_STORE_LIST, option],

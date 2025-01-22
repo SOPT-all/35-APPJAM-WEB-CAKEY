@@ -21,7 +21,7 @@ const fetchStationStore = async (
     );
     const response =
       await instance.get<ApiResponseType<StationStoreResponse>>(url);
-    console.log(response.data.data);
+
     return response.data.data;
   } catch (error) {
     console.log(error);
@@ -29,7 +29,11 @@ const fetchStationStore = async (
   }
 };
 
-export const useFetchStationStore = (option: OptionType, station: string) => {
+export const useFetchStationStore = (
+  option: OptionType,
+  station: string,
+  isEnabled: boolean
+) => {
   return useInfiniteQuery<StationStoreResponse, Error>({
     queryKey: [queryKey.STATION_STORE_LIST, option, station],
     queryFn: ({ pageParam }) => {
@@ -60,5 +64,6 @@ export const useFetchStationStore = (option: OptionType, station: string) => {
       return null;
     },
     initialPageParam: { storeLikesCursor: undefined, storeIdCursor: undefined },
+    enabled: isEnabled,
   });
 };

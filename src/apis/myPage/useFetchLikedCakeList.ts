@@ -50,6 +50,8 @@ export const useFetchLikedCakeList = (
         cakeLikesCursor: number;
         cakeIdCursor: number;
       };
+
+      console.log(param);
       return fetchLikesCardList(
         option,
         param.cakeLikesCursor,
@@ -60,9 +62,7 @@ export const useFetchLikedCakeList = (
       if (!lastPage.isLastData) {
         return {
           cakeLikesCursor:
-            'cakeLikesCursor' in lastPage
-              ? lastPage.cakeLikesCursor
-              : undefined,
+            'nextLikeCursor' in lastPage ? lastPage.nextLikeCursor : undefined,
           cakeIdCursor:
             'nextCakeIdCursor' in lastPage
               ? lastPage.nextCakeIdCursor

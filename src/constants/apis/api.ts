@@ -57,8 +57,8 @@ export const END_POINT = {
   },
   FETCH_LIKED_CAKE_LIST: (
     option: OptionType,
-    cakeIdCursor?: number,
-    cakeLikesCursor?: number
+    cakeLikesCursor?: number,
+    cakeIdCursor?: number
   ) => {
     const url = `/api/v1/cake/likes/${option}`;
 

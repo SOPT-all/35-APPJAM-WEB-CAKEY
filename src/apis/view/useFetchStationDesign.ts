@@ -4,7 +4,12 @@ import { instance } from '@apis/instance';
 
 import { END_POINT, queryKey } from '@constants';
 
-import { ApiResponseType, OptionType, StationDesignResponse } from '@types';
+import {
+  ApiResponseType,
+  ErrorResponse,
+  OptionType,
+  StationDesignResponse,
+} from '@types';
 
 const fetchStationDesign = async (
   option: OptionType,
@@ -24,11 +29,24 @@ const fetchStationDesign = async (
     return response.data.data;
   } catch (error) {
     console.log(error);
-    throw error;
+    const errorResponse = error as ErrorResponse;
+    if (errorResponse.response.data.code === 40410) {
+      return {
+        isLastData: true,
+        cakeCount: 0,
+        cakes: [],
+      };
+    } else {
+      throw error;
+    }
   }
 };
 
-export const useFetchStationDesign = (option: OptionType, station: string) => {
+export const useFetchStationDesign = (
+  option: OptionType,
+  station: string,
+  isEnabled: boolean
+) => {
   return useInfiniteQuery<StationDesignResponse, Error>({
     queryKey: [queryKey.STATION_DESIGN_LIST, option, station],
     queryFn: ({ pageParam }) => {
@@ -59,5 +77,6 @@ export const useFetchStationDesign = (option: OptionType, station: string) => {
       return null;
     },
     initialPageParam: { cakeLikesCursor: undefined, cakeIdCursor: undefined },
+    enabled: isEnabled,
   });
 };
