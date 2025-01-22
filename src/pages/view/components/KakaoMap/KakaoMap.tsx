@@ -40,7 +40,7 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
     handleSaveButtonClick,
     handleMarkerClick,
     handleMapClick,
-  } = useKakaoMap(currentLocation, handleAnimateChange);
+  } = useKakaoMap(currentLocation, animateState, handleAnimateChange);
 
   return (
     <>
