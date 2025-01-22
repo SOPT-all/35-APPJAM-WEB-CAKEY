@@ -10,6 +10,7 @@ import {
   countTextStyle,
   designCardListWrapper,
   storeCardListWrapper,
+  inViewStyle,
 } from './CardList.css';
 import DesignCard from '../DesignCard/DesignCard';
 import FilteringButton from '../FilteringButton/FilteringButton';
@@ -151,7 +152,7 @@ const CardList = ({
       ) : (
         <span className={cardListNullTextStyle}>{cardListNullText[item]}</span>
       )}
-      <div ref={ref} style={{ width: '100%', height: '3rem' }} />
+      <div ref={ref} className={inViewStyle} />
     </div>
   );
 };

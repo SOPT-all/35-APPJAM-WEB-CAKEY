@@ -63,3 +63,10 @@ export const cardListNullTextStyle = style([
     height: 'calc(100dvh - 23.6rem - 1.2rem)',
   },
 ]);
+
+export const inViewStyle = style([
+  {
+    width: '100%',
+    height: 0,
+  },
+]);

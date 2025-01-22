@@ -30,7 +30,7 @@ const fetchStationDesign = async (
   } catch (error) {
     console.log(error);
     const errorResponse = error as ErrorResponse;
-    if (errorResponse.response.data.code === 40410) {
+    if (errorResponse.response.status === 404) {
       return {
         isLastData: true,
         cakeCount: 0,
