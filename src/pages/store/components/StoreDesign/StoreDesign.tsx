@@ -4,7 +4,7 @@ import { useFetchStoreDetailDesign } from '@apis/store';
 
 import { Image, Modal } from '@components';
 
-import { gridStyle } from './StoreDesign.css';
+import { gridStyle, liStyle } from './StoreDesign.css';
 import ImageModal from '../ImageModal/ImageModal';
 
 interface StoreDesignProps {
@@ -31,6 +31,7 @@ const StoreDesign = ({ storeId }: StoreDesignProps) => {
           <li
             key={design.cakeId}
             onClick={() => handleImageClick(design.imageUrl)}
+            className={liStyle}
           >
             <Image
               src={design.imageUrl}
