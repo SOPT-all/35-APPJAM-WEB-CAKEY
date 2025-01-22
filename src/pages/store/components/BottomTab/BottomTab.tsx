@@ -1,10 +1,10 @@
+import { useNavigate } from 'react-router-dom';
+
 import { useFetchSelectStoreCoordinate, useFetchStoreLink } from '@apis/store';
 
 import { TextButton } from '@components';
-import { useEasyNavigate } from '@hooks';
 
 import { container } from './BottomTab.css';
-import { useNavigate } from 'react-router-dom';
 
 interface BottomTabProps {
   storeId: number;
@@ -15,7 +15,6 @@ const BottomTab = ({ storeId }: BottomTabProps) => {
   const { data: selectStoreCoordinate } =
     useFetchSelectStoreCoordinate(storeId);
 
-  // const { goViewPage } = useEasyNavigate();
   const navigate = useNavigate();
 
   const handleMapViewClick = () => {
