@@ -13,10 +13,28 @@ export const END_POINT = {
     themeName: string
   ) =>
     `/api/v1/cake/select/${cakeId}?dayCategory=${dayCategory}&themeName=${themeName}`,
-  FETCH_LIKED_STORE_LIST: (option: string, pageParam?: string) =>
-    pageParam
-      ? `/api/v1/store/likes/${option}?storeIdCursor=${pageParam}`
-      : `/api/v1/store/likes/${option}`,
+  FETCH_LIKED_STORE_LIST: (
+    option: OptionType,
+    storeLikesCursor?: number,
+    storeIdCursor?: number
+  ) => {
+    const url = `/api/v1/store/likes/${option}`;
+
+    if (option === 'popularity') {
+      if (storeIdCursor !== undefined && storeLikesCursor !== undefined) {
+        return `${url}?likesCursor=${storeLikesCursor}&storeIdCursor=${storeIdCursor}&size=1`;
+      } else if (storeIdCursor !== undefined) {
+        return `${url}?storeIdCursor=${storeIdCursor}&size=1`;
+      } else if (storeLikesCursor !== undefined) {
+        return `${url}?likesCursor=${storeLikesCursor}&size=1`;
+      }
+    } else if (storeIdCursor !== undefined) {
+      return `${url}?storeIdCursor=${storeIdCursor}&size=1`;
+    }
+
+    return `${url}?size=1`;
+  },
+
   FETCH_STORE_COORDINATE_LIST: (station: string) =>
     `/api/v1/store/coordinate-list?station=${station}`,
   FETCH_SELECT_STORE_COORDINATE: (storeId: number) =>

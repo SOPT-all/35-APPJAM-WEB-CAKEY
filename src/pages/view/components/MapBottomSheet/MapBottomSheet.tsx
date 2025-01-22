@@ -16,7 +16,7 @@ import {
 } from './MapBottomSheet.css';
 
 import { BottomSheetState, OptionType } from '@types';
-
+import { useFetchLikedStoreList } from '@apis/myPage/useFetchLikedStoreList';
 
 interface MapBottomSheetProps {
   selectedStation: string;
@@ -71,6 +71,20 @@ const StationDesignList = ({
   );
 };
 
+const LikedStoreList = ({ option, handleOptionSelect }: ListProps) => {
+  const { data: likedStoreData, fetchNextPage } =
+    useFetchLikedStoreList(option);
+
+  return (
+    <CardList
+      item="likedStore"
+      itemData={likedStoreData?.pages.flat()}
+      handleOptionSelect={handleOptionSelect}
+      fetchNextPage={fetchNextPage}
+    />
+  );
+};
+
 const LikedStoreDesignList = ({ option, handleOptionSelect }: ListProps) => {
   const { data: likedStoreDesignData, fetchNextPage } =
     useFetchLikedStoreDesign(option);
@@ -115,12 +129,13 @@ const MapBottomSheet = ({
           </div>
           <div className={listContainer}>
             {activeTab === 0 ? (
-              // <LikedStoreDesignList
-              //   option={option}
-              //   handleOptionSelect={handleOptionSelect}
-              //   selectedStation={selectedStation}
-              // />
-              <></>
+              <>
+                <LikedStoreList
+                  option={option}
+                  handleOptionSelect={handleOptionSelect}
+                  selectedStation={selectedStation}
+                />
+              </>
             ) : (
               <LikedStoreDesignList
                 option={option}

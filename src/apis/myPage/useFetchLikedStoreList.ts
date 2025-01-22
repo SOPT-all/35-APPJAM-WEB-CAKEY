@@ -1,22 +1,30 @@
-import { useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 
 import { instance } from '@apis/instance';
 
 import { END_POINT, queryKey } from '@constants';
 
-import { ApiResponseType, ErrorResponse, LikedStoreListResponse } from '@types';
+import {
+  ApiResponseType,
+  ErrorResponse,
+  OptionType,
+  StoreCardListType,
+} from '@types';
 
 const fetchLikedStoreList = async (
-  option: string,
-  pageParam?: string
-): Promise<LikedStoreListResponse> => {
+  order: OptionType,
+  storeLikesCursor: number,
+  storeIdCursor: number
+): Promise<StoreCardListType> => {
   try {
-    const endpoint = pageParam
-      ? END_POINT.FETCH_LIKED_STORE_LIST(option, pageParam)
-      : END_POINT.FETCH_LIKED_STORE_LIST(option);
-
+    const url = END_POINT.FETCH_LIKED_STORE_LIST(
+      order,
+      storeLikesCursor,
+      storeIdCursor
+    );
     const response =
-      await instance.get<ApiResponseType<LikedStoreListResponse>>(endpoint);
+      await instance.get<ApiResponseType<StoreCardListType>>(url);
+    console.log(response.data.data);
     return response.data.data;
   } catch (error) {
     const errorResponse = error as ErrorResponse;
@@ -33,13 +41,35 @@ const fetchLikedStoreList = async (
   }
 };
 
-export const useFetchLikedStoreList = (
-  option: string,
-
-  pageParam?: string
-) => {
-  return useQuery({
-    queryKey: [queryKey.LIKED_STORE_LIST, option, pageParam],
-    queryFn: () => fetchLikedStoreList(option, pageParam || ''),
+export const useFetchLikedStoreList = (option: OptionType) => {
+  return useInfiniteQuery<StoreCardListType, Error>({
+    queryKey: [queryKey.LIKED_STORE_LIST, option],
+    queryFn: ({ pageParam }) => {
+      const param = pageParam as {
+        storeLikesCursor: number;
+        storeIdCursor: number;
+      };
+      return fetchLikedStoreList(
+        option,
+        param.storeLikesCursor,
+        param.storeIdCursor
+      );
+    },
+    getNextPageParam: (lastPage) => {
+      if (!lastPage.isLastData) {
+        return {
+          storeLikesCursor:
+            'nextLikesCursor' in lastPage
+              ? lastPage.nextLikesCursor
+              : undefined,
+          storeIdCursor:
+            'lastStoreId' in lastPage
+              ? lastPage.lastStoreId
+              : (lastPage.nexStoreId ?? undefined),
+        };
+      }
+      return null;
+    },
+    initialPageParam: { storeLikesCursor: undefined, storeIdCursor: undefined },
   });
 };

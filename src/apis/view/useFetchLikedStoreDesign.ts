@@ -19,6 +19,7 @@ const fetchLikedStoreDesign = async (
     );
     const response =
       await instance.get<ApiResponseType<StationDesignResponse>>(url);
+    console.log(response.data.data);
     return response.data.data;
   } catch (error) {
     console.log(error);

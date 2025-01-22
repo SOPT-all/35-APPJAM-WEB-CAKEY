@@ -33,6 +33,7 @@ export interface StoreCardListType {
   storeCount: number;
   stores: StoreType[];
   nextStoreIdCursor?: number;
+  nexStoreId?: number;
   isLastData?: boolean;
   nextLikesCursor?: number;
   lastStoreIdCursor?: number;

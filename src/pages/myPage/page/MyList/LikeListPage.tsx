@@ -23,7 +23,8 @@ const LikeListPage = () => {
   const { option, handleOptionSelect } = useFilteredCardList();
 
   // 찜한 스토어 조회 api (마이리스트 페이지, 지도 페이지)
-  const { data: LikedStoreListData } = useFetchLikedStoreList(option);
+  const { data: LikedStoreListData, fetchNextPage } =
+    useFetchLikedStoreList(option);
 
   return (
     <div className={myListContainer}>
@@ -41,14 +42,16 @@ const LikeListPage = () => {
         {activeTab === 0 ? (
           <CardList
             item="likedStore"
-            itemData={LikedStoreListData}
+            itemData={LikedStoreListData?.pages.flat()}
             handleOptionSelect={handleOptionSelect}
+            fetchNextPage={fetchNextPage}
           />
-        ) : ( // 여기 일단 store로 둠 ... 나중에 design 연결하는 사람이 바꿔라 ㅋㅋ
+        ) : (
           <CardList
             item="likedStore"
-            itemData={LikedStoreListData}
+            itemData={LikedStoreListData?.pages.flat()}
             handleOptionSelect={handleOptionSelect}
+            fetchNextPage={fetchNextPage}
           />
         )}
       </main>
