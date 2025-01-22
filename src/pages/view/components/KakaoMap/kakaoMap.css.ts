@@ -13,7 +13,7 @@ export const buttonSectionStyle = style([
   flexGenerator('column'),
   {
     position: 'absolute',
-    top: '2rem',
+    top: '7.2rem',
     right: '2rem',
     gap: '1.6rem',
   },
@@ -21,13 +21,14 @@ export const buttonSectionStyle = style([
 
 export const mapStyle = recipe({
   base: {
-    position: 'relative',
+    position: 'absolute',
     width: '100%',
+    zIndex: 0,
   },
   variants: {
     animateState: {
-      default: { height: 'calc(55vh - 9rem)' },
-      closed: { height: 'calc(87vh - 9rem)' },
+      default: { height: 'calc(60vh)' },
+      closed: { height: 'calc(87vh)', top: '5vh' },
       opened: {},
     },
   },
