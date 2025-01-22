@@ -2,7 +2,8 @@ import { useMutation } from '@tanstack/react-query';
 
 import { instance } from '@apis/instance';
 
-import { END_POINT } from '@constants';
+import { END_POINT, queryKey } from '@constants';
+import queryClient from 'src/queryClient';
 
 import { MutateResposneType } from '@types';
 
@@ -19,5 +20,11 @@ const postStoreLikes = async (storeId: number): Promise<MutateResposneType> => {
 export const usePostStoreLikes = () => {
   return useMutation({
     mutationFn: (storeId: number) => postStoreLikes(storeId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [queryKey.STORE_INFO],
+      });
+      queryClient.invalidateQueries({ queryKey: [queryKey.LIKED_STORE_LIST] });
+    },
   });
 };
