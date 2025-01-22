@@ -71,11 +71,12 @@ const CardList = ({
     })
     .flat();
 
-  const cardListCount = itemData?.reduce(
-    (count, data) =>
-      count + (isStoreCardListType(data) ? data.storeCount : data.cakeCount),
-    0
-  );
+  const cardListCount =
+    itemData && itemData.length > 0
+      ? isStoreCardListType(itemData[0])
+        ? itemData[0].storeCount
+        : itemData[0].cakeCount
+      : 0;
 
   // 카드리스트 텍스트 상황에 따라 다르게
   const cardListCountText = {
