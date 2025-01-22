@@ -55,3 +55,19 @@ export interface StationStoreResponse {
   storeCount: number;
   stores: StationStore[];
 }
+
+export interface StationStorePopularityResponse {
+  nextLikesCursor: number;
+  lastStoreId: number;
+  isLastData: boolean;
+  storeCount: number;
+  stores: StationStore[];
+}
+
+export interface DesignPopularityResponse {
+  isLastData: boolean;
+  cakeIdCursor: number;
+  cakeLikesCursor: number;
+  cakeCount: number;
+  cakes: StationDesign[];
+}

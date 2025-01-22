@@ -3,10 +3,11 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { instance } from '@apis/instance';
 
 import { END_POINT, OrderType, queryKey } from '@constants';
+
 import {
   ApiResponseType,
-  DesignPopularityResponse,
   StationDesignResponse,
+  DesignPopularityResponse,
 } from '@types';
 
 type OrderTypeResponse<T extends OrderType> = T extends 'latest'
@@ -15,19 +16,18 @@ type OrderTypeResponse<T extends OrderType> = T extends 'latest'
     ? DesignPopularityResponse
     : never;
 
-const fetchStationDesign = async <T extends OrderType>(
+const fetchLikedStoreDesign = async <T extends OrderType>(
   order: T,
-  station: string,
-  cakeLikesCursor: number,
-  cakeIdCursor: number
+  cakeIdCursor?: number,
+  cakeLikesCursor?: number
 ): Promise<OrderTypeResponse<T>> => {
   try {
-    const url = END_POINT.FETCH_STATION_DESIGN_LIST(
+    const url = END_POINT.FETCH_LIKED_STORE_DESIGN_LIST(
       order,
-      station,
-      cakeLikesCursor,
-      cakeIdCursor
+      cakeIdCursor,
+      cakeLikesCursor
     );
+
     const response =
       await instance.get<ApiResponseType<OrderTypeResponse<T>>>(url);
     console.log(response.data.data);
@@ -38,41 +38,30 @@ const fetchStationDesign = async <T extends OrderType>(
   }
 };
 
-export const useFetchStationDesign = <T extends OrderType>(
-  order: T,
-  station: string
-) => {
+export const useFetchLikedStoreDesign = <T extends OrderType>(order: T) => {
   return useInfiniteQuery<OrderTypeResponse<T>, Error>({
-    queryKey: [queryKey.STATION_DESIGN_LIST, order, station],
-    queryFn: ({
-      pageParam = { cakeLikesCursor: undefined, cakeIdCursor: undefined },
-    }) => {
-      const param = pageParam as {
-        cakeLikesCursor: number;
-        cakeIdCursor: number;
-      };
-      return fetchStationDesign(
+    queryKey: [queryKey.LIKED_STORE_DESIGN_LIST, order],
+    queryFn: ({ pageParam = { cakeIdCursor: 0, cakeLikesCursor: 0 } }) => {
+      console.log(pageParam);
+      return fetchLikedStoreDesign(
         order,
-        station,
-        param.cakeLikesCursor,
-        param.cakeIdCursor
+        pageParam.cakeIdCursor,
+        pageParam.cakeLikesCursor
       );
     },
     getNextPageParam: (lastPage) => {
       if (!lastPage.isLastData) {
         return {
-          cakeLikesCursor:
-            'cakeLikesCursor' in lastPage
-              ? lastPage.cakeLikesCursor
-              : undefined,
           cakeIdCursor:
             'nextCakeIdCursor' in lastPage
               ? lastPage.nextCakeIdCursor
               : lastPage.cakeIdCursor,
+          cakeLikesCursor:
+            'cakeIdCursor' in lastPage ? lastPage.cakeLikesCursor : undefined,
         };
       }
       return null;
     },
-    initialPageParam: { cakeLikesCursor: undefined, cakeIdCursor: undefined },
+    initialPageParam: { cakeIdCursor: 0, cakeLikesCursor: 0 },
   });
 };

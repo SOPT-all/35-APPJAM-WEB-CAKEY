@@ -18,25 +18,55 @@ export const END_POINT = {
   FETCH_STATION_DESIGN_LIST: (
     order: OrderType,
     station: string,
-    pageParam?: number
+    cakeLikesCursor?: number,
+    cakeIdCursor?: number
   ) => {
     const url = `/api/v1/cake/station/${order}?station=${station}`;
-    return pageParam ? `${url}&cakeIdCursor=${pageParam}` : url;
+    if (
+      order === 'popularity' &&
+      cakeIdCursor !== undefined &&
+      cakeLikesCursor !== undefined
+    ) {
+      return `${url}?cakeLikesCursor=${cakeLikesCursor}&cakeIdCursor=${cakeIdCursor}`;
+    } else if (cakeIdCursor !== undefined)
+      return `${url}&cakeIdCursor=${cakeIdCursor}`;
+    return url;
   },
   FETCH_STATION_STORE_LIST: (
     order: OrderType,
     station: string,
-    pageParam?: number
+    storeLikesCursor?: number,
+    storeIdCursor?: number
   ) => {
     const url = `/api/v1/store/${order}?station=${station}`;
-    return pageParam ? `${url}&storeIdCursor=${pageParam}` : url;
+    if (
+      order === 'popularity' &&
+      storeIdCursor !== undefined &&
+      storeLikesCursor !== undefined
+    ) {
+      return `${url}?likesCursor=${storeLikesCursor}&lastStoreId=${storeIdCursor}`;
+    } else if (storeIdCursor !== undefined)
+      return `${url}&storeIdCursor=${storeIdCursor}`;
+    return url;
   },
-  FETCH_LIKED_STORE_DESIGN_LIST: (order: OrderType, pageParam?: number) => {
-    const url = `/api/v1/store/likes/cake/${order}`;
-    return pageParam ? `${url}?cakeIdCursor=${pageParam}` : url;
+  FETCH_LIKED_STORE_DESIGN_LIST: (
+    order: OrderType,
+    station: string,
+    cakeIdCursor?: number,
+    cakeLikesCursor?: number
+  ) => {
+    const url = `/api/v1/cake/store/likes/cake/${order}`;
+    if (
+      order === 'popularity' &&
+      cakeIdCursor !== undefined &&
+      cakeLikesCursor !== undefined
+    ) {
+      return `${url}?cakeIdCursor=${cakeIdCursor}&cakeLikesCursor=${cakeLikesCursor}`;
+    } else if (cakeIdCursor) return `${url}?cakeIdCursor=${cakeIdCursor}`;
+    return url;
   },
   POST_CAKE_LIKES: (cakeId: number) => `/api/v1/cake/likes/${cakeId}`,
   POST_STORE_LIKES: (storeId: number) => `/api/v1/store/likes/${storeId}`,
 } as const;
 
-export type OrderType = 'latest' | 'popualarity';
+export type OrderType = 'latest' | 'popularity';
