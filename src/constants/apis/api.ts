@@ -55,10 +55,27 @@ export const END_POINT = {
 
     return `${url}`;
   },
-  FETCH_LIKED_CAKE_LIST: (option: string, pageParam?: string) =>
-    pageParam
-      ? `/api/v1/cake/likes/${option}?cakeIdCursor=${pageParam}`
-      : `/api/v1/cake/likes/${option}`,
+  FETCH_LIKED_CAKE_LIST: (
+    option: OptionType,
+    cakeIdCursor?: number,
+    cakeLikesCursor?: number
+  ) => {
+    const url = `/api/v1/cake/likes/${option}`;
+
+    if (option === 'popularity') {
+      if (cakeIdCursor !== undefined && cakeLikesCursor !== undefined) {
+        return `${url}?cakeIdCursor=${cakeIdCursor}&cakeLikesCursor=${cakeLikesCursor}`;
+      } else if (cakeIdCursor !== undefined) {
+        return `${url}?cakeIdCursor=${cakeIdCursor}`;
+      } else if (cakeLikesCursor !== undefined) {
+        return `${url}?cakeLikesCursor=${cakeLikesCursor}`;
+      }
+    } else if (cakeIdCursor !== undefined) {
+      return `${url}?cakeIdCursor=${cakeIdCursor}`;
+    }
+
+    return url;
+  },
   FETCH_STORE_COORDINATE_LIST: (station: string) =>
     `/api/v1/store/coordinate-list?station=${station}`,
   FETCH_SELECT_STORE_COORDINATE: (storeId: number) =>

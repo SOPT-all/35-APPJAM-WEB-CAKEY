@@ -1,27 +1,33 @@
-import { useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 
 import { instance } from '@apis/instance';
 
 import { END_POINT, queryKey } from '@constants';
 
-import { ApiResponseType, ErrorResponse, LikedCakeListResponse } from '@types';
+import {
+  ApiResponseType,
+  DesignCardListType,
+  ErrorResponse,
+  OptionType,
+} from '@types';
 
 const fetchLikesCardList = async (
-  option: string,
-  pageParam?: string
-): Promise<LikedCakeListResponse> => {
+  option: OptionType,
+  cakeLikesCursor: number,
+  cakeIdCursor: number
+): Promise<DesignCardListType> => {
   try {
-    const endpoint = pageParam
-      ? END_POINT.FETCH_LIKED_CAKE_LIST(option, pageParam)
-      : END_POINT.FETCH_LIKED_CAKE_LIST(option);
-
+    const url = END_POINT.FETCH_LIKED_CAKE_LIST(
+      option,
+      cakeLikesCursor,
+      cakeIdCursor
+    );
     const response =
-      await instance.get<ApiResponseType<LikedCakeListResponse>>(endpoint);
+      await instance.get<ApiResponseType<DesignCardListType>>(url);
     return response.data.data;
   } catch (error) {
     const errorResponse = error as ErrorResponse;
-    console.log(errorResponse.response.data.code);
-    if (errorResponse.response.data.code === 40420) {
+    if (errorResponse.response.data.code === 40410) {
       return {
         nextCakeIdCursor: -1,
         cakeCount: -1,
@@ -33,9 +39,39 @@ const fetchLikesCardList = async (
   }
 };
 
-export const useFetchLikedCakeList = (option: string, pageParam?: string) => {
-  return useQuery({
-    queryKey: [queryKey.LIKED_CAKE_LIST, option, pageParam],
-    queryFn: () => fetchLikesCardList(option, pageParam || ''),
+export const useFetchLikedCakeList = (
+  option: OptionType,
+  isEnabled: boolean
+) => {
+  return useInfiniteQuery<DesignCardListType, Error>({
+    queryKey: [queryKey.LIKED_CAKE_LIST, option],
+    queryFn: ({ pageParam }) => {
+      const param = pageParam as {
+        cakeLikesCursor: number;
+        cakeIdCursor: number;
+      };
+      return fetchLikesCardList(
+        option,
+        param.cakeLikesCursor,
+        param.cakeIdCursor
+      );
+    },
+    getNextPageParam: (lastPage) => {
+      if (!lastPage.isLastData) {
+        return {
+          cakeLikesCursor:
+            'cakeLikesCursor' in lastPage
+              ? lastPage.cakeLikesCursor
+              : undefined,
+          cakeIdCursor:
+            'nextCakeIdCursor' in lastPage
+              ? lastPage.nextCakeIdCursor
+              : (lastPage.cakeIdCursor ?? undefined),
+        };
+      }
+      return null;
+    },
+    initialPageParam: { cakeLikesCursor: undefined, cakeIdCursor: undefined },
+    enabled: isEnabled,
   });
 };

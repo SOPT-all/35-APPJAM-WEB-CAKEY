@@ -41,7 +41,10 @@ const fetchLikedStoreList = async (
   }
 };
 
-export const useFetchLikedStoreList = (option: OptionType) => {
+export const useFetchLikedStoreList = (
+  option: OptionType,
+  isEnabled?: boolean
+) => {
   return useInfiniteQuery<StoreCardListType, Error>({
     queryKey: [queryKey.LIKED_STORE_LIST, option],
     queryFn: ({ pageParam }) => {
@@ -71,5 +74,6 @@ export const useFetchLikedStoreList = (option: OptionType) => {
       return null;
     },
     initialPageParam: { storeLikesCursor: undefined, storeIdCursor: undefined },
+    enabled: isEnabled,
   });
 };

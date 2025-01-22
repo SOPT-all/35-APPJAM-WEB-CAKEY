@@ -6,7 +6,7 @@ import { END_POINT, queryKey } from '@constants';
 
 import {
   ApiResponseType,
-  DesignListResponse,
+  DesignCardListType,
   ErrorResponse,
   OptionType,
 } from '@types';
@@ -17,7 +17,7 @@ const fetchDesignList = async (
   themeName: string,
   cakeLikesCursor: number,
   cakeIdCursor: number
-): Promise<DesignListResponse> => {
+): Promise<DesignCardListType> => {
   try {
     const url = END_POINT.FETCH_DESIGN_LIST(
       option,
@@ -27,7 +27,7 @@ const fetchDesignList = async (
       cakeIdCursor
     );
     const response =
-      await instance.get<ApiResponseType<DesignListResponse>>(url);
+      await instance.get<ApiResponseType<DesignCardListType>>(url);
     return response.data.data;
   } catch (error) {
     const errorResponse = error as ErrorResponse;
@@ -50,7 +50,7 @@ export const useFetchDesignList = (
   dayCategory: string,
   themeName: string
 ) => {
-  return useInfiniteQuery<DesignListResponse, Error>({
+  return useInfiniteQuery<DesignCardListType, Error>({
     queryKey: [queryKey.DESIGN_LIST, option, dayCategory, themeName],
     queryFn: ({ pageParam }) => {
       const param = pageParam as {
