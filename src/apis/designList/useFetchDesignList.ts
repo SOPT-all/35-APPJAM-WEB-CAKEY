@@ -19,16 +19,17 @@ const fetchDesignList = async (
   } catch (error) {
     const errorResponse = error as ErrorResponse;
     console.log(errorResponse.response.data.code);
-    if (errorResponse.response.data.code === 40420) {
-      // return {
-      //   nextCakeIdCursor: 0,
-      //   nextCakeLikesCursor: 0,
-      //   isLastData: false,
-      //   cakeCount: 0,
-      //   cakes: [],
-      // };
-    }
-    throw error;
+    // if (errorResponse.response.data.code === 40410) {
+    //   return {
+    //     nextCakeIdCursor: 0,
+    //     nextCakeLikesCursor: 0,
+    //     isLastData: false,
+    //     cakeCount: 0,
+    //     cakes: [],
+    //   };
+    // } 
+      throw error;
+    
   }
 };
 
@@ -40,6 +41,5 @@ export const useFetchDesignList = (
   return useQuery({
     queryKey: [queryKey.DESIGN_LIST, option, dayCategory, themeName],
     queryFn: () => fetchDesignList(option, dayCategory, themeName),
-    staleTime: 0,
   });
 };

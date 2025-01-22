@@ -28,8 +28,10 @@ const CategoryCard = ({ category }: CategoryCardProps) => {
   return (
     <button className={buttonWrapper} onClick={handleClickButton}>
       <div className={hashtagTextWrapper}>
-        {hashtagText.map((tag) => (
-          <h2 className={hashtagTextStyle}>{tag}</h2>
+        {hashtagText.map((tag, index) => (
+          <h2 className={hashtagTextStyle} key={index}>
+            {tag}
+          </h2>
         ))}
       </div>
       <h1 className={categoryTextStyle}>{categoryText}</h1>

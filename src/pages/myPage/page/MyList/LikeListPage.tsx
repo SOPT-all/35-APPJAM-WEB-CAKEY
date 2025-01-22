@@ -42,12 +42,15 @@ const LikeListPage = () => {
           <CardList
             item="likedStore"
             itemData={LikedStoreListData}
+            option={option}
             handleOptionSelect={handleOptionSelect}
           />
-        ) : ( // 여기 일단 store로 둠 ... 나중에 design 연결하는 사람이 바꿔라 ㅋㅋ
+        ) : (
+          // 여기 일단 store로 둠 ... 나중에 design 연결하는 사람이 바꿔라 ㅋㅋ
           <CardList
             item="likedStore"
             itemData={LikedStoreListData}
+            option={option}
             handleOptionSelect={handleOptionSelect}
           />
         )}

@@ -30,10 +30,6 @@ export const END_POINT = {
   FETCH_STORE_LINK: (storeId: number) => `/api/v1/store/kakaoLink/${storeId}`,
   FETCH_USER: '/api/v1/user',
   FETCH_CAKE_RANK: '/api/v1/cake/rank',
-  // POST_CAKE_LIKES: (cakeId: number) => `/api/v1/cake/likes/${cakeId}`,
-  // POST_STORE_LIKES: (storeId: number) => `/api/v1/store/likes/${storeId}`,
-  // DELETE_CAKE_LIKES: (cakeId: number) => `/api/v1/cake/likes/${cakeId}`,
-  // DELETE_STORE_LIKES: (storeId: number) => `/api/v1/store/likes/${storeId}`
   POST_LIKE: (type: 'cake' | 'store', id: number) =>
     `/api/v1/${type}/likes/${id}`,
   DELETE_LIKE: (type: 'cake' | 'store', id: number) =>
