@@ -22,6 +22,7 @@ export const activeCategoryStyle = style([
     padding: '0.6rem 1.4rem',
     borderRadius: '50px',
     flexShrink: 0,
+    cursor: 'pointer',
   },
 ]);
 
@@ -32,5 +33,6 @@ export const defaultCategoryStyle = style([
     color: vars.colors.gray500,
     padding: '0.6rem 1.4rem',
     flexShrink: 0,
+    cursor: 'pointer',
   },
 ]);

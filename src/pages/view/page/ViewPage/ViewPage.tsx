@@ -7,7 +7,7 @@ import { useModal } from '@hooks';
 import { LocationButton, SelectStationModal } from '@pages/view/components';
 import { KakaoMap } from '@pages/view/components';
 
-import { locationButtonWrapper } from './ViewPage.css';
+import { locationButtonWrapper, viewPageContainer } from './ViewPage.css';
 
 const ViewPage = () => {
   const { isModalOpen, openModal, closeModal } = useModal();
@@ -38,7 +38,7 @@ const ViewPage = () => {
   };
 
   return (
-    <div>
+    <div className={viewPageContainer}>
       <div className={locationButtonWrapper}>
         <LocationButton
           currentLocation={currentLocation.stationKrName}

@@ -55,7 +55,10 @@ export const END_POINT = {
 
     return `${url}`;
   },
-
+  FETCH_LIKED_CAKE_LIST: (option: string, pageParam?: string) =>
+    pageParam
+      ? `/api/v1/cake/likes/${option}?cakeIdCursor=${pageParam}`
+      : `/api/v1/cake/likes/${option}`,
   FETCH_STORE_COORDINATE_LIST: (station: string) =>
     `/api/v1/store/coordinate-list?station=${station}`,
   FETCH_SELECT_STORE_COORDINATE: (storeId: number) =>
