@@ -25,9 +25,12 @@ const Layout = () => {
         {({ reset }) => (
           <ErrorBoundary onReset={reset} FallbackComponent={Error}>
             <Suspense fallback={<Loading />}>
-              {!isLoginPage &&
-                (isViewPage ? <Header bgColor="yellow" /> : <Header />)}
-              <div className={spacing} />
+              {!isLoginPage && (
+                <>
+                  {isViewPage ? <Header bgColor="yellow" /> : <Header />}
+                  <div className={spacing} />
+                </>
+              )}
               <Outlet />
             </Suspense>
           </ErrorBoundary>
