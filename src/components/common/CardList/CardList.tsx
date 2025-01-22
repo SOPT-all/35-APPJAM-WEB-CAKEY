@@ -1,3 +1,6 @@
+import { useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
+
 import {
   cardListContainer,
   cardListNullTextStyle,
@@ -21,8 +24,6 @@ import {
   StoreType,
   SubCategoryType,
 } from '@types';
-import { useEffect } from 'react';
-import { useInView } from 'react-intersection-observer';
 
 interface CardListProps {
   item: ItemType;

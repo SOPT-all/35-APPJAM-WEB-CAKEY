@@ -1,5 +1,3 @@
-import { StoreType } from '@types';
-
 export interface StoreCoordinate {
   storeId: number;
   latitude: number;
