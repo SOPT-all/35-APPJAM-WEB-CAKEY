@@ -1,4 +1,4 @@
-import { startTransition, useState } from 'react';
+import { useState } from 'react';
 
 import { OptionType } from '@types';
 
@@ -6,9 +6,8 @@ const useFilteredCardList = () => {
   const [option, setOption] = useState<OptionType>('latest');
 
   const handleOptionSelect = (newOption: OptionType) => {
-    startTransition(() => {
-      setOption(newOption);
-    });
+    setOption(newOption);
+    console.log(option);
   };
 
   return {

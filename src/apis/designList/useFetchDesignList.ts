@@ -40,6 +40,7 @@ export const useFetchDesignList = (
   return useQuery({
     queryKey: [queryKey.DESIGN_LIST, option, dayCategory, themeName],
     queryFn: () => fetchDesignList(option, dayCategory, themeName),
-    staleTime: 0,
+    // staleTime: 0,
+    // gcTime: 0,
   });
 };

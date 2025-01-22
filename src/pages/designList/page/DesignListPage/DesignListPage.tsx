@@ -93,6 +93,7 @@ const DesignListPage = () => {
           <CardList
             item="design"
             itemData={DesignListData}
+            option={option}
             handleOptionSelect={handleOptionSelect}
             hasModal
             selectedCategories={selectedCategories}

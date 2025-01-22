@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import {
   cardListContainer,
   cardListNullTextStyle,
@@ -25,6 +27,7 @@ import {
 interface CardListProps {
   item: ItemType;
   itemData?: StoreCardListType | DesignCardListType;
+  option: OptionType
   handleOptionSelect: (option: OptionType) => void;
   hasModal?: boolean;
   selectedCategories?: {
@@ -36,6 +39,7 @@ interface CardListProps {
 const CardList = ({
   item,
   itemData,
+  option,
   handleOptionSelect,
   hasModal,
   selectedCategories,
@@ -51,6 +55,11 @@ const CardList = ({
   ): data is DesignCardListType => {
     return 'cakes' in data && 'cakeCount' in data;
   };
+
+  // 카테고리 변경될 때마다 filtering Button 최신순으로 변경
+  useEffect(() => {
+    handleOptionSelect('latest');
+  }, [selectedCategories]);
 
   // itemData가 StoreCardListType인 경우 stores에 접근 가능
   const cardListData = itemData
@@ -106,7 +115,7 @@ const CardList = ({
               )}
             </div>
 
-            <FilteringButton onOptionSelect={handleOptionSelect} />
+            <FilteringButton option={option} onOptionSelect={handleOptionSelect} />
           </div>
 
           {item === 'store' || item === 'likedStore' ? (
