@@ -3,6 +3,8 @@ import { useMutation } from '@tanstack/react-query';
 import { instance } from '@apis/instance';
 
 import { END_POINT } from '@constants';
+import { useEasyNavigate } from '@hooks';
+import { removeUser } from '@utils';
 
 const deleteLogout = async () => {
   try {
@@ -15,10 +17,12 @@ const deleteLogout = async () => {
 };
 
 export const useDeleteLogout = () => {
+  const { goHomePage } = useEasyNavigate();
   return useMutation({
     mutationFn: deleteLogout,
     onSuccess: () => {
-      localStorage.removeItem('user');
+      removeUser();
+      goHomePage();
     },
   });
 };
