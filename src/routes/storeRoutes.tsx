@@ -1,6 +1,6 @@
 import { StorePage } from '@pages/store/page';
 
-import { Error } from '@pages/error';
+import { Error } from '@pages/status';
 
 import routePath from './routePath';
 

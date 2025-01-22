@@ -19,7 +19,7 @@ const fetchLikesStoreCoordinate = async (): Promise<StoreCoordinate[]> => {
     return response.data.data.stores;
   } catch (error) {
     const errorResponse = error as ErrorResponse;
-    if (errorResponse.response.data.code === 40420) {
+    if (errorResponse.response.status === 404) {
       return [];
     }
     throw error;
