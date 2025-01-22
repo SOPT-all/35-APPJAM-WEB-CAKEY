@@ -4,7 +4,7 @@ import { instance } from '@apis/instance';
 
 import { END_POINT, queryKey } from '@constants';
 
-import { ApiResponseType, UserResponse } from '@types';
+import { ApiResponseType, ErrorResponse, UserResponse } from '@types';
 
 const fetchUser = async (): Promise<UserResponse> => {
   try {
@@ -14,6 +14,14 @@ const fetchUser = async (): Promise<UserResponse> => {
     return response.data.data;
   } catch (error) {
     console.log(error);
+    const errorResponse = error as ErrorResponse;
+    if (errorResponse.response.data.code === 40431) {
+      return {
+        userName: '',
+        userEmail: '',
+      };
+    }
+
     throw error;
   }
 };
