@@ -11,25 +11,37 @@ import {
   infoTitleStyle,
 } from './DesignCard.css';
 
-import { DesignItemType } from '@types';
+import { CategoryType, DesignItemType, SubCategoryType } from '@types';
 interface DesignCardProps extends HTMLAttributes<HTMLDivElement> {
   designItem: DesignItemType;
-  designId: number;
   numberLabel?: string;
   hasModal?: boolean;
+  handleCardClick?: () => void;
+  selectedCategories?: {
+    category: CategoryType;
+    subCategory: SubCategoryType;
+  };
 }
 
 const DesignCard = ({
   designItem,
-  designId,
   numberLabel,
   hasModal = false,
+  selectedCategories,
 }: DesignCardProps) => {
-  const { storeId, imageUrl, storeName, station, cakeLikesCount, isLiked } =
-    designItem;
+  const {
+    cakeId,
+    storeId,
+    imageUrl,
+    storeName,
+    station,
+    cakeLikesCount,
+    isLiked,
+  } = designItem;
 
-  const { isModalOpen, openModal, closeModal } = useModal();
   const { goStorePage } = useEasyNavigate();
+
+  const { openModal, isModalOpen, closeModal } = useModal();
 
   const handleCardClick = () => {
     if (hasModal) {
@@ -52,14 +64,14 @@ const DesignCard = ({
             buttonType="like20"
             count={cakeLikesCount}
             isActive={isLiked}
-            itemId={designId}
+            itemId={cakeId}
           />
         </div>
       </article>
 
       {isModalOpen && (
         <Modal variant="bottom" hasBackdrop backdropClick={closeModal}>
-          <DesignSearchModal storeId={storeId} />
+          <DesignSearchModal cakeId={cakeId} storeId={storeId} selectedCategories={selectedCategories} />
         </Modal>
       )}
     </>

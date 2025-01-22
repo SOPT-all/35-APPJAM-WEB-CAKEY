@@ -1,7 +1,10 @@
+import { useFetchUser } from '@apis/myPage';
+
 import { AuthModal, Modal, TextButton } from '@components';
 import { WHIPEE_CONTACT_FORM } from '@constants';
 import { useEasyNavigate, useModal } from '@hooks';
 import { LetsGoButton, ProfileCard } from '@pages/myPage/components';
+import { isLoggedIn } from '@utils';
 
 import {
   letsGoButtonWrapper,
@@ -9,14 +12,8 @@ import {
   profileCardStyle,
 } from './MyPage.css';
 
-const user = {
-  userId: 1,
-  userName: '쥬먐이',
-  userEmail: 'jiyoo0315@naver.com',
-};
-
 const MyPage = () => {
-  const isLogin = true; //추후 삭제 후 localStorage.getItem로 수정할 예정
+  const isLogin = isLoggedIn();
 
   const { isModalOpen, openModal, closeModal } = useModal();
 
@@ -26,13 +23,15 @@ const MyPage = () => {
     window.open(WHIPEE_CONTACT_FORM, '_blank');
   };
 
+  const { data: userData } = useFetchUser();
+
   return (
     <>
       <section className={profileCardStyle[isLogin ? 'login' : 'logout']}>
         <ProfileCard
           isLogin={isLogin}
-          userName={user.userName}
-          userEmail={user.userEmail}
+          userName={userData.userName}
+          userEmail={userData.userEmail}
         />
       </section>
 

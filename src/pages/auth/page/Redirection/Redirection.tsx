@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { usePostKakaoLogin } from '@apis/auth/usePostKakaoLogin';
+import { usePostKakaoLogin } from '@apis/auth';
 
 const Redirection = () => {
   const code: string =

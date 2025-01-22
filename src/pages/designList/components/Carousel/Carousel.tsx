@@ -1,4 +1,5 @@
 import { Image } from '@components';
+import { useEasyNavigate } from '@hooks';
 
 import { IcCircleArrowRight42 } from '@svgs';
 
@@ -17,8 +18,10 @@ interface CarouselProps {
 }
 
 const Carousel = ({ designs, storeId }: CarouselProps) => {
+  const { goStorePage } = useEasyNavigate();
+
   const handleButtonClick = () => {
-    console.log(storeId);
+    goStorePage(storeId);
   };
 
   return (

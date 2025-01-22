@@ -17,6 +17,7 @@ import {
 import { buttonSectionStyle, mapContainer } from './kakaoMap.css';
 import MapBottomSheet from '../MapBottomSheet/MapBottomSheet';
 import MapButton from '../MapButton/MapButton';
+import SelectedStoreModal from '../SelectedStoreModal/SelectedStoreModal';
 
 import { StationType } from '@types';
 
@@ -97,7 +98,9 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
           handleAnimateChange={handleAnimateChange}
         />
       ) : (
-        <Modal variant="bottom">1</Modal>
+        <Modal variant="bottom">
+          <SelectedStoreModal storeId={1} />
+        </Modal>
       )}
     </>
   );

@@ -1,4 +1,7 @@
-import { useState } from 'react';
+import { startTransition, useState } from 'react';
+import { useParams } from 'react-router-dom';
+
+import { useFetchStoreInfo } from '@apis/store';
 
 import { Tab } from '@components';
 import Banner from '@pages/store/components/Banner/Banner';
@@ -7,26 +10,25 @@ import StoreDesign from '@pages/store/components/StoreDesign/StoreDesign';
 import StoreInfo from '@pages/store/components/StoreInfo/StoreInfo';
 import StoreMenu from '@pages/store/components/StoreMenu/StoreMenu';
 
-import data from './storeData';
 import { sectionStyle } from './StorePage.css';
 
 const StorePage = () => {
+  const storeId = Number(useParams<{ id: string }>().id);
+
+  const { data: storeData } = useFetchStoreInfo(storeId);
+
   const [activeTab, setActiveTab] = useState(0);
 
-  const storeData = data.storeData;
-  const designData = data.designData;
-  const menuData = data.menuData;
-  const infoData = data.infoData;
-  const kakaoLink = data.kakaoLink;
-
   const handleTabChange = (index: number) => {
-    setActiveTab(index);
+    startTransition(() => {
+      setActiveTab(index);
+    });
   };
 
   const tabComponents = [
-    <StoreDesign designData={designData} />,
-    <StoreMenu menuData={menuData} />,
-    <StoreInfo infoData={infoData} />,
+    <StoreDesign storeId={storeId} />,
+    <StoreMenu storeId={storeId} />,
+    <StoreInfo storeId={storeId} />,
   ];
 
   return (
@@ -38,7 +40,7 @@ const StorePage = () => {
         onTabChange={handleTabChange}
       />
       <section className={sectionStyle}>{tabComponents[activeTab]}</section>
-      <BottomTab kakaoLink={kakaoLink} />
+      <BottomTab storeId={storeId} />
     </>
   );
 };

@@ -1,24 +1,37 @@
+import { useNavigate } from 'react-router-dom';
+
+import { useFetchSelectStoreCoordinate, useFetchStoreLink } from '@apis/store';
+
 import { TextButton } from '@components';
-import { useEasyNavigate } from '@hooks';
 
 import { container } from './BottomTab.css';
 
 interface BottomTabProps {
-  kakaoLink: string;
+  storeId: number;
 }
 
-const BottomTab = ({ kakaoLink }: BottomTabProps) => {
-  const { goViewPage } = useEasyNavigate();
+const BottomTab = ({ storeId }: BottomTabProps) => {
+  const { data: kakaoLink } = useFetchStoreLink(storeId);
+  const { data: selectStoreCoordinate } =
+    useFetchSelectStoreCoordinate(storeId);
+
+  const navigate = useNavigate();
+
+  const handleMapViewClick = () => {
+    if (selectStoreCoordinate) {
+      navigate('/view', { state: { location: selectStoreCoordinate } });
+    }
+  };
 
   const handleOrderClick = () => {
     if (kakaoLink) {
-      window.location.href = kakaoLink;
+      window.open(String(kakaoLink), '_blank');
     }
   };
 
   return (
     <nav className={container}>
-      <TextButton size={'large'} color={'stroke'} onClick={goViewPage}>
+      <TextButton size={'large'} color={'stroke'} onClick={handleMapViewClick}>
         지도뷰
       </TextButton>
       <TextButton size={'large'} onClick={handleOrderClick}>

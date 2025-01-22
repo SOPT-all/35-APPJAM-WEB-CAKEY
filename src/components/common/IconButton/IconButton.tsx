@@ -1,4 +1,11 @@
-import React, { ButtonHTMLAttributes } from 'react';
+import React, { ButtonHTMLAttributes, useState } from 'react';
+
+import {
+  useDeleteCakeLikes,
+  useDeleteStoreLikes,
+  usePostCakeLikes,
+  usePostStoreLikes,
+} from '@apis/likes';
 
 import {
   IcFillLikeOff36,
@@ -16,8 +23,7 @@ export interface IconButtonProps
   buttonType: 'save24' | 'save28' | 'like20' | 'like36';
   isActive?: boolean;
   count?: number;
-  itemId?: number; // storeId | cakeId를 받아서 api 요청에 사용합니다
-  onMap?: boolean;
+  itemId?: number;
 }
 
 const buttonIcon = {
@@ -44,21 +50,56 @@ const IconButton = ({
   isActive,
   count,
   itemId,
-  onMap = false,
 }: IconButtonProps) => {
+  const [localActive, setLocalActive] = useState(isActive);
+  const [localCount, setLocalCount] = useState<number | undefined>(count);
+
+  const { mutate: postStoreLikes } = usePostStoreLikes();
+  const { mutate: postCakeLikes } = usePostCakeLikes();
+  const { mutate: deleteStoreLikes } = useDeleteStoreLikes();
+  const { mutate: deleteCakeLikes } = useDeleteCakeLikes();
+
   const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    console.log('iconClick', itemId);
+    if (itemId === undefined) return;
+
+    const isStore = buttonType === 'save24' || buttonType === 'save28';
+
+    const optimisticUpdate = () => {
+      setLocalActive((prev) => !prev);
+      if (localCount !== undefined) {
+        setLocalCount(localCount + (localActive ? -1 : 1));
+      }
+    };
+
+    const rollbackUpdate = () => {
+      setLocalActive((prev) => !prev);
+      if (localCount !== undefined) {
+        setLocalCount(count);
+      }
+    };
+
+    optimisticUpdate();
+
+    if (localActive) {
+      (isStore ? deleteStoreLikes : deleteCakeLikes)(itemId, {
+        onError: () => rollbackUpdate(),
+      });
+    } else {
+      (isStore ? postStoreLikes : postCakeLikes)(itemId, {
+        onError: () => rollbackUpdate(),
+      });
+    }
   };
+
   return (
-    <button
-      className={buttonStyle({ buttonType, onMap })}
-      onClick={handleButtonClick}
-    >
-      {isActive
+    <button className={buttonStyle({ buttonType })} onClick={handleButtonClick}>
+      {localActive
         ? buttonIcon[buttonType]?.active
         : buttonIcon[buttonType]?.inactive}
-      {count !== undefined && <span className={countStyle}>{count}</span>}
+      {localCount !== undefined && (
+        <span className={countStyle({ buttonType })}>{localCount}</span>
+      )}
     </button>
   );
 };
