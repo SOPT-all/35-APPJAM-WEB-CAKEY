@@ -12,13 +12,13 @@ import {
 } from '@types';
 
 const fetchLikedStoreList = async (
-  order: OptionType,
+  option: OptionType,
   storeLikesCursor: number,
   storeIdCursor: number
 ): Promise<StoreCardListType> => {
   try {
     const url = END_POINT.FETCH_LIKED_STORE_LIST(
-      order,
+      option,
       storeLikesCursor,
       storeIdCursor
     );

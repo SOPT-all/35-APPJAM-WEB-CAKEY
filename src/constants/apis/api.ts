@@ -22,17 +22,17 @@ export const END_POINT = {
 
     if (option === 'popularity') {
       if (storeIdCursor !== undefined && storeLikesCursor !== undefined) {
-        return `${url}?likesCursor=${storeLikesCursor}&storeIdCursor=${storeIdCursor}&size=1`;
+        return `${url}?likesCursor=${storeLikesCursor}&storeIdCursor=${storeIdCursor}`;
       } else if (storeIdCursor !== undefined) {
-        return `${url}?storeIdCursor=${storeIdCursor}&size=1`;
+        return `${url}?storeIdCursor=${storeIdCursor}`;
       } else if (storeLikesCursor !== undefined) {
-        return `${url}?likesCursor=${storeLikesCursor}&size=1`;
+        return `${url}?likesCursor=${storeLikesCursor}`;
       }
     } else if (storeIdCursor !== undefined) {
-      return `${url}?storeIdCursor=${storeIdCursor}&size=1`;
+      return `${url}?storeIdCursor=${storeIdCursor}`;
     }
 
-    return `${url}?size=1`;
+    return `${url}`;
   },
 
   FETCH_STORE_COORDINATE_LIST: (station: string) =>
@@ -48,17 +48,17 @@ export const END_POINT = {
   FETCH_STORE_DETAIL_INFO: (storeId: number) =>
     `/api/v1/store/${storeId}/information`,
   FETCH_STORE_LINK: (storeId: number) => `/api/v1/store/kakaoLink/${storeId}`,
-  FETCH_USER: '/api/v1/user',
+  FETCH_USER: '/api/v1/user/name-email',
   FETCH_CAKE_RANK: '/api/v1/cake/rank',
   FETCH_STATION_DESIGN_LIST: (
-    order: OptionType,
+    option: OptionType,
     station: string,
     cakeLikesCursor?: number,
     cakeIdCursor?: number
   ) => {
-    const url = `/api/v1/cake/station/${order}?station=${station}`;
+    const url = `/api/v1/cake/station/${option}?station=${station}`;
 
-    if (order === 'popularity') {
+    if (option === 'popularity') {
       if (cakeIdCursor !== undefined && cakeLikesCursor !== undefined) {
         return `${url}&cakeIdCursor=${cakeIdCursor}&cakeLikesCursor=${cakeLikesCursor}`;
       } else if (cakeIdCursor !== undefined) {
@@ -73,14 +73,14 @@ export const END_POINT = {
     return url;
   },
   FETCH_STATION_STORE_LIST: (
-    order: OptionType,
+    option: OptionType,
     station: string,
     storeLikesCursor?: number,
     storeIdCursor?: number
   ) => {
-    const url = `/api/v1/store/${order}?station=${station}`;
+    const url = `/api/v1/store/${option}?station=${station}`;
 
-    if (order === 'popularity') {
+    if (option === 'popularity') {
       if (storeIdCursor !== undefined && storeLikesCursor !== undefined) {
         return `${url}&likesCursor=${storeLikesCursor}&storeIdCursor=${storeIdCursor}`;
       } else if (storeIdCursor !== undefined) {
@@ -95,13 +95,13 @@ export const END_POINT = {
     return url;
   },
   FETCH_LIKED_STORE_DESIGN_LIST: (
-    order: OptionType,
+    option: OptionType,
     cakeIdCursor?: number,
     cakeLikesCursor?: number
   ) => {
-    const url = `/api/v1/cake/store/likes/cake/${order}`;
+    const url = `/api/v1/cake/store/likes/cake/${option}`;
 
-    if (order === 'popularity') {
+    if (option === 'popularity') {
       if (cakeIdCursor !== undefined && cakeLikesCursor !== undefined) {
         return `${url}?cakeIdCursor=${cakeIdCursor}&cakeLikesCursor=${cakeLikesCursor}`;
       } else if (cakeIdCursor !== undefined) {

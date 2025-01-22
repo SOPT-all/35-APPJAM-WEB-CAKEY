@@ -45,6 +45,7 @@ const StationStoreList = ({
     <CardList
       item="store"
       itemData={stationStoreData?.pages.flat()}
+      option={option}
       handleOptionSelect={handleOptionSelect}
       fetchNextPage={fetchNextPage}
     />
@@ -65,6 +66,7 @@ const StationDesignList = ({
     <CardList
       item="design"
       itemData={stationDesignData?.pages.flat()}
+      option={option}
       handleOptionSelect={handleOptionSelect}
       fetchNextPage={fetchNextPage}
     />
@@ -79,6 +81,7 @@ const LikedStoreList = ({ option, handleOptionSelect }: ListProps) => {
     <CardList
       item="likedStore"
       itemData={likedStoreData?.pages.flat()}
+      option={option}
       handleOptionSelect={handleOptionSelect}
       fetchNextPage={fetchNextPage}
     />
@@ -93,6 +96,7 @@ const LikedStoreDesignList = ({ option, handleOptionSelect }: ListProps) => {
     <CardList
       item="likedStoreDesign"
       itemData={likedStoreDesignData?.pages.flat()}
+      option={option}
       handleOptionSelect={handleOptionSelect}
       fetchNextPage={fetchNextPage}
     />

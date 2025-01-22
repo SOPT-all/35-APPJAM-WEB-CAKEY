@@ -7,14 +7,14 @@ import { END_POINT, queryKey } from '@constants';
 import { ApiResponseType, OptionType, StationDesignResponse } from '@types';
 
 const fetchStationDesign = async (
-  order: OptionType,
+  option: OptionType,
   station: string,
   cakeLikesCursor: number,
   cakeIdCursor: number
 ): Promise<StationDesignResponse> => {
   try {
     const url = END_POINT.FETCH_STATION_DESIGN_LIST(
-      order,
+      option,
       station,
       cakeLikesCursor,
       cakeIdCursor
@@ -28,16 +28,16 @@ const fetchStationDesign = async (
   }
 };
 
-export const useFetchStationDesign = (order: OptionType, station: string) => {
+export const useFetchStationDesign = (option: OptionType, station: string) => {
   return useInfiniteQuery<StationDesignResponse, Error>({
-    queryKey: [queryKey.STATION_DESIGN_LIST, order, station],
+    queryKey: [queryKey.STATION_DESIGN_LIST, option, station],
     queryFn: ({ pageParam }) => {
       const param = pageParam as {
         cakeLikesCursor: number;
         cakeIdCursor: number;
       };
       return fetchStationDesign(
-        order,
+        option,
         station,
         param.cakeLikesCursor,
         param.cakeIdCursor
