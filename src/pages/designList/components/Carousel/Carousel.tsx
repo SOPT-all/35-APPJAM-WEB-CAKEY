@@ -34,6 +34,7 @@ const Carousel = ({ designs, storeId }: CarouselProps) => {
               hasIcon
               variant="rounded"
               isActive={design.isLiked}
+              itemId={design.cakeId}
             />
           </li>
         );

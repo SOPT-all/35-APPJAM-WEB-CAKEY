@@ -28,7 +28,7 @@ export const END_POINT = {
   FETCH_STORE_DETAIL_INFO: (storeId: number) =>
     `/api/v1/store/${storeId}/information`,
   FETCH_STORE_LINK: (storeId: number) => `/api/v1/store/kakaoLink/${storeId}`,
-  FETCH_USER: '/api/v1/user',
+  FETCH_USER: '/api/v1/user/name-email',
   FETCH_CAKE_RANK: '/api/v1/cake/rank',
   POST_LIKE: (type: 'cake' | 'store', id: number) =>
     `/api/v1/${type}/likes/${id}`,

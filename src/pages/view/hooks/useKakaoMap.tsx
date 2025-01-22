@@ -14,6 +14,7 @@ const DEFAULT_CENTER = { lat: 37.556621, lng: 126.923877 };
 
 export const useKakaoMap = (
   currentLocation: StationType,
+  animateState: BottomSheetState,
   handleAnimateChange: (animate: BottomSheetState) => void
 ) => {
   const { data: storeCoordinateList } = useFetchStoreCoordinateList(
@@ -178,6 +179,10 @@ export const useKakaoMap = (
       setSelectedStoreId(locationState.storeId);
     }
   }, [locationState]);
+
+  useEffect(() => {
+    setCenter(currentPosition);
+  }, [animateState, currentPosition]);
 
   return {
     selectedStoreId,

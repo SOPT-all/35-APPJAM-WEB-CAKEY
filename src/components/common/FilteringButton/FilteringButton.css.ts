@@ -11,6 +11,7 @@ export const filteringButtonStyle = style([
     width: '6.9rem',
     height: '2.4rem',
     padding: 0,
+    cursor: 'pointer',
   },
 ]);
 
