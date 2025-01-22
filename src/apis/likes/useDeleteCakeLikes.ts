@@ -2,13 +2,16 @@ import { useMutation } from '@tanstack/react-query';
 
 import { instance } from '@apis/instance';
 
-import { END_POINT } from '@constants';
+import { END_POINT, queryKey } from '@constants';
+import queryClient from 'src/queryClient';
 
 import { MutateResposneType } from '@types';
 
 const deleteCakeLikes = async (cakeId: number): Promise<MutateResposneType> => {
   try {
-    const response = await instance.delete(END_POINT.DELETE_LIKE('cake', cakeId));
+    const response = await instance.delete(
+      END_POINT.DELETE_LIKE('cake', cakeId)
+    );
     return response.data;
   } catch (error) {
     console.log(error);
@@ -19,5 +22,11 @@ const deleteCakeLikes = async (cakeId: number): Promise<MutateResposneType> => {
 export const useDeleteCakeLikes = () => {
   return useMutation({
     mutationFn: (cakeId: number) => deleteCakeLikes(cakeId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [queryKey.STORE_DETAIL_DESIGN],
+      });
+      queryClient.invalidateQueries({ queryKey: [queryKey.LIKED_CAKE_LIST] });
+    },
   });
 };

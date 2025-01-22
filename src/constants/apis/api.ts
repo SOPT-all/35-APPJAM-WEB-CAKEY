@@ -11,10 +11,17 @@ export const END_POINT = {
     themeName: string
   ) =>
     `/api/v1/cake/select/${cakeId}?dayCategory=${dayCategory}&themeName=${themeName}`,
+
   FETCH_LIKED_STORE_LIST: (option: string, pageParam?: string) =>
     pageParam
       ? `/api/v1/store/likes/${option}?storeIdCursor=${pageParam}`
       : `/api/v1/store/likes/${option}`,
+
+  FETCH_LIKED_CAKE_LIST: (option: string, pageParam?: string) =>
+    pageParam
+      ? `/api/v1/cake/likes/${option}?cakeIdCursor=${pageParam}`
+      : `/api/v1/cake/likes/${option}`,
+
   FETCH_STORE_COORDINATE_LIST: (station: string) =>
     `/api/v1/store/coordinate-list?station=${station}`,
   FETCH_SELECT_STORE_COORDINATE: (storeId: number) =>

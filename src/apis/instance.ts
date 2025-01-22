@@ -8,8 +8,6 @@ export const instance = axios.create({
   withCredentials: true,
 });
 
-
-
 export function get<T>(...args: Parameters<typeof instance.get>) {
   return instance.get<T>(...args);
 }
