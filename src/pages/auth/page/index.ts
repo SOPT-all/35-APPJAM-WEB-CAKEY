@@ -1,2 +1,4 @@
 import LoginPage from './LoginPage/LoginPage';
-export { LoginPage };
+import Redirection from './Redirection/Redirection';
+
+export { LoginPage, Redirection };

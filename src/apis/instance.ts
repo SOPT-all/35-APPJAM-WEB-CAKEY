@@ -7,14 +7,8 @@ import { onErrorResponse } from './error';
 export const instance = axios.create({
   baseURL: BASE_URL,
 
-  withCredentials: false,
-
-  // headers: {
-  //   // Authorization: `Bearer 엑세스 토큰`,
-  // }, 서버에서 set-cookie로 줘서 만약 필요 없으면 지울 예정
+  withCredentials: true,
 });
-
-instance.interceptors.response.use((response) => response, onErrorResponse);
 
 export function get<T>(...args: Parameters<typeof instance.get>) {
   return instance.get<T>(...args);
@@ -35,3 +29,5 @@ export function patch<T>(...args: Parameters<typeof instance.patch>) {
 export function del<T>(...args: Parameters<typeof instance.delete>) {
   return instance.delete<T>(...args);
 }
+
+instance.interceptors.response.use((response) => response, onErrorResponse);

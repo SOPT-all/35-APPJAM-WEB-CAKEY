@@ -32,11 +32,21 @@ export interface DesignDetailType {
 export interface StoreCardListType {
   storeCount: number;
   stores: StoreType[];
+  nextStoreIdCursor?: number;
+  isLastData?: boolean;
+  nextLikesCursor?: number;
+  lastStoreIdCursor?: number;
 }
 
 export interface DesignCardListType {
   cakeCount: number;
   cakes: DesignItemType[];
+  cakeIdCursor?: number;
+  cakeLikesCursor?: number;
+  nextCakeIdCursor?: number;
+  nextCakeLikesCursor?: number;
+  isLastData?: boolean;
+  nextLikeCursor?: number;
 }
 
 export type CategoryType = 'BIRTH' | 'CHEER' | 'ANNIV' | 'SEASON';
@@ -51,20 +61,12 @@ export type SubCategoryType =
   | 'FANTASY'
   | 'ELSE';
 
-export type ItemType = 'store' | 'design' | 'likedStore' | 'likedDesign';
+export type ItemType =
+  | 'store'
+  | 'design'
+  | 'likedStore'
+  | 'likedDesign'
+  | 'likedStoreDesign';
 export type OptionType = 'latest' | 'popularity';
-
-export interface StationType {
-  stationEnName: string;
-  stationKrName: string;
-  latitude: number;
-  longitude: number;
-}
-
-export interface CoordinateType {
-  storeId: number;
-  latitude: number;
-  longitutde: number;
-}
 
 export type BottomSheetState = 'closed' | 'default' | 'opened';
