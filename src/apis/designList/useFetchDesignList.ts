@@ -19,17 +19,16 @@ const fetchDesignList = async (
   } catch (error) {
     const errorResponse = error as ErrorResponse;
     console.log(errorResponse.response.data.code);
-    // if (errorResponse.response.data.code === 40410) {
-    //   return {
-    //     nextCakeIdCursor: 0,
-    //     nextCakeLikesCursor: 0,
-    //     isLastData: false,
-    //     cakeCount: 0,
-    //     cakes: [],
-    //   };
-    // } 
-      throw error;
-    
+    if (errorResponse.response.data.code === 40410) {
+      return {
+        nextCakeIdCursor: 0,
+        nextCakeLikesCursor: 0,
+        isLastData: false,
+        cakeCount: 0,
+        cakes: [],
+      };
+    }
+    throw error;
   }
 };
 

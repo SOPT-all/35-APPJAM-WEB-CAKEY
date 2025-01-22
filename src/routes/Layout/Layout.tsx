@@ -4,10 +4,10 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { Outlet, useLocation } from 'react-router-dom';
 
 import { Header } from '@components';
-import Loading from '@pages/error/Loading';
+import Loading from '@pages/status/Loading/Loading';
 import useScrollTop from 'src/hooks/useScrollTop';
 
-import { Error } from '@pages/error';
+import { Error } from '@pages/status';
 
 import { spacing } from './Layout.css';
 import routePath from '../routePath';

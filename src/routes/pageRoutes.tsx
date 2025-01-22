@@ -1,6 +1,6 @@
 import { RouteObject } from 'react-router-dom';
 
-import NotFound from '@pages/error/NotFound';
+import NotFound from '@pages/status/Error/NotFound';
 import {
   authRoutes,
   designListRoutes,

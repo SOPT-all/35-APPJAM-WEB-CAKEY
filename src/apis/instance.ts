@@ -2,8 +2,6 @@ import axios from 'axios';
 
 import { BASE_URL } from '@constants';
 
-import { onErrorResponse } from './error';
-
 export const instance = axios.create({
   baseURL: BASE_URL,
 
@@ -29,5 +27,3 @@ export function patch<T>(...args: Parameters<typeof instance.patch>) {
 export function del<T>(...args: Parameters<typeof instance.delete>) {
   return instance.delete<T>(...args);
 }
-
-instance.interceptors.response.use((response) => response, onErrorResponse);
