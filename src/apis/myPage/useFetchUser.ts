@@ -15,7 +15,7 @@ const fetchUser = async (): Promise<UserResponse> => {
   } catch (error) {
     console.log(error);
     const errorResponse = error as ErrorResponse;
-    if (errorResponse.response.data.code === 40431) {
+    if (errorResponse.response.status === 401) {
       return {
         userName: '',
         userEmail: '',

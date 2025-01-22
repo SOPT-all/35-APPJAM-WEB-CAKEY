@@ -18,8 +18,7 @@ const fetchDesignList = async (
     return response.data.data;
   } catch (error) {
     const errorResponse = error as ErrorResponse;
-    console.log(errorResponse.response.data.code);
-    if (errorResponse.response.data.code === 40410) {
+    if (errorResponse.response.status === 404) {
       return {
         nextCakeIdCursor: 0,
         nextCakeLikesCursor: 0,
