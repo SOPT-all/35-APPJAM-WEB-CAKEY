@@ -13,6 +13,7 @@ export const homePageLayout = style([
 export const mainSectionContainer = style({
   width: '100%',
   position: 'relative',
+  cursor: 'pointer',
 });
 
 export const mainContentContainer = style([

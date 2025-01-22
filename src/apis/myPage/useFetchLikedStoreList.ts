@@ -20,8 +20,7 @@ const fetchLikedStoreList = async (
     return response.data.data;
   } catch (error) {
     const errorResponse = error as ErrorResponse;
-    console.log(errorResponse.response.data.code);
-    if (errorResponse.response.data.code === 40420) {
+    if (errorResponse.response.status === 404) {
       return {
         nextStoreIdCursor: -1,
         nextLikesCursor: undefined,

@@ -11,10 +11,17 @@ export const END_POINT = {
     themeName: string
   ) =>
     `/api/v1/cake/select/${cakeId}?dayCategory=${dayCategory}&themeName=${themeName}`,
+
   FETCH_LIKED_STORE_LIST: (option: string, pageParam?: string) =>
     pageParam
       ? `/api/v1/store/likes/${option}?storeIdCursor=${pageParam}`
       : `/api/v1/store/likes/${option}`,
+
+  FETCH_LIKED_CAKE_LIST: (option: string, pageParam?: string) =>
+    pageParam
+      ? `/api/v1/cake/likes/${option}?cakeIdCursor=${pageParam}`
+      : `/api/v1/cake/likes/${option}`,
+
   FETCH_STORE_COORDINATE_LIST: (station: string) =>
     `/api/v1/store/coordinate-list?station=${station}`,
   FETCH_SELECT_STORE_COORDINATE: (storeId: number) =>
@@ -28,7 +35,8 @@ export const END_POINT = {
   FETCH_STORE_DETAIL_INFO: (storeId: number) =>
     `/api/v1/store/${storeId}/information`,
   FETCH_STORE_LINK: (storeId: number) => `/api/v1/store/kakaoLink/${storeId}`,
-  FETCH_USER: '/api/v1/user',
+  FETCH_USER: '/api/v1/user/name-email',
+  DELETE_USER_LOGOUT: '/api/v1/user/logout',
   FETCH_CAKE_RANK: '/api/v1/cake/rank',
   POST_LIKE: (type: 'cake' | 'store', id: number) =>
     `/api/v1/${type}/likes/${id}`,

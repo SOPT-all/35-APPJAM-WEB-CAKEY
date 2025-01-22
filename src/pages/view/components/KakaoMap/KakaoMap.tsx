@@ -14,7 +14,7 @@ import {
   IcSavedOn24,
 } from '@svgs';
 
-import { buttonSectionStyle, mapContainer } from './kakaoMap.css';
+import { buttonSectionStyle, mapContainer, mapStyle } from './kakaoMap.css';
 import MapBottomSheet from '../MapBottomSheet/MapBottomSheet';
 import MapButton from '../MapButton/MapButton';
 import SelectedStoreModal from '../SelectedStoreModal/SelectedStoreModal';
@@ -40,7 +40,7 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
     handleSaveButtonClick,
     handleMarkerClick,
     handleMapClick,
-  } = useKakaoMap(currentLocation, handleAnimateChange);
+  } = useKakaoMap(currentLocation, animateState, handleAnimateChange);
 
   return (
     <>
@@ -48,7 +48,7 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
         <Map
           center={center}
           level={4}
-          style={{ width: '100%', height: '100%' }}
+          className={mapStyle({ animateState })}
           onCenterChanged={handleCenterChanged}
           onClick={handleMapClick}
         >

@@ -8,6 +8,7 @@ export const container = style([
   {
     width: '100%',
     gap: '1rem',
+    cursor: 'pointer'
   },
 ]);
 

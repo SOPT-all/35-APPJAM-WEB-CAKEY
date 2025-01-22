@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { useFetchLikedStoreList } from '@apis/myPage/useFetchLikedStoreList';
+import { useFetchLikedCakeList, useFetchLikedStoreList } from '@apis/myPage';
 
 import { CardList, Tab } from '@components';
 import useFilteredCardList from 'src/hooks/useFilteredCardList';
@@ -24,6 +24,8 @@ const LikeListPage = () => {
 
   // 찜한 스토어 조회 api (마이리스트 페이지, 지도 페이지)
   const { data: LikedStoreListData } = useFetchLikedStoreList(option);
+  // 찜한 케이크(디자인) 조회 api (마이리스트 페리지)
+  const { data: LikedCakeListData } = useFetchLikedCakeList(option);
 
   return (
     <div className={myListContainer}>
@@ -46,10 +48,9 @@ const LikeListPage = () => {
             handleOptionSelect={handleOptionSelect}
           />
         ) : (
-          // 여기 일단 store로 둠 ... 나중에 design 연결하는 사람이 바꿔라 ㅋㅋ
           <CardList
-            item="likedStore"
-            itemData={LikedStoreListData}
+            item="likedDesign"
+            itemData={LikedCakeListData}
             option={option}
             handleOptionSelect={handleOptionSelect}
           />
