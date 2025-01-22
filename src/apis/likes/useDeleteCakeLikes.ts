@@ -8,7 +8,7 @@ import { MutateResposneType } from '@types';
 
 const deleteCakeLikes = async (cakeId: number): Promise<MutateResposneType> => {
   try {
-    const response = await instance.delete(END_POINT.DELETE_CAKE_LIKES(cakeId));
+    const response = await instance.delete(END_POINT.DELETE_LIKE('cake', cakeId));
     return response.data;
   } catch (error) {
     console.log(error);

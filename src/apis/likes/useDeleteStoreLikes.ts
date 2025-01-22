@@ -10,9 +10,7 @@ const deleteStoreLikes = async (
   storeId: number
 ): Promise<MutateResposneType> => {
   try {
-    const response = await instance.delete(
-      END_POINT.DELETE_STORE_LIKES(storeId)
-    );
+    const response = await instance.delete(END_POINT.DELETE_LIKE('store', storeId));
     return response.data;
   } catch (error) {
     console.log(error);
