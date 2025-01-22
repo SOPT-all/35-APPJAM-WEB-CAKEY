@@ -20,13 +20,13 @@ const fetchDesignList = async (
     const errorResponse = error as ErrorResponse;
     console.log(errorResponse.response.data.code);
     if (errorResponse.response.data.code === 40420) {
-      return {
-        nextCakeIdCursor: 0,
-        nextCakeLikesCursor: 0,
-        isLastData: false,
-        cakeCount: 0,
-        cakes: [],
-      };
+      // return {
+      //   nextCakeIdCursor: 0,
+      //   nextCakeLikesCursor: 0,
+      //   isLastData: false,
+      //   cakeCount: 0,
+      //   cakes: [],
+      // };
     }
     throw error;
   }
