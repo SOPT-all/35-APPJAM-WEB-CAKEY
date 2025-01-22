@@ -5,6 +5,7 @@ import {
   cardListContainer,
   cardListNullTextStyle,
   cardListTextWrapper,
+  cardListTextStyle,
   countNumberStyle,
   countTextStyle,
   designCardListWrapper,
@@ -108,7 +109,7 @@ const CardList = ({
       {cardListData && cardListData.length > 0 ? (
         <>
           <div className={cardListTextWrapper}>
-            <div>
+            <div className={cardListTextStyle}>
               {(item === 'store' || item === 'design') && (
                 <span className={countNumberStyle}>{cardListCount}</span>
               )}

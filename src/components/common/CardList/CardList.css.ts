@@ -18,6 +18,13 @@ export const cardListTextWrapper = style([
   },
 ]);
 
+export const cardListTextStyle = style([
+  flexGenerator(),
+  {
+    gap: '0.2rem',
+  },
+]);
+
 export const countNumberStyle = style([
   vars.fonts.body04_m_16,
   {
@@ -39,6 +46,7 @@ export const storeCardListWrapper = style([
     gap: '1.2rem',
   },
 ]);
+
 export const designCardListWrapper = style({
   width: '100%',
   display: 'grid',
