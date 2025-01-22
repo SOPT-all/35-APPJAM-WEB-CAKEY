@@ -5,3 +5,7 @@ export const getToken = () => {
 export const isLoggedIn = () => {
   return Boolean(getToken());
 };
+
+export const removeUser = () => {
+  return localStorage.removeItem('user');
+};

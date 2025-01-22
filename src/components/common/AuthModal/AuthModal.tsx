@@ -1,3 +1,5 @@
+import { useDeleteLogout } from '@apis/auth';
+
 import { useEasyNavigate } from '@hooks';
 
 import { authModalContainer, buttonSet, modalMessage } from './AuthModal.css';
@@ -16,7 +18,16 @@ const AuthModal = ({
   authActionButtonText,
   onClose,
 }: AuthModalProps) => {
+  const { mutate: logout } = useDeleteLogout();
   const { goLoginPage } = useEasyNavigate();
+
+  const handleActionButtonClick = () => {
+    if (authActionButtonText === '로그아웃') {
+      logout();
+    } else {
+      goLoginPage();
+    }
+  };
   return (
     <div className={authModalContainer}>
       <h1 className={modalMessage}>{modalText}</h1>
@@ -24,7 +35,11 @@ const AuthModal = ({
         <TextButton size={'small'} color={'gray'} onClick={onClose}>
           {closeButtonText}
         </TextButton>
-        <TextButton size={'small'} color={'red'} onClick={goLoginPage}>
+        <TextButton
+          size={'small'}
+          color={'red'}
+          onClick={handleActionButtonClick}
+        >
           {authActionButtonText}
         </TextButton>
       </div>

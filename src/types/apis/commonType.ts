@@ -13,9 +13,6 @@ export interface MutateResposneType {
 
 export interface ErrorResponse {
   response: {
-    data: {
-      code: number;
-      message: string;
-    };
+    status: number;
   };
 }
