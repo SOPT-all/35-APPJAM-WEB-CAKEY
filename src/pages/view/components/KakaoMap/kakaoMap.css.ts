@@ -23,13 +23,14 @@ export const mapStyle = recipe({
   base: {
     position: 'absolute',
     width: '100%',
+    height: '100%',
     zIndex: 0,
   },
   variants: {
     animateState: {
       default: { height: '60vh' },
       closed: { height: '87vh', top: '5vh' },
-      opened: {},
+      opened: { height: '87vh' },
     },
   },
   defaultVariants: {

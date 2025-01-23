@@ -14,7 +14,6 @@ const DEFAULT_CENTER = { lat: 37.556621, lng: 126.923877 };
 
 export const useKakaoMap = (
   currentLocation: StationType,
-  animateState: BottomSheetState,
   handleAnimateChange: (animate: BottomSheetState) => void
 ) => {
   const { data: storeCoordinateList } = useFetchStoreCoordinateList(
@@ -49,8 +48,6 @@ export const useKakaoMap = (
 
   const location = useLocation();
   const locationState = location?.state?.location || null;
-  // console.log('locationState', locationState);
-  // console.log(currentPosition);
 
   const fetchCurrentPosition = () => {
     if (navigator.geolocation) {
@@ -124,19 +121,20 @@ export const useKakaoMap = (
   useEffect(() => {
     if (currentLocation) {
       setIsSaveActive(false);
+      setIsGpsActive(false);
       if (currentLocation.stationEnName === 'ALL') {
         fetchCurrentPosition();
       } else {
+        setCenter({
+          lat: currentLocation.latitude,
+          lng: currentLocation.longitude,
+        });
         setStoreMarkerList(
           storeCoordinateList.map((location) => ({
             ...location,
             clicked: false,
           }))
         );
-        setCenter({
-          lat: currentLocation.latitude,
-          lng: currentLocation.longitude,
-        });
       }
     }
   }, [currentLocation, storeCoordinateList]);
@@ -177,12 +175,10 @@ export const useKakaoMap = (
       });
 
       setSelectedStoreId(locationState.storeId);
+      setIsGpsActive(false);
+      handleAnimateChange('closed');
     }
   }, [locationState]);
-
-  useEffect(() => {
-    setCenter(currentPosition);
-  }, [animateState, currentPosition]);
 
   return {
     selectedStoreId,
@@ -191,6 +187,7 @@ export const useKakaoMap = (
     center,
     isSaveActive,
     isGpsActive,
+    setCenter,
     handleCenterChanged,
     handleGpsButtonClick,
     handleSaveButtonClick,
