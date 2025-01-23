@@ -1,4 +1,4 @@
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { instance } from '@apis/instance';
 
@@ -17,10 +17,13 @@ const deleteLogout = async () => {
 };
 
 export const useDeleteLogout = () => {
+  const queryClient = useQueryClient();
   const { goHomePage } = useEasyNavigate();
+
   return useMutation({
     mutationFn: deleteLogout,
     onSuccess: () => {
+      queryClient.clear();
       removeUser();
       goHomePage();
     },

@@ -4,18 +4,24 @@ import { instance } from '@apis/instance';
 
 import { END_POINT, queryKey } from '@constants';
 
-import { ApiResponseType, UserResponse } from '@types';
+import { ApiResponseType, ErrorResponse, UserResponse } from '@types';
 
 const fetchUser = async (): Promise<UserResponse> => {
-  const response = await instance.get<ApiResponseType<UserResponse>>(
-    END_POINT.FETCH_USER
-  );
-  if (!response.data)
-    return {
-      userName: '',
-      userEmail: '',
-    };
-  return response.data.data;
+  try {
+    const response = await instance.get<ApiResponseType<UserResponse>>(
+      END_POINT.FETCH_USER
+    );
+    return response.data.data;
+  } catch (error) {
+    const errorResponse = error as ErrorResponse;
+    if (errorResponse.response.status === 401) {
+      return {
+        userName: '',
+        userEmail: '',
+      };
+    }
+    throw error;
+  }
 };
 
 export const useFetchUser = () => {
