@@ -4,4 +4,5 @@ export interface ToastState {
   icon: ToastType;
   message: string;
   isButton?: boolean;
+  targetPath?: string; 
 }

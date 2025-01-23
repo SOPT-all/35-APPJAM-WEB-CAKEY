@@ -33,5 +33,5 @@ export const loginButtonWrapper = style([
 
 export const noLoginButton = style([
   vars.fonts.body07_r_14,
-  { color: vars.colors.gray900 },
+  { color: vars.colors.gray900, cursor: 'pointer' },
 ]);

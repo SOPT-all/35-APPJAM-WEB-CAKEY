@@ -13,15 +13,11 @@ import {
 const fetchStoreCoordinateList = async (
   station: string
 ): Promise<StoreCoordinate[]> => {
-  try {
-    const response = await instance.get<
-      ApiResponseType<StoreCoordinateListResponse>
-    >(END_POINT.FETCH_STORE_COORDINATE_LIST(station));
-    return response.data.data.stores;
-  } catch (error) {
-    console.log(error);
-    throw error;
-  }
+  const response = await instance.get<
+    ApiResponseType<StoreCoordinateListResponse>
+  >(END_POINT.FETCH_STORE_COORDINATE_LIST(station));
+  if (!response.data) return [];
+  return response.data.data.stores;
 };
 
 export const useFetchStoreCoordinateList = (station: string) => {

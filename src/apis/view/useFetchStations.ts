@@ -7,15 +7,11 @@ import { END_POINT, queryKey } from '@constants';
 import { ApiResponseType, StationType } from '@types';
 
 const fetchStations = async (): Promise<StationType[] | null> => {
-  try {
-    const response = await instance.get<ApiResponseType<StationType[]>>(
-      END_POINT.FETCH_STORE_STATIONS
-    );
-    return response.data.data;
-  } catch (error) {
-    console.log(error);
-    return null;
-  }
+  const response = await instance.get<ApiResponseType<StationType[]>>(
+    END_POINT.FETCH_STORE_STATIONS
+  );
+  if (!response.data) return null;
+  return response.data.data;
 };
 
 export const useFetchStations = () => {

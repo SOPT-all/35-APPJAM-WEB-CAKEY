@@ -4,37 +4,21 @@ import { instance } from '@apis/instance';
 
 import { END_POINT, queryKey } from '@constants';
 
-import {
-  ApiResponseType,
-  DesignCardListType,
-  ErrorResponse,
-  OptionType,
-} from '@types';
+import { ApiResponseType, DesignCardListType, OptionType } from '@types';
 
 const fetchLikesCardList = async (
   option: OptionType,
   cakeLikesCursor: number,
   cakeIdCursor: number
 ): Promise<DesignCardListType> => {
-  try {
-    const url = END_POINT.FETCH_LIKED_CAKE_LIST(
-      option,
-      cakeLikesCursor,
-      cakeIdCursor
-    );
-    const response =
-      await instance.get<ApiResponseType<DesignCardListType>>(url);
-    return response.data.data;
-  } catch (error) {
-    const errorResponse = error as ErrorResponse;
-    if (errorResponse.response.status === 404)
-      return {
-        cakeCount: 0,
-        isLastData: true,
-        cakes: [],
-      };
-    throw error;
-  }
+  const url = END_POINT.FETCH_LIKED_CAKE_LIST(
+    option,
+    cakeLikesCursor,
+    cakeIdCursor
+  );
+  const response = await instance.get<ApiResponseType<DesignCardListType>>(url);
+  if (!response.data) return { cakeCount: 0, isLastData: true, cakes: [] };
+  return response.data.data;
 };
 
 export const useFetchLikedCakeList = (
@@ -69,5 +53,6 @@ export const useFetchLikedCakeList = (
     },
     initialPageParam: { cakeLikesCursor: undefined, cakeIdCursor: undefined },
     enabled: isEnabled,
+    gcTime: 0,
   });
 };

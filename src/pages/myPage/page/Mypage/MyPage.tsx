@@ -1,14 +1,16 @@
 import { useFetchUser } from '@apis/myPage';
 
-import { AuthModal, Modal, TextButton } from '@components';
+import { AuthModal, Footer, Modal, TextButton } from '@components';
 import { WHIPEE_CONTACT_FORM } from '@constants';
 import { useEasyNavigate, useModal } from '@hooks';
 import { LetsGoButton, ProfileCard } from '@pages/myPage/components';
 import { isLoggedIn } from '@utils';
 
 import {
+  footerWrapper,
   letsGoButtonWrapper,
   loginButton,
+  myPageLayout,
   profileCardStyle,
 } from './MyPage.css';
 
@@ -26,7 +28,7 @@ const MyPage = () => {
   const { data: userData } = useFetchUser();
 
   return (
-    <>
+    <div className={myPageLayout}>
       <section className={profileCardStyle[isLogin ? 'login' : 'logout']}>
         <ProfileCard
           isLogin={isLogin}
@@ -49,6 +51,10 @@ const MyPage = () => {
         </div>
       )}
 
+      <div className={footerWrapper}>
+        <Footer />
+      </div>
+
       {isModalOpen && (
         <Modal variant={'center'} hasBackdrop backdropClick={closeModal}>
           <AuthModal
@@ -59,7 +65,7 @@ const MyPage = () => {
           />
         </Modal>
       )}
-    </>
+    </div>
   );
 };
 

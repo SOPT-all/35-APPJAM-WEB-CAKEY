@@ -29,6 +29,7 @@ globalStyle('html, body', {
       alignItems: 'center',
       scrollBehavior: 'smooth',
       overscrollBehavior: 'none',
+      WebkitTapHighlightColor: 'transparent',
     },
   },
 });

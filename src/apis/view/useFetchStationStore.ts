@@ -12,21 +12,16 @@ const fetchStationStore = async (
   storeLikesCursor: number,
   storeIdCursor: number
 ): Promise<StationStoreResponse> => {
-  try {
-    const url = END_POINT.FETCH_STATION_STORE_LIST(
-      option,
-      station,
-      storeLikesCursor,
-      storeIdCursor
-    );
-    const response =
-      await instance.get<ApiResponseType<StationStoreResponse>>(url);
-
-    return response.data.data;
-  } catch (error) {
-    console.log(error);
-    throw error;
-  }
+  const url = END_POINT.FETCH_STATION_STORE_LIST(
+    option,
+    station,
+    storeLikesCursor,
+    storeIdCursor
+  );
+  const response =
+    await instance.get<ApiResponseType<StationStoreResponse>>(url);
+  if (!response.data) return { isLastData: true, storeCount: 0, stores: [] };
+  return response.data.data;
 };
 
 export const useFetchStationStore = (

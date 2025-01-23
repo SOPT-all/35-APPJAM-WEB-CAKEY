@@ -18,7 +18,7 @@ import {
 } from './LoginPage.css';
 
 const LoginPage = () => {
-  const { goHomePage } = useEasyNavigate();
+  const { goHomePage, goBack } = useEasyNavigate();
   const kakaoLoginUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${
     import.meta.env.VITE_REST_API_KEY
   }&redirect_uri=${import.meta.env.VITE_REDIRECT_URI}&response_type=code`;
@@ -47,7 +47,9 @@ const LoginPage = () => {
           <SocialLoginButton platform="kakao" onClick={handleLoginClick}>
             카카오로 시작하기
           </SocialLoginButton>
-          <u className={noLoginButton}>로그인 없이 둘러보기</u>
+          <u className={noLoginButton} onClick={goBack}>
+            로그인 없이 둘러보기
+          </u>
         </div>
       </div>
     </div>
