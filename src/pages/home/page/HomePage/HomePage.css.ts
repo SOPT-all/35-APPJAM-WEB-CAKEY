@@ -80,9 +80,28 @@ export const cakeSectionWrapper = style([
   { width: '100%', gap: '1.8rem' },
 ]);
 
+export const subTextWrapper = style([
+  flexGenerator('row', 'space-between'),
+  { width: '100%' },
+]);
+
 export const subTextStyle = style([
   vars.fonts.head03_b_18,
   { color: vars.colors.gray800 },
+]);
+
+export const allButtonWrapper = style([
+  flexGenerator(),
+  {
+    gap: '0.4rem',
+  },
+]);
+
+export const allButtonStyle = style([
+  vars.fonts.body05_m_14,
+  {
+    color: vars.colors.gray500,
+  },
 ]);
 
 export const cakeTextStyle = style([
