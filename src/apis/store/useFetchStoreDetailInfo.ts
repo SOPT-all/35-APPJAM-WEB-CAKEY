@@ -8,16 +8,12 @@ import { ApiResponseType, StoreDetailInfoResponse } from '@types';
 
 const fetchStoreDetailInfo = async (
   storeId: number
-): Promise<StoreDetailInfoResponse> => {
-  try {
-    const response = await instance.get<
-      ApiResponseType<StoreDetailInfoResponse>
-    >(END_POINT.FETCH_STORE_DETAIL_INFO(storeId));
-    return response.data.data;
-  } catch (error) {
-    console.error();
-    throw error;
-  }
+): Promise<StoreDetailInfoResponse | null> => {
+  const response = await instance.get<ApiResponseType<StoreDetailInfoResponse>>(
+    END_POINT.FETCH_STORE_DETAIL_INFO(storeId)
+  );
+  if (!response.data) return null;
+  return response.data.data;
 };
 
 export const useFetchStoreDetailInfo = (storeId: number) => {

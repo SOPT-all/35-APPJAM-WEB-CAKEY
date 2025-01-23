@@ -8,6 +8,19 @@ export const instance = axios.create({
   withCredentials: true,
 });
 
+instance.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    const errorCodes = [40410, 40420, 40422, 40423, 40424];
+
+    if (errorCodes.includes(error.response?.data?.code)) {
+      return Promise.resolve({ data: null });
+    }
+
+    return Promise.reject(error);
+  }
+);
+
 export function get<T>(...args: Parameters<typeof instance.get>) {
   return instance.get<T>(...args);
 }

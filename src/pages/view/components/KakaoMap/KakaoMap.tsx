@@ -99,7 +99,7 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
         />
       ) : (
         <Modal variant="bottom">
-          <SelectedStoreModal storeId={1} />
+          <SelectedStoreModal storeId={selectedStoreId} />
         </Modal>
       )}
     </>

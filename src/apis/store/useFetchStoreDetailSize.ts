@@ -9,15 +9,15 @@ import { ApiResponseType, StoreDetailMenuResponse } from '@types';
 const fetchStoreDetailSize = async (
   storeId: number
 ): Promise<StoreDetailMenuResponse> => {
-  try {
-    const response = await instance.get<
-      ApiResponseType<StoreDetailMenuResponse>
-    >(END_POINT.FETCH_STORE_DETAIL_SIZE(storeId));
-    return response.data.data;
-  } catch (error) {
-    console.error();
-    throw error;
-  }
+  const response = await instance.get<ApiResponseType<StoreDetailMenuResponse>>(
+    END_POINT.FETCH_STORE_DETAIL_SIZE(storeId)
+  );
+  if (!response.data)
+    return {
+      sizeDtoList: [],
+      taste: '',
+    };
+  return response.data.data;
 };
 
 export const useFetchStoreDetailSize = (storeId: number) => {

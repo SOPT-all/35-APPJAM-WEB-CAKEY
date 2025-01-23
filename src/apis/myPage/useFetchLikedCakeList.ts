@@ -27,14 +27,12 @@ const fetchLikesCardList = async (
     return response.data.data;
   } catch (error) {
     const errorResponse = error as ErrorResponse;
-    if (errorResponse.response.status === 404) {
+    if (errorResponse.response.status === 404)
       return {
-        nextCakeIdCursor: -1,
-        cakeCount: -1,
-        isLastData: false,
+        cakeCount: 0,
+        isLastData: true,
         cakes: [],
       };
-    }
     throw error;
   }
 };
@@ -50,8 +48,6 @@ export const useFetchLikedCakeList = (
         cakeLikesCursor: number;
         cakeIdCursor: number;
       };
-
-      console.log(param);
       return fetchLikesCardList(
         option,
         param.cakeLikesCursor,

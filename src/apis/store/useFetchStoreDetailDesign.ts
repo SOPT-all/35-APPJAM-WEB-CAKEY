@@ -13,15 +13,11 @@ import {
 const fetchStoreDetailDesign = async (
   storeId: number
 ): Promise<StoreDetailDesign[]> => {
-  try {
-    const response = await instance.get<
-      ApiResponseType<StoreDetailDesignResponse>
-    >(END_POINT.FETCH_STORE_DETAIL_DESIGN(storeId));
-    return response.data.data.storeDesignDtoList;
-  } catch (error) {
-    console.error();
-    throw error;
-  }
+  const response = await instance.get<
+    ApiResponseType<StoreDetailDesignResponse>
+  >(END_POINT.FETCH_STORE_DETAIL_DESIGN(storeId));
+  if (!response.data) return [];
+  return response.data.data.storeDesignDtoList;
 };
 
 export const useFetchStoreDetailDesign = (storeId: number) => {
