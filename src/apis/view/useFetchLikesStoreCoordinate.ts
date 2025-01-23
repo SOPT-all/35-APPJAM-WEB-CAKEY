@@ -6,7 +6,6 @@ import { END_POINT, queryKey } from '@constants';
 
 import {
   ApiResponseType,
-  ErrorResponse,
   StoreCoordinate,
   StoreCoordinateListResponse,
 } from '@types';

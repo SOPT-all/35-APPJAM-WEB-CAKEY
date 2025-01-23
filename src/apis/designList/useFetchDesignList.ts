@@ -4,12 +4,7 @@ import { instance } from '@apis/instance';
 
 import { END_POINT, queryKey } from '@constants';
 
-import {
-  ApiResponseType,
-  DesignCardListType,
-  ErrorResponse,
-  OptionType,
-} from '@types';
+import { ApiResponseType, DesignCardListType, OptionType } from '@types';
 
 const fetchDesignList = async (
   option: OptionType,
