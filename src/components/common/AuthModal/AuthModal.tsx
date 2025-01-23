@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { useDeleteLogout } from '@apis/auth';
 
 import { useEasyNavigate } from '@hooks';
@@ -21,7 +23,12 @@ const AuthModal = ({
   const { mutate: logout } = useDeleteLogout();
   const { goLoginPage } = useEasyNavigate();
 
-  const handleActionButtonClick = () => {
+  const handleCloseClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    onClose();
+  };
+  const handleActionButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
     if (authActionButtonText === '로그아웃') {
       logout();
     } else {
@@ -32,7 +39,7 @@ const AuthModal = ({
     <div className={authModalContainer}>
       <h1 className={modalMessage}>{modalText}</h1>
       <div className={buttonSet}>
-        <TextButton size={'small'} color={'gray'} onClick={onClose}>
+        <TextButton size={'small'} color={'gray'} onClick={handleCloseClick}>
           {closeButtonText}
         </TextButton>
         <TextButton
