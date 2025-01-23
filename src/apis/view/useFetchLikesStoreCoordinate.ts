@@ -16,6 +16,7 @@ const fetchLikesStoreCoordinate = async (): Promise<StoreCoordinate[]> => {
     const response = await instance.get<
       ApiResponseType<StoreCoordinateListResponse>
     >(END_POINT.FETCH_LIKES_STORE_COORDINATE_LIST);
+    if (!response.data) return [];
     return response.data.data.stores;
   } catch (error) {
     const errorResponse = error as ErrorResponse;

@@ -17,29 +17,16 @@ const fetchStationDesign = async (
   cakeLikesCursor: number,
   cakeIdCursor: number
 ): Promise<StationDesignResponse> => {
-  try {
-    const url = END_POINT.FETCH_STATION_DESIGN_LIST(
-      option,
-      station,
-      cakeLikesCursor,
-      cakeIdCursor
-    );
-    const response =
-      await instance.get<ApiResponseType<StationDesignResponse>>(url);
-    return response.data.data;
-  } catch (error) {
-    console.log(error);
-    const errorResponse = error as ErrorResponse;
-    if (errorResponse.response.status === 404) {
-      return {
-        isLastData: true,
-        cakeCount: 0,
-        cakes: [],
-      };
-    } else {
-      throw error;
-    }
-  }
+  const url = END_POINT.FETCH_STATION_DESIGN_LIST(
+    option,
+    station,
+    cakeLikesCursor,
+    cakeIdCursor
+  );
+  const response =
+    await instance.get<ApiResponseType<StationDesignResponse>>(url);
+  if (!response.data) return { isLastData: true, cakeCount: 0, cakes: [] };
+  return response.data.data;
 };
 
 export const useFetchStationDesign = (
