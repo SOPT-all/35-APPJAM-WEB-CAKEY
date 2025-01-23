@@ -136,17 +136,19 @@ export const useKakaoMap = (
           }))
         );
       }
+    } else {
+      handleAnimateChange('default');
     }
   }, [currentLocation, storeCoordinateList]);
 
-  useEffect(() => {
-    fetchCurrentPosition();
-    if (storeCoordinateList) {
-      setStoreMarkerList(
-        storeCoordinateList.map((location) => ({ ...location, clicked: false }))
-      );
-    }
-  }, [storeCoordinateList]);
+  // useEffect(() => {
+  //   fetchCurrentPosition();
+  //   if (storeCoordinateList) {
+  //     setStoreMarkerList(
+  //       storeCoordinateList.map((location) => ({ ...location, clicked: false }))
+  //     );
+  //   }
+  // }, [storeCoordinateList]);
 
   useEffect(() => {
     if (storeCoordinateList) {
@@ -161,6 +163,7 @@ export const useKakaoMap = (
 
   useEffect(() => {
     if (locationState) {
+      setIsGpsActive(false);
       setStoreMarkerList([
         {
           ...locationState,
@@ -175,7 +178,6 @@ export const useKakaoMap = (
       });
 
       setSelectedStoreId(locationState.storeId);
-      setIsGpsActive(false);
       handleAnimateChange('closed');
     }
   }, [locationState]);
