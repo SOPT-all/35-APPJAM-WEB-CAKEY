@@ -4,6 +4,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { Outlet, useLocation } from 'react-router-dom';
 
 import { Header } from '@components';
+import { ToastProvider } from '@contexts';
 import Loading from '@pages/status/Loading/Loading';
 import useScrollTop from 'src/hooks/useScrollTop';
 
@@ -20,10 +21,11 @@ const Layout = () => {
   useScrollTop(location.pathname);
 
   return (
-      <QueryErrorResetBoundary>
-        {({ reset }) => (
-          <ErrorBoundary onReset={reset} FallbackComponent={Error}>
-            <Suspense fallback={<Loading />}>
+    <QueryErrorResetBoundary>
+      {({ reset }) => (
+        <ErrorBoundary onReset={reset} FallbackComponent={Error}>
+          <Suspense fallback={<Loading />}>
+            <ToastProvider>
               {!isLoginPage && (
                 <>
                   {isViewPage ? <Header bgColor="yellow" /> : <Header />}
@@ -31,10 +33,11 @@ const Layout = () => {
                 </>
               )}
               <Outlet />
-            </Suspense>
-          </ErrorBoundary>
-        )}
-      </QueryErrorResetBoundary>
+            </ToastProvider>
+          </Suspense>
+        </ErrorBoundary>
+      )}
+    </QueryErrorResetBoundary>
   );
 };
 

@@ -23,6 +23,10 @@ const useEasyNavigate = () => {
     navigate(routePath.LIKELISTPAGE);
   };
 
+  const goLikeListPageByTab = (tap: string) => {
+    navigate(routePath.LIKELISTPAGE, { state: { tap } });
+  };
+
   const goStorePage = (storeId: number) => {
     navigate(routePath.STOREPAGE.replace(':id', String(storeId)));
   };
@@ -44,6 +48,7 @@ const useEasyNavigate = () => {
     goViewPage,
     goMyPage,
     goLikeListPage,
+    goLikeListPageByTab,
     goStorePage,
     goDesignListPage,
     goLoginPage,

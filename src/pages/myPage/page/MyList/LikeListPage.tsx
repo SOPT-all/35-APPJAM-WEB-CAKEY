@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import { useFetchLikedCakeList, useFetchLikedStoreList } from '@apis/myPage';
 
@@ -15,18 +15,18 @@ import {
 } from './LikeListPage.css';
 
 const LikeListPage = () => {
-  const [searchParams] = useSearchParams();
+  const location = useLocation();
   const [activeTab, setActiveTab] = useState(0);
 
   useEffect(() => {
-    const tabParam = searchParams.get('tab');
-    console.log(tabParam);
-    if (tabParam === 'store') {
+    const stateTab = location.state?.tap;
+
+    if (stateTab === 'save') {
       setActiveTab(0);
-    } else if (tabParam === 'cake') {
+    } else if (stateTab === 'like') {
       setActiveTab(1);
     }
-  }, [searchParams]);
+  }, [location.state]);
 
   const handleTab = (index: number) => {
     setActiveTab(index);

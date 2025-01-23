@@ -29,12 +29,7 @@ export const usePostCakeLikes = () => {
       });
       queryClient.invalidateQueries({ queryKey: [queryKey.LIKED_CAKE_LIST] });
 
-      showToast(
-        'like',
-        '케이크를 찜했어요',
-        true,
-        '/mypage/like-list?tab=cake'
-      );
+      showToast('like', '케이크를 찜했어요', true);
     },
   });
 };

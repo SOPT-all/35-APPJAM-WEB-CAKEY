@@ -9,12 +9,7 @@ import { ToastState, ToastType } from '@types';
 const TOAST_REMOVE_DELAY = 2000;
 
 interface ToastContextType {
-  showToast: (
-    icon: ToastType,
-    message: string,
-    isButton?: boolean,
-    targetPath?: string
-  ) => void;
+  showToast: (icon: ToastType, message: string, isButton?: boolean) => void;
 }
 
 const ToastContext = createContext<ToastContextType | undefined>(undefined);
@@ -28,13 +23,8 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const showToast = useCallback(
-    (
-      icon: ToastType,
-      message: string,
-      isButton?: boolean,
-      targetPath?: string
-    ) => {
-      setToast({ icon, message, isButton, targetPath });
+    (icon: ToastType, message: string, isButton?: boolean) => {
+      setToast({ icon, message, isButton });
 
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
@@ -56,7 +46,6 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
             icon={toast.icon}
             message={toast.message}
             isButton={toast.isButton}
-            targetPath={toast.targetPath}
           />
         )}
       </AnimatePresence>

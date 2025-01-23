@@ -7,6 +7,7 @@ import {
   usePostStoreLikes,
 } from '@apis/likes';
 
+import { useToast } from '@contexts';
 import { useModal } from '@hooks';
 
 import {
@@ -23,7 +24,6 @@ import AuthModal from '../AuthModal/AuthModal';
 import Modal from '../Modal/Modal';
 
 import { ErrorType } from '@types';
-import { useToast } from '@contexts';
 
 export interface IconButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {

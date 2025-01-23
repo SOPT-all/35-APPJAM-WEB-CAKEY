@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { createPortal } from 'react-dom';
 
+import { useEasyNavigate } from '@hooks';
+
 import { IcLineLikeOn20, IcSavedOn24, IcToastCheck, IcToastError } from '@svgs';
 
 import { toastButtonStyle, toastMessageStyle, toastStyle } from './Toast.css';
@@ -34,7 +36,13 @@ const toastIcon = {
 
 const portalElement = document.getElementById('toast') as HTMLElement;
 
-const Toast = ({ icon, message, isButton = false, targetPath }: ToastState) => {
+const Toast = ({ icon, message, isButton = false }: ToastState) => {
+  const { goLikeListPageByTab } = useEasyNavigate();
+
+  const handleNavigate = () => {
+    goLikeListPageByTab(icon);
+  };
+
   return createPortal(
     <motion.dialog
       className={toastStyle({ isButton })}
@@ -48,11 +56,8 @@ const Toast = ({ icon, message, isButton = false, targetPath }: ToastState) => {
         {toastIcon[icon]}
         <span>{message}</span>
       </div>
-      {isButton && targetPath && (
-        <button
-          className={toastButtonStyle}
-          onClick={() => (window.location.href = targetPath)}
-        >
+      {isButton && (
+        <button className={toastButtonStyle} onClick={handleNavigate}>
           보러가기
         </button>
       )}
