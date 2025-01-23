@@ -4,7 +4,7 @@ import { fixedGenerator } from '@styles/generator.css';
 import { vars } from '@styles/theme.css';
 
 export const overlayStyle = style([
-  fixedGenerator({ top: 0 }, 1),
+  fixedGenerator({ top: '11.2rem' }, 1),
   {
     height: 'calc(100dvh - 11.2rem)',
   },

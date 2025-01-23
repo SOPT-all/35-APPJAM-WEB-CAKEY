@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 
 import { Modal } from '@components';
@@ -35,19 +36,32 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
     center,
     isSaveActive,
     isGpsActive,
+    setCenter,
     handleCenterChanged,
     handleGpsButtonClick,
     handleSaveButtonClick,
     handleMarkerClick,
     handleMapClick,
-  } = useKakaoMap(currentLocation, animateState, handleAnimateChange);
+  } = useKakaoMap(currentLocation, handleAnimateChange);
+
+  useEffect(() => {
+    if (selectedStoreId !== 0) {
+      const clickedMarker = storeMarkerList.find((marker) => marker.clicked);
+      if (clickedMarker) {
+        setCenter({
+          lat: clickedMarker.latitude,
+          lng: clickedMarker.longitude,
+        });
+      }
+    }
+  }, [selectedStoreId, storeMarkerList, setCenter]);
 
   return (
     <>
       <div className={mapContainer}>
         <Map
           center={center}
-          level={4}
+          level={2}
           className={mapStyle({ animateState })}
           onCenterChanged={handleCenterChanged}
           onClick={handleMapClick}
