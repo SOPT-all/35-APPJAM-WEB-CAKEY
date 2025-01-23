@@ -7,15 +7,11 @@ import { END_POINT, queryKey } from '@constants';
 import { ApiResponseType, StoreRank, StoreRankResponse } from '@types';
 
 const fetchStoreRank = async (): Promise<StoreRank[]> => {
-  try {
-    const response = await instance.get<ApiResponseType<StoreRankResponse>>(
-      END_POINT.FETCH_STORE_RANK
-    );
-    return response.data.data.storeList;
-  } catch (error) {
-    console.log(error);
-    throw error;
-  }
+  const response = await instance.get<ApiResponseType<StoreRankResponse>>(
+    END_POINT.FETCH_STORE_RANK
+  );
+  if (!response.data) return [];
+  return response.data.data.storeList;
 };
 
 export const useFetchStoreRank = () => {
