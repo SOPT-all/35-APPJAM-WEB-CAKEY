@@ -31,15 +31,12 @@ const fetchDesignList = async (
     return response.data.data;
   } catch (error) {
     const errorResponse = error as ErrorResponse;
-    if (errorResponse.response.status === 404) {
+    if (errorResponse.response.status === 404)
       return {
-        nextCakeIdCursor: 0,
-        nextCakeLikesCursor: 0,
-        isLastData: false,
         cakeCount: 0,
+        isLastData: true,
         cakes: [],
       };
-    }
     throw error;
   }
 };

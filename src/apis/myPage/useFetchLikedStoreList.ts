@@ -27,14 +27,12 @@ const fetchLikedStoreList = async (
     return response.data.data;
   } catch (error) {
     const errorResponse = error as ErrorResponse;
-    if (errorResponse.response.status === 404) {
+    if (errorResponse.response.status === 404)
       return {
-        nextStoreIdCursor: -1,
-        nextLikesCursor: undefined,
         storeCount: 0,
-        stores: [], // 빈 배열 반환
+        isLastData: true,
+        stores: [],
       };
-    }
     throw error;
   }
 };
