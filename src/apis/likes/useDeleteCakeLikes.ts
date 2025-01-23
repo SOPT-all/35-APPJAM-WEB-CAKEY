@@ -30,7 +30,7 @@ export const useDeleteCakeLikes = () => {
         queryKey: [queryKey.STORE_DETAIL_DESIGN],
       });
       queryClient.invalidateQueries({ queryKey: [queryKey.LIKED_CAKE_LIST] });
-      showToast('check', '찜을 취소했어요', false);
+      showToast('check', '찜을 취소했어요');
     },
     onError: () => {
       showToast('error', '연결에 문제가 생겼어요');

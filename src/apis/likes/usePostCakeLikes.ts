@@ -27,7 +27,13 @@ export const usePostCakeLikes = () => {
         queryKey: [queryKey.STORE_DETAIL_DESIGN],
       });
       queryClient.invalidateQueries({ queryKey: [queryKey.LIKED_CAKE_LIST] });
-      showToast('like', '케이크를 찜했어요', true);
+
+      showToast(
+        'like',
+        '케이크를 찜했어요',
+        true,
+        '/mypage/like-list?tab=cake'
+      );
     },
     onError: () => {
       showToast('error', '연결에 문제가 생겼어요');

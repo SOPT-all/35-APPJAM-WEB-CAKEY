@@ -34,7 +34,7 @@ const toastIcon = {
 
 const portalElement = document.getElementById('toast') as HTMLElement;
 
-const Toast = ({ icon, message, isButton = false }: ToastState) => {
+const Toast = ({ icon, message, isButton = false, targetPath }: ToastState) => {
   return createPortal(
     <motion.dialog
       className={toastStyle({ isButton })}
@@ -48,10 +48,10 @@ const Toast = ({ icon, message, isButton = false }: ToastState) => {
         {toastIcon[icon]}
         <span>{message}</span>
       </div>
-      {isButton && (
+      {isButton && targetPath && (
         <button
           className={toastButtonStyle}
-          onClick={() => (window.location.href = '/mypage/like-list')}
+          onClick={() => (window.location.href = targetPath)}
         >
           보러가기
         </button>

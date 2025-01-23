@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import { useFetchLikedCakeList, useFetchLikedStoreList } from '@apis/myPage';
 
@@ -14,7 +15,18 @@ import {
 } from './LikeListPage.css';
 
 const LikeListPage = () => {
+  const [searchParams] = useSearchParams();
   const [activeTab, setActiveTab] = useState(0);
+
+  useEffect(() => {
+    const tabParam = searchParams.get('tab');
+    console.log(tabParam);
+    if (tabParam === 'store') {
+      setActiveTab(0);
+    } else if (tabParam === 'cake') {
+      setActiveTab(1);
+    }
+  }, [searchParams]);
 
   const handleTab = (index: number) => {
     setActiveTab(index);
