@@ -9,15 +9,17 @@ export const modalLayoutStyle = style([
     maxWidth: 'var(--max-width)',
     width: '100dvw',
     minHeight: '100dvh',
-    padding: '8rem 0rem 1.7rem',
+    paddingTop: '6rem',
   },
 ]);
 
 export const textSection = style([
   flexGenerator('column', 'flex-start', 'flex-start'),
   {
+    margin: '2rem 0 3.6rem',
     gap: '0.8rem',
     padding: '0 2rem',
+    width: '100%',
   },
 ]);
 
@@ -43,7 +45,6 @@ export const scrollSection = style([
     width: '100%',
     maxHeight: 'calc(100dvh - 8rem - 7.3rem - 4rem - 6rem)',
     overflowY: 'auto',
-    margin: '3.6rem 0 1.7rem 0',
     scrollbarGutter: 'stable',
 
     '::-webkit-scrollbar': {

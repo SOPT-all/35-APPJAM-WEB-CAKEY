@@ -14,6 +14,7 @@ import {
   sectionContainer,
   listContainer,
   tabWrapper,
+  spacing,
 } from './MapBottomSheet.css';
 
 import { BottomSheetState } from '@types';
@@ -101,6 +102,7 @@ const MapBottomSheet = ({
         </section>
       ) : selectedStation === 'ALL' ? (
         <div className={listContainer}>
+          <div className={spacing} />
           <CardList
             item="store"
             itemData={stationStoreData?.pages.flat()}

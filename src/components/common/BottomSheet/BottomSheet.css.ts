@@ -17,8 +17,8 @@ export const bottomSheetStyle = style([
     padding: '1.4rem 2rem 0',
 
     backgroundColor: vars.colors.white,
-    borderRadius: '2rem 2rem 0rem 0rem',
-    boxShadow: '0 0 2rem 0 rgba(0, 0, 0, 0.10)',
+    borderRadius: '20px 20px 0 0',
+    boxShadow: '0 0 20px 0 rgba(0, 0, 0, 0.10)',
     willChange: 'transform',
   },
 ]);
