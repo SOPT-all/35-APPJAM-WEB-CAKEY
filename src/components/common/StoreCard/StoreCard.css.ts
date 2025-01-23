@@ -12,6 +12,7 @@ export const storeCardContainer = style([
     border: `1px solid ${vars.colors.gray200}`,
     borderRadius: '8px',
     backgroundColor: vars.colors.white,
+    cursor: 'pointer'
   },
 ]);
 
