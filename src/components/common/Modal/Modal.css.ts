@@ -31,7 +31,7 @@ export const modalStyle = recipe({
         left: '50%',
         transform: 'translate(-50%, -50%)',
         borderRadius: '10px',
-        zIndex: 5, 
+        zIndex: 6, 
       },
       bottom: [
         fixedGenerator({ bottom: 0, center: true }, 4),
