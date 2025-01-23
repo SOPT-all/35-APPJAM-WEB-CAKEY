@@ -16,4 +16,7 @@ export const queryKey = {
   STORE_STATIONS: 'storeStations',
   CAKE_RANK: 'cakeRank',
   USER: 'user',
+  STATION_DESIGN_LIST: 'stationDesignList',
+  STATION_STORE_LIST: 'stationStoreList',
+  LIKED_STORE_DESIGN_LIST: 'likedStoreDesignList',
 } as const;

@@ -20,7 +20,7 @@ const fetchStoreLink = async (storeId: number): Promise<StoreLinkResponse> => {
 
 export const useFetchStoreLink = (storeId: number) => {
   return useSuspenseQuery({
-    queryKey: [queryKey.STORE_LINK],
+    queryKey: [queryKey.STORE_LINK, storeId],
     queryFn: () => fetchStoreLink(storeId),
   });
 };

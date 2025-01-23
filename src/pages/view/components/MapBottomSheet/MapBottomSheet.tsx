@@ -1,5 +1,12 @@
 import { useState } from 'react';
 
+import { useFetchLikedStoreList } from '@apis/myPage/useFetchLikedStoreList';
+import {
+  useFetchLikedStoreDesign,
+  useFetchStationDesign,
+  useFetchStationStore,
+} from '@apis/view';
+
 import { BottomSheet, CardList, Tab } from '@components';
 import { useFilteredCardList } from '@hooks';
 
@@ -26,33 +33,72 @@ const MapBottomSheet = ({
 }: MapBottomSheetProps) => {
   const [activeTab, setActiveTab] = useState(0);
 
-  const {
-    item: store,
-    handleOptionSelect: storeOptionSelect,
-    data: storeData,
-  } = useFilteredCardList({ item: 'store' });
-
-  const {
-    item: design,
-    handleOptionSelect: designOptionSelect,
-    data: designData,
-  } = useFilteredCardList({ item: 'design' });
+  const { option, handleOptionSelect } = useFilteredCardList();
 
   const handleTab = (index: number) => {
     setActiveTab(index);
   };
+
+  const { data: stationStoreData, fetchNextPage: fetchStationStoreNext } =
+    useFetchStationStore(option, selectedStation, selectedStation === 'ALL');
+
+  const { data: stationDesignData, fetchNextPage: fetchStationDesignNext } =
+    useFetchStationDesign(
+      option,
+      selectedStation,
+      !isSaveActive && selectedStation !== 'ALL' && activeTab === 1
+    );
+
+  const { data: likedStoreData, fetchNextPage: fetchLikedStoreNext } =
+    useFetchLikedStoreList(option, isSaveActive && activeTab === 0);
+
+  const {
+    data: likedStoreDesignData,
+    fetchNextPage: fetchLikedStoreDesignNext,
+  } = useFetchLikedStoreDesign(option, isSaveActive && activeTab === 1);
 
   return (
     <BottomSheet
       animateState={animateState}
       handleAnimateChange={handleAnimateChange}
     >
-      {selectedStation === 'ALL' ? (
+      {isSaveActive ? (
+        <section className={sectionContainer}>
+          <div className={tabWrapper}>
+            <Tab
+              tabType={'viewMyPage'}
+              activeTab={activeTab}
+              onTabChange={handleTab}
+            />
+          </div>
+          <div className={listContainer}>
+            {activeTab === 0 ? (
+              <CardList
+                item="likedStore"
+                itemData={likedStoreData?.pages.flat()}
+                option={option}
+                handleOptionSelect={handleOptionSelect}
+                fetchNextPage={fetchLikedStoreNext}
+              />
+            ) : (
+              <CardList
+                item="likedStoreDesign"
+                itemData={likedStoreDesignData?.pages.flat()}
+                option={option}
+                handleOptionSelect={handleOptionSelect}
+                fetchNextPage={fetchLikedStoreDesignNext}
+              />
+            )}
+          </div>
+        </section>
+      ) : selectedStation === 'ALL' ? (
         <div className={listContainer}>
           <CardList
-            item={store}
-            handleOptionSelect={storeOptionSelect}
-            itemData={storeData}
+            item="store"
+            itemData={stationStoreData?.pages.flat()}
+            option={option}
+            handleOptionSelect={handleOptionSelect}
+            fetchNextPage={fetchStationStoreNext}
           />
         </div>
       ) : (
@@ -64,40 +110,25 @@ const MapBottomSheet = ({
               onTabChange={handleTab}
             />
           </div>
-
-          {isSaveActive ? (
-            <>
-              {activeTab === 0 ? (
-                <CardList
-                  item={'likedStore'}
-                  handleOptionSelect={storeOptionSelect}
-                  itemData={storeData}
-                />
-              ) : (
-                <CardList
-                  item={'likedDesign'}
-                  handleOptionSelect={designOptionSelect}
-                  itemData={designData}
-                />
-              )}
-            </>
-          ) : (
-            <div className={listContainer}>
-              {activeTab === 0 ? (
-                <CardList
-                  item={store}
-                  handleOptionSelect={storeOptionSelect}
-                  itemData={storeData}
-                />
-              ) : (
-                <CardList
-                  item={design}
-                  handleOptionSelect={designOptionSelect}
-                  itemData={designData}
-                />
-              )}
-            </div>
-          )}
+          <div className={listContainer}>
+            {activeTab === 0 ? (
+              <CardList
+                item="store"
+                itemData={stationStoreData?.pages.flat()}
+                option={option}
+                handleOptionSelect={handleOptionSelect}
+                fetchNextPage={fetchStationStoreNext}
+              />
+            ) : (
+              <CardList
+                item="design"
+                itemData={stationDesignData?.pages.flat()}
+                option={option}
+                handleOptionSelect={handleOptionSelect}
+                fetchNextPage={fetchStationDesignNext}
+              />
+            )}
+          </div>
         </section>
       )}
     </BottomSheet>

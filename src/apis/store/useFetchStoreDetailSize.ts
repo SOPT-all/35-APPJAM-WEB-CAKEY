@@ -22,7 +22,7 @@ const fetchStoreDetailSize = async (
 
 export const useFetchStoreDetailSize = (storeId: number) => {
   return useSuspenseQuery({
-    queryKey: [queryKey.STORE_DETAIL_SIZE],
+    queryKey: [queryKey.STORE_DETAIL_SIZE, storeId],
     queryFn: () => fetchStoreDetailSize(storeId),
     staleTime: 1000 * 60 * 60 * 24, // 24시간
   });
