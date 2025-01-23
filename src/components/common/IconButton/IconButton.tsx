@@ -7,6 +7,8 @@ import {
   usePostStoreLikes,
 } from '@apis/likes';
 
+import { useModal } from '@hooks';
+
 import {
   IcFillLikeOff36,
   IcFillLikeOn36,
@@ -17,6 +19,10 @@ import {
 } from '@svgs';
 
 import { buttonStyle, countStyle } from './IconButton.css';
+import AuthModal from '../AuthModal/AuthModal';
+import Modal from '../Modal/Modal';
+
+import { ErrorType } from '@types';
 
 export interface IconButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -51,6 +57,7 @@ const IconButton = ({
   count,
   itemId,
 }: IconButtonProps) => {
+  const { isModalOpen, openModal, closeModal } = useModal();
   const [localActive, setLocalActive] = useState(isActive);
   const [localCount, setLocalCount] = useState<number | undefined>(count);
 
@@ -81,26 +88,48 @@ const IconButton = ({
 
     optimisticUpdate();
 
-    if (localActive) {
-      (isStore ? deleteStoreLikes : deleteCakeLikes)(itemId, {
-        onError: () => rollbackUpdate(),
-      });
-    } else {
-      (isStore ? postStoreLikes : postCakeLikes)(itemId, {
-        onError: () => rollbackUpdate(),
-      });
-    }
+    const mutationFn = localActive
+      ? isStore
+        ? deleteStoreLikes
+        : deleteCakeLikes
+      : isStore
+        ? postStoreLikes
+        : postCakeLikes;
+
+    mutationFn(itemId, {
+      onError: (error: ErrorType) => {
+        rollbackUpdate();
+        if (error.status === 401) {
+          openModal();
+        }
+      },
+    });
   };
 
   return (
-    <button className={buttonStyle({ buttonType })} onClick={handleButtonClick}>
-      {localActive
-        ? buttonIcon[buttonType]?.active
-        : buttonIcon[buttonType]?.inactive}
-      {localCount !== undefined && (
-        <span className={countStyle({ buttonType })}>{localCount}</span>
+    <>
+      <button
+        className={buttonStyle({ buttonType })}
+        onClick={handleButtonClick}
+      >
+        {localActive
+          ? buttonIcon[buttonType]?.active
+          : buttonIcon[buttonType]?.inactive}
+        {localCount !== undefined && (
+          <span className={countStyle({ buttonType })}>{localCount}</span>
+        )}
+      </button>
+      {isModalOpen && (
+        <Modal variant="center" hasBackdrop backdropClick={closeModal}>
+          <AuthModal
+            modalText="로그인이 필요한 기능이에요!"
+            closeButtonText="닫기"
+            authActionButtonText="로그인 하러가기"
+            onClose={closeModal}
+          />
+        </Modal>
       )}
-    </button>
+    </>
   );
 };
 

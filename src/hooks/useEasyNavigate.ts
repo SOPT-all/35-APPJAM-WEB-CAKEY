@@ -35,6 +35,10 @@ const useEasyNavigate = () => {
     navigate(routePath.LOGINPAGE);
   };
 
+  const goBack = () => {
+    navigate(-1);
+  };
+
   return {
     goHomePage,
     goViewPage,
@@ -43,6 +47,7 @@ const useEasyNavigate = () => {
     goStorePage,
     goDesignListPage,
     goLoginPage,
+    goBack,
   };
 };
 
