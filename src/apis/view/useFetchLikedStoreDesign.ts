@@ -11,19 +11,15 @@ const fetchLikedStoreDesign = async (
   cakeIdCursor?: number,
   cakeLikesCursor?: number
 ): Promise<StationDesignResponse> => {
-  try {
-    const url = END_POINT.FETCH_LIKED_STORE_DESIGN_LIST(
-      option,
-      cakeIdCursor,
-      cakeLikesCursor
-    );
-    const response =
-      await instance.get<ApiResponseType<StationDesignResponse>>(url);
-    return response.data.data;
-  } catch (error) {
-    console.log(error);
-    throw error;
-  }
+  const url = END_POINT.FETCH_LIKED_STORE_DESIGN_LIST(
+    option,
+    cakeIdCursor,
+    cakeLikesCursor
+  );
+  const response =
+    await instance.get<ApiResponseType<StationDesignResponse>>(url);
+  if (!response.data) return { isLastData: true, cakeCount: 0, cakes: [] };
+  return response.data.data;
 };
 
 export const useFetchLikedStoreDesign = (

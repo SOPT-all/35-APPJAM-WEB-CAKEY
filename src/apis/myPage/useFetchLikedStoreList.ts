@@ -4,37 +4,21 @@ import { instance } from '@apis/instance';
 
 import { END_POINT, queryKey } from '@constants';
 
-import {
-  ApiResponseType,
-  ErrorResponse,
-  OptionType,
-  StoreCardListType,
-} from '@types';
+import { ApiResponseType, OptionType, StoreCardListType } from '@types';
 
 const fetchLikedStoreList = async (
   option: OptionType,
   storeLikesCursor: number,
   storeIdCursor: number
 ): Promise<StoreCardListType> => {
-  try {
-    const url = END_POINT.FETCH_LIKED_STORE_LIST(
-      option,
-      storeLikesCursor,
-      storeIdCursor
-    );
-    const response =
-      await instance.get<ApiResponseType<StoreCardListType>>(url);
-    return response.data.data;
-  } catch (error) {
-    const errorResponse = error as ErrorResponse;
-    if (errorResponse.response.status === 404)
-      return {
-        storeCount: 0,
-        isLastData: true,
-        stores: [],
-      };
-    throw error;
-  }
+  const url = END_POINT.FETCH_LIKED_STORE_LIST(
+    option,
+    storeLikesCursor,
+    storeIdCursor
+  );
+  const response = await instance.get<ApiResponseType<StoreCardListType>>(url);
+  if (!response.data) return { storeCount: 0, isLastData: true, stores: [] };
+  return response.data.data;
 };
 
 export const useFetchLikedStoreList = (
@@ -71,5 +55,6 @@ export const useFetchLikedStoreList = (
     },
     initialPageParam: { storeLikesCursor: undefined, storeIdCursor: undefined },
     enabled: isEnabled,
+    gcTime: 0,
   });
 };
