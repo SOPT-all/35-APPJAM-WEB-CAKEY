@@ -1,7 +1,7 @@
 import { useFetchCakeRank } from '@apis/home';
 import { useFetchStoreRank } from '@apis/home/useFetchStoreRank';
 
-import { DesignCard } from '@components';
+import { DesignCard, Footer } from '@components';
 import { CATEGORY, MainKeyVisual } from '@constants';
 import { useEasyNavigate } from '@hooks';
 import { StoreRankingButton } from '@pages/home/components';
@@ -107,6 +107,7 @@ const HomePage = () => {
           </div>
         </section>
       </main>
+      <Footer />
     </div>
   );
 };
