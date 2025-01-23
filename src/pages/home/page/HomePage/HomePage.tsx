@@ -8,7 +8,7 @@ import { StoreRankingButton } from '@pages/home/components';
 import CategoryCard from '@pages/home/components/CategoryCard/CategoryCard';
 import { isLoggedIn } from '@utils';
 
-import { IcHomeArrow } from '@svgs';
+import { IcArrowRight16, IcHomeArrow } from '@svgs';
 
 import {
   categoryWrapper,
@@ -27,16 +27,23 @@ import {
   mainTextMiniStyle,
   mainContentWrapper,
   likedStoreWrapper,
+  allButtonStyle,
+  allButtonWrapper,
+  subTextWrapper,
 } from './HomePage.css';
 
 const HomePage = () => {
   const isLogin = isLoggedIn();
-  const { goViewPage } = useEasyNavigate();
+  const { goViewPage, goDesignListPage } = useEasyNavigate();
   const { data: storeRankData } = useFetchStoreRank();
   const { data: cakeRankData } = useFetchCakeRank();
   const user = isLogin
     ? JSON.parse(localStorage.getItem('user') || '{}')
     : null;
+
+  const handleAllButtonClick = () => {
+    goDesignListPage('BIRTH');
+  };
 
   return (
     <div className={homePageLayout}>
@@ -66,7 +73,13 @@ const HomePage = () => {
 
       <main className={subSectionContainer}>
         <section className={subSectionWrapper}>
-          <h1 className={subTextStyle}>어떤 날을 위한 케이크인가요?</h1>
+          <div className={subTextWrapper} onClick={handleAllButtonClick}>
+            <h1 className={subTextStyle}>어떤 날을 위한 케이크인가요?</h1>
+            <div className={allButtonWrapper}>
+              <button className={allButtonStyle}>전체보기</button>
+              <IcArrowRight16 width={16} height={16} />
+            </div>
+          </div>
           <div className={categoryWrapper}>
             {CATEGORY.map((category, index) => (
               <CategoryCard key={index} category={category} />
