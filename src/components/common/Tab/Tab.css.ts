@@ -13,7 +13,7 @@ export const tabStyle = recipe({
       viewMyPage: {},
       store: {
         position: 'sticky',
-        top: '6rem',
+        top: '5.8rem',
         zIndex: 1,
         backgroundColor: vars.colors.white,
       },

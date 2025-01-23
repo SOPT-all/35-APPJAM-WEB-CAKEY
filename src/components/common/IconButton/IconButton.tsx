@@ -7,6 +7,7 @@ import {
   usePostStoreLikes,
 } from '@apis/likes';
 
+import { useToast } from '@contexts';
 import { useModal } from '@hooks';
 
 import {
@@ -58,6 +59,8 @@ const IconButton = ({
   itemId,
 }: IconButtonProps) => {
   const { isModalOpen, openModal, closeModal } = useModal();
+  const { showToast } = useToast();
+
   const [localActive, setLocalActive] = useState(isActive);
   const [localCount, setLocalCount] = useState<number | undefined>(count);
 
@@ -80,10 +83,8 @@ const IconButton = ({
     };
 
     const rollbackUpdate = () => {
-      setLocalActive((prev) => !prev);
-      if (localCount !== undefined) {
-        setLocalCount(count);
-      }
+      setLocalActive(isActive);
+      setLocalCount(count);
     };
 
     optimisticUpdate();
@@ -101,6 +102,8 @@ const IconButton = ({
         rollbackUpdate();
         if (error.status === 401) {
           openModal();
+        } else {
+          showToast('error', '연결에 문제가 생겼어요');
         }
       },
     });

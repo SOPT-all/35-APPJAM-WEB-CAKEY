@@ -29,10 +29,7 @@ export const usePostStoreLikes = () => {
       });
       queryClient.invalidateQueries({ queryKey: [queryKey.LIKED_STORE_LIST] });
 
-      showToast('save', '스토어를 찜했어요', true, '/mypage/like-list');
-    },
-    onError: () => {
-      showToast('error', '연결에 문제가 생겼어요');
+      showToast('save', '스토어를 찜했어요', true);
     },
   });
 };

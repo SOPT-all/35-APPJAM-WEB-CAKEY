@@ -45,8 +45,8 @@ export const useFetchLikedCakeList = (
             'nextLikeCursor' in lastPage ? lastPage.nextLikeCursor : undefined,
           cakeIdCursor:
             'nextCakeIdCursor' in lastPage
-              ? lastPage.nextCakeIdCursor
-              : (lastPage.cakeIdCursor ?? undefined),
+              ? (lastPage.nextCakeIdCursor ?? undefined)
+              : lastPage.cakeIdCursor,
         };
       }
       return null;

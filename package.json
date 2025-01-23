@@ -42,7 +42,7 @@
     "@vanilla-extract/recipes": "^0.5.5",
     "@vanilla-extract/vite-plugin": "^4.0.19",
     "@vitejs/plugin-react-swc": "^3.5.0",
-    "chromatic": "^11.22.0",
+    "chromatic": "^11.25.1",
     "eslint": "^9.17.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.7.0",
