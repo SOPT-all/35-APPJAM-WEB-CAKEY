@@ -28,11 +28,12 @@ const LikeListPage = () => {
     }
   }, [searchParams]);
 
+  const { option, handleOptionSelect } = useFilteredCardList();
+
   const handleTab = (index: number) => {
     setActiveTab(index);
+    handleOptionSelect('latest');
   };
-
-  const { option, handleOptionSelect } = useFilteredCardList();
 
   const isStoreListEnabled = activeTab === 0;
   const isCakeListEnabled = activeTab === 1;
