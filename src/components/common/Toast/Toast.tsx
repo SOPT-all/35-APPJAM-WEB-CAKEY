@@ -5,7 +5,6 @@ import { IcLineLikeOn20, IcSavedOn24, IcToastCheck, IcToastError } from '@svgs';
 
 import { toastButtonStyle, toastMessageStyle, toastStyle } from './Toast.css';
 
-
 import { ToastState } from '@types';
 
 const toastVariants = {
@@ -49,7 +48,14 @@ const Toast = ({ icon, message, isButton = false }: ToastState) => {
         {toastIcon[icon]}
         <span>{message}</span>
       </div>
-      {isButton && <button className={toastButtonStyle}>보러가기</button>}
+      {isButton && (
+        <button
+          className={toastButtonStyle}
+          onClick={() => (window.location.href = '/mypage/like-list')}
+        >
+          보러가기
+        </button>
+      )}
     </motion.dialog>,
     portalElement
   );
