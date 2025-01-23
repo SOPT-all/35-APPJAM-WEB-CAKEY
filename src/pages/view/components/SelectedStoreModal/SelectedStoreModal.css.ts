@@ -54,6 +54,7 @@ export const addressWrapper = style([
 export const addressStyle = style([
   vars.fonts.body07_r_14,
   {
+    height: '3.4rem',
     color: vars.colors.gray600,
     display: '-webkit-box',
     overflow: 'hidden',

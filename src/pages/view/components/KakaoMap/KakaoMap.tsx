@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 
-import { Modal } from '@components';
+import { AuthModal, Modal } from '@components';
 import { MyLocation } from '@constants';
-import { useBottomSheet } from '@hooks';
+import { useBottomSheet, useModal } from '@hooks';
 import { useMapLoader } from '@pages/view/hooks';
 import { useKakaoMap } from '@pages/view/hooks/useKakaoMap';
 import { getMarkerIcon } from '@utils';
@@ -29,6 +29,7 @@ interface KakaoMapProps {
 const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
   useMapLoader();
   const { animateState, handleAnimateChange } = useBottomSheet();
+  const { isModalOpen, openModal, closeModal } = useModal();
   const {
     selectedStoreId,
     storeMarkerList,
@@ -42,7 +43,7 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
     handleSaveButtonClick,
     handleMarkerClick,
     handleMapClick,
-  } = useKakaoMap(currentLocation, handleAnimateChange);
+  } = useKakaoMap(currentLocation, handleAnimateChange, openModal);
 
   useEffect(() => {
     if (selectedStoreId !== 0) {
@@ -114,6 +115,16 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
       ) : (
         <Modal variant="bottom">
           <SelectedStoreModal storeId={selectedStoreId} />
+        </Modal>
+      )}
+      {isModalOpen && (
+        <Modal variant="center" hasBackdrop backdropClick={closeModal}>
+          <AuthModal
+            modalText="로그인이 필요한 기능이에요!"
+            closeButtonText="닫기"
+            authActionButtonText="로그인 하러가기"
+            onClose={closeModal}
+          />
         </Modal>
       )}
     </>
