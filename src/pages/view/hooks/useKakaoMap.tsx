@@ -6,6 +6,8 @@ import {
   useFetchStoreCoordinateList,
 } from '@apis/view';
 
+import { isLoggedIn } from '@utils';
+
 import { useDebounce } from './useDebounce';
 
 import { BottomSheetState, StationType, StoreCoordinate } from '@types';
@@ -14,7 +16,8 @@ const DEFAULT_CENTER = { lat: 37.556621, lng: 126.923877 };
 
 export const useKakaoMap = (
   currentLocation: StationType,
-  handleAnimateChange: (animate: BottomSheetState) => void
+  handleAnimateChange: (animate: BottomSheetState) => void,
+  openModal: () => void
 ) => {
   const { data: storeCoordinateList } = useFetchStoreCoordinateList(
     currentLocation.stationEnName
@@ -88,6 +91,10 @@ export const useKakaoMap = (
   };
 
   const handleSaveButtonClick = () => {
+    if (!isLoggedIn()) {
+      openModal();
+      return;
+    }
     setIsSaveActive((prev) => !prev);
 
     const markerList =
