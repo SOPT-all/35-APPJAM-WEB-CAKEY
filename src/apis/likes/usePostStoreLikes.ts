@@ -33,6 +33,7 @@ export const usePostStoreLikes = () => {
         'save',
         '스토어를 찜했어요',
         true,
+        '/mypage/like-list?tab=store'
       );
     },
     onError: () => {
