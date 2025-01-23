@@ -5,6 +5,7 @@ import { flexGenerator } from '@styles/generator.css';
 export const listContainer = style({
   paddingBottom: '1.4rem',
   width: '100%',
+  padding: '0rem 2rem',
 });
 
 export const sectionContainer = style([

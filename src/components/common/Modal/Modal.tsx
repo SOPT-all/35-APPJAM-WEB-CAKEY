@@ -19,7 +19,9 @@ const Modal = ({
 }: PropsWithChildren<ModalProps>) => {
   return createPortal(
     <>
-      {hasBackdrop && <div className={backdropStyle} onClick={backdropClick} />}
+      {hasBackdrop && (
+        <div className={backdropStyle({ variant })} onClick={backdropClick} />
+      )}
       <div className={modalStyle({ variant })}>{children}</div>
     </>,
     potalElement

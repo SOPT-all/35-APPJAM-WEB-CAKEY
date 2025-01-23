@@ -14,7 +14,7 @@ export const bottomSheetStyle = style([
   fixedGenerator({ bottom: 0 }, 2),
   {
     height: '79vh',
-    padding: '1.4rem 2rem 0',
+    paddingTop: '1.4rem',
 
     backgroundColor: vars.colors.white,
     borderRadius: '20px 20px 0 0',

@@ -60,7 +60,7 @@ export const cardListNullTextStyle = style([
   {
     color: vars.colors.gray400,
     width: '100%',
-    height: 'calc(100dvh - 23.6rem - 1.2rem)',
+    height: 'calc(100dvh - 23.6rem - 1.2rem - 20rem)',
   },
 ]);
 

@@ -38,6 +38,7 @@ const MapBottomSheet = ({
 
   const handleTab = (index: number) => {
     setActiveTab(index);
+    handleOptionSelect('latest');
   };
 
   // 스토어 정보 리스트 조회
