@@ -22,10 +22,16 @@ const LikeListPage = () => {
 
   const { option, handleOptionSelect } = useFilteredCardList();
 
-  // 찜한 스토어 조회 api (마이리스트 페이지, 지도 페이지)
-  const { data: LikedStoreListData } = useFetchLikedStoreList(option);
-  // 찜한 케이크(디자인) 조회 api (마이리스트 페리지)
-  const { data: LikedCakeListData } = useFetchLikedCakeList(option);
+  const isStoreListEnabled = activeTab === 0;
+  const isCakeListEnabled = activeTab === 1;
+
+  // 찜한 스토어 조회 API
+  const { data: LikedStoreListData, fetchNextPage: fetchNextStorePage } =
+    useFetchLikedStoreList(option, isStoreListEnabled);
+
+  // 찜한 케이크(디자인) 조회 API
+  const { data: LikedCakeListData, fetchNextPage: fetchNextCakePage } =
+    useFetchLikedCakeList(option, isCakeListEnabled);
 
   return (
     <div className={myListContainer}>
@@ -43,16 +49,18 @@ const LikeListPage = () => {
         {activeTab === 0 ? (
           <CardList
             item="likedStore"
-            itemData={LikedStoreListData}
+            itemData={LikedStoreListData?.pages.flat()}
             option={option}
             handleOptionSelect={handleOptionSelect}
+            fetchNextPage={fetchNextStorePage}
           />
         ) : (
           <CardList
             item="likedDesign"
-            itemData={LikedCakeListData}
+            itemData={LikedCakeListData?.pages.flat()}
             option={option}
             handleOptionSelect={handleOptionSelect}
+            fetchNextPage={fetchNextCakePage}
           />
         )}
       </main>

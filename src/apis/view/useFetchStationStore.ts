@@ -4,54 +4,46 @@ import { instance } from '@apis/instance';
 
 import { END_POINT, queryKey } from '@constants';
 
-import {
-  ApiResponseType,
-  ErrorResponse,
-  OptionType,
-  StoreCardListType,
-} from '@types';
+import { ApiResponseType, OptionType, StationStoreResponse } from '@types';
 
-const fetchLikedStoreList = async (
+const fetchStationStore = async (
   option: OptionType,
+  station: string,
   storeLikesCursor: number,
   storeIdCursor: number
-): Promise<StoreCardListType> => {
+): Promise<StationStoreResponse> => {
   try {
-    const url = END_POINT.FETCH_LIKED_STORE_LIST(
+    const url = END_POINT.FETCH_STATION_STORE_LIST(
       option,
+      station,
       storeLikesCursor,
       storeIdCursor
     );
     const response =
-      await instance.get<ApiResponseType<StoreCardListType>>(url);
+      await instance.get<ApiResponseType<StationStoreResponse>>(url);
+
     return response.data.data;
   } catch (error) {
-    const errorResponse = error as ErrorResponse;
-    if (errorResponse.response.status === 404) {
-      return {
-        nextStoreIdCursor: -1,
-        nextLikesCursor: undefined,
-        storeCount: 0,
-        stores: [], // 빈 배열 반환
-      };
-    }
+    console.log(error);
     throw error;
   }
 };
 
-export const useFetchLikedStoreList = (
+export const useFetchStationStore = (
   option: OptionType,
+  station: string,
   isEnabled: boolean
 ) => {
-  return useInfiniteQuery<StoreCardListType, Error>({
-    queryKey: [queryKey.LIKED_STORE_LIST, option],
+  return useInfiniteQuery<StationStoreResponse, Error>({
+    queryKey: [queryKey.STATION_STORE_LIST, option, station],
     queryFn: ({ pageParam }) => {
       const param = pageParam as {
         storeLikesCursor: number;
         storeIdCursor: number;
       };
-      return fetchLikedStoreList(
+      return fetchStationStore(
         option,
+        station,
         param.storeLikesCursor,
         param.storeIdCursor
       );
@@ -65,8 +57,8 @@ export const useFetchLikedStoreList = (
               : undefined,
           storeIdCursor:
             'lastStoreId' in lastPage
-              ? lastPage.lastStoreId
-              : (lastPage.nexStoreId ?? undefined),
+              ? (lastPage.lastStoreId ?? undefined)
+              : lastPage.nextStoreIdCursor,
         };
       }
       return null;

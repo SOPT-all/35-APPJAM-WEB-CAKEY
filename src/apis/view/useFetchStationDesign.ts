@@ -6,54 +6,57 @@ import { END_POINT, queryKey } from '@constants';
 
 import {
   ApiResponseType,
-  DesignCardListType,
   ErrorResponse,
   OptionType,
+  StationDesignResponse,
 } from '@types';
 
-const fetchLikesCardList = async (
+const fetchStationDesign = async (
   option: OptionType,
+  station: string,
   cakeLikesCursor: number,
   cakeIdCursor: number
-): Promise<DesignCardListType> => {
+): Promise<StationDesignResponse> => {
   try {
-    const url = END_POINT.FETCH_LIKED_CAKE_LIST(
+    const url = END_POINT.FETCH_STATION_DESIGN_LIST(
       option,
+      station,
       cakeLikesCursor,
       cakeIdCursor
     );
     const response =
-      await instance.get<ApiResponseType<DesignCardListType>>(url);
+      await instance.get<ApiResponseType<StationDesignResponse>>(url);
     return response.data.data;
   } catch (error) {
+    console.log(error);
     const errorResponse = error as ErrorResponse;
     if (errorResponse.response.status === 404) {
       return {
-        nextCakeIdCursor: -1,
-        cakeCount: -1,
-        isLastData: false,
+        isLastData: true,
+        cakeCount: 0,
         cakes: [],
       };
+    } else {
+      throw error;
     }
-    throw error;
   }
 };
 
-export const useFetchLikedCakeList = (
+export const useFetchStationDesign = (
   option: OptionType,
+  station: string,
   isEnabled: boolean
 ) => {
-  return useInfiniteQuery<DesignCardListType, Error>({
-    queryKey: [queryKey.LIKED_CAKE_LIST, option],
+  return useInfiniteQuery<StationDesignResponse, Error>({
+    queryKey: [queryKey.STATION_DESIGN_LIST, option, station],
     queryFn: ({ pageParam }) => {
       const param = pageParam as {
         cakeLikesCursor: number;
         cakeIdCursor: number;
       };
-
-      console.log(param);
-      return fetchLikesCardList(
+      return fetchStationDesign(
         option,
+        station,
         param.cakeLikesCursor,
         param.cakeIdCursor
       );
@@ -62,7 +65,9 @@ export const useFetchLikedCakeList = (
       if (!lastPage.isLastData) {
         return {
           cakeLikesCursor:
-            'nextLikeCursor' in lastPage ? lastPage.nextLikeCursor : undefined,
+            'cakeLikesCursor' in lastPage
+              ? lastPage.cakeLikesCursor
+              : undefined,
           cakeIdCursor:
             'nextCakeIdCursor' in lastPage
               ? lastPage.nextCakeIdCursor

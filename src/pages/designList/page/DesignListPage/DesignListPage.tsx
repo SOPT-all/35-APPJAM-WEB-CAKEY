@@ -64,7 +64,7 @@ const DesignListPage = () => {
   const { option, handleOptionSelect } = useFilteredCardList();
 
   // 디자인 둘러보기 조회 api
-  const { data: DesignListData } = useFetchDesignList(
+  const { data: DesignListData, fetchNextPage } = useFetchDesignList(
     option,
     selectedCategories.category ?? 'BIRTH',
     selectedCategories.subCategory ?? 'ALL'
@@ -94,11 +94,12 @@ const DesignListPage = () => {
         <div className={cardListWrapper}>
           <CardList
             item="design"
-            itemData={DesignListData}
+            itemData={DesignListData?.pages.flat()}
             option={option}
             handleOptionSelect={handleOptionSelect}
             hasModal
             selectedCategories={selectedCategories}
+            fetchNextPage={fetchNextPage}
           />
         </div>
       </div>

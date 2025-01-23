@@ -26,7 +26,7 @@ const fetchStoreDetailDesign = async (
 
 export const useFetchStoreDetailDesign = (storeId: number) => {
   return useSuspenseQuery<StoreDetailDesign[]>({
-    queryKey: [queryKey.STORE_DETAIL_DESIGN],
+    queryKey: [queryKey.STORE_DETAIL_DESIGN, storeId],
     queryFn: () => fetchStoreDetailDesign(storeId),
   });
 };
