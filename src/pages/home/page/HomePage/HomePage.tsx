@@ -34,12 +34,16 @@ import {
 
 const HomePage = () => {
   const isLogin = isLoggedIn();
-  const { goViewPage } = useEasyNavigate();
+  const { goViewPage, goDesignListPage } = useEasyNavigate();
   const { data: storeRankData } = useFetchStoreRank();
   const { data: cakeRankData } = useFetchCakeRank();
   const user = isLogin
     ? JSON.parse(localStorage.getItem('user') || '{}')
     : null;
+
+  const handleAllButtonClick = () => {
+    goDesignListPage('BIRTH');
+  };
 
   return (
     <div className={homePageLayout}>
@@ -69,7 +73,7 @@ const HomePage = () => {
 
       <main className={subSectionContainer}>
         <section className={subSectionWrapper}>
-          <div className={subTextWrapper}>
+          <div className={subTextWrapper} onClick={handleAllButtonClick}>
             <h1 className={subTextStyle}>어떤 날을 위한 케이크인가요?</h1>
             <div className={allButtonWrapper}>
               <button className={allButtonStyle}>전체보기</button>
