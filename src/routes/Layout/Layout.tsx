@@ -20,7 +20,6 @@ const Layout = () => {
   useScrollTop(location.pathname);
 
   return (
-    <>
       <QueryErrorResetBoundary>
         {({ reset }) => (
           <ErrorBoundary onReset={reset} FallbackComponent={Error}>
@@ -36,7 +35,6 @@ const Layout = () => {
           </ErrorBoundary>
         )}
       </QueryErrorResetBoundary>
-    </>
   );
 };
 
