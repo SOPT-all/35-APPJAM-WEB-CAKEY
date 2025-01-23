@@ -31,8 +31,5 @@ export const usePostStoreLikes = () => {
 
       showToast('save', '스토어를 찜했어요', true, '/mypage/like-list');
     },
-    onError: () => {
-      showToast('error', '연결에 문제가 생겼어요');
-    },
   });
 };

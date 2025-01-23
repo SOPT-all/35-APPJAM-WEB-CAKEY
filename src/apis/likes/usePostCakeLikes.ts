@@ -17,6 +17,7 @@ const postCakeLikes = async (cakeId: number): Promise<MutateResposneType> => {
     throw error;
   }
 };
+
 export const usePostCakeLikes = () => {
   const { showToast } = useToast();
 
@@ -34,9 +35,6 @@ export const usePostCakeLikes = () => {
         true,
         '/mypage/like-list?tab=cake'
       );
-    },
-    onError: () => {
-      showToast('error', '연결에 문제가 생겼어요');
     },
   });
 };
