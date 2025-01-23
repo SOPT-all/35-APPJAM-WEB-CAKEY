@@ -3,6 +3,7 @@ import BottomSheet from './BottomSheet/BottomSheet';
 import CardList from './CardList/CardList';
 import DesignCard from './DesignCard/DesignCard';
 import FilteringButton from './FilteringButton/FilteringButton';
+import Footer from './Footer/Footer';
 import Header from './Header/Header';
 import IconButton from './IconButton/IconButton';
 import Image from './Image/Image';
@@ -32,4 +33,5 @@ export {
   DesignCard,
   Toast,
   Input,
+  Footer,
 };
