@@ -7,15 +7,13 @@ import { END_POINT, queryKey } from '@constants';
 import { ApiResponseType, StoreInfoResponse } from '@types';
 
 const fetchStoreInfo = async (storeId: number): Promise<StoreInfoResponse> => {
-  try {
-    const response = await instance.get<ApiResponseType<StoreInfoResponse>>(
-      END_POINT.FETCH_STORE_INFO(storeId)
-    );
-    return response.data.data;
-  } catch (error) {
-    console.error();
-    throw error;
+  const response = await instance.get<ApiResponseType<StoreInfoResponse>>(
+    END_POINT.FETCH_STORE_INFO(storeId)
+  );
+  if (!response.data) {
+    window.location.replace('/store');
   }
+  return response.data.data;
 };
 
 export const useFetchStoreInfo = (storeId: number) => {

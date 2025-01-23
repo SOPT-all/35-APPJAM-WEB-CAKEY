@@ -37,6 +37,8 @@ const StoreInfo = ({ storeId }: StoreInfoProps) => {
   const { isModalOpen, openModal, closeModal } = useModal();
   const [isToggleOpen, setIsToggleOpen] = useState(false);
 
+  if (!infoData) return null;
+
   const formattedHours = formatHours(infoData);
 
   const infoItems: InfoItem[] = [
