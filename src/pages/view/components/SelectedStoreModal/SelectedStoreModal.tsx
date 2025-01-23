@@ -37,7 +37,7 @@ const SelectedStoreModal = ({ storeId }: SelectedStoreModalProps) => {
             />
           </div>
           <div className={addressWrapper}>
-            <p className={addressStyle}>{storeData.address}</p>
+            <div className={addressStyle}>{storeData.address}</div>
             <Label text={storeData.station} />
           </div>
         </div>
