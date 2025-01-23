@@ -39,9 +39,15 @@ const MapBottomSheet = ({
     setActiveTab(index);
   };
 
+  // 스토어 정보 리스트 조회
   const { data: stationStoreData, fetchNextPage: fetchStationStoreNext } =
-    useFetchStationStore(option, selectedStation, selectedStation === 'ALL');
+    useFetchStationStore(
+      option,
+      selectedStation,
+      !isSaveActive && (selectedStation === 'ALL' || activeTab === 0)
+    );
 
+  // 해당 역 디자인 조회
   const { data: stationDesignData, fetchNextPage: fetchStationDesignNext } =
     useFetchStationDesign(
       option,
@@ -49,9 +55,11 @@ const MapBottomSheet = ({
       !isSaveActive && selectedStation !== 'ALL' && activeTab === 1
     );
 
+  // 찜한 스토어 조회
   const { data: likedStoreData, fetchNextPage: fetchLikedStoreNext } =
     useFetchLikedStoreList(option, isSaveActive && activeTab === 0);
 
+  // 찜한 스토어 디자인 조회
   const {
     data: likedStoreDesignData,
     fetchNextPage: fetchLikedStoreDesignNext,
