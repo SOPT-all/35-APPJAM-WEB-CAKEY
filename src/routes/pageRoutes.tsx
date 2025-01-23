@@ -1,5 +1,6 @@
 import { RouteObject } from 'react-router-dom';
 
+import NotFound from '@pages/status/Error/NotFound';
 import {
   authRoutes,
   designListRoutes,
@@ -24,6 +25,7 @@ const pageRoutes: RouteObject[] = [
   {
     path: '/',
     element: <Layout />,
+    errorElement: <NotFound />,
     children: allRoutes,
   },
 ];

@@ -1,7 +1,13 @@
+import { QueryErrorResetBoundary } from '@tanstack/react-query';
+import { Suspense } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { Outlet, useLocation } from 'react-router-dom';
 
 import { Header } from '@components';
+import Loading from '@pages/status/Loading/Loading';
 import useScrollTop from 'src/hooks/useScrollTop';
+
+import { Error } from '@pages/status';
 
 import { spacing } from './Layout.css';
 import routePath from '../routePath';
@@ -14,12 +20,21 @@ const Layout = () => {
   useScrollTop(location.pathname);
 
   return (
-    <>
-      {!isLoginPage && (isViewPage ? <Header bgColor="yellow" /> : <Header />)}
-
-      <div className={spacing} />
-      <Outlet />
-    </>
+      <QueryErrorResetBoundary>
+        {({ reset }) => (
+          <ErrorBoundary onReset={reset} FallbackComponent={Error}>
+            <Suspense fallback={<Loading />}>
+              {!isLoginPage && (
+                <>
+                  {isViewPage ? <Header bgColor="yellow" /> : <Header />}
+                  <div className={spacing} />
+                </>
+              )}
+              <Outlet />
+            </Suspense>
+          </ErrorBoundary>
+        )}
+      </QueryErrorResetBoundary>
   );
 };
 

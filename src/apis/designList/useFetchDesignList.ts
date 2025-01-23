@@ -39,9 +39,8 @@ const fetchDesignList = async (
         cakeCount: 0,
         cakes: [],
       };
-    } else {
-      throw error;
     }
+    throw error;
   }
 };
 

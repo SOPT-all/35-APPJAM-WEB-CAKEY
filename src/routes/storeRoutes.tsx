@@ -1,6 +1,5 @@
+import NotFound from '@pages/status/Error/NotFound';
 import { StorePage } from '@pages/store/page';
-
-import { Error } from '@pages/status';
 
 import routePath from './routePath';
 
@@ -13,7 +12,7 @@ const storeRoutes: RouteType[] = [
   },
   {
     path: routePath.STOREBASE,
-    element: <Error />,
+    element: <NotFound />,
   },
 ];
 
