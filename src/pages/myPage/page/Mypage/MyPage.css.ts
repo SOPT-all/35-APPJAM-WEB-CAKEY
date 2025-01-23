@@ -11,8 +11,8 @@ export const myPageLayout = style([
 ]);
 
 export const profileCardStyle = styleVariants({
-  login: { margin: '3.8rem 0 3.6rem', },
-  logout: { margin: '3.8rem 0 3rem', },
+  login: { margin: '3.8rem 0 3.6rem' },
+  logout: { margin: '3.8rem 0 3rem' },
 });
 
 export const letsGoButtonWrapper = style([
@@ -20,7 +20,7 @@ export const letsGoButtonWrapper = style([
   { padding: '0 2rem', gap: '0.6rem', width: '100%' },
 ]);
 
-export const loginButton = style({ padding: '0 2rem' });
+export const loginButton = style({ padding: '0 2rem', width: '100%' });
 
 export const footerWrapper = style({
   marginTop: 'auto',
