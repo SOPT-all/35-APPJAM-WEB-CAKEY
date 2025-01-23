@@ -11,7 +11,7 @@ export const instance = axios.create({
 instance.interceptors.response.use(
   (response) => response,
   (error) => {
-    const errorCodes = [40410, 40420, 40422, 40423, 40424];
+    const errorCodes = [40410, 40420, 40422, 40423, 40424, 40431];
 
     if (errorCodes.includes(error.response?.data?.code)) {
       return Promise.resolve({ data: null });
