@@ -3,6 +3,7 @@ import { useMutation } from '@tanstack/react-query';
 import { instance } from '@apis/instance';
 
 import { END_POINT, queryKey } from '@constants';
+import { useToast } from '@contexts';
 import queryClient from 'src/queryClient';
 
 import { MutateResposneType } from '@types';
@@ -18,6 +19,8 @@ const postStoreLikes = async (storeId: number): Promise<MutateResposneType> => {
 };
 
 export const usePostStoreLikes = () => {
+  const { showToast } = useToast();
+
   return useMutation({
     mutationFn: (storeId: number) => postStoreLikes(storeId),
     onSuccess: () => {
@@ -25,6 +28,11 @@ export const usePostStoreLikes = () => {
         queryKey: [queryKey.STORE_INFO],
       });
       queryClient.invalidateQueries({ queryKey: [queryKey.LIKED_STORE_LIST] });
+
+      showToast('save', '스토어를 찜했어요', true, '/mypage/like-list');
+    },
+    onError: () => {
+      showToast('error', '연결에 문제가 생겼어요');
     },
   });
 };
