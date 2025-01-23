@@ -19,6 +19,7 @@ interface StoreData {
   station: string;
   isLiked: boolean;
   imageUrl: string;
+  StoreLikesCount: number;
 }
 
 interface BannerProps {
@@ -43,7 +44,7 @@ const Banner = ({ storeData }: BannerProps) => {
           buttonType={'save28'}
           isActive={storeData.isLiked}
           itemId={storeData.storeId}
-          count={32}
+          count={storeData.StoreLikesCount}
         />
       </div>
     </main>

@@ -5,7 +5,7 @@ export interface StoreInfoResponse {
   station: string;
   isLiked: boolean;
   imageUrl: string;
-  storeLikesCount: number;
+  StoreLikesCount: number;
 }
 
 export interface StoreDetailDesign {
