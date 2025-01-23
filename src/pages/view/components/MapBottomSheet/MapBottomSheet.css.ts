@@ -20,3 +20,7 @@ export const tabWrapper = style({
   zIndex: 1,
   width: '100%',
 });
+
+export const spacing = style({
+  height: '1.4rem',
+});
