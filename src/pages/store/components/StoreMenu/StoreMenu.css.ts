@@ -32,5 +32,6 @@ export const tasteDescription = style([
   vars.fonts.body07_r_14,
   {
     padding: '0 2rem',
+    whiteSpace: 'pre-line',
   },
 ]);
