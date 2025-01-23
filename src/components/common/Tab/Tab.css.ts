@@ -27,6 +27,7 @@ export const tabButton = recipe({
     width: '100%',
     textAlign: 'center',
     backgroundColor: vars.colors.white,
+    transition: 'color 0.2s ease-in',
   },
   variants: {
     tabType: {
@@ -54,14 +55,35 @@ export const clickTab = recipe({
         vars.fonts.head03_b_18,
         {
           color: vars.colors.red1,
-          borderBottom: `2px solid ${vars.colors.red1}`,
         },
       ],
       store: [
         vars.fonts.head06_sb_16,
         {
           color: vars.colors.gray900,
-          borderBottom: `2px solid ${vars.colors.gray900}`,
+        },
+      ],
+    },
+  },
+});
+
+export const tabIndicator = recipe({
+  base: {
+    position: 'absolute',
+    bottom: 0,
+    height: '0.2rem',
+    transition: 'left 0.3s ease-out',
+  },
+  variants: {
+    tabType: {
+      viewMyPage: [
+        {
+          background: vars.colors.red1,
+        },
+      ],
+      store: [
+        {
+          background: vars.colors.gray900,
         },
       ],
     },
