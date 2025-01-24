@@ -37,6 +37,7 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
     center,
     isSaveActive,
     isGpsActive,
+    mapLevel,
     setCenter,
     handleCenterChanged,
     handleGpsButtonClick,
@@ -62,7 +63,7 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
       <div className={mapContainer}>
         <Map
           center={center}
-          level={2}
+          level={mapLevel}
           className={mapStyle({ animateState })}
           onCenterChanged={handleCenterChanged}
           onClick={handleMapClick}

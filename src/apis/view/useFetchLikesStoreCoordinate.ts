@@ -18,11 +18,10 @@ const fetchLikesStoreCoordinate = async (): Promise<StoreCoordinate[]> => {
   return response.data.data.stores;
 };
 
-export const useFetchLikesStoreCoordinate = (isSaveActive: boolean) => {
+export const useFetchLikesStoreCoordinate = () => {
   return useQuery({
     queryKey: [queryKey.LIKES_STORE_COORDINATE_LIST],
     queryFn: fetchLikesStoreCoordinate,
-    enabled: isSaveActive,
     staleTime: 0,
     gcTime: 0,
   });
