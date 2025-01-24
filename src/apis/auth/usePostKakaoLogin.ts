@@ -8,7 +8,6 @@ import { useEasyNavigate } from '@hooks';
 
 import { ApiResponseType, LoginSuccessResponse } from '@types';
 
-
 const postKakaoLogin = async (
   authCode: string
 ): Promise<AxiosResponse<ApiResponseType<LoginSuccessResponse>>> => {
