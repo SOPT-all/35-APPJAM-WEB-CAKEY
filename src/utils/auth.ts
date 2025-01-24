@@ -1,5 +1,5 @@
 export const getToken = () => {
-  return localStorage.getItem('user');
+  return localStorage.getItem('accessToken');
 };
 
 export const isLoggedIn = () => {
@@ -7,5 +7,5 @@ export const isLoggedIn = () => {
 };
 
 export const removeUser = () => {
-  return localStorage.removeItem('user');
+  return localStorage.clear();
 };
