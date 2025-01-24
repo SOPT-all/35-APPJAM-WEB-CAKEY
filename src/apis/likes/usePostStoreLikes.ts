@@ -28,6 +28,9 @@ export const usePostStoreLikes = () => {
         queryKey: [queryKey.STORE_INFO],
       });
       queryClient.invalidateQueries({ queryKey: [queryKey.LIKED_STORE_LIST] });
+      queryClient.invalidateQueries({
+        queryKey: [queryKey.LIKES_STORE_COORDINATE_LIST],
+      });
 
       showToast('save', '스토어를 찜했어요', true);
     },
