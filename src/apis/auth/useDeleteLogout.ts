@@ -3,7 +3,6 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { instance } from '@apis/instance';
 
 import { END_POINT } from '@constants';
-import { useEasyNavigate } from '@hooks';
 import { removeUser } from '@utils';
 
 const deleteLogout = async () => {
@@ -18,14 +17,13 @@ const deleteLogout = async () => {
 
 export const useDeleteLogout = () => {
   const queryClient = useQueryClient();
-  const { goHomePage } = useEasyNavigate();
 
   return useMutation({
     mutationFn: deleteLogout,
     onSuccess: () => {
       queryClient.clear();
       removeUser();
-      goHomePage();
+      window.location.href = '/';
     },
   });
 };

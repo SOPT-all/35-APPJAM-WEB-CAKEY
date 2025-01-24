@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import { BASE_URL } from '@constants';
+import { getToken, removeUser } from '@utils';
 
 export const instance = axios.create({
   baseURL: BASE_URL,
@@ -8,10 +9,22 @@ export const instance = axios.create({
   withCredentials: true,
 });
 
+instance.interceptors.request.use((config) => {
+  const token = getToken();
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
 instance.interceptors.response.use(
   (response) => response,
   (error) => {
     const errorCodes = [40410, 40420, 40422, 40423, 40424, 40431];
+
+    if (error.response?.status === 401) {
+      removeUser();
+    }
 
     if (errorCodes.includes(error.response?.data?.code)) {
       return Promise.resolve({ data: null });
