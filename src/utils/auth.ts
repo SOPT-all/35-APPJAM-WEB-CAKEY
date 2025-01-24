@@ -3,10 +3,9 @@ export const getToken = () => {
 };
 
 export const isLoggedIn = () => {
-  console.log(Boolean(getToken()))
   return Boolean(getToken());
 };
 
 export const removeUser = () => {
-  return localStorage.clear;
+  return localStorage.clear();
 };
