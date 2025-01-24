@@ -22,7 +22,7 @@ export const toastStyle = recipe({
       true: {
         justifyContent: 'space-between',
         width: '33.5rem',
-        padding: '1.05rem 2.4rem',
+        padding: '1.05rem 1.4rem 1.05rem 2.4rem',
       },
       false: {
         padding: '1.7rem 1.8rem',
@@ -37,6 +37,7 @@ export const toastButtonStyle = style([
   vars.fonts.body07_r_14,
   {
     padding: '0.8rem 1.8rem',
+    color: vars.colors.white,
     backgroundColor: vars.colors.gray700,
     borderRadius: '50px',
   },

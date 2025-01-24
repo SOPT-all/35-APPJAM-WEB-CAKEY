@@ -47,7 +47,7 @@ export const useKakaoMap = (
   const [isGpsActive, setIsGpsActive] = useState(false);
 
   // Map level 관리하기
-  const [mapLevel, setMapLevel] = useState(2);
+  const [mapLevel, setMapLevel] = useState(4);
 
   const { data: likesStoreCoordinateList } =
     useFetchLikesStoreCoordinate();
@@ -146,7 +146,7 @@ export const useKakaoMap = (
             clicked: false,
           }))
         );
-        setMapLevel(2)
+        setMapLevel(4)
       }
     } else {
       handleAnimateChange('default');
