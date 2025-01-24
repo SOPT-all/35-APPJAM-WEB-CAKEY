@@ -5,8 +5,8 @@ import { Outlet, useLocation } from 'react-router-dom';
 
 import { Header } from '@components';
 import { ToastProvider } from '@contexts';
+import { useScrollTop } from '@hooks';
 import Loading from '@pages/status/Loading/Loading';
-import useScrollTop from 'src/hooks/useScrollTop';
 
 import { Error } from '@pages/status';
 

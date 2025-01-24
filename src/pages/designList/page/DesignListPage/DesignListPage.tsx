@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 import { useFetchDesignList } from '@apis/designList/useFetchDesignList';
 
-import { CardList } from '@components';
+import { CardList, TopButton } from '@components';
 import { CATEGORY, SUB_CATEGORY } from '@constants';
 import { useFilteredCardList } from '@hooks';
 import CategoryBar from '@pages/designList/components/CategoryBar/CategoryBar';
@@ -103,6 +103,8 @@ const DesignListPage = () => {
           />
         </div>
       </div>
+
+      {(DesignListData?.pages[0]?.cakeCount ?? 0) > 0 && <TopButton />}
     </>
   );
 };

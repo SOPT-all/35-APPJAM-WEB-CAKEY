@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes } from 'react';
 
-import { buttonStyle } from 'src/components/common/TextButton/TextButton.css';
+import { buttonStyle } from './TextButton.css';
 
 export interface TextButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {

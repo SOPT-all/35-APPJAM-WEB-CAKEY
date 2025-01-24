@@ -15,6 +15,7 @@ import StoreCard from './StoreCard/StoreCard';
 import Tab from './Tab/Tab';
 import TextButton from './TextButton/TextButton';
 import Toast from './Toast/Toast';
+import TopButton from './TopButton/TopButton';
 
 export {
   Label,
@@ -34,4 +35,5 @@ export {
   Toast,
   Input,
   Footer,
+  TopButton,
 };

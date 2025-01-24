@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-const useScrollTop = (path: string) => {
+export const useScrollTop = (path: string) => {
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -10,4 +10,10 @@ const useScrollTop = (path: string) => {
   }, [path]);
 };
 
-export default useScrollTop;
+export const useSmoothScrollTop = () => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth',
+  });
+};

@@ -36,6 +36,7 @@ export { default as IcStoreLocation } from './IcStoreLocation';
 export { default as IcTime } from './IcTime';
 export { default as IcToastCheck } from './IcToastCheck';
 export { default as IcToastError } from './IcToastError';
+export { default as IcTop } from './IcTop';
 export { default as IcX } from './IcX';
 export { default as ImgFavicon } from './ImgFavicon';
 export { default as ImgLogo } from './ImgLogo';

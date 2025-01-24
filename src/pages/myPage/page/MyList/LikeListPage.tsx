@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 import { useFetchLikedCakeList, useFetchLikedStoreList } from '@apis/myPage';
 
-import { CardList, Tab } from '@components';
+import { CardList, Tab, TopButton } from '@components';
 import useFilteredCardList from 'src/hooks/useFilteredCardList';
 
 import {
@@ -46,6 +46,9 @@ const LikeListPage = () => {
   const { data: LikedCakeListData, fetchNextPage: fetchNextCakePage } =
     useFetchLikedCakeList(option, isCakeListEnabled);
 
+  const storeCount = LikedStoreListData?.pages[0]?.storeCount ?? 0;
+  const cakeCount = LikedCakeListData?.pages[0]?.cakeCount ?? 0;
+
   return (
     <div className={myListContainer}>
       <section className={titleWrapper}>
@@ -77,6 +80,10 @@ const LikeListPage = () => {
           />
         )}
       </main>
+
+      {activeTab === 0
+        ? storeCount > 0 && <TopButton />
+        : cakeCount > 0 && <TopButton />}
     </div>
   );
 };
