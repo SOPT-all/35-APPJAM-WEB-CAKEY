@@ -1,54 +1,58 @@
-# CAKEY 🎂 <img src="https://github.com/user-attachments/assets/b06fb6cb-ab8f-44dc-b04a-36b806e2ec51" width="110" align="left" />
-주문제작 케이크, 비교도 달콤하게 한입에! 😋
-
-
-<br />
-<br />
-
-## 🥄 About CAKEY
-케이키 Cakey는 주문제작 케이크에 대한 정보를 한 눈에 모아보고 비교할 수 있는 서비스 입니다 🎂
-
-<br />
-
-### ⏲️ 정보의 어그리게이션 및 조건별 필터링 
-- **정보의 분산으로 여러 SNS(인스타그램, 카카오톡)나 웹사이트를 개별적으로 방문해야 하며, 업체별로 가격, 스타일, 옵션을 확인하는 데 많은 시간을 소비하게 되는 문제를 해결하기 위한 기능이에요.**
-    - 흩어져 있는 `디자인/가격 등에 대한 정보`를 하나의 서비스로 모아요. 
-    - `필터링 기능`을 통해 사용자의 정보 비교를 용이하게 해요. 
-    - `찜 기능`을 통해 마음에 드는 스토어 및 디자인을 저장할 수 있어요.
-
-### 📍 지도 기반 검색 및 위치 비교 
-- **홍대를 검색하면 합정 스토어가 나오는 것과 같은 광범위한 위치 분류 문제를 해결하기 위한 기능이에요**.
-    - `핀 기능`을 통해 목적지 및 약속장소를 입력하면 주위의 스토어들을 알 수 있어요. 
-- **인기 스토어만 제한적으로 뜨는 인스타 검색창의 한계를 보완하기 위한 기능이에요.**
-    - 지역으로 검색 시 (ex. 홍대입구역) 
-
-
+# WHIPEE 🎂 <img src="https://github.com/user-attachments/assets/832b8bec-7749-46c8-8672-c436ade4e4f2" width="110" align="left" />
+원하는 주문제작 케이크를 쉽고 빠르게!
 
 <br />
 <br />
 
+## 🥄 WHIPEE!
+🍰 휘피(WHIPEE)는 주문제작 케이크에 대한 정보를 한 눈에 모아보고 비교할 수 있는 서비스 입니다 🎂
+<br />
+<br />
+<img src="https://github.com/user-attachments/assets/97016874-a40b-4202-be6c-8aea8e9a2a7a"/>
 
-## 👩🏻‍🍳 CAKEY Developers
+<br />
 
-<br/>
+## 🥨 서비스 소개
+<img src="https://github.com/user-attachments/assets/22bc787f-7db7-4e80-be72-2fa261d789b1"/>
+<img src="https://github.com/user-attachments/assets/e0e5e2f6-14fd-43e1-acdb-abca5c407377"/>
 
+<br />
+<br />
+
+## 🔨 서비스 주요 기능
+<img src="https://github.com/user-attachments/assets/932ca94f-d7b7-4581-b334-fd526b274df5"/>
+<img src="https://github.com/user-attachments/assets/696678a7-6bf3-4e73-9be6-f0105a67bce7"/>
+<img src="https://github.com/user-attachments/assets/a022f2ee-c4c0-49a3-8bb8-d29f9262e0cb"/>
+<img src="https://github.com/user-attachments/assets/b3766604-5e72-4098-a1d5-e289b1c30059"/>
+<img src="https://github.com/user-attachments/assets/f469afd4-9d2e-498a-bbd6-6743b2b49087"/>
+<img src="https://github.com/user-attachments/assets/5abf0c74-c165-414d-b757-25d15266e946"/>
+<img src="https://github.com/user-attachments/assets/d0e9e6f1-7606-4a0d-9f0f-1ff433db633d"/>
+<img src="https://github.com/user-attachments/assets/47bf645b-0b19-4dc1-92d4-14b084e3361e"/>
+
+<br />
+<br />
+
+## 👩🏻‍🍳 WHIPEE 파티시에
 <div align="center">
 <table>
-<th>팀원</th>
-    <th> 🍀 유서연 <a href="https://github.com/youtheyeon"><br/><img src="https://img.shields.io/badge/Github-181717?style=flat-square&logo=Github&logoColor=white"/><a></th>
-	  <th> 🐱 손지유 <a href="https://github.com/zzz-myam"><br/><img src="https://img.shields.io/badge/Github-181717?style=flat-square&logo=Github&logoColor=white"/></a></th>
-    <th> 👻 임화랑 <a href="https://github.com/thisishwarang"><br/><img src="https://img.shields.io/badge/Github-181717?style=flat-square&logo=Github&logoColor=white"/></a></th>
-    <th> 🥨 박채연 <a href="https://github.com/chaeneey"><br/><img src="https://img.shields.io/badge/Github-181717?style=flat-square&logo=Github&logoColor=white"/></a></th>
     <tr>
-    <td> 팀원 소개 </td>
-      <td colspan="4">
-        <img width="508" alt="스크린샷 2025-01-09 오후 2 43 13" src="https://github.com/user-attachments/assets/f303864b-300b-4656-b4ed-4785c61e1e6d" />
-      </td>
+	<th>팀원</th>
+    	    <th> 👻 임화랑 <a href="https://github.com/thisishwarang"><br/></a></th>
+    	    <th> 🐱 손지유 <a href="https://github.com/zzz-myam"><br/></a></th>
+    	    <th> 🥨 박채연 <a href="https://github.com/chaeneey"><br/></a></th>
+    	    <th> 🍀 유서연 <a href="https://github.com/youtheyeon"><br/></a></th>
     </tr>
     <tr>
-	<td> 역할 </td>
+        <th> 팀원 소개 </td>
+	    <td><img src="https://github.com/user-attachments/assets/76a37ecd-9649-469a-a649-cb6062d76c09"/></td>
+	    <td><img src="https://github.com/user-attachments/assets/0b4e96ee-d463-4f39-8316-77bba9df9739"/></td>
+	    <td><img src="https://github.com/user-attachments/assets/d1ea9f32-31f6-4378-b827-9af2ebe89e04"/></td>
+	    <td><img src="https://github.com/user-attachments/assets/70496595-6a50-48d7-aea3-55239e7f67ed"/></td>
+    </tr>
+    <tr>
+	<th> 역할 </td>
 	<td>
-		<p align="center">WEB FRONTEND</p>
+		<p align="center">WEB FRONTEND, LEAD</p>
 	</td>
 	<td>
 		<p align="center">WEB FRONTEND</p>
@@ -65,7 +69,7 @@
 <br />
 <br />
 
-## 🍴 Tech Stack
+## 🍴 기술 스택
 
 <div style="display: inline-flex; align-items: center; background-color: #339933; border-radius: 20px; padding: 5px 10px;">
   <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white" alt="Node.js Badge" style="margin-right: 5px;"/>
@@ -90,7 +94,7 @@
 <br />
 
 
-## 🧂 Library
+## 🧂 라이브러리
 
 <table>
   <tr>
@@ -309,8 +313,6 @@
 
 </details>
 
-<br/>
-
 <details>
 <summary > 2️⃣ Git & Github </summary>
 
@@ -380,6 +382,15 @@
 <br/>
 
 </details>
+
+<br/>
+
+## 📖 WHIPEE 파티시에들의 아티클 모음
+
+👻 임화랑: [Compound Component Pattern](https://field-socks-0f8.notion.site/Compound-Component-Pattern-5d7d19f02bb643eb91a0064598819c7c?pvs=4) <br/>
+🐱 손지유: [초기세팅 정복하기 (prettier, eslint, theme, GlobalStyle)](https://field-socks-0f8.notion.site/prettier-eslint-theme-GlobalStyle-f3a896ca27194657bc6ca6e92eed37e1?pvs=4) <br/>
+🥨 박채연: [Errorboundary](https://field-socks-0f8.notion.site/Errorboundary-dd6568841e704713858d5038a0e1dde9?pvs=4) <br/>
+🍀 유서연: [TanStack Query](https://field-socks-0f8.notion.site/TanStack-Query-2a2b9394a9e54ae9849682a35cdc580e?pvs=4) <br/>
 
 <br/>
 <br/>
