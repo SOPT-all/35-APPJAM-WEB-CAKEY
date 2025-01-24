@@ -137,6 +137,7 @@ export const useKakaoMap = (
     if (currentLocation) {
       setIsSaveActive(false);
       setIsGpsActive(false);
+      setSelectedStoreId(0);
       if (currentLocation.stationEnName === 'ALL') {
         fetchCurrentPosition();
         setMapLevel(9);
@@ -151,7 +152,7 @@ export const useKakaoMap = (
             clicked: false,
           }))
         );
-        setMapLevel(4)
+        setMapLevel(4);
       }
     } else {
       handleAnimateChange('default');
