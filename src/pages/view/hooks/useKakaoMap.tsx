@@ -22,6 +22,7 @@ export const useKakaoMap = (
   const { data: storeCoordinateList } = useFetchStoreCoordinateList(
     currentLocation.stationEnName
   );
+  const { data: likesStoreCoordinateList } = useFetchLikesStoreCoordinate();
 
   const [selectedStoreId, setSelectedStoreId] = useState<number>(0);
   const [storeMarkerList, setStoreMarkerList] = useState<
@@ -48,9 +49,6 @@ export const useKakaoMap = (
 
   // Map level 관리하기
   const [mapLevel, setMapLevel] = useState(4);
-
-  const { data: likesStoreCoordinateList } =
-    useFetchLikesStoreCoordinate();
 
   const location = useLocation();
   const locationState = location?.state?.location || null;
@@ -89,6 +87,7 @@ export const useKakaoMap = (
     setIsGpsActive(false);
     handleDebouncedCenterChange(map);
   };
+
   const handleGpsButtonClick = () => {
     fetchCurrentPosition();
   };
@@ -99,13 +98,19 @@ export const useKakaoMap = (
       return;
     }
     setIsSaveActive((prev) => !prev);
-
-    const markerList =
-      (isSaveActive ? storeCoordinateList : likesStoreCoordinateList) || [];
-    setStoreMarkerList(
-      markerList.map((store) => ({ ...store, clicked: false }))
-    );
   };
+
+  useEffect(() => {
+    const markerList = isSaveActive
+      ? likesStoreCoordinateList
+      : storeCoordinateList;
+
+    if (markerList) {
+      setStoreMarkerList(
+        markerList.map((store) => ({ ...store, clicked: false }))
+      );
+    }
+  }, [isSaveActive, storeCoordinateList, likesStoreCoordinateList]);
 
   const handleMarkerClick = (storeId: number) => {
     startTransition(() => {
@@ -134,7 +139,7 @@ export const useKakaoMap = (
       setIsGpsActive(false);
       if (currentLocation.stationEnName === 'ALL') {
         fetchCurrentPosition();
-        setMapLevel(9)
+        setMapLevel(9);
       } else {
         setCenter({
           lat: currentLocation.latitude,
@@ -152,26 +157,6 @@ export const useKakaoMap = (
       handleAnimateChange('default');
     }
   }, [currentLocation, storeCoordinateList]);
-
-  // useEffect(() => {
-  //   fetchCurrentPosition();
-  //   if (storeCoordinateList) {
-  //     setStoreMarkerList(
-  //       storeCoordinateList.map((location) => ({ ...location, clicked: false }))
-  //     );
-  //   }
-  // }, [storeCoordinateList]);
-
-  useEffect(() => {
-    if (storeCoordinateList) {
-      setStoreMarkerList(
-        storeCoordinateList.map((store) => ({
-          ...store,
-          clicked: false,
-        }))
-      );
-    }
-  }, [storeCoordinateList]);
 
   useEffect(() => {
     if (locationState) {

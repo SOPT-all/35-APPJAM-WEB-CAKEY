@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useSuspenseQuery } from '@tanstack/react-query';
 
 import { instance } from '@apis/instance';
 
@@ -28,10 +28,8 @@ const fetchLikesStoreCoordinate = async (): Promise<StoreCoordinate[]> => {
 };
 
 export const useFetchLikesStoreCoordinate = () => {
-  return useQuery({
+  return useSuspenseQuery({
     queryKey: [queryKey.LIKES_STORE_COORDINATE_LIST],
     queryFn: fetchLikesStoreCoordinate,
-    staleTime: 0,
-    gcTime: 0,
   });
 };

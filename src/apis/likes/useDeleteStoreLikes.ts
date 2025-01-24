@@ -32,6 +32,9 @@ export const useDeleteStoreLikes = () => {
         queryKey: [queryKey.STORE_INFO],
       });
       queryClient.invalidateQueries({ queryKey: [queryKey.LIKED_STORE_LIST] });
+      queryClient.invalidateQueries({
+        queryKey: [queryKey.LIKES_STORE_COORDINATE_LIST],
+      });
 
       showToast('check', '찜을 취소했어요');
     },
