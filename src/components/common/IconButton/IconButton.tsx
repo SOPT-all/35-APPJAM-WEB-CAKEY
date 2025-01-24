@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes, useState } from 'react';
+import React, { ButtonHTMLAttributes, useEffect, useState } from 'react';
 
 import {
   useDeleteCakeLikes,
@@ -63,6 +63,10 @@ const IconButton = ({
 
   const [localActive, setLocalActive] = useState(isActive);
   const [localCount, setLocalCount] = useState<number | undefined>(count);
+
+  useEffect(() => {
+    setLocalActive(isActive);
+  }, [isActive]);
 
   const { mutate: postStoreLikes } = usePostStoreLikes();
   const { mutate: postCakeLikes } = usePostCakeLikes();

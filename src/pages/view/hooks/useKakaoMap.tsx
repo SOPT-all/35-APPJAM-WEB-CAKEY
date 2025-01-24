@@ -46,8 +46,11 @@ export const useKakaoMap = (
   // gps 버튼 활성화 상태
   const [isGpsActive, setIsGpsActive] = useState(false);
 
+  // Map level 관리하기
+  const [mapLevel, setMapLevel] = useState(2);
+
   const { data: likesStoreCoordinateList } =
-    useFetchLikesStoreCoordinate(isSaveActive);
+    useFetchLikesStoreCoordinate();
 
   const location = useLocation();
   const locationState = location?.state?.location || null;
@@ -131,6 +134,7 @@ export const useKakaoMap = (
       setIsGpsActive(false);
       if (currentLocation.stationEnName === 'ALL') {
         fetchCurrentPosition();
+        setMapLevel(9)
       } else {
         setCenter({
           lat: currentLocation.latitude,
@@ -142,6 +146,7 @@ export const useKakaoMap = (
             clicked: false,
           }))
         );
+        setMapLevel(2)
       }
     } else {
       handleAnimateChange('default');
@@ -196,6 +201,7 @@ export const useKakaoMap = (
     center,
     isSaveActive,
     isGpsActive,
+    mapLevel,
     setCenter,
     handleCenterChanged,
     handleGpsButtonClick,

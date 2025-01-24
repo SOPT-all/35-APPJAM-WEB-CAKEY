@@ -37,9 +37,7 @@ const HomePage = () => {
   const { goViewPage, goDesignListPage } = useEasyNavigate();
   const { data: storeRankData } = useFetchStoreRank();
   const { data: cakeRankData } = useFetchCakeRank();
-  const user = isLogin
-    ? JSON.parse(localStorage.getItem('user') || '{}')
-    : null;
+  const user = isLogin ? localStorage.getItem('userName') : null;
 
   const handleAllButtonClick = () => {
     goDesignListPage('BIRTH');
@@ -56,7 +54,7 @@ const HomePage = () => {
         <img src={MainKeyVisual} />
         <div className={mainContentContainer}>
           <h1 className={mainTextStyle}>
-            {isLogin ? `${user.userName} 님,` : '안녕하세요!'}
+            {isLogin ? `${user} 님,` : '안녕하세요!'}
           </h1>
 
           <div className={mainContentWrapper}>

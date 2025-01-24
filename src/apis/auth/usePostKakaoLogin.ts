@@ -36,10 +36,9 @@ export const usePostKakaoLogin = () => {
     onSuccess: (response) => {
       const resData = response.data.data;
       if (resData) {
-        const { userId, userName, accessToken } = resData;
-        const user = { userId, userName };
-        localStorage.setItem('user', JSON.stringify(user));
+        const { userName, accessToken } = resData;
         localStorage.setItem('accessToken', accessToken);
+        localStorage.setItem('userName', userName);
 
         queryClient.invalidateQueries({ queryKey: [queryKey.KAKAO_LOGIN] });
         goHomePage();
