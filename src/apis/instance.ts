@@ -6,6 +6,10 @@ export const instance = axios.create({
   baseURL: BASE_URL,
 
   withCredentials: true,
+
+  headers: {
+    Authorization: `Bearer ${localStorage.getItem('accessToken') ? localStorage.getItem('accessToken') : ''}`,
+  },
 });
 
 instance.interceptors.response.use(

@@ -8,6 +8,7 @@ import { useEasyNavigate } from '@hooks';
 
 import { ApiResponseType, LoginSuccessResponse } from '@types';
 
+
 const postKakaoLogin = async (
   authCode: string
 ): Promise<AxiosResponse<ApiResponseType<LoginSuccessResponse>>> => {
@@ -36,9 +37,9 @@ export const usePostKakaoLogin = () => {
     onSuccess: (response) => {
       const resData = response.data.data;
       if (resData) {
-        const { userId, userName } = resData;
-        const user = { userId, userName };
-        localStorage.setItem('user', JSON.stringify(user));
+        const { userName, accessToken } = resData;
+        localStorage.setItem('accessToken', accessToken);
+        localStorage.setItem('userName', userName);
 
         queryClient.invalidateQueries({ queryKey: [queryKey.KAKAO_LOGIN] });
         goHomePage();
