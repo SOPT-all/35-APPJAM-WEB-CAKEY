@@ -16,7 +16,7 @@ export const modalLayoutStyle = style([
 export const textSection = style([
   flexGenerator('column', 'flex-start', 'flex-start'),
   {
-    margin: '2rem 0 3.6rem',
+    margin: '2rem 0 2.8rem', //3.6 - 1.9 = 1.7
     gap: '0.8rem',
     padding: '0 2rem',
     width: '100%',
@@ -37,13 +37,19 @@ export const spanStyle = style([
   },
 ]);
 
+export const inputSection = style({
+  width: '100%',
+  marginBottom: '1.9rem',
+  padding: '0 1.4rem',
+});
+
 export const scrollSection = style([
   flexGenerator('column', 'flex-start', 'flex-start'),
   {
     gap: '1rem',
     padding: '0 1.4rem',
     width: '100%',
-    maxHeight: 'calc(100dvh - 8rem - 7.3rem - 4rem - 6rem - 0.6rem)',
+    maxHeight: 'calc(100dvh - 8rem - 7.3rem - 4rem - 6rem - 0.6rem - 5rem)',
     overflowY: 'auto',
     scrollbarGutter: 'stable',
 

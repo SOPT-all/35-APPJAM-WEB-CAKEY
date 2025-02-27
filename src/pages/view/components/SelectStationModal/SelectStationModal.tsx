@@ -1,10 +1,11 @@
 import { useState } from 'react';
 
-import { Header, TextButton } from '@components';
+import { Header, Input, TextButton } from '@components';
 
 import {
   footerSection,
   h1Style,
+  inputSection,
   modalLayoutStyle,
   scrollSection,
   spanStyle,
@@ -43,6 +44,9 @@ const SelectStationModal = ({
         <section className={textSection}>
           <h1 className={h1Style}>지하철역을 선택해주세요</h1>
           <span className={spanStyle}>아직 등록되지 않은 지역이 있어요!</span>
+        </section>
+        <section className={inputSection}>
+          <Input.InputField />
         </section>
         <section className={scrollSection}>
           {stationKrNames.map((station, index) => (
