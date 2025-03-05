@@ -1,5 +1,5 @@
 import { startTransition, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 import { useFetchStoreInfo } from '@apis/store';
 
@@ -14,8 +14,10 @@ import { sectionStyle } from './StorePage.css';
 
 const StorePage = () => {
   const storeId = Number(useParams<{ id: string }>().id);
-
   const { data: storeData } = useFetchStoreInfo(storeId);
+
+  const location = useLocation();
+  const [recentCakeId, setRecentCakeId] = useState(location.state?.cakeId);
 
   const [activeTab, setActiveTab] = useState(0);
 
@@ -23,10 +25,12 @@ const StorePage = () => {
     startTransition(() => {
       setActiveTab(index);
     });
+
+    setRecentCakeId(null);
   };
 
   const tabComponents = [
-    <StoreDesign storeId={storeId} />,
+    <StoreDesign storeId={storeId} recentCakeId={recentCakeId} />,
     <StoreMenu storeId={storeId} />,
     <StoreInfo storeId={storeId} />,
   ];

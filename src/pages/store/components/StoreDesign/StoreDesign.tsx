@@ -1,17 +1,18 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { useFetchStoreDetailDesign } from '@apis/store';
 
 import { Image, Modal } from '@components';
 
-import { gridStyle, liStyle } from './StoreDesign.css';
+import { gridStyle, liStyle, dimmedStyle } from './StoreDesign.css';
 import ImageModal from '../ImageModal/ImageModal';
 
 interface StoreDesignProps {
   storeId: number;
+  recentCakeId?: number;
 }
 
-const StoreDesign = ({ storeId }: StoreDesignProps) => {
+const StoreDesign = ({ storeId, recentCakeId }: StoreDesignProps) => {
   const { data: designData } = useFetchStoreDetailDesign(storeId);
 
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -23,6 +24,21 @@ const StoreDesign = ({ storeId }: StoreDesignProps) => {
   const closeImageModal = () => {
     setSelectedImage(null);
   };
+
+  const recentCakeRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (recentCakeId && recentCakeRef.current) {
+      const scrollToCake = () => {
+        recentCakeRef.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+        });
+      };
+
+      requestAnimationFrame(scrollToCake);
+    }
+  }, [recentCakeId]);
 
   return (
     <>
@@ -39,6 +55,11 @@ const StoreDesign = ({ storeId }: StoreDesignProps) => {
               isActive={design.isLiked}
               itemId={design.cakeId}
             />
+            {recentCakeId === design.cakeId && (
+              <div ref={recentCakeRef} className={dimmedStyle}>
+                방금 본 케이크
+              </div>
+            )}
           </li>
         ))}
       </ul>
