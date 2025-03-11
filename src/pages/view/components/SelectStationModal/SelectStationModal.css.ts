@@ -49,7 +49,7 @@ export const scrollSection = style([
     gap: '1rem',
     padding: '0 1.4rem',
     width: '100%',
-    maxHeight: 'calc(100dvh - 8rem - 7.3rem - 4rem - 6rem - 0.6rem - 5rem - 1.9rem)',
+    maxHeight: 'calc(100dvh - 8rem - 7.3rem - 5rem - 1.9rem)',
     overflowY: 'auto',
     scrollbarGutter: 'stable',
 
@@ -64,6 +64,25 @@ export const scrollSection = style([
       },
     },
   },
+]);
+
+export const noResultSection = style([
+  flexGenerator('column'),
+  {
+    width: '100%',
+    height: 'calc(100dvh - 8rem - 7.3rem - 5rem - 1.9rem - 10rem)',
+    gap: '0.8rem',
+  },
+]);
+
+export const noResultTextStyle = style([
+  vars.fonts.body04_m_16,
+  { color: vars.colors.gray700 },
+]);
+
+export const noResultSubTextStyle = style([
+  vars.fonts.body05_m_14,
+  { color: vars.colors.gray400 },
 ]);
 
 export const footerSection = style({

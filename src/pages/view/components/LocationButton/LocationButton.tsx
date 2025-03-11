@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes } from 'react';
 
-import { IcArrowRight24, IcLocation } from '@svgs';
+import { IcLocation, IcSearch } from '@svgs';
 
 import {
   buttonStyle,
@@ -27,7 +27,7 @@ const LocationButton = ({ currentLocation, onClick }: LocationButtonProps) => {
           )}
         </div>
       </section>
-      <IcArrowRight24 width={24} height={24} />
+      <IcSearch width={24} height={24} />
     </button>
   );
 };
