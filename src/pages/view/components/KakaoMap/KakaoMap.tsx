@@ -112,6 +112,7 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
           isSaveActive={isSaveActive}
           animateState={animateState}
           handleAnimateChange={handleAnimateChange}
+          onSelectStore={handleMarkerClick}
         />
       ) : (
         <Modal variant="bottom">

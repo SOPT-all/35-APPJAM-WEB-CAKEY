@@ -24,6 +24,7 @@ interface MapBottomSheetProps {
   isSaveActive: boolean;
   animateState: BottomSheetState;
   handleAnimateChange: (animate: BottomSheetState) => void;
+  onSelectStore: (storeId: number) => void;
 }
 
 const MapBottomSheet = ({
@@ -31,6 +32,7 @@ const MapBottomSheet = ({
   isSaveActive,
   animateState,
   handleAnimateChange,
+  onSelectStore,
 }: MapBottomSheetProps) => {
   const [activeTab, setActiveTab] = useState(0);
 
@@ -89,6 +91,7 @@ const MapBottomSheet = ({
                 option={option}
                 handleOptionSelect={handleOptionSelect}
                 fetchNextPage={fetchLikedStoreNext}
+                onSelectStore={onSelectStore}
               />
             ) : (
               <CardList
@@ -97,6 +100,7 @@ const MapBottomSheet = ({
                 option={option}
                 handleOptionSelect={handleOptionSelect}
                 fetchNextPage={fetchLikedStoreDesignNext}
+                onSelectStore={onSelectStore}
               />
             )}
           </div>
@@ -110,6 +114,7 @@ const MapBottomSheet = ({
             option={option}
             handleOptionSelect={handleOptionSelect}
             fetchNextPage={fetchStationStoreNext}
+            onSelectStore={onSelectStore}
           />
         </div>
       ) : (
@@ -129,6 +134,7 @@ const MapBottomSheet = ({
                 option={option}
                 handleOptionSelect={handleOptionSelect}
                 fetchNextPage={fetchStationStoreNext}
+                onSelectStore={onSelectStore}
               />
             ) : (
               <CardList
@@ -137,6 +143,7 @@ const MapBottomSheet = ({
                 option={option}
                 handleOptionSelect={handleOptionSelect}
                 fetchNextPage={fetchStationDesignNext}
+                onSelectStore={onSelectStore}
               />
             )}
           </div>

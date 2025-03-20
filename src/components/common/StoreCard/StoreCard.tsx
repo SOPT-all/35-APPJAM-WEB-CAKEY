@@ -22,9 +22,10 @@ const MAX_STORE_NAME_LENGTH = 7;
 
 interface StoreCardProps extends HTMLAttributes<HTMLButtonElement> {
   storeItem: StoreType;
+  onSelectStore: (storeId: number) => void;
 }
 
-const StoreCard = ({ storeItem }: StoreCardProps) => {
+const StoreCard = ({ storeItem, onSelectStore }: StoreCardProps) => {
   const {
     storeId,
     storeName,
@@ -43,7 +44,8 @@ const StoreCard = ({ storeItem }: StoreCardProps) => {
       : storeName;
 
   const handleCardClick = () => {
-    goStorePage(storeId);
+    onSelectStore(storeId);
+    // goStorePage(storeId);
   };
 
   return (

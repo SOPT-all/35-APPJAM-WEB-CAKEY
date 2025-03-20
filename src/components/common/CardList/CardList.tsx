@@ -38,6 +38,7 @@ interface CardListProps {
     subCategory: SubCategoryType;
   };
   fetchNextPage: () => void;
+  onSelectStore: (storeId: number) => void;
 }
 
 const CardList = ({
@@ -48,6 +49,7 @@ const CardList = ({
   hasModal,
   selectedCategories,
   fetchNextPage,
+  onSelectStore,
 }: CardListProps) => {
   const { ref, inView } = useInView();
 
@@ -133,7 +135,11 @@ const CardList = ({
           {item === 'store' || item === 'likedStore' ? (
             <div className={storeCardListWrapper}>
               {(cardListData as StoreType[]).map((store) => (
-                <StoreCard storeItem={store} key={store.storeId} />
+                <StoreCard
+                  storeItem={store}
+                  key={store.storeId}
+                  onSelectStore={onSelectStore}
+                />
               ))}
             </div>
           ) : (
@@ -144,6 +150,7 @@ const CardList = ({
                   designItem={cake}
                   hasModal={hasModal}
                   selectedCategories={selectedCategories}
+                  onSelectStore={onSelectStore}
                 />
               ))}
             </div>
