@@ -21,7 +21,7 @@ interface DesignCardProps extends HTMLAttributes<HTMLDivElement> {
     category: CategoryType;
     subCategory: SubCategoryType;
   };
-  onSelectStore: (storeId: number) => void;
+  onSelectStore?: (storeId: number) => void;
 }
 
 const DesignCard = ({
@@ -48,9 +48,10 @@ const DesignCard = ({
   const handleCardClick = () => {
     if (hasModal) {
       openModal(); // 둘러보기 페이지에서는 모달 띄우기
-    } else {
+    } else if (onSelectStore) {
       onSelectStore(storeId);
-      // goStorePage(storeId); // 나머지 페이지에선 상세보기로 이동
+    } else {
+      goStorePage(storeId); // 나머지 페이지에선 상세보기로 이동
     }
   };
 
