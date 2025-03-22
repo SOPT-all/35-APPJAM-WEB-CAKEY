@@ -10,7 +10,7 @@ import { isLoggedIn } from '@utils';
 
 import { useDebounce } from './useDebounce';
 
-import { BottomSheetState, StationType, StoreCoordinate } from '@types';
+import { BottomSheetState, SelectedModalType, StationType, StoreCoordinate } from '@types';
 
 const DEFAULT_CENTER = { lat: 37.556621, lng: 126.923877 };
 
@@ -25,6 +25,7 @@ export const useKakaoMap = (
   const { data: likesStoreCoordinateList } = useFetchLikesStoreCoordinate();
 
   const [selectedStoreId, setSelectedStoreId] = useState<number>(0);
+  const [selectedCakeId, setSelectedCakeId] = useState<number>(0);
   const [storeMarkerList, setStoreMarkerList] = useState<
     (StoreCoordinate & { clicked: boolean })[]
   >([]);
@@ -112,7 +113,7 @@ export const useKakaoMap = (
     }
   }, [isSaveActive, storeCoordinateList, likesStoreCoordinateList]);
 
-  const handleMarkerClick = (storeId: number) => {
+  const handleMarkerClick = ({storeId, cakeId}: SelectedModalType) => {
     startTransition(() => {
       setStoreMarkerList((prev) =>
         prev.map((marker) =>
@@ -122,6 +123,7 @@ export const useKakaoMap = (
         )
       );
       setSelectedStoreId(storeId);
+      setSelectedCakeId(cakeId ?? 0)
     });
   };
 
@@ -181,6 +183,7 @@ export const useKakaoMap = (
   }, [locationState]);
 
   return {
+    selectedCakeId,
     selectedStoreId,
     storeMarkerList,
     currentPosition,

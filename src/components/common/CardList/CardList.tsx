@@ -22,6 +22,7 @@ import {
   DesignItemType,
   ItemType,
   OptionType,
+  SelectedModalType,
   StoreCardListType,
   StoreType,
   SubCategoryType,
@@ -38,7 +39,7 @@ interface CardListProps {
     subCategory: SubCategoryType;
   };
   fetchNextPage: () => void;
-  onSelectStore: (storeId: number) => void;
+  onSelectStore: ({storeId, cakeId}: SelectedModalType) => void;
 }
 
 const CardList = ({

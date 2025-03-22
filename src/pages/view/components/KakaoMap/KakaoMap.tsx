@@ -31,6 +31,7 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
   const { animateState, handleAnimateChange } = useBottomSheet();
   const { isModalOpen, openModal, closeModal } = useModal();
   const {
+    selectedCakeId,
     selectedStoreId,
     storeMarkerList,
     currentPosition,
@@ -116,7 +117,7 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
         />
       ) : (
         <Modal variant="bottom">
-          <SelectedStoreModal storeId={selectedStoreId} />
+          <SelectedStoreModal storeId={selectedStoreId} cakeId={selectedCakeId} />
         </Modal>
       )}
       {isModalOpen && (

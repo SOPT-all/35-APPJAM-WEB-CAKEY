@@ -17,14 +17,14 @@ import {
   spacing,
 } from './MapBottomSheet.css';
 
-import { BottomSheetState } from '@types';
+import { BottomSheetState, SelectedModalType } from '@types';
 
 interface MapBottomSheetProps {
   selectedStation: string;
   isSaveActive: boolean;
   animateState: BottomSheetState;
   handleAnimateChange: (animate: BottomSheetState) => void;
-  onSelectStore: (storeId: number) => void;
+  onSelectStore: ({storeId, cakeId}: SelectedModalType) => void;
 }
 
 const MapBottomSheet = ({

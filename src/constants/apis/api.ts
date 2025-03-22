@@ -157,6 +157,7 @@ export const END_POINT = {
 
     return url;
   },
+  FETCH_CAKE_INFO: (cakeId: number) => `/api/v1/cake/select/map/${cakeId}`,
   POST_CAKE_LIKES: (cakeId: number) => `/api/v1/cake/likes/${cakeId}`,
   POST_STORE_LIKES: (storeId: number) => `/api/v1/store/likes/${storeId}`,
   POST_LIKE: (type: 'cake' | 'store', id: number) =>

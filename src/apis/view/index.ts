@@ -1,3 +1,4 @@
+import { useFetchCakeInfo } from './useFetchCakeInfo';
 import { useFetchLikedStoreDesign } from './useFetchLikedStoreDesign';
 import { useFetchLikesStoreCoordinate } from './useFetchLikesStoreCoordinate';
 import { useFetchStationDesign } from './useFetchStationDesign';
@@ -12,4 +13,5 @@ export {
   useFetchStationStore,
   useFetchStationDesign,
   useFetchLikedStoreDesign,
+  useFetchCakeInfo,
 };
