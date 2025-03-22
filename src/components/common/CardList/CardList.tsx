@@ -39,7 +39,7 @@ interface CardListProps {
     subCategory: SubCategoryType;
   };
   fetchNextPage: () => void;
-  onSelectStore: ({storeId, cakeId}: SelectedModalType) => void;
+  onSelectStore?: ({storeId, cakeId}: SelectedModalType) => void;
 }
 
 const CardList = ({

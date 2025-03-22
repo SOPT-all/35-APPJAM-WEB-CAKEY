@@ -80,7 +80,7 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
                   src,
                   size,
                 }}
-                onClick={() => handleMarkerClick(location.storeId)}
+                onClick={() => handleMarkerClick({storeId: location.storeId, cakeId: 0})}
               />
             );
           })}
