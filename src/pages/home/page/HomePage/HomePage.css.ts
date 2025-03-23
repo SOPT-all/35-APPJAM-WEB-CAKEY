@@ -14,42 +14,52 @@ export const mainSectionContainer = style({
   width: '100%',
   position: 'relative',
   cursor: 'pointer',
+  overflow: 'hidden',
+  borderBottomLeftRadius: '3rem',
+  borderBottomRightRadius: '3rem',
+  padding: '1.2rem',
+});
+
+export const mainImageStyle = style({
+  width: '100%',
+  display: 'block',
+  position: 'relative',
+  top: '10.8rem',
 });
 
 export const mainContentContainer = style([
-  flexGenerator('column', 'flex-start', 'flex-start'),
+  flexGenerator('column'),
   {
     width: '100%',
     position: 'absolute',
-    bottom: '3.5rem',
-    padding: '0 2rem',
-    gap: '0.4rem',
+    top: '3rem',
+    gap: '0.6rem',
   },
 ]);
 
 export const mainTextWrapper = style([
-  flexGenerator('column', 'flex-start', 'flex-start'),
+  flexGenerator('column'),
   {
-    gap: '0.8rem',
+    gap: '0.6rem',
   },
 ]);
 
 export const mainContentWrapper = style([
-  flexGenerator('row', 'space-between'),
-  { width: '100%' },
+  flexGenerator('column'),
+  { width: '100%', gap: '1.5rem' },
 ]);
 
 export const mainTextStyle = style([
-  vars.fonts.head01_b_24,
+  vars.fonts.body04_m_16,
   {
-    color: vars.colors.white,
+    color: vars.colors.gray700,
   },
 ]);
 
 export const mainTextMiniStyle = style([
-  vars.fonts.body04_m_16,
+  vars.fonts.head01_b_24,
   {
-    color: vars.colors.gray100,
+    color: vars.colors.black,
   },
 ]);
 

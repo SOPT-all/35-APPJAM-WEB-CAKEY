@@ -8,7 +8,7 @@ import { StoreRankingButton } from '@pages/home/components';
 import CategoryCard from '@pages/home/components/CategoryCard/CategoryCard';
 import { isLoggedIn } from '@utils';
 
-import { IcArrowRight16, IcHomeArrow } from '@svgs';
+import { IcArrowRight16, IcClickCta } from '@svgs';
 
 import {
   categoryWrapper,
@@ -30,6 +30,7 @@ import {
   allButtonStyle,
   allButtonWrapper,
   subTextWrapper,
+  mainImageStyle,
 } from './HomePage.css';
 
 const HomePage = () => {
@@ -51,20 +52,16 @@ const HomePage = () => {
           goViewPage();
         }}
       >
-        <img src={MainKeyVisual} />
+        <img src={MainKeyVisual} className={mainImageStyle} />
         <div className={mainContentContainer}>
-          <h1 className={mainTextStyle}>
-            {isLogin ? `${user} 님,` : '안녕하세요!'}
-          </h1>
-
           <div className={mainContentWrapper}>
             <div className={mainTextWrapper}>
-              <h1 className={mainTextStyle}>주문제작 케이크 찾으시나요?</h1>
-              <p className={mainTextMiniStyle}>
-                약속 장소와 가까운 스토어 둘러보기
-              </p>
+              <h1 className={mainTextStyle}>
+                {isLogin ? `${user} 님,` : '주문제작 케이크 찾으시나요?'}
+              </h1>
+              <p className={mainTextMiniStyle}>눌러서 지도 보기</p>
             </div>
-            <IcHomeArrow width={36} height={36} />
+            <IcClickCta width={87} height={40} />
           </div>
         </div>
       </section>
