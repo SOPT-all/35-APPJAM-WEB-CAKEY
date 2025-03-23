@@ -10,21 +10,20 @@ export const homePageLayout = style([
   },
 ]);
 
-export const mainSectionContainer = style({
+export const mainSectionContainer = style([flexGenerator('column'),{
   width: '100%',
   position: 'relative',
   cursor: 'pointer',
-  overflow: 'hidden',
-  borderBottomLeftRadius: '3rem',
-  borderBottomRightRadius: '3rem',
-  padding: '1.2rem',
-});
+  padding: '13.3rem 1.2rem 0rem 1.2rem',
+}])
 
 export const mainImageStyle = style({
   width: '100%',
-  display: 'block',
+  height: '23rem',
+  borderRadius: '10px',
   position: 'relative',
-  top: '10.8rem',
+  objectFit: 'cover',
+  objectPosition: 'top',
 });
 
 export const mainContentContainer = style([
@@ -33,7 +32,6 @@ export const mainContentContainer = style([
     width: '100%',
     position: 'absolute',
     top: '3rem',
-    gap: '0.6rem',
   },
 ]);
 

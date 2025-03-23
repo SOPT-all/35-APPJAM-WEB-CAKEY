@@ -6,7 +6,7 @@ import { CATEGORY, MainKeyVisual } from '@constants';
 import { useEasyNavigate } from '@hooks';
 import { StoreRankingButton } from '@pages/home/components';
 import CategoryCard from '@pages/home/components/CategoryCard/CategoryCard';
-import { isLoggedIn } from '@utils';
+// import { isLoggedIn } from '@utils';
 
 import { IcArrowRight16, IcClickCta } from '@svgs';
 
@@ -34,11 +34,11 @@ import {
 } from './HomePage.css';
 
 const HomePage = () => {
-  const isLogin = isLoggedIn();
+  // const isLogin = isLoggedIn();
   const { goViewPage, goDesignListPage } = useEasyNavigate();
   const { data: storeRankData } = useFetchStoreRank();
   const { data: cakeRankData } = useFetchCakeRank();
-  const user = isLogin ? localStorage.getItem('userName') : null;
+  // const user = isLogin ? localStorage.getItem('userName') : null;
 
   const handleAllButtonClick = () => {
     goDesignListPage('BIRTH');
@@ -57,7 +57,7 @@ const HomePage = () => {
           <div className={mainContentWrapper}>
             <div className={mainTextWrapper}>
               <h1 className={mainTextStyle}>
-                {isLogin ? `${user} 님,` : '주문제작 케이크 찾으시나요?'}
+                주문제작 케이크 찾으시나요?
               </h1>
               <p className={mainTextMiniStyle}>눌러서 지도 보기</p>
             </div>
