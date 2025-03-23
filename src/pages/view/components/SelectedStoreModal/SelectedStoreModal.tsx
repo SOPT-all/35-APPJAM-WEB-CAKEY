@@ -42,7 +42,7 @@ const SelectedStoreModal = ({ storeId }: SelectedStoreModalProps) => {
           </div>
         </div>
 
-        <TextButton size="small" onClick={() => goStorePage(storeId)}>
+        <TextButton size="large" onClick={() => goStorePage(storeId)}>
           상세보기
         </TextButton>
       </section>
