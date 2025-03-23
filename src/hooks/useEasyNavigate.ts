@@ -31,6 +31,12 @@ const useEasyNavigate = () => {
     navigate(routePath.STOREPAGE.replace(':id', String(storeId)));
   };
 
+  const goStorePageByCakeId = (storeId: number, cakeId: number) => {
+    navigate(routePath.STOREPAGE.replace(':id', String(storeId)), {
+      state: { cakeId },
+    });
+  };
+
   const goDesignListPage = (category: CategoryType) => {
     navigate(routePath.DESIGNLISTPAGE, { state: { category } });
   };
@@ -50,6 +56,7 @@ const useEasyNavigate = () => {
     goLikeListPage,
     goLikeListPageByTab,
     goStorePage,
+    goStorePageByCakeId,
     goDesignListPage,
     goLoginPage,
     goBack,

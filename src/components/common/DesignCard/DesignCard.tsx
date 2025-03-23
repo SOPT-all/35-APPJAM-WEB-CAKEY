@@ -39,7 +39,7 @@ const DesignCard = ({
     isLiked,
   } = designItem;
 
-  const { goStorePage } = useEasyNavigate();
+  const { goStorePageByCakeId } = useEasyNavigate();
 
   const { openModal, isModalOpen, closeModal } = useModal();
 
@@ -47,7 +47,7 @@ const DesignCard = ({
     if (hasModal) {
       openModal(); // 둘러보기 페이지에서는 모달 띄우기
     } else {
-      goStorePage(storeId); // 나머지 페이지에선 상세보기로 이동
+      goStorePageByCakeId(storeId, cakeId); // 나머지 페이지에선 상세보기로 이동
     }
   };
 
