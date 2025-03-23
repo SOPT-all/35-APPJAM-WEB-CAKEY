@@ -7,8 +7,7 @@ export const buttonStyle = style([
   flexGenerator('row', 'space-between'),
   {
     width: '100%',
-    padding: '0.8rem',
-    border: `1px solid ${vars.colors.gray200}`,
+    padding: '0.8rem 1rem 0.8rem 0.8rem',
     borderRadius: 10,
     backgroundColor: vars.colors.white,
     cursor: 'pointer',

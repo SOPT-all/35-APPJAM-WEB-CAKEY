@@ -20,6 +20,11 @@ export const inputTitle = style([
   },
 ]);
 
+export const inputWrapper = style({
+  width: '100%',
+  position: 'relative',
+});
+
 export const inputStyle = recipe({
   base: [
     vars.fonts.body07_r_14,
@@ -47,4 +52,26 @@ export const inputStyle = recipe({
   defaultVariants: {
     state: 'default',
   },
+});
+
+export const inputStationStyle = style([
+  vars.fonts.body04_m_16,
+  {
+    color: vars.colors.black,
+    backgroundColor: vars.colors.gray100,
+    borderRadius: '10px',
+    width: '100%',
+    padding: '1rem 1.2rem',
+    selectors: {
+      '&::placeholder': {
+        color: vars.colors.gray400,
+      },
+    },
+  },
+]);
+
+export const iconStyle = style({
+  position: 'absolute',
+  top: '1rem',
+  right: '1.2rem'
 });

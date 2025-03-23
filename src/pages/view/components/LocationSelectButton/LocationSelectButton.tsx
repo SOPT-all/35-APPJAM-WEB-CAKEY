@@ -1,25 +1,30 @@
-import { ButtonHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 
 import { IcCheck } from '@svgs';
 
-import { buttonStyle, buttonTextStyle } from './LocationSelectButton.css';
+import { buttonLabelStyle, buttonStyle, buttonTextStyle, buttonTextWrapper } from './LocationSelectButton.css';
 
 export interface LocationSelectButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
-  location: string;
+  location: string | ReactNode;
   currentLocation: string;
+  hasLabel?: boolean;
 }
 
 const LocationSelectButton = ({
   location,
   currentLocation,
   onClick,
+  hasLabel = false,
 }: LocationSelectButtonProps) => {
   const isSelected = location === currentLocation;
 
   return (
     <button className={buttonStyle({ isSelected })} onClick={onClick}>
-      <span className={buttonTextStyle[`${isSelected}`]}>{location}</span>
+      <div className={buttonTextWrapper}>
+        {hasLabel && <div className={buttonLabelStyle}>기본</div>}
+        <span className={buttonTextStyle[`${isSelected}`]}>{location}</span>
+      </div>
       {isSelected && <IcCheck width={28} height={28} />}
     </button>
   );
