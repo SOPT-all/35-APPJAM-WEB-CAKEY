@@ -1,4 +1,5 @@
 import { useFetchStoreInfo } from '@apis/store';
+import { useFetchCakeInfo } from '@apis/view';
 
 import { IconButton, Image, Label, TextButton } from '@components';
 import { useEasyNavigate } from '@hooks';
@@ -13,32 +14,32 @@ import {
   addressStyle,
 } from './SelectedStoreModal.css';
 
-interface SelectedStoreModalProps {
-  storeId: number;
-}
-const SelectedStoreModal = ({ storeId }: SelectedStoreModalProps) => {
+import { SelectedModalType } from '@types';
+
+const SelectedStoreModal = ({ storeId, cakeId }: SelectedModalType) => {
   const { goStorePage } = useEasyNavigate();
   const { data: storeData } = useFetchStoreInfo(storeId);
-
+  const { data: cakeData } = useFetchCakeInfo(cakeId ?? 0);
+  const displayData = cakeData ?? storeData;
   return (
     <div className={modalContainer}>
       <section className={imageSection}>
-        <Image src={storeData.imageUrl} variant="rounded" />
+        <Image src={displayData.imageUrl} variant="rounded" />
       </section>
 
       <section className={infoSection}>
         <div className={textWrapper}>
           <div className={storeNameWrapper}>
-            <h1>{storeData.storeName}</h1>
+            <h1>{displayData.storeName}</h1>
             <IconButton
               buttonType={'save24'}
-              isActive={storeData.isLiked}
+              isActive={displayData.isLiked}
               itemId={storeId}
             />
           </div>
           <div className={addressWrapper}>
-            <div className={addressStyle}>{storeData.address}</div>
-            <Label text={storeData.station} />
+            <div className={addressStyle}>{displayData.address}</div>
+            <Label text={displayData.station} />
           </div>
         </div>
 

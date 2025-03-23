@@ -59,3 +59,17 @@ export interface StationStoreResponse {
   storeCount: number;
   stores: StationStore[];
 }
+
+export interface SelectedModalType {
+  storeId: number;
+  cakeId?: number;
+}
+
+export interface CakeInfoResponse {
+  storeId: number;
+  storeName: string;
+  address: string;
+  station: string;
+  isLiked: boolean;
+  imageUrl: string;
+}

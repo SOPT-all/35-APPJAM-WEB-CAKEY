@@ -15,6 +15,7 @@ export const queryKey = {
   LIKES_STORE_COORDINATE_LIST: 'likesStoreCoordinateList',
   STORE_STATIONS: 'storeStations',
   CAKE_RANK: 'cakeRank',
+  CAKE_INFO: 'cakeInfo',
   USER: 'user',
   STATION_DESIGN_LIST: 'stationDesignList',
   STATION_STORE_LIST: 'stationStoreList',

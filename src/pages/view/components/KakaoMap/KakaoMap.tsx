@@ -31,6 +31,7 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
   const { animateState, handleAnimateChange } = useBottomSheet();
   const { isModalOpen, openModal, closeModal } = useModal();
   const {
+    selectedCakeId,
     selectedStoreId,
     storeMarkerList,
     currentPosition,
@@ -79,7 +80,7 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
                   src,
                   size,
                 }}
-                onClick={() => handleMarkerClick(location.storeId)}
+                onClick={() => handleMarkerClick({storeId: location.storeId, cakeId: 0})}
               />
             );
           })}
@@ -112,10 +113,11 @@ const KakaoMap = ({ currentLocation }: KakaoMapProps) => {
           isSaveActive={isSaveActive}
           animateState={animateState}
           handleAnimateChange={handleAnimateChange}
+          onSelectStore={handleMarkerClick}
         />
       ) : (
         <Modal variant="bottom">
-          <SelectedStoreModal storeId={selectedStoreId} />
+          <SelectedStoreModal storeId={selectedStoreId} cakeId={selectedCakeId} />
         </Modal>
       )}
       {isModalOpen && (

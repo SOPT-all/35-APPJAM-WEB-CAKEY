@@ -11,7 +11,7 @@ import {
   infoTitleStyle,
 } from './DesignCard.css';
 
-import { CategoryType, DesignItemType, SubCategoryType } from '@types';
+import { CategoryType, DesignItemType, SelectedModalType, SubCategoryType } from '@types';
 interface DesignCardProps extends HTMLAttributes<HTMLDivElement> {
   designItem: DesignItemType;
   numberLabel?: string;
@@ -21,6 +21,7 @@ interface DesignCardProps extends HTMLAttributes<HTMLDivElement> {
     category: CategoryType;
     subCategory: SubCategoryType;
   };
+  onSelectStore?: ({storeId, cakeId}: SelectedModalType) => void;
 }
 
 const DesignCard = ({
@@ -28,6 +29,7 @@ const DesignCard = ({
   numberLabel,
   hasModal = false,
   selectedCategories,
+  onSelectStore,
 }: DesignCardProps) => {
   const {
     cakeId,
@@ -46,6 +48,8 @@ const DesignCard = ({
   const handleCardClick = () => {
     if (hasModal) {
       openModal(); // 둘러보기 페이지에서는 모달 띄우기
+    } else if (onSelectStore) {
+      onSelectStore({storeId, cakeId});
     } else {
       goStorePageByCakeId(storeId, cakeId); // 나머지 페이지에선 상세보기로 이동
     }
@@ -71,7 +75,10 @@ const DesignCard = ({
 
       {isModalOpen && (
         <Modal variant="bottom" hasBackdrop backdropClick={closeModal}>
-          <DesignSearchModal cakeId={cakeId} selectedCategories={selectedCategories} />
+          <DesignSearchModal
+            cakeId={cakeId}
+            selectedCategories={selectedCategories}
+          />
         </Modal>
       )}
     </>

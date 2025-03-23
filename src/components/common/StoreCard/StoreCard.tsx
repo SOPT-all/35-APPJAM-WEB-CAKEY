@@ -16,15 +16,16 @@ import {
   storeNameStyle,
 } from './StoreCard.css';
 
-import { StoreType } from '@types';
+import { SelectedModalType, StoreType } from '@types';
 
 const MAX_STORE_NAME_LENGTH = 7;
 
 interface StoreCardProps extends HTMLAttributes<HTMLButtonElement> {
   storeItem: StoreType;
+  onSelectStore?: ({storeId, cakeId}: SelectedModalType) => void;
 }
 
-const StoreCard = ({ storeItem }: StoreCardProps) => {
+const StoreCard = ({ storeItem, onSelectStore }: StoreCardProps) => {
   const {
     storeId,
     storeName,
@@ -43,7 +44,11 @@ const StoreCard = ({ storeItem }: StoreCardProps) => {
       : storeName;
 
   const handleCardClick = () => {
-    goStorePage(storeId);
+    if (onSelectStore) {
+      onSelectStore({storeId, cakeId: 0});
+    } else {
+      goStorePage(storeId);
+    }
   };
 
   return (
