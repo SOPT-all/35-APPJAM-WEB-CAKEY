@@ -5,6 +5,7 @@ export { default as IcArrowRight20 } from './IcArrowRight20';
 export { default as IcArrowRight24 } from './IcArrowRight24';
 export { default as IcArrowUp20 } from './IcArrowUp20';
 export { default as IcCheck } from './IcCheck';
+export { default as IcClickCta } from './IcClickCta';
 export { default as IcFillLikeOff36 } from './IcFillLikeOff36';
 export { default as IcFillLikeOn36 } from './IcFillLikeOn36';
 export { default as IcFooterLogo } from './IcFooterLogo';
