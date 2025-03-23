@@ -41,7 +41,6 @@ const SelectStationModal = ({
     } else {
       setSearchedStation(value.target.value);
     }
-    console.log(filteredStation);
   };
 
   useEffect(() => {
@@ -49,20 +48,18 @@ const SelectStationModal = ({
     return () => clearTimeout(timeout);
   }, [searchedStation]);
 
-  const filteredStation = stationKrNames.filter((stations) =>
-    stations.includes(debouncedStation)
-  );
+  const filteredStations = debouncedStation.trim() === ''
+  ? stationKrNames
+  : stationKrNames.filter((station) =>
+      station.includes(debouncedStation)
+    );
+
 
   const handleLocationClick = (location: string) => {
     setSelectedLocation(location);
     onCurrentLocationChange(location);
     onClose();
   };
-
-  // const handleSelectButtonClick = () => {
-  //   onCurrentLocationChange(selectedLocation);
-  //   onClose();
-  // };
 
   const highlightMatch = (text: string, query: string) => {
     if (!query) return text; // 검색어가 없으면 원래 텍스트 반환
@@ -96,28 +93,16 @@ const SelectStationModal = ({
             hasIcon
           />
         </section>
-        {searchedStation === '' ? (
+        
           <section className={scrollSection}>
-            {stationKrNames.map((station, index) => (
-              <LocationSelectButton
-                key={index}
-                location={station}
-                currentLocation={selectedLocation}
-                onClick={() => handleLocationClick(station)}
-                hasLabel={station === '전체' ? true : false}
-              />
-            ))}
-          </section>
-        ) : (
-          <section className={scrollSection}>
-            {filteredStation?.length ? (
-              filteredStation.map((station, index) => (
+            {filteredStations?.length ? (
+              filteredStations.map((station, index) => (
                 <LocationSelectButton
                   key={index}
                   location={highlightMatch(station, debouncedStation)}
                   currentLocation={selectedLocation}
                   onClick={() => handleLocationClick(station)}
-                  hasLabel={station === '전체' ? true : false}
+                  hasLabel={station === '전체'}
                 />
               ))
             ) : (
@@ -129,13 +114,7 @@ const SelectStationModal = ({
               </div>
             )}
           </section>
-        )}
-
-        {/* <section className={footerSection}>
-          <TextButton size="xLarge" onClick={handleSelectButtonClick}>
-            선택하기
-          </TextButton>
-        </section> */}
+        
       </div>
     </>
   );
